@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "unit_population": {
+    "include_roster_scope": ["race_core", "race_core_and_variant"],
+    "exclude_categories": ["character"],
+    "exclude_regiments_of_renown": true,
+    "require_positive_multiplayer_cost": true
+  },
+  "triplet": {
+    "breadth": {
+      "description": "How widely a race can express the capability.",
+      "weights": {
+        "high_role_cost_cell_coverage": 0.4,
+        "positive_unit_share": 0.3,
+        "high_unit_share": 0.3
+      },
+      "high_threshold": "global 65th percentile among positive unit scores"
+    },
+    "ceiling": {
+      "description": "Strength of the race's best options.",
+      "aggregation": "mean of top 8 percent of eligible units, minimum 1 and maximum 3 units"
+    },
+    "access": {
+      "description": "How early the capability appears on the multiplayer-cost frontier.",
+      "aggregation": "mean best score below 12 global cost caps from the 10th to 95th percentiles"
+    }
+  },
+  "comparison_weights": {
+    "block_total": "equal across four blocks after column standardization",
+    "triplet": {"breadth": 0.5, "ceiling": 0.25, "access": 0.25}
+  },
+  "blocks": {
+    "geometry": {
+      "movement": {
+        "inputs": {"speed_rank": 0.75, "terrain_mobility_flag": 0.15, "fire_while_moving_flag": 0.1}
+      },
+      "deployment": {
+        "inputs": {"vanguard_flag": 0.3, "stalk_or_snipe_flag": 0.25, "flying_flag": 0.3, "terrain_mobility_flag": 0.15}
+      },
+      "shock": {
+        "inputs": {"speed_rank": 0.3, "charge_bonus_rank": 0.3, "mass_rank": 0.25, "devastating_flanker_flag": 0.15}
+      },
+      "contact_authority": {
+        "inputs": {"mass_rank": 0.4, "anti_target_peak_rank": 0.2, "charge_defence_flag": 0.2, "large_flag": 0.1, "single_entity_flag": 0.1}
+      }
+    },
+    "damage": {
+      "melee_pressure": {
+        "inputs": {"melee_attack_rank": 0.3, "melee_damage_rate_rank": 0.35, "weapon_ap_damage_rank": 0.2, "anti_target_peak_rank": 0.15}
+      },
+      "missile_pressure": {
+        "inputs": {"missile_launch_power_rank": 0.5, "range_rank": 0.2, "delivery_quality": 0.15, "ammunition_rank": 0.15},
+        "gate": "has_missile_weapon"
+      },
+      "bombardment": {
+        "inputs": {"range_rank": 0.3, "explosion_potency_rank": 0.4, "artillery_flag": 0.2, "penetration_flag": 0.1},
+        "gate": "has_missile_weapon"
+      },
+      "target_solutions": {
+        "inputs": {"ap_ratio_rank": 0.35, "anti_target_peak_rank": 0.2, "anti_target_breadth": 0.15, "magical_flag": 0.1, "flaming_flag": 0.05, "armour_control_flag": 0.15}
+      },
+      "burst": {
+        "inputs": {"charge_bonus_rank": 0.35, "mass_rank": 0.2, "missile_alpha": 0.25, "explosion_potency_rank": 0.2}
+      },
+      "sustain": {
+        "inputs": {"melee_damage_rate_rank": 0.35, "missile_reserve_rank": 0.3, "ammunition_rank_if_missile": 0.15, "fatigue_immunity_flag": 0.1, "regeneration_flag": 0.1}
+      }
+    },
+    "survival": {
+      "material_durability": {
+        "inputs": {"total_hp_rank": 0.22, "hp_per_entity_rank": 0.08, "armour_rank": 0.18, "melee_defence_rank": 0.2, "shield_block_rank": 0.12, "resistance_sum_rank": 0.2}
+      },
+      "avoidance": {
+        "inputs": {"speed_rank": 0.25, "range_rank_if_missile": 0.15, "stalk_flag": 0.15, "flying_flag": 0.15, "terrain_mobility_flag": 0.1, "missile_resistance_rank": 0.2}
+      },
+      "morale": {
+        "components": {
+          "anchor": {"weight": 0.65, "inputs": {"leadership_rank": 0.55, "immune_to_psychology_flag": 0.2, "unbreakable_flag": 0.25}},
+          "redundancy": {"weight": 0.35, "inputs": {"expendable_flag": 0.45, "inverse_cost_rank": 0.3, "entity_count_rank": 0.25}}
+        }
+      },
+      "restoration": {
+        "inputs": {"barrier_health_rank": 0.5, "regeneration_flag": 0.35, "summon_flag": 0.15}
+      }
+    },
+    "architecture": {
+      "role_coverage": {
+        "breadth": "share of six roles present",
+        "ceiling": "normalized entropy across six role counts",
+        "access": "share of 24 role-by-cost cells present"
+      },
+      "elite_orientation": {
+        "breadth": "share above global 75th multiplayer-cost percentile",
+        "ceiling": "share of feature champions above global 75th cost percentile",
+        "access": "Spearman correlation between mean unit feature score and cost"
+      },
+      "battlefield_control": {
+        "inputs": {"contact_control_flag": 0.18, "armour_control_flag": 0.12, "morale_contact_flag": 0.12, "snare_flag": 0.12, "formation_flag": 0.12, "charge_defence_flag": 0.12, "fear_flag": 0.1, "terror_flag": 0.12}
+      },
+      "command_magic": {
+        "breadth": "generic caster lore count capped at 8",
+        "ceiling": "coverage of healing, summoning, control, protection, and damage categories",
+        "access": "generic caster count capped at 4"
+      }
+    }
+  }
+}
