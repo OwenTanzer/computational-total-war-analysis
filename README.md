@@ -12,20 +12,22 @@ that use CTW as an authoritative dataset.
 
 The first study asks whether the 24 playable races occupy distinct strategic
 groups on the battlefield. It represents each race with 18 interpretable
-features. Every feature retains three views:
+features. Every primary feature retains three views:
 
 - **Breadth:** how much of the roster can express the capability.
 - **Ceiling:** how strong the best options are.
-- **Access:** how early the capability appears along the cost frontier.
+- **Access:** how early the capability appears along the multiplayer-cost frontier.
 
 That produces a 54-dimensional race representation. Equal-weighted feature
 blocks prevent a larger block from dominating the distance metric; breadth
 receives half of each feature's weight, while ceiling and access receive one
-quarter each.
+quarter each. A separate 69-dimensional sensitivity adds `main_units.tier`, a
+unit classification that is deliberately **not** treated as campaign access.
 
-The current result is deliberately nuanced: the best tested hard partition is
-seven clusters, but its silhouette is only **0.091**. The useful object is the
-continuous neighborhood structure and its bridge cases, not a rigid taxonomy.
+After correcting structural-zero normalization and bombardment eligibility,
+the best tested hard partition is eight clusters, but its silhouette is only
+**0.120**. The useful object remains the continuous neighborhood structure and
+its bridge cases, not a rigid taxonomy.
 
 See [`studies/race_strategy_space/methodology.md`](studies/race_strategy_space/methodology.md)
 for the specification and [`studies/race_strategy_space/results/8.1.1/`](studies/race_strategy_space/results/8.1.1/)
@@ -47,4 +49,3 @@ python src/ctw_analysis/race_feature_analysis.py \
 Generated files go to `work/race_feature_output/`. The compact, reviewed
 snapshot under `studies/` is committed; the 1.2 MB unit-level score table and
 other regenerable intermediates remain ignored.
-

@@ -10,8 +10,9 @@ interpretable feature space, then tests how much hard clustering that space can
 support. The design intentionally straddles symmetry and asymmetry:
 
 - every race is measured on the same 18 features, enabling comparison;
-- every feature retains breadth, ceiling, and access, preventing a single
-  roster average from erasing asymmetric specialists or structural gaps.
+- every primary feature retains breadth, ceiling, and multiplayer-cost access,
+  preventing a single roster average from erasing asymmetric specialists or
+  structural gaps.
 
 ## Source and scope
 
@@ -41,13 +42,14 @@ The 18 features are divided into four conceptual blocks:
 | Architecture | role coverage, elite orientation, battlefield control, command and magic |
 
 The exact ingredients and weights are declared in `feature_schema.json` and
-implemented in `src/ctw_analysis/race_feature_analysis.py`. Raw continuous
-statistics are transformed to percentile ranks across all eligible units before
-they enter unit-level feature formulas. This makes unlike database measures
-comparable without claiming that, for example, one point of speed is literally
-equivalent to one point of armour.
+implemented in `src/ctw_analysis/race_feature_analysis.py`. Positive raw
+continuous statistics are transformed to percentile ranks among positive
+observations before they enter unit-level feature formulas. Structural zeros
+remain zero rather than acquiring a tied percentile. This makes unlike database
+measures comparable without claiming that, for example, one point of speed is
+literally equivalent to one point of armour.
 
-### The breadth-ceiling-access triplet
+### Capability views
 
 For each unit-derived feature and race:
 
@@ -56,18 +58,33 @@ For each unit-derived feature and race:
    positive-unit 65th percentile (30%).
 2. **Ceiling** is the mean of the strongest 8% of the race's eligible units,
    capped at three units and floored at one.
-3. **Access** is the mean best capability available below each of 12 global
+3. **Cost access** is the mean best capability available below each of 12 global
    multiplayer-cost caps spanning the 10th through 95th percentiles.
 
 `role_coverage`, `elite_orientation`, and `command_magic` use semantically
-equivalent triplets specialized to those concepts; their definitions are in the
-schema and implementation.
+equivalent three-view representations specialized to those concepts.
+
+### Unit-tier sensitivity
+
+An optional sensitivity adds the mean best capability available at or below
+each `main_units.tier` value from 1 through 5 for the 15 unit-derived features.
+This field classifies a unit; it does **not** encode when or how a commander can
+recruit it. Special-pool and otherwise gated units can carry ordinary tier
+values, so this view is excluded from the primary representation and must not
+be interpreted as campaign access.
+
+Exact building-to-unit junctions, technologies, resources, landmarks,
+scripted pools, and starting-settlement state are not available in the locked
+CTW snapshot. The missing source topology is tracked in
+[computational-total-war#1](https://github.com/OwenTanzer/computational-total-war/issues/1).
 
 ## Comparison and clustering
 
-The 54 columns are standardized independently. Each of the four conceptual
-blocks then receives equal total weight. Within a feature, breadth receives 50%
-of the squared-distance contribution and ceiling/access receive 25% each.
+The 54 primary columns are standardized independently. Each of the four
+conceptual blocks then receives equal total weight. Within a feature, breadth
+receives 50% of the squared-distance contribution, while ceiling and cost
+access receive 25% each. In the separate 69-column unit-tier sensitivity, the
+access quarter is split evenly between multiplayer cost and unit tier.
 
 Ward hierarchical solutions are evaluated for 4 through 8 clusters using the
 silhouette score. The best candidate is then stress-tested with 500 seeded
@@ -78,21 +95,26 @@ with average linkage.
 
 ## Current result
 
-Seven clusters narrowly maximize silhouette among the tested solutions, with a
-score of 0.0911. Scores for 4 through 8 clusters all lie between 0.083 and
-0.091. This is not evidence for seven natural, well-separated classes. It is
+Eight clusters narrowly maximize silhouette among the tested primary
+solutions, with a score of 0.1203. Scores for 4 through 8 clusters all lie
+between 0.103 and 0.120. The unit-tier sensitivity also selects eight clusters
+at 0.1226.
+This is not evidence for eight natural, well-separated classes. It remains
 evidence for an overlapping strategic space with locally useful neighborhoods
 and bridge cases.
 
 The stable output should therefore be read in this order:
 
-1. feature triplets and composites;
+1. feature views and composites;
 2. nearest-neighbor distances and consensus frequencies;
 3. cluster labels as a compact summary only.
 
 ## Known limits
 
-This is a static roster-capability analysis. It does not directly observe
+This is a static roster-capability analysis. It does not currently measure
+campaign access. Unit tier is retained only as a non-primary sensitivity and is
+not a substitute for building, technology, resource, landmark, scripted-pool,
+or starting-state recruitment gates. The study also does not directly observe
 formation geometry, collision and animation behavior, projectile obstruction,
 micro burden, fatigue, terrain, technologies, campaign skills, lord effects,
 difficulty modifiers, or live battle outcomes. Database keywords used for
@@ -102,4 +124,3 @@ rosters, even with role/cost-cell normalization.
 
 These omissions are reasons to preserve the full feature representation, not
 reasons to replace it with hand-authored archetype labels.
-
