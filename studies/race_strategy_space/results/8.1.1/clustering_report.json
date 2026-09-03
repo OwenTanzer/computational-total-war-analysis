@@ -1,840 +1,840 @@
 {
   "silhouette": {
-    "4": 0.0909115562588433,
-    "5": 0.08323884785858857,
-    "6": 0.08803561272645033,
-    "7": 0.09112756135802018,
-    "8": 0.08967078622364832
+    "4": 0.118006502084733,
+    "5": 0.10697077124382441,
+    "6": 0.11127747054776016,
+    "7": 0.11821168052376729,
+    "8": 0.12255842260250953
   },
-  "best_k": 7,
+  "best_k": 8,
   "ward_solutions": {
     "4": {
-      "beastmen": 0,
+      "beastmen": 1,
       "bretonnia": 2,
-      "chaos_dwarfs": 3,
-      "daemons_of_chaos": 0,
-      "dark_elves": 3,
+      "chaos_dwarfs": 0,
+      "daemons_of_chaos": 3,
+      "dark_elves": 0,
       "dwarfs": 2,
       "empire": 2,
-      "grand_cathay": 3,
+      "grand_cathay": 0,
       "greenskins": 0,
-      "high_elves": 0,
-      "khorne": 0,
-      "kislev": 0,
-      "lizardmen": 0,
-      "norsca": 0,
-      "nurgle": 0,
-      "ogre_kingdoms": 3,
-      "skaven": 1,
-      "slaanesh": 0,
-      "tomb_kings": 1,
-      "tzeentch": 0,
-      "vampire_coast": 1,
+      "high_elves": 3,
+      "khorne": 3,
+      "kislev": 1,
+      "lizardmen": 3,
+      "norsca": 3,
+      "nurgle": 3,
+      "ogre_kingdoms": 0,
+      "skaven": 0,
+      "slaanesh": 1,
+      "tomb_kings": 0,
+      "tzeentch": 3,
+      "vampire_coast": 0,
       "vampire_counts": 1,
-      "warriors_of_chaos": 0,
-      "wood_elves": 0
+      "warriors_of_chaos": 3,
+      "wood_elves": 1
     },
     "5": {
-      "beastmen": 4,
+      "beastmen": 0,
       "bretonnia": 2,
-      "chaos_dwarfs": 3,
+      "chaos_dwarfs": 4,
       "daemons_of_chaos": 1,
       "dark_elves": 3,
       "dwarfs": 2,
       "empire": 2,
       "grand_cathay": 3,
-      "greenskins": 1,
+      "greenskins": 3,
       "high_elves": 1,
       "khorne": 1,
-      "kislev": 4,
+      "kislev": 0,
       "lizardmen": 1,
       "norsca": 1,
       "nurgle": 1,
-      "ogre_kingdoms": 3,
-      "skaven": 0,
-      "slaanesh": 4,
-      "tomb_kings": 0,
+      "ogre_kingdoms": 4,
+      "skaven": 3,
+      "slaanesh": 0,
+      "tomb_kings": 3,
       "tzeentch": 1,
-      "vampire_coast": 0,
+      "vampire_coast": 3,
       "vampire_counts": 0,
       "warriors_of_chaos": 1,
-      "wood_elves": 4
+      "wood_elves": 0
     },
     "6": {
-      "beastmen": 4,
+      "beastmen": 2,
       "bretonnia": 0,
-      "chaos_dwarfs": 3,
+      "chaos_dwarfs": 4,
       "daemons_of_chaos": 1,
       "dark_elves": 3,
       "dwarfs": 0,
       "empire": 0,
       "grand_cathay": 3,
-      "greenskins": 1,
+      "greenskins": 3,
       "high_elves": 1,
       "khorne": 1,
-      "kislev": 4,
+      "kislev": 2,
       "lizardmen": 1,
       "norsca": 1,
       "nurgle": 1,
-      "ogre_kingdoms": 3,
-      "skaven": 2,
-      "slaanesh": 4,
-      "tomb_kings": 2,
+      "ogre_kingdoms": 4,
+      "skaven": 3,
+      "slaanesh": 2,
+      "tomb_kings": 3,
       "tzeentch": 1,
-      "vampire_coast": 2,
+      "vampire_coast": 3,
       "vampire_counts": 5,
       "warriors_of_chaos": 1,
-      "wood_elves": 4
+      "wood_elves": 2
     },
     "7": {
-      "beastmen": 1,
-      "bretonnia": 4,
-      "chaos_dwarfs": 3,
+      "beastmen": 2,
+      "bretonnia": 3,
+      "chaos_dwarfs": 4,
       "daemons_of_chaos": 0,
-      "dark_elves": 3,
+      "dark_elves": 1,
       "dwarfs": 6,
-      "empire": 4,
-      "grand_cathay": 3,
-      "greenskins": 0,
+      "empire": 3,
+      "grand_cathay": 1,
+      "greenskins": 1,
       "high_elves": 0,
       "khorne": 0,
-      "kislev": 1,
+      "kislev": 2,
       "lizardmen": 0,
       "norsca": 0,
       "nurgle": 0,
-      "ogre_kingdoms": 3,
-      "skaven": 2,
-      "slaanesh": 1,
-      "tomb_kings": 2,
+      "ogre_kingdoms": 4,
+      "skaven": 1,
+      "slaanesh": 2,
+      "tomb_kings": 1,
       "tzeentch": 0,
-      "vampire_coast": 2,
+      "vampire_coast": 1,
       "vampire_counts": 5,
       "warriors_of_chaos": 0,
-      "wood_elves": 1
+      "wood_elves": 2
     },
     "8": {
-      "beastmen": 3,
-      "bretonnia": 4,
-      "chaos_dwarfs": 7,
-      "daemons_of_chaos": 1,
-      "dark_elves": 7,
+      "beastmen": 2,
+      "bretonnia": 7,
+      "chaos_dwarfs": 4,
+      "daemons_of_chaos": 0,
+      "dark_elves": 3,
       "dwarfs": 6,
-      "empire": 4,
-      "grand_cathay": 7,
-      "greenskins": 0,
-      "high_elves": 0,
+      "empire": 7,
+      "grand_cathay": 3,
+      "greenskins": 3,
+      "high_elves": 1,
       "khorne": 0,
-      "kislev": 3,
+      "kislev": 2,
       "lizardmen": 1,
-      "norsca": 0,
+      "norsca": 1,
       "nurgle": 0,
-      "ogre_kingdoms": 7,
-      "skaven": 2,
-      "slaanesh": 3,
-      "tomb_kings": 2,
+      "ogre_kingdoms": 4,
+      "skaven": 3,
+      "slaanesh": 2,
+      "tomb_kings": 3,
       "tzeentch": 0,
-      "vampire_coast": 2,
+      "vampire_coast": 3,
       "vampire_counts": 5,
-      "warriors_of_chaos": 0,
-      "wood_elves": 3
+      "warriors_of_chaos": 1,
+      "wood_elves": 2
     }
   },
   "consensus_labels": {
-    "beastmen": 2,
+    "beastmen": 4,
     "bretonnia": 0,
-    "chaos_dwarfs": 4,
-    "daemons_of_chaos": 3,
-    "dark_elves": 4,
+    "chaos_dwarfs": 2,
+    "daemons_of_chaos": 6,
+    "dark_elves": 3,
     "dwarfs": 1,
     "empire": 0,
-    "grand_cathay": 4,
-    "greenskins": 5,
-    "high_elves": 4,
-    "khorne": 3,
-    "kislev": 2,
-    "lizardmen": 3,
-    "norsca": 3,
-    "nurgle": 3,
-    "ogre_kingdoms": 4,
-    "skaven": 5,
-    "slaanesh": 2,
-    "tomb_kings": 5,
-    "tzeentch": 3,
-    "vampire_coast": 5,
-    "vampire_counts": 6,
-    "warriors_of_chaos": 3,
-    "wood_elves": 2
+    "grand_cathay": 3,
+    "greenskins": 3,
+    "high_elves": 2,
+    "khorne": 5,
+    "kislev": 4,
+    "lizardmen": 6,
+    "norsca": 6,
+    "nurgle": 5,
+    "ogre_kingdoms": 2,
+    "skaven": 3,
+    "slaanesh": 4,
+    "tomb_kings": 3,
+    "tzeentch": 5,
+    "vampire_coast": 3,
+    "vampire_counts": 7,
+    "warriors_of_chaos": 6,
+    "wood_elves": 4
   },
   "nearest": {
     "beastmen": [
       {
         "race": "wood_elves",
-        "distance": 0.906389065145066,
-        "consensus": 0.964
+        "distance": 0.9538127106725248,
+        "consensus": 1.0
       },
       {
         "race": "kislev",
-        "distance": 0.9942725869837933,
-        "consensus": 0.726
+        "distance": 1.0718053080980248,
+        "consensus": 0.856
+      },
+      {
+        "race": "slaanesh",
+        "distance": 1.2144957082249344,
+        "consensus": 0.892
       },
       {
         "race": "norsca",
-        "distance": 1.1619352008416735,
-        "consensus": 0.288
-      },
-      {
-        "race": "greenskins",
-        "distance": 1.2392494412332173,
-        "consensus": 0.166
+        "distance": 1.2488153928533952,
+        "consensus": 0.088
       }
     ],
     "bretonnia": [
       {
         "race": "empire",
-        "distance": 1.3679141472869352,
-        "consensus": 0.908
-      },
-      {
-        "race": "skaven",
-        "distance": 1.393971568005219,
-        "consensus": 0.12
+        "distance": 1.244341623128788,
+        "consensus": 0.968
       },
       {
         "race": "grand_cathay",
-        "distance": 1.4864317008226604,
-        "consensus": 0.124
+        "distance": 1.3161949221945823,
+        "consensus": 0.198
       },
       {
-        "race": "tomb_kings",
-        "distance": 1.7226089112752387,
-        "consensus": 0.086
+        "race": "skaven",
+        "distance": 1.394895910082598,
+        "consensus": 0.016
+      },
+      {
+        "race": "greenskins",
+        "distance": 1.679440310180105,
+        "consensus": 0.004
       }
     ],
     "chaos_dwarfs": [
       {
-        "race": "dark_elves",
-        "distance": 0.8736370452536885,
-        "consensus": 0.878
-      },
-      {
         "race": "ogre_kingdoms",
-        "distance": 1.023191307747855,
-        "consensus": 0.924
+        "distance": 1.0017599765993415,
+        "consensus": 0.984
       },
       {
-        "race": "high_elves",
-        "distance": 1.0310493457365597,
-        "consensus": 0.854
+        "race": "dark_elves",
+        "distance": 1.027418624468315,
+        "consensus": 0.592
       },
       {
         "race": "grand_cathay",
-        "distance": 1.1087255036436994,
-        "consensus": 0.558
+        "distance": 1.2065842360792904,
+        "consensus": 0.386
+      },
+      {
+        "race": "high_elves",
+        "distance": 1.2100004159837094,
+        "consensus": 0.516
       }
     ],
     "daemons_of_chaos": [
       {
         "race": "warriors_of_chaos",
-        "distance": 1.2192450243878246,
-        "consensus": 0.736
+        "distance": 1.275814887905565,
+        "consensus": 0.686
       },
       {
         "race": "tzeentch",
-        "distance": 1.4041636145061376,
-        "consensus": 0.288
+        "distance": 1.319808391905307,
+        "consensus": 0.57
       },
       {
         "race": "norsca",
-        "distance": 1.431752147470292,
-        "consensus": 0.478
+        "distance": 1.4162704342336523,
+        "consensus": 0.494
       },
       {
-        "race": "beastmen",
-        "distance": 1.4474447647788355,
-        "consensus": 0.124
+        "race": "slaanesh",
+        "distance": 1.546848752182486,
+        "consensus": 0.03
       }
     ],
     "dark_elves": [
       {
-        "race": "chaos_dwarfs",
-        "distance": 0.8736370452536885,
-        "consensus": 0.878
+        "race": "greenskins",
+        "distance": 0.8850234928501217,
+        "consensus": 0.654
       },
       {
         "race": "grand_cathay",
-        "distance": 0.9106979520330589,
-        "consensus": 0.666
+        "distance": 0.9341056970004313,
+        "consensus": 0.622
       },
       {
-        "race": "greenskins",
-        "distance": 0.9325216511440355,
-        "consensus": 0.39
+        "race": "chaos_dwarfs",
+        "distance": 1.027418624468315,
+        "consensus": 0.592
       },
       {
         "race": "high_elves",
-        "distance": 1.032123481895658,
-        "consensus": 0.798
+        "distance": 1.0292756778358905,
+        "consensus": 0.518
       }
     ],
     "dwarfs": [
       {
         "race": "empire",
-        "distance": 1.6013450789687045,
-        "consensus": 0.234
+        "distance": 1.686291822218878,
+        "consensus": 0.046
       },
       {
         "race": "bretonnia",
-        "distance": 1.8954293399966906,
-        "consensus": 0.182
+        "distance": 1.8296828505255265,
+        "consensus": 0.04
       },
       {
         "race": "skaven",
-        "distance": 1.9668358907050603,
+        "distance": 1.9201325670664235,
         "consensus": 0.002
       },
       {
-        "race": "grand_cathay",
-        "distance": 2.0044531302717092,
-        "consensus": 0.01
+        "race": "chaos_dwarfs",
+        "distance": 1.9295575523257442,
+        "consensus": 0.0
       }
     ],
     "empire": [
       {
         "race": "grand_cathay",
-        "distance": 1.2774031079772679,
-        "consensus": 0.136
+        "distance": 1.163570303917972,
+        "consensus": 0.218
       },
       {
         "race": "bretonnia",
-        "distance": 1.3679141472869352,
-        "consensus": 0.908
+        "distance": 1.244341623128788,
+        "consensus": 0.968
       },
       {
         "race": "dark_elves",
-        "distance": 1.4522393342991022,
-        "consensus": 0.03
+        "distance": 1.4652814588311238,
+        "consensus": 0.028
       },
       {
-        "race": "skaven",
-        "distance": 1.4819765094022992,
-        "consensus": 0.102
+        "race": "chaos_dwarfs",
+        "distance": 1.4984844952918537,
+        "consensus": 0.014
       }
     ],
     "grand_cathay": [
       {
         "race": "dark_elves",
-        "distance": 0.9106979520330589,
-        "consensus": 0.666
-      },
-      {
-        "race": "skaven",
-        "distance": 1.1035627771272354,
-        "consensus": 0.472
-      },
-      {
-        "race": "chaos_dwarfs",
-        "distance": 1.1087255036436994,
-        "consensus": 0.558
+        "distance": 0.9341056970004313,
+        "consensus": 0.622
       },
       {
         "race": "tomb_kings",
-        "distance": 1.114711063420814,
-        "consensus": 0.494
+        "distance": 1.1115060051924477,
+        "consensus": 0.57
+      },
+      {
+        "race": "skaven",
+        "distance": 1.1285099197315631,
+        "consensus": 0.422
+      },
+      {
+        "race": "greenskins",
+        "distance": 1.139053648562832,
+        "consensus": 0.546
       }
     ],
     "greenskins": [
       {
-        "race": "norsca",
-        "distance": 0.909726915579491,
-        "consensus": 0.468
-      },
-      {
         "race": "dark_elves",
-        "distance": 0.9325216511440355,
-        "consensus": 0.39
+        "distance": 0.8850234928501217,
+        "consensus": 0.654
       },
       {
         "race": "skaven",
-        "distance": 1.0195997133862156,
-        "consensus": 0.378
+        "distance": 1.0351825393594511,
+        "consensus": 0.55
       },
       {
-        "race": "kislev",
-        "distance": 1.105119672754611,
-        "consensus": 0.308
+        "race": "norsca",
+        "distance": 1.0443538176496472,
+        "consensus": 0.232
+      },
+      {
+        "race": "grand_cathay",
+        "distance": 1.139053648562832,
+        "consensus": 0.546
       }
     ],
     "high_elves": [
       {
-        "race": "chaos_dwarfs",
-        "distance": 1.0310493457365597,
-        "consensus": 0.854
-      },
-      {
         "race": "dark_elves",
-        "distance": 1.032123481895658,
-        "consensus": 0.798
+        "distance": 1.0292756778358905,
+        "consensus": 0.518
       },
       {
         "race": "warriors_of_chaos",
-        "distance": 1.1245439344542418,
-        "consensus": 0.132
+        "distance": 1.168289614717002,
+        "consensus": 0.324
       },
       {
         "race": "norsca",
-        "distance": 1.178501831062918,
-        "consensus": 0.158
+        "distance": 1.175499469170767,
+        "consensus": 0.322
+      },
+      {
+        "race": "kislev",
+        "distance": 1.1850569914020057,
+        "consensus": 0.176
       }
     ],
     "khorne": [
       {
         "race": "nurgle",
-        "distance": 1.2867234549203008,
-        "consensus": 0.752
+        "distance": 1.314244888620802,
+        "consensus": 0.582
       },
       {
         "race": "tzeentch",
-        "distance": 1.2927281542861468,
-        "consensus": 0.718
-      },
-      {
-        "race": "greenskins",
-        "distance": 1.4077517072612011,
-        "consensus": 0.27
+        "distance": 1.4085978323166946,
+        "consensus": 0.484
       },
       {
         "race": "kislev",
-        "distance": 1.442924611101937,
-        "consensus": 0.288
+        "distance": 1.4365417736497996,
+        "consensus": 0.066
+      },
+      {
+        "race": "greenskins",
+        "distance": 1.46005202685313,
+        "consensus": 0.1
       }
     ],
     "kislev": [
       {
-        "race": "beastmen",
-        "distance": 0.9942725869837933,
-        "consensus": 0.726
-      },
-      {
         "race": "dark_elves",
-        "distance": 1.0605758009975896,
-        "consensus": 0.134
+        "distance": 1.0392725086862464,
+        "consensus": 0.138
       },
       {
         "race": "wood_elves",
-        "distance": 1.0716233245837719,
-        "consensus": 0.72
+        "distance": 1.0452061575812914,
+        "consensus": 0.856
       },
       {
-        "race": "norsca",
-        "distance": 1.0879547304235286,
-        "consensus": 0.4
+        "race": "beastmen",
+        "distance": 1.0718053080980248,
+        "consensus": 0.856
+      },
+      {
+        "race": "greenskins",
+        "distance": 1.1524549601733134,
+        "consensus": 0.14
       }
     ],
     "lizardmen": [
       {
-        "race": "warriors_of_chaos",
-        "distance": 1.3571900047669565,
-        "consensus": 0.646
-      },
-      {
-        "race": "tzeentch",
-        "distance": 1.3962885829490317,
-        "consensus": 0.298
-      },
-      {
         "race": "kislev",
-        "distance": 1.421647534241958,
-        "consensus": 0.196
+        "distance": 1.3724045462091434,
+        "consensus": 0.162
       },
       {
-        "race": "norsca",
-        "distance": 1.4928080873947471,
-        "consensus": 0.46
+        "race": "warriors_of_chaos",
+        "distance": 1.3870058092503978,
+        "consensus": 0.412
+      },
+      {
+        "race": "high_elves",
+        "distance": 1.3919215542448364,
+        "consensus": 0.404
+      },
+      {
+        "race": "dark_elves",
+        "distance": 1.4169878987146,
+        "consensus": 0.154
       }
     ],
     "norsca": [
       {
-        "race": "greenskins",
-        "distance": 0.909726915579491,
-        "consensus": 0.468
+        "race": "warriors_of_chaos",
+        "distance": 1.0318457858328378,
+        "consensus": 0.752
       },
       {
-        "race": "warriors_of_chaos",
-        "distance": 0.9932110838699229,
-        "consensus": 0.684
+        "race": "greenskins",
+        "distance": 1.0443538176496472,
+        "consensus": 0.232
       },
       {
         "race": "kislev",
-        "distance": 1.0879547304235286,
-        "consensus": 0.4
+        "distance": 1.164992197682359,
+        "consensus": 0.122
       },
       {
-        "race": "nurgle",
-        "distance": 1.0999283392410961,
-        "consensus": 0.524
+        "race": "high_elves",
+        "distance": 1.175499469170767,
+        "consensus": 0.322
       }
     ],
     "nurgle": [
       {
-        "race": "tzeentch",
-        "distance": 1.0818176017750896,
-        "consensus": 0.762
+        "race": "kislev",
+        "distance": 1.185413222626547,
+        "consensus": 0.164
       },
       {
         "race": "norsca",
-        "distance": 1.0999283392410961,
-        "consensus": 0.524
+        "distance": 1.1894716983777307,
+        "consensus": 0.45
       },
       {
-        "race": "kislev",
-        "distance": 1.1328921581019398,
-        "consensus": 0.41
+        "race": "tzeentch",
+        "distance": 1.2167031092887637,
+        "consensus": 0.598
       },
       {
-        "race": "warriors_of_chaos",
-        "distance": 1.2306399080713248,
-        "consensus": 0.482
+        "race": "greenskins",
+        "distance": 1.2622583924173874,
+        "consensus": 0.132
       }
     ],
     "ogre_kingdoms": [
       {
         "race": "chaos_dwarfs",
-        "distance": 1.023191307747855,
-        "consensus": 0.924
+        "distance": 1.0017599765993415,
+        "consensus": 0.984
       },
       {
         "race": "dark_elves",
-        "distance": 1.1360054805106772,
-        "consensus": 0.806
+        "distance": 1.119846370181661,
+        "consensus": 0.578
       },
       {
-        "race": "tzeentch",
-        "distance": 1.1814488038072462,
-        "consensus": 0.274
+        "race": "grand_cathay",
+        "distance": 1.319009554367428,
+        "consensus": 0.37
       },
       {
         "race": "high_elves",
-        "distance": 1.2662435981258346,
-        "consensus": 0.808
+        "distance": 1.325578982542174,
+        "consensus": 0.51
       }
     ],
     "skaven": [
       {
         "race": "greenskins",
-        "distance": 1.0195997133862156,
-        "consensus": 0.378
+        "distance": 1.0351825393594511,
+        "consensus": 0.55
       },
       {
         "race": "grand_cathay",
-        "distance": 1.1035627771272354,
-        "consensus": 0.472
+        "distance": 1.1285099197315631,
+        "consensus": 0.422
       },
       {
         "race": "tomb_kings",
-        "distance": 1.1084121271649319,
-        "consensus": 0.874
+        "distance": 1.13644392983663,
+        "consensus": 0.764
       },
       {
-        "race": "dark_elves",
-        "distance": 1.2095424327045354,
-        "consensus": 0.172
+        "race": "vampire_coast",
+        "distance": 1.1926824476143143,
+        "consensus": 0.912
       }
     ],
     "slaanesh": [
       {
-        "race": "nurgle",
-        "distance": 1.2616512178358534,
-        "consensus": 0.398
+        "race": "kislev",
+        "distance": 1.1685749987929293,
+        "consensus": 0.794
       },
       {
         "race": "beastmen",
-        "distance": 1.264916418255744,
-        "consensus": 0.66
+        "distance": 1.2144957082249344,
+        "consensus": 0.892
       },
       {
-        "race": "kislev",
-        "distance": 1.2902766493015838,
-        "consensus": 0.494
+        "race": "wood_elves",
+        "distance": 1.255553426074315,
+        "consensus": 0.892
       },
       {
-        "race": "warriors_of_chaos",
-        "distance": 1.2944913347309845,
-        "consensus": 0.306
+        "race": "nurgle",
+        "distance": 1.2986495767615793,
+        "consensus": 0.214
       }
     ],
     "tomb_kings": [
       {
-        "race": "skaven",
-        "distance": 1.1084121271649319,
-        "consensus": 0.874
+        "race": "dark_elves",
+        "distance": 1.109244904949342,
+        "consensus": 0.444
       },
       {
         "race": "grand_cathay",
-        "distance": 1.114711063420814,
-        "consensus": 0.494
+        "distance": 1.1115060051924477,
+        "consensus": 0.57
       },
       {
-        "race": "dark_elves",
-        "distance": 1.1502892999058234,
-        "consensus": 0.23
+        "race": "skaven",
+        "distance": 1.13644392983663,
+        "consensus": 0.764
       },
       {
         "race": "vampire_coast",
-        "distance": 1.2425261051438978,
-        "consensus": 0.898
+        "distance": 1.2676039973880444,
+        "consensus": 0.756
       }
     ],
     "tzeentch": [
       {
         "race": "nurgle",
-        "distance": 1.0818176017750896,
-        "consensus": 0.762
+        "distance": 1.2167031092887637,
+        "consensus": 0.598
       },
       {
-        "race": "kislev",
-        "distance": 1.0918216521193227,
-        "consensus": 0.4
+        "race": "norsca",
+        "distance": 1.2608856614549422,
+        "consensus": 0.388
       },
       {
-        "race": "greenskins",
-        "distance": 1.1611110838247074,
-        "consensus": 0.318
+        "race": "dark_elves",
+        "distance": 1.2671878599808932,
+        "consensus": 0.076
       },
       {
-        "race": "ogre_kingdoms",
-        "distance": 1.1814488038072462,
-        "consensus": 0.274
+        "race": "warriors_of_chaos",
+        "distance": 1.2692009407327054,
+        "consensus": 0.49
       }
     ],
     "vampire_coast": [
       {
         "race": "skaven",
-        "distance": 1.2396804488641666,
-        "consensus": 0.92
+        "distance": 1.1926824476143143,
+        "consensus": 0.912
       },
       {
         "race": "tomb_kings",
-        "distance": 1.2425261051438978,
-        "consensus": 0.898
+        "distance": 1.2676039973880444,
+        "consensus": 0.756
       },
       {
         "race": "greenskins",
-        "distance": 1.3719193402299763,
-        "consensus": 0.338
+        "distance": 1.3302575020513514,
+        "consensus": 0.488
       },
       {
-        "race": "grand_cathay",
-        "distance": 1.4394164905054583,
-        "consensus": 0.408
+        "race": "dark_elves",
+        "distance": 1.3520878050959293,
+        "consensus": 0.274
       }
     ],
     "vampire_counts": [
       {
-        "race": "nurgle",
-        "distance": 1.6188722921107732,
-        "consensus": 0.034
+        "race": "norsca",
+        "distance": 1.471205074574899,
+        "consensus": 0.066
       },
       {
         "race": "skaven",
-        "distance": 1.6247547111695209,
-        "consensus": 0.162
+        "distance": 1.5185113876499943,
+        "consensus": 0.126
       },
       {
-        "race": "beastmen",
-        "distance": 1.6443817922486532,
-        "consensus": 0.046
+        "race": "nurgle",
+        "distance": 1.546295322713303,
+        "consensus": 0.102
       },
       {
-        "race": "tomb_kings",
-        "distance": 1.644835322219329,
-        "consensus": 0.17
+        "race": "vampire_coast",
+        "distance": 1.6043105813889178,
+        "consensus": 0.136
       }
     ],
     "warriors_of_chaos": [
       {
         "race": "norsca",
-        "distance": 0.9932110838699229,
-        "consensus": 0.684
+        "distance": 1.0318457858328378,
+        "consensus": 0.752
       },
       {
         "race": "high_elves",
-        "distance": 1.1245439344542418,
-        "consensus": 0.132
-      },
-      {
-        "race": "daemons_of_chaos",
-        "distance": 1.2192450243878246,
-        "consensus": 0.736
+        "distance": 1.168289614717002,
+        "consensus": 0.324
       },
       {
         "race": "nurgle",
-        "distance": 1.2306399080713248,
-        "consensus": 0.482
+        "distance": 1.263219578668237,
+        "consensus": 0.406
+      },
+      {
+        "race": "tzeentch",
+        "distance": 1.2692009407327054,
+        "consensus": 0.49
       }
     ],
     "wood_elves": [
       {
         "race": "beastmen",
-        "distance": 0.906389065145066,
-        "consensus": 0.964
+        "distance": 0.9538127106725248,
+        "consensus": 1.0
       },
       {
         "race": "kislev",
-        "distance": 1.0716233245837719,
-        "consensus": 0.72
+        "distance": 1.0452061575812914,
+        "consensus": 0.856
       },
       {
-        "race": "grand_cathay",
-        "distance": 1.3105706902556868,
-        "consensus": 0.042
+        "race": "slaanesh",
+        "distance": 1.255553426074315,
+        "consensus": 0.892
       },
       {
-        "race": "norsca",
-        "distance": 1.3281746395984504,
-        "consensus": 0.268
+        "race": "high_elves",
+        "distance": 1.3356444095433402,
+        "consensus": 0.078
       }
     ]
   },
   "consensus": [
     [
       1.0,
-      0.0,
-      0.014,
-      0.124,
-      0.018,
-      0.0,
       0.002,
+      0.0,
+      0.0,
       0.016,
-      0.166,
-      0.06,
-      0.138,
-      0.726,
-      0.12,
-      0.288,
-      0.26,
-      0.018,
-      0.016,
-      0.66,
-      0.0,
-      0.222,
-      0.008,
-      0.046,
-      0.168,
-      0.964
-    ],
-    [
-      0.0,
-      1.0,
-      0.002,
-      0.0,
-      0.008,
-      0.182,
-      0.908,
-      0.124,
-      0.02,
       0.0,
       0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.002,
-      0.12,
-      0.0,
-      0.086,
-      0.0,
+      0.004,
+      0.032,
+      0.078,
+      0.042,
+      0.856,
+      0.11,
       0.088,
-      0.008,
+      0.14,
+      0.002,
+      0.004,
+      0.892,
       0.0,
-      0.004
+      0.01,
+      0.002,
+      0.036,
+      0.03,
+      1.0
     ],
     [
-      0.014,
       0.002,
       1.0,
-      0.006,
-      0.878,
+      0.002,
       0.0,
-      0.022,
-      0.558,
-      0.284,
-      0.854,
-      0.084,
-      0.118,
-      0.074,
-      0.072,
-      0.044,
-      0.924,
-      0.064,
+      0.01,
+      0.04,
+      0.968,
+      0.198,
+      0.004,
       0.0,
-      0.138,
-      0.202,
-      0.046,
       0.0,
-      0.02,
-      0.026
-    ],
-    [
-      0.124,
-      0.0,
-      0.006,
-      1.0,
+      0.002,
       0.0,
       0.0,
       0.0,
+      0.002,
+      0.016,
       0.0,
-      0.14,
-      0.076,
-      0.378,
-      0.138,
-      0.606,
-      0.478,
-      0.334,
-      0.02,
+      0.026,
       0.0,
-      0.286,
-      0.0,
-      0.288,
-      0.0,
-      0.0,
-      0.736,
-      0.104
-    ],
-    [
-      0.018,
       0.008,
-      0.878,
+      0.002,
       0.0,
+      0.002
+    ],
+    [
+      0.0,
+      0.002,
       1.0,
+      0.002,
+      0.592,
+      0.0,
+      0.014,
+      0.386,
+      0.306,
+      0.516,
+      0.02,
+      0.082,
+      0.144,
+      0.02,
+      0.006,
+      0.984,
+      0.058,
+      0.0,
+      0.204,
+      0.074,
+      0.048,
+      0.0,
+      0.014,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.002,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.032,
+      0.17,
+      0.242,
+      0.0,
+      0.352,
+      0.494,
+      0.294,
+      0.002,
       0.0,
       0.03,
-      0.666,
-      0.39,
-      0.798,
-      0.054,
-      0.134,
-      0.06,
-      0.11,
-      0.022,
-      0.806,
-      0.172,
       0.0,
-      0.23,
-      0.146,
-      0.142,
+      0.57,
       0.0,
+      0.004,
+      0.686,
+      0.0
+    ],
+    [
+      0.016,
       0.01,
-      0.034
+      0.592,
+      0.0,
+      1.0,
+      0.0,
+      0.028,
+      0.622,
+      0.654,
+      0.518,
+      0.054,
+      0.138,
+      0.154,
+      0.128,
+      0.044,
+      0.578,
+      0.328,
+      0.01,
+      0.444,
+      0.076,
+      0.274,
+      0.006,
+      0.012,
+      0.016
     ],
     [
       0.0,
-      0.182,
+      0.04,
       0.0,
       0.0,
       0.0,
       1.0,
-      0.234,
-      0.01,
+      0.046,
+      0.006,
       0.0,
       0.0,
       0.0,
@@ -853,471 +853,471 @@
       0.0
     ],
     [
-      0.002,
-      0.908,
-      0.022,
       0.0,
-      0.03,
-      0.234,
-      1.0,
-      0.136,
-      0.026,
+      0.968,
       0.014,
       0.0,
+      0.028,
+      0.046,
+      1.0,
+      0.218,
+      0.012,
       0.006,
       0.0,
-      0.002,
       0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.014,
       0.02,
-      0.102,
       0.0,
-      0.074,
+      0.034,
       0.0,
-      0.07,
+      0.012,
       0.0,
       0.0,
-      0.006
+      0.0
     ],
     [
-      0.016,
-      0.124,
-      0.558,
+      0.004,
+      0.198,
+      0.386,
       0.0,
-      0.666,
-      0.01,
-      0.136,
+      0.622,
+      0.006,
+      0.218,
       1.0,
-      0.432,
-      0.5,
-      0.026,
+      0.546,
+      0.34,
+      0.012,
       0.094,
-      0.016,
-      0.07,
+      0.078,
+      0.038,
       0.008,
-      0.502,
-      0.472,
+      0.37,
+      0.422,
       0.002,
-      0.494,
-      0.054,
-      0.408,
-      0.028,
+      0.57,
+      0.044,
+      0.37,
+      0.01,
+      0.002,
+      0.004
+    ],
+    [
+      0.032,
+      0.004,
+      0.306,
+      0.032,
+      0.654,
       0.0,
+      0.012,
+      0.546,
+      1.0,
+      0.348,
+      0.1,
+      0.14,
+      0.086,
+      0.232,
+      0.132,
+      0.292,
+      0.55,
+      0.022,
+      0.52,
+      0.126,
+      0.488,
+      0.062,
+      0.072,
+      0.032
+    ],
+    [
+      0.078,
+      0.0,
+      0.516,
+      0.17,
+      0.518,
+      0.0,
+      0.006,
+      0.34,
+      0.348,
+      1.0,
+      0.052,
+      0.176,
+      0.404,
+      0.322,
+      0.114,
+      0.51,
+      0.036,
+      0.08,
+      0.148,
+      0.196,
+      0.026,
+      0.01,
+      0.324,
+      0.078
+    ],
+    [
+      0.042,
+      0.0,
+      0.02,
+      0.242,
+      0.054,
+      0.0,
+      0.0,
+      0.012,
+      0.1,
+      0.052,
+      1.0,
+      0.066,
+      0.072,
+      0.18,
+      0.582,
+      0.024,
+      0.018,
+      0.092,
+      0.008,
+      0.484,
+      0.014,
+      0.026,
+      0.184,
       0.042
     ],
     [
-      0.166,
-      0.02,
-      0.284,
+      0.856,
+      0.002,
+      0.082,
+      0.0,
+      0.138,
+      0.0,
+      0.0,
+      0.094,
       0.14,
-      0.39,
-      0.0,
-      0.026,
-      0.432,
+      0.176,
+      0.066,
       1.0,
-      0.262,
-      0.27,
-      0.308,
-      0.124,
-      0.468,
-      0.328,
-      0.232,
-      0.378,
-      0.07,
-      0.346,
-      0.318,
-      0.338,
-      0.024,
-      0.264,
-      0.166
-    ],
-    [
-      0.06,
-      0.0,
-      0.854,
-      0.076,
-      0.798,
-      0.0,
-      0.014,
-      0.5,
-      0.262,
-      1.0,
-      0.074,
-      0.174,
-      0.17,
-      0.158,
-      0.058,
-      0.808,
-      0.034,
-      0.042,
-      0.094,
-      0.19,
-      0.014,
-      0.0,
-      0.132,
-      0.076
-    ],
-    [
-      0.138,
-      0.0,
-      0.084,
-      0.378,
-      0.054,
-      0.0,
-      0.0,
-      0.026,
-      0.27,
-      0.074,
-      1.0,
-      0.288,
-      0.24,
-      0.38,
-      0.752,
-      0.144,
-      0.018,
-      0.304,
-      0.0,
-      0.718,
-      0.008,
-      0.018,
-      0.376,
-      0.118
-    ],
-    [
-      0.726,
-      0.0,
-      0.118,
-      0.138,
-      0.134,
-      0.0,
-      0.006,
-      0.094,
-      0.308,
-      0.174,
-      0.288,
-      1.0,
-      0.196,
-      0.4,
-      0.41,
+      0.162,
       0.122,
-      0.03,
-      0.494,
-      0.02,
-      0.4,
-      0.02,
-      0.044,
-      0.238,
-      0.72
+      0.164,
+      0.08,
+      0.026,
+      0.794,
+      0.048,
+      0.038,
+      0.026,
+      0.036,
+      0.032,
+      0.856
     ],
     [
-      0.12,
-      0.0,
-      0.074,
-      0.606,
-      0.06,
-      0.0,
-      0.0,
-      0.016,
-      0.124,
-      0.17,
-      0.24,
-      0.196,
-      1.0,
-      0.46,
-      0.306,
-      0.086,
-      0.0,
-      0.194,
-      0.0,
-      0.298,
-      0.0,
-      0.0,
-      0.646,
-      0.12
-    ],
-    [
-      0.288,
-      0.0,
-      0.072,
-      0.478,
       0.11,
       0.0,
-      0.002,
-      0.07,
-      0.468,
-      0.158,
-      0.38,
-      0.4,
-      0.46,
+      0.144,
+      0.352,
+      0.154,
+      0.0,
+      0.0,
+      0.078,
+      0.086,
+      0.404,
+      0.072,
+      0.162,
       1.0,
-      0.524,
-      0.058,
-      0.076,
-      0.298,
-      0.042,
-      0.376,
-      0.058,
-      0.014,
-      0.684,
-      0.268
+      0.32,
+      0.16,
+      0.146,
+      0.006,
+      0.13,
+      0.036,
+      0.248,
+      0.004,
+      0.002,
+      0.412,
+      0.11
     ],
     [
-      0.26,
+      0.088,
       0.0,
+      0.02,
+      0.494,
+      0.128,
+      0.0,
+      0.0,
+      0.038,
+      0.232,
+      0.322,
+      0.18,
+      0.122,
+      0.32,
+      1.0,
+      0.45,
+      0.02,
+      0.07,
+      0.128,
+      0.026,
+      0.388,
+      0.052,
+      0.066,
+      0.752,
+      0.088
+    ],
+    [
+      0.14,
+      0.0,
+      0.006,
+      0.294,
       0.044,
-      0.334,
-      0.022,
       0.0,
       0.0,
       0.008,
-      0.328,
-      0.058,
-      0.752,
-      0.41,
-      0.306,
-      0.524,
+      0.132,
+      0.114,
+      0.582,
+      0.164,
+      0.16,
+      0.45,
       1.0,
-      0.108,
+      0.014,
       0.018,
-      0.398,
+      0.214,
       0.006,
-      0.762,
+      0.598,
       0.016,
-      0.034,
-      0.482,
-      0.234
-    ],
-    [
-      0.018,
-      0.002,
-      0.924,
-      0.02,
-      0.806,
-      0.0,
-      0.02,
-      0.502,
-      0.232,
-      0.808,
-      0.144,
-      0.122,
-      0.086,
-      0.058,
-      0.108,
-      1.0,
-      0.038,
-      0.014,
-      0.106,
-      0.274,
-      0.026,
-      0.0,
-      0.026,
-      0.026
-    ],
-    [
-      0.016,
-      0.12,
-      0.064,
-      0.0,
-      0.172,
-      0.002,
       0.102,
-      0.472,
-      0.378,
-      0.034,
-      0.018,
-      0.03,
-      0.0,
-      0.076,
-      0.018,
-      0.038,
-      1.0,
-      0.0,
-      0.874,
-      0.016,
-      0.92,
-      0.162,
-      0.002,
-      0.038
+      0.406,
+      0.14
     ],
     [
-      0.66,
-      0.0,
-      0.0,
-      0.286,
-      0.0,
-      0.0,
-      0.0,
       0.002,
-      0.07,
-      0.042,
-      0.304,
-      0.494,
-      0.194,
-      0.298,
-      0.398,
+      0.002,
+      0.984,
+      0.002,
+      0.578,
+      0.0,
       0.014,
+      0.37,
+      0.292,
+      0.51,
+      0.024,
+      0.08,
+      0.146,
+      0.02,
+      0.014,
+      1.0,
+      0.052,
+      0.002,
+      0.2,
+      0.082,
+      0.044,
+      0.0,
+      0.014,
+      0.002
+    ],
+    [
+      0.004,
+      0.016,
+      0.058,
+      0.0,
+      0.328,
+      0.002,
+      0.02,
+      0.422,
+      0.55,
+      0.036,
+      0.018,
+      0.026,
+      0.006,
+      0.07,
+      0.018,
+      0.052,
+      1.0,
+      0.0,
+      0.764,
+      0.01,
+      0.912,
+      0.126,
+      0.0,
+      0.004
+    ],
+    [
+      0.892,
+      0.0,
+      0.0,
+      0.03,
+      0.01,
+      0.0,
+      0.0,
+      0.002,
+      0.022,
+      0.08,
+      0.092,
+      0.794,
+      0.13,
+      0.128,
+      0.214,
+      0.002,
       0.0,
       1.0,
       0.0,
-      0.28,
+      0.04,
       0.0,
-      0.046,
-      0.306,
-      0.632
+      0.032,
+      0.082,
+      0.892
     ],
     [
       0.0,
-      0.086,
-      0.138,
+      0.026,
+      0.204,
       0.0,
-      0.23,
+      0.444,
+      0.0,
+      0.034,
+      0.57,
+      0.52,
+      0.148,
+      0.008,
+      0.048,
+      0.036,
+      0.026,
+      0.006,
+      0.2,
+      0.764,
+      0.0,
+      1.0,
+      0.016,
+      0.756,
+      0.092,
+      0.0,
+      0.0
+    ],
+    [
+      0.01,
       0.0,
       0.074,
-      0.494,
-      0.346,
-      0.094,
-      0.0,
-      0.02,
-      0.0,
-      0.042,
-      0.006,
-      0.106,
-      0.874,
-      0.0,
-      1.0,
-      0.016,
-      0.898,
-      0.17,
-      0.002,
-      0.02
-    ],
-    [
-      0.222,
-      0.0,
-      0.202,
-      0.288,
-      0.146,
-      0.0,
-      0.0,
-      0.054,
-      0.318,
-      0.19,
-      0.718,
-      0.4,
-      0.298,
-      0.376,
-      0.762,
-      0.274,
-      0.016,
-      0.28,
-      0.016,
-      1.0,
-      0.01,
-      0.016,
-      0.372,
-      0.204
-    ],
-    [
-      0.008,
-      0.088,
-      0.046,
-      0.0,
-      0.142,
-      0.0,
-      0.07,
-      0.408,
-      0.338,
-      0.014,
-      0.008,
-      0.02,
-      0.0,
-      0.058,
-      0.016,
-      0.026,
-      0.92,
-      0.0,
-      0.898,
-      0.01,
-      1.0,
-      0.176,
-      0.002,
-      0.024
-    ],
-    [
-      0.046,
-      0.008,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.028,
-      0.024,
-      0.0,
-      0.018,
-      0.044,
-      0.0,
-      0.014,
-      0.034,
-      0.0,
-      0.162,
-      0.046,
-      0.17,
-      0.016,
-      0.176,
-      1.0,
-      0.004,
-      0.048
-    ],
-    [
-      0.168,
-      0.0,
-      0.02,
-      0.736,
-      0.01,
-      0.0,
-      0.0,
-      0.0,
-      0.264,
-      0.132,
-      0.376,
-      0.238,
-      0.646,
-      0.684,
-      0.482,
-      0.026,
-      0.002,
-      0.306,
-      0.002,
-      0.372,
-      0.002,
-      0.004,
-      1.0,
-      0.144
-    ],
-    [
-      0.964,
-      0.004,
-      0.026,
-      0.104,
-      0.034,
-      0.0,
-      0.006,
-      0.042,
-      0.166,
+      0.57,
       0.076,
-      0.118,
-      0.72,
-      0.12,
-      0.268,
-      0.234,
-      0.026,
+      0.0,
+      0.0,
+      0.044,
+      0.126,
+      0.196,
+      0.484,
       0.038,
-      0.632,
-      0.02,
-      0.204,
-      0.024,
+      0.248,
+      0.388,
+      0.598,
+      0.082,
+      0.01,
+      0.04,
+      0.016,
+      1.0,
+      0.01,
+      0.046,
+      0.49,
+      0.01
+    ],
+    [
+      0.002,
+      0.008,
       0.048,
-      0.144,
+      0.0,
+      0.274,
+      0.0,
+      0.012,
+      0.37,
+      0.488,
+      0.026,
+      0.014,
+      0.026,
+      0.004,
+      0.052,
+      0.016,
+      0.044,
+      0.912,
+      0.0,
+      0.756,
+      0.01,
+      1.0,
+      0.136,
+      0.0,
+      0.002
+    ],
+    [
+      0.036,
+      0.002,
+      0.0,
+      0.004,
+      0.006,
+      0.0,
+      0.0,
+      0.01,
+      0.062,
+      0.01,
+      0.026,
+      0.036,
+      0.002,
+      0.066,
+      0.102,
+      0.0,
+      0.126,
+      0.032,
+      0.092,
+      0.046,
+      0.136,
+      1.0,
+      0.03,
+      0.036
+    ],
+    [
+      0.03,
+      0.0,
+      0.014,
+      0.686,
+      0.012,
+      0.0,
+      0.0,
+      0.002,
+      0.072,
+      0.324,
+      0.184,
+      0.032,
+      0.412,
+      0.752,
+      0.406,
+      0.014,
+      0.0,
+      0.082,
+      0.0,
+      0.49,
+      0.0,
+      0.03,
+      1.0,
+      0.03
+    ],
+    [
+      1.0,
+      0.002,
+      0.0,
+      0.0,
+      0.016,
+      0.0,
+      0.0,
+      0.004,
+      0.032,
+      0.078,
+      0.042,
+      0.856,
+      0.11,
+      0.088,
+      0.14,
+      0.002,
+      0.004,
+      0.892,
+      0.0,
+      0.01,
+      0.002,
+      0.036,
+      0.03,
       1.0
     ]
   ],

@@ -1,12 +1,16 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
+  "normalization": {
+    "positive_values": "percentile rank among positive observations",
+    "structural_zero": "retained as exactly zero"
+  },
   "unit_population": {
     "include_roster_scope": ["race_core", "race_core_and_variant"],
     "exclude_categories": ["character"],
     "exclude_regiments_of_renown": true,
     "require_positive_multiplayer_cost": true
   },
-  "triplet": {
+  "views": {
     "breadth": {
       "description": "How widely a race can express the capability.",
       "weights": {
@@ -21,13 +25,20 @@
       "aggregation": "mean of top 8 percent of eligible units, minimum 1 and maximum 3 units"
     },
     "access": {
-      "description": "How early the capability appears on the multiplayer-cost frontier.",
+      "description": "How early the capability appears on the multiplayer-cost frontier; retained under its original column name for backward compatibility.",
       "aggregation": "mean best score below 12 global cost caps from the 10th to 95th percentiles"
+    },
+    "campaign_access": {
+      "description": "How early the capability appears on the campaign unit-tier frontier.",
+      "aggregation": "mean best score available at or below each unit tier from 1 through 5",
+      "scope": "15 unit-derived features only",
+      "known_missing": "exact building, technology, resource, landmark, scripted-pool, and starting-state gates"
     }
   },
   "comparison_weights": {
     "block_total": "equal across four blocks after column standardization",
-    "triplet": {"breadth": 0.5, "ceiling": 0.25, "access": 0.25}
+    "unit_derived_feature": {"breadth": 0.5, "ceiling": 0.25, "access": 0.125, "campaign_access": 0.125},
+    "feature_without_campaign_access": {"breadth": 0.5, "ceiling": 0.25, "access": 0.25}
   },
   "blocks": {
     "geometry": {
@@ -54,7 +65,7 @@
       },
       "bombardment": {
         "inputs": {"range_rank": 0.3, "explosion_potency_rank": 0.4, "artillery_flag": 0.2, "penetration_flag": 0.1},
-        "gate": "has_missile_weapon"
+        "gate": "has_missile_weapon and (artillery or raw explosion potency > 0)"
       },
       "target_solutions": {
         "inputs": {"ap_ratio_rank": 0.35, "anti_target_peak_rank": 0.2, "anti_target_breadth": 0.15, "magical_flag": 0.1, "flaming_flag": 0.05, "armour_control_flag": 0.15}

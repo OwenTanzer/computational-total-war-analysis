@@ -47,6 +47,13 @@ BLOCKS = {
     ],
 }
 
+UNIT_FEATURES = [
+    "movement", "deployment", "shock", "contact_authority", "melee_pressure",
+    "missile_pressure", "bombardment", "target_solutions", "burst", "sustain",
+    "material_durability", "avoidance", "morale", "restoration",
+    "battlefield_control",
+]
+
 
 def load_units() -> pd.DataFrame:
     frames = []
@@ -99,10 +106,36 @@ def rank01(series: pd.Series, log: bool = False, invert: bool = False) -> pd.Ser
     x = pd.to_numeric(series, errors="coerce").fillna(0).clip(lower=0)
     if log:
         x = np.log1p(x)
-    out = x.rank(method="average", pct=True)
-    if invert:
-        out = 1 - out
+    # Zero is structural absence for the source statistics used in this study.
+    # Ranking it with positive observations gives absent capabilities a phantom
+    # percentile, especially when a column is sparse (explosion damage, range,
+    # barrier health, and similar fields).
+    positive = x.gt(0)
+    out = pd.Series(0.0, index=x.index, dtype=float)
+    if positive.any():
+        ranked = x.loc[positive].rank(method="average", pct=True)
+        if invert:
+            ranked = 1 - ranked
+        out.loc[positive] = ranked
     return out.clip(0, 1)
+
+
+def bombardment_score(
+    missile: pd.Series,
+    range_rank: pd.Series,
+    explosion_rank: pd.Series,
+    artillery: pd.Series,
+    penetration: pd.Series,
+    raw_explosion_potency: pd.Series,
+) -> pd.Series:
+    """Score artillery/explosive projection without granting archers phantom blast."""
+    bombardment_capable = missile * (
+        artillery.gt(0) | raw_explosion_potency.gt(0)
+    ).astype(float)
+    return bombardment_capable * (
+        0.30 * range_rank + 0.40 * explosion_rank
+        + 0.20 * artillery + 0.10 * penetration
+    )
 
 
 def build_unit_scores(units: pd.DataFrame) -> tuple[pd.DataFrame, list[str]]:
@@ -220,12 +253,12 @@ def build_unit_scores(units: pd.DataFrame) -> tuple[pd.DataFrame, list[str]]:
     artillery = (u["category"].eq("artillery") | u["unit_class"].eq("art_fld")).astype(float)
     penetration = u["projectile_penetration_class"].fillna("").ne("").astype(float)
     magical = (
-        u["melee_is_magical"].fillna(False).astype(bool)
-        | u["missile_is_magical"].fillna(False).astype(bool)
+        u["melee_is_magical"].eq(True)
+        | u["missile_is_magical"].eq(True)
     ).astype(float)
     flaming = (
-        u["melee_is_flaming"].fillna(False).astype(bool)
-        | u["missile_is_flaming"].fillna(False).astype(bool)
+        u["melee_is_flaming"].eq(True)
+        | u["missile_is_flaming"].eq(True)
     ).astype(float)
 
     u["movement"] = (
@@ -257,9 +290,13 @@ def build_unit_scores(units: pd.DataFrame) -> tuple[pd.DataFrame, list[str]]:
         0.50 * q["missile_launch_power"] + 0.20 * q["range"]
         + 0.15 * delivery + 0.15 * q["ammunition"]
     )
-    u["bombardment"] = missile * (
-        0.30 * q["range"] + 0.40 * q["explosion_potency"]
-        + 0.20 * artillery + 0.10 * penetration
+    u["bombardment"] = bombardment_score(
+        missile=missile,
+        range_rank=q["range"],
+        explosion_rank=q["explosion_potency"],
+        artillery=artillery,
+        penetration=penetration,
+        raw_explosion_potency=u["explosion_potency"],
     )
     u["target_solutions"] = (
         0.35 * q["ap_ratio"] + 0.20 * q["anti_peak"] + 0.15 * u["anti_breadth"]
@@ -306,15 +343,9 @@ def build_unit_scores(units: pd.DataFrame) -> tuple[pd.DataFrame, list[str]]:
         + 0.10 * u["flag_fear"] + 0.12 * u["flag_terror"]
     )
 
-    unit_features = [
-        "movement", "deployment", "shock", "contact_authority", "melee_pressure",
-        "missile_pressure", "bombardment", "target_solutions", "burst", "sustain",
-        "material_durability", "avoidance", "morale", "restoration",
-        "battlefield_control",
-    ]
-    for feature in unit_features:
+    for feature in UNIT_FEATURES:
         u[feature] = u[feature].clip(0, 1)
-    return u, unit_features
+    return u, UNIT_FEATURES
 
 
 def role_name(row: pd.Series) -> str:
@@ -334,7 +365,7 @@ def role_name(row: pd.Series) -> str:
 
 def aggregate_triplet(
     units: pd.DataFrame, feature: str, global_units: pd.DataFrame
-) -> tuple[float, float, float]:
+) -> tuple[float, float, float, float]:
     positive = global_units.loc[global_units[feature] > 0, feature]
     threshold = float(positive.quantile(0.65)) if not positive.empty else 0.0
     global_cells = set(
@@ -365,7 +396,12 @@ def aggregate_triplet(
         eligible = units.loc[units["multiplayer_cost"] <= cap, feature]
         frontier.append(float(eligible.max()) if not eligible.empty else 0.0)
     access = float(np.mean(frontier))
-    return breadth, ceiling, access
+    campaign_frontier = []
+    for tier_cap in range(1, 6):
+        eligible = units.loc[units["tier"] <= tier_cap, feature]
+        campaign_frontier.append(float(eligible.max()) if not eligible.empty else 0.0)
+    campaign_access = float(np.mean(campaign_frontier))
+    return breadth, ceiling, access, campaign_access
 
 
 def generic_command_metadata() -> dict[str, dict[str, object]]:
@@ -452,12 +488,6 @@ def aggregate_features(u: pd.DataFrame) -> tuple[pd.DataFrame, dict[str, object]
         u["multiplayer_cost"], bins=[-np.inf, 600, 1000, 1500, np.inf],
         labels=["cheap", "mid", "high", "elite"],
     ).astype(str)
-    unit_features = [
-        "movement", "deployment", "shock", "contact_authority", "melee_pressure",
-        "missile_pressure", "bombardment", "target_solutions", "burst", "sustain",
-        "material_durability", "avoidance", "morale", "restoration",
-        "battlefield_control",
-    ]
     rows = []
     details: dict[str, object] = {}
     command = generic_command_metadata()
@@ -469,12 +499,18 @@ def aggregate_features(u: pd.DataFrame) -> tuple[pd.DataFrame, dict[str, object]
         r = u[u["race_slug"] == race].copy()
         row: dict[str, float | str] = {"race": race}
         race_detail: dict[str, object] = {"n_units": len(r)}
-        for feature in unit_features:
-            b, c, a = aggregate_triplet(r, feature, u)
+        for feature in UNIT_FEATURES:
+            b, c, a, campaign_a = aggregate_triplet(r, feature, u)
             row[f"{feature}__breadth"] = b
             row[f"{feature}__ceiling"] = c
             row[f"{feature}__access"] = a
-            race_detail[feature] = {"breadth": b, "ceiling": c, "access": a}
+            row[f"{feature}__campaign_access"] = campaign_a
+            race_detail[feature] = {
+                "breadth": b,
+                "ceiling": c,
+                "access": a,
+                "campaign_access": campaign_a,
+            }
 
         role_presence = {role: float((r["role"] == role).any()) for role in all_roles}
         role_breadth = float(np.mean(list(role_presence.values())))
@@ -488,12 +524,12 @@ def aggregate_features(u: pd.DataFrame) -> tuple[pd.DataFrame, dict[str, object]
 
         median_cost = float(r["multiplayer_cost"].median())
         elite_share = float((r["multiplayer_cost"] > u["multiplayer_cost"].quantile(0.75)).mean())
-        feature_mean = r[unit_features].mean(axis=1)
+        feature_mean = r[UNIT_FEATURES].mean(axis=1)
         corr = float(pd.Series(feature_mean).corr(r["multiplayer_cost"], method="spearman"))
         if not np.isfinite(corr):
             corr = 0.0
         champion_costs = []
-        for feature in unit_features:
+        for feature in UNIT_FEATURES:
             idx = r[feature].idxmax()
             champion_costs.append(float(r.loc[idx, "multiplayer_cost"]))
         champion_elite = float(np.mean(np.array(champion_costs) > u["multiplayer_cost"].quantile(0.75)))
@@ -517,28 +553,56 @@ def aggregate_features(u: pd.DataFrame) -> tuple[pd.DataFrame, dict[str, object]
             "cost_quality_corr": corr,
         }
         race_detail["command_magic"] = cmd
+        race_detail["campaign_access"] = {
+            "proxy": "cumulative best capability across unit tiers 1 through 5",
+            "tier_counts": {
+                str(int(tier)): int(count)
+                for tier, count in r["tier"].value_counts().sort_index().items()
+            },
+            "scope": "race_core and race_core_and_variant units only",
+            "known_missing": "exact building, technology, resource, landmark, and scripted recruitment gates",
+        }
         details[race] = race_detail
         rows.append(row)
     return pd.DataFrame(rows).set_index("race"), details
 
 
-def block_weighted_matrix(features: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
+def block_weighted_matrix(
+    features: pd.DataFrame,
+    include_campaign_access: bool = True,
+) -> tuple[pd.DataFrame, pd.DataFrame]:
     scaled = pd.DataFrame(index=features.index)
     weighted = pd.DataFrame(index=features.index)
     for block, members in BLOCKS.items():
-        cols = [c for c in features.columns if c.split("__", 1)[0] in members]
+        cols = [
+            c for c in features.columns
+            if c.split("__", 1)[0] in members
+            and (include_campaign_access or not c.endswith("__campaign_access"))
+        ]
         block_scaled = pd.DataFrame(
             StandardScaler().fit_transform(features[cols]),
             index=features.index,
             columns=cols,
         )
         scaled[cols] = block_scaled
-        weight = 1 / math.sqrt(len(cols))
-        triplet_weight = np.array([
-            math.sqrt(0.50) if c.endswith("__breadth")
-            else math.sqrt(0.25) for c in cols
-        ])
-        weighted[cols] = block_scaled * weight * triplet_weight
+        for feature in members:
+            feature_cols = [c for c in cols if c.startswith(feature + "__")]
+            # Preserve the original block scale while giving each feature equal
+            # total weight. Where campaign access exists, split the original
+            # access allocation between cost and campaign progression.
+            feature_weight = 1 / math.sqrt(3 * len(members))
+            has_campaign = any(c.endswith("__campaign_access") for c in feature_cols)
+            view_weights = {
+                "breadth": 0.50,
+                "ceiling": 0.25,
+                "access": 0.125 if has_campaign else 0.25,
+                "campaign_access": 0.125,
+            }
+            for col in feature_cols:
+                view = col.split("__", 1)[1]
+                weighted[col] = (
+                    block_scaled[col] * feature_weight * math.sqrt(view_weights[view])
+                )
     return scaled, weighted
 
 
@@ -592,16 +656,25 @@ def clustering_report(weighted: pd.DataFrame) -> dict[str, object]:
     }
 
 
-def composite_scores(features: pd.DataFrame) -> pd.DataFrame:
+def composite_scores(
+    features: pd.DataFrame,
+    include_campaign_access: bool = True,
+) -> pd.DataFrame:
     out = pd.DataFrame(index=features.index)
     for block, members in BLOCKS.items():
         for feature in members:
             cols = [c for c in features.columns if c.startswith(feature + "__")]
-            vals = (
-                0.50 * features[f"{feature}__breadth"]
-                + 0.25 * features[f"{feature}__ceiling"]
-                + 0.25 * features[f"{feature}__access"]
+            has_campaign = (
+                include_campaign_access
+                and f"{feature}__campaign_access" in features.columns
             )
+            vals = 0.50 * features[f"{feature}__breadth"]
+            vals += 0.25 * features[f"{feature}__ceiling"]
+            if has_campaign:
+                vals += 0.125 * features[f"{feature}__access"]
+                vals += 0.125 * features[f"{feature}__campaign_access"]
+            else:
+                vals += 0.25 * features[f"{feature}__access"]
             lo, hi = vals.min(), vals.max()
             out[feature] = 100 * (vals - lo) / (hi - lo if hi > lo else 1)
         out[f"block_{block}"] = out[members].mean(axis=1)
@@ -652,22 +725,42 @@ def main(ctw_root: Path = CTW_ROOT, out_dir: Path = OUT_DIR) -> None:
     units = attach_lookup_flags(load_units())
     unit_scores, _ = build_unit_scores(units)
     features, details = aggregate_features(unit_scores)
-    scaled, weighted = block_weighted_matrix(features)
+    scaled, weighted = block_weighted_matrix(features, include_campaign_access=True)
+    _, weighted_cost_only = block_weighted_matrix(
+        features, include_campaign_access=False
+    )
     report = clustering_report(weighted)
-    composites = composite_scores(features)
+    report_cost_only = clustering_report(weighted_cost_only)
+    composites = composite_scores(features, include_campaign_access=True)
+    composites_cost_only = composite_scores(
+        features, include_campaign_access=False
+    )
     features.to_csv(OUT_DIR / "race_feature_triplets.csv")
     scaled.to_csv(OUT_DIR / "race_feature_triplets_scaled.csv")
     weighted.to_csv(OUT_DIR / "race_feature_matrix_weighted.csv")
+    weighted_cost_only.to_csv(OUT_DIR / "race_feature_matrix_weighted_cost_only.csv")
     composites.to_csv(OUT_DIR / "race_feature_composites_0_100.csv")
+    composites_cost_only.to_csv(
+        OUT_DIR / "race_feature_composites_cost_only_0_100.csv"
+    )
     unit_scores.to_csv(OUT_DIR / "eligible_unit_scores.csv", index=False)
     (OUT_DIR / "race_details.json").write_text(json.dumps(details, indent=2), encoding="utf-8")
     (OUT_DIR / "clustering_report.json").write_text(json.dumps(report, indent=2), encoding="utf-8")
+    (OUT_DIR / "clustering_report_cost_only.json").write_text(
+        json.dumps(report_cost_only, indent=2), encoding="utf-8"
+    )
     print(json.dumps({
         "eligible_units": len(unit_scores),
         "feature_dimensions": len(features.columns),
         "best_k": report["best_k"],
         "silhouette": report["silhouette"],
         "consensus_labels": report["consensus_labels"],
+        "cost_only_sensitivity": {
+            "feature_dimensions": len(weighted_cost_only.columns),
+            "best_k": report_cost_only["best_k"],
+            "silhouette": report_cost_only["silhouette"],
+            "consensus_labels": report_cost_only["consensus_labels"],
+        },
     }, indent=2))
 
 
