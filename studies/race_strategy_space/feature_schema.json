@@ -27,18 +27,22 @@
     "access": {
       "description": "How early the capability appears on the multiplayer-cost frontier; retained under its original column name for backward compatibility.",
       "aggregation": "mean best score below 12 global cost caps from the 10th to 95th percentiles"
-    },
-    "campaign_access": {
-      "description": "How early the capability appears on the campaign unit-tier frontier.",
-      "aggregation": "mean best score available at or below each unit tier from 1 through 5",
-      "scope": "15 unit-derived features only",
-      "known_missing": "exact building, technology, resource, landmark, scripted-pool, and starting-state gates"
     }
   },
   "comparison_weights": {
     "block_total": "equal across four blocks after column standardization",
-    "unit_derived_feature": {"breadth": 0.5, "ceiling": 0.25, "access": 0.125, "campaign_access": 0.125},
-    "feature_without_campaign_access": {"breadth": 0.5, "ceiling": 0.25, "access": 0.25}
+    "primary_feature": {"breadth": 0.5, "ceiling": 0.25, "access": 0.25}
+  },
+  "sensitivities": {
+    "unit_tier": {
+      "column_suffix": "unit_tier_sensitivity",
+      "description": "Mean best score available at or below main_units.tier values 1 through 5.",
+      "scope": "15 unit-derived features only",
+      "interpretation": "Unit-quality classification sensitivity; not a campaign recruitment-unlock or commander-access measure.",
+      "weights": {"breadth": 0.5, "ceiling": 0.25, "access": 0.125, "unit_tier_sensitivity": 0.125},
+      "excluded_from_primary": true,
+      "known_missing_for_campaign_access": "exact building, technology, resource, landmark, scripted-pool, and starting-state gates"
+    }
   },
   "blocks": {
     "geometry": {

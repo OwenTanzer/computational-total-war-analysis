@@ -10,9 +10,9 @@ interpretable feature space, then tests how much hard clustering that space can
 support. The design intentionally straddles symmetry and asymmetry:
 
 - every race is measured on the same 18 features, enabling comparison;
-- unit-derived features retain breadth, ceiling, multiplayer-cost access, and
-  campaign-tier access, preventing a single roster average from erasing
-  asymmetric specialists or structural gaps.
+- every primary feature retains breadth, ceiling, and multiplayer-cost access,
+  preventing a single roster average from erasing asymmetric specialists or
+  structural gaps.
 
 ## Source and scope
 
@@ -60,27 +60,31 @@ For each unit-derived feature and race:
    capped at three units and floored at one.
 3. **Cost access** is the mean best capability available below each of 12 global
    multiplayer-cost caps spanning the 10th through 95th percentiles.
-4. **Campaign access** is the mean best capability available at or below each
-   campaign unit tier from 1 through 5.
 
 `role_coverage`, `elite_orientation`, and `command_magic` use semantically
-equivalent three-view representations specialized to those concepts. They do
-not yet receive campaign-access columns because the current CTW source snapshot
-does not expose their complete campaign gates.
+equivalent three-view representations specialized to those concepts.
 
-Campaign access is currently a unit-tier frontier, not a complete
-time-to-recruit model. Exact building-to-unit junctions, technologies,
-resources, landmarks, scripted pools, and starting-settlement state are not
-available in the locked CTW snapshot. The tier measure is therefore kept
-separate from multiplayer-cost access and identified explicitly as a proxy.
+### Unit-tier sensitivity
+
+An optional sensitivity adds the mean best capability available at or below
+each `main_units.tier` value from 1 through 5 for the 15 unit-derived features.
+This field classifies a unit; it does **not** encode when or how a commander can
+recruit it. Special-pool and otherwise gated units can carry ordinary tier
+values, so this view is excluded from the primary representation and must not
+be interpreted as campaign access.
+
+Exact building-to-unit junctions, technologies, resources, landmarks,
+scripted pools, and starting-settlement state are not available in the locked
+CTW snapshot. The missing source topology is tracked in
+[computational-total-war#1](https://github.com/OwenTanzer/computational-total-war/issues/1).
 
 ## Comparison and clustering
 
-The 69 columns are standardized independently. Each of the four conceptual
-blocks then receives equal total weight. Within a unit-derived feature, breadth
-receives 50% of the squared-distance contribution, ceiling 25%, cost access
-12.5%, and campaign access 12.5%. Features without campaign-access data retain
-the original 50%/25%/25% allocation.
+The 54 primary columns are standardized independently. Each of the four
+conceptual blocks then receives equal total weight. Within a feature, breadth
+receives 50% of the squared-distance contribution, while ceiling and cost
+access receive 25% each. In the separate 69-column unit-tier sensitivity, the
+access quarter is split evenly between multiplayer cost and unit tier.
 
 Ward hierarchical solutions are evaluated for 4 through 8 clusters using the
 silhouette score. The best candidate is then stress-tested with 500 seeded
@@ -91,9 +95,10 @@ with average linkage.
 
 ## Current result
 
-Eight clusters narrowly maximize silhouette among the tested solutions, with a
-score of 0.1226. Scores for 4 through 8 clusters all lie between 0.107 and
-0.123. The cost-only sensitivity run also selects eight clusters at 0.1203.
+Eight clusters narrowly maximize silhouette among the tested primary
+solutions, with a score of 0.1203. Scores for 4 through 8 clusters all lie
+between 0.103 and 0.120. The unit-tier sensitivity also selects eight clusters
+at 0.1226.
 This is not evidence for eight natural, well-separated classes. It remains
 evidence for an overlapping strategic space with locally useful neighborhoods
 and bridge cases.
@@ -106,13 +111,14 @@ The stable output should therefore be read in this order:
 
 ## Known limits
 
-This is a static roster-capability analysis. Campaign access currently observes
-unit tier but not exact building, technology, resource, landmark, scripted-pool,
-or starting-state gates. It does not directly observe formation geometry,
-collision and animation behavior, projectile obstruction, micro burden,
-fatigue, terrain, technologies, campaign skills, lord effects, difficulty
-modifiers, or live battle outcomes. Database keywords used for contact effects
-and generic magic categories are provisional semantic mappings.
+This is a static roster-capability analysis. It does not currently measure
+campaign access. Unit tier is retained only as a non-primary sensitivity and is
+not a substitute for building, technology, resource, landmark, scripted-pool,
+or starting-state recruitment gates. The study also does not directly observe
+formation geometry, collision and animation behavior, projectile obstruction,
+micro burden, fatigue, terrain, technologies, campaign skills, lord effects,
+difficulty modifiers, or live battle outcomes. Database keywords used for
+contact effects and generic magic categories are provisional semantic mappings.
 Large DLC-expanded rosters can express breadth differently from smaller
 rosters, even with role/cost-cell normalization.
 

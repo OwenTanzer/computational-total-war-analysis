@@ -3,7 +3,9 @@ import unittest
 import pandas as pd
 
 from ctw_analysis.race_feature_analysis import (
-    aggregate_triplet,
+    BLOCKS,
+    aggregate_unit_views,
+    block_weighted_matrix,
     bombardment_score,
     rank01,
 )
@@ -36,8 +38,8 @@ class Rank01Tests(unittest.TestCase):
     def test_inversion_does_not_turn_absence_into_capability(self) -> None:
         ranked = rank01(pd.Series([0.0, 10.0, 20.0]), invert=True)
         self.assertEqual(ranked.iloc[0], 0.0)
-        self.assertEqual(ranked.iloc[1], 0.5)
-        self.assertEqual(ranked.iloc[2], 0.0)
+        self.assertEqual(ranked.iloc[1], 1.0)
+        self.assertEqual(ranked.iloc[2], 0.5)
 
 
 class BombardmentTests(unittest.TestCase):
@@ -86,7 +88,7 @@ class BombardmentTests(unittest.TestCase):
         self.assertEqual(score.iloc[0], 0.0)
 
 
-class CampaignAccessTests(unittest.TestCase):
+class UnitTierSensitivityTests(unittest.TestCase):
     @staticmethod
     def units(tiers: list[int], scores: list[float]) -> pd.DataFrame:
         return pd.DataFrame(
@@ -99,14 +101,41 @@ class CampaignAccessTests(unittest.TestCase):
             }
         )
 
-    def test_early_capability_scores_above_late_capability(self) -> None:
+    def test_lower_unit_tier_scores_above_higher_unit_tier(self) -> None:
         global_units = self.units([1, 5], [1.0, 1.0])
         early = self.units([1], [1.0])
         late = self.units([5], [1.0])
-        *_, early_access = aggregate_triplet(early, "capability", global_units)
-        *_, late_access = aggregate_triplet(late, "capability", global_units)
-        self.assertEqual(early_access, 1.0)
-        self.assertEqual(late_access, 0.2)
+        *_, lower_tier = aggregate_unit_views(early, "capability", global_units)
+        *_, higher_tier = aggregate_unit_views(late, "capability", global_units)
+        self.assertEqual(lower_tier, 1.0)
+        self.assertEqual(higher_tier, 0.2)
+
+    def test_unit_tier_view_is_excluded_from_primary_matrix(self) -> None:
+        feature_names = [
+            feature
+            for members in BLOCKS.values()
+            for feature in members
+        ]
+        rows = []
+        for offset in (0.0, 0.1):
+            row = {}
+            for feature in feature_names:
+                row[f"{feature}__breadth"] = 0.2 + offset
+                row[f"{feature}__ceiling"] = 0.4 + offset
+                row[f"{feature}__access"] = 0.6 + offset
+                if feature not in {"role_coverage", "elite_orientation", "command_magic"}:
+                    row[f"{feature}__unit_tier_sensitivity"] = 0.8 + offset
+            rows.append(row)
+        features = pd.DataFrame(rows, index=["a", "b"])
+        _, primary = block_weighted_matrix(features)
+        _, sensitivity = block_weighted_matrix(
+            features, include_unit_tier_sensitivity=True
+        )
+        self.assertEqual(len(primary.columns), 54)
+        self.assertEqual(len(sensitivity.columns), 69)
+        self.assertFalse(
+            any(column.endswith("__unit_tier_sensitivity") for column in primary)
+        )
 
 
 if __name__ == "__main__":

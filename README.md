@@ -12,25 +12,22 @@ that use CTW as an authoritative dataset.
 
 The first study asks whether the 24 playable races occupy distinct strategic
 groups on the battlefield. It represents each race with 18 interpretable
-features. Unit-derived features retain four views:
+features. Every primary feature retains three views:
 
 - **Breadth:** how much of the roster can express the capability.
 - **Ceiling:** how strong the best options are.
-- **Cost access:** how early the capability appears along the multiplayer-cost frontier.
-- **Campaign access:** how early it appears along the campaign unit-tier frontier.
+- **Access:** how early the capability appears along the multiplayer-cost frontier.
 
-That produces a 69-dimensional race representation: four views for 15
-unit-derived features and three views for the remaining architecture features,
-whose campaign gates are not exposed by the current source snapshot.
-Equal-weighted feature blocks prevent a larger block from dominating the
-distance metric. Breadth receives half of each feature's weight, ceiling one
-quarter, and the remaining quarter is split between cost and campaign access
-where both are available.
+That produces a 54-dimensional race representation. Equal-weighted feature
+blocks prevent a larger block from dominating the distance metric; breadth
+receives half of each feature's weight, while ceiling and access receive one
+quarter each. A separate 69-dimensional sensitivity adds `main_units.tier`, a
+unit classification that is deliberately **not** treated as campaign access.
 
-After correcting structural-zero normalization and adding tier-based campaign
-access, the best tested hard partition is eight clusters, but its silhouette is
-only **0.123**. The useful object remains the continuous neighborhood structure
-and its bridge cases, not a rigid taxonomy.
+After correcting structural-zero normalization and bombardment eligibility,
+the best tested hard partition is eight clusters, but its silhouette is only
+**0.120**. The useful object remains the continuous neighborhood structure and
+its bridge cases, not a rigid taxonomy.
 
 See [`studies/race_strategy_space/methodology.md`](studies/race_strategy_space/methodology.md)
 for the specification and [`studies/race_strategy_space/results/8.1.1/`](studies/race_strategy_space/results/8.1.1/)

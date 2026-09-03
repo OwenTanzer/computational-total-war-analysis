@@ -113,9 +113,9 @@ def rank01(series: pd.Series, log: bool = False, invert: bool = False) -> pd.Ser
     positive = x.gt(0)
     out = pd.Series(0.0, index=x.index, dtype=float)
     if positive.any():
-        ranked = x.loc[positive].rank(method="average", pct=True)
-        if invert:
-            ranked = 1 - ranked
+        ranked = x.loc[positive].rank(
+            method="average", pct=True, ascending=not invert
+        )
         out.loc[positive] = ranked
     return out.clip(0, 1)
 
@@ -363,7 +363,7 @@ def role_name(row: pd.Series) -> str:
     return "line_infantry"
 
 
-def aggregate_triplet(
+def aggregate_unit_views(
     units: pd.DataFrame, feature: str, global_units: pd.DataFrame
 ) -> tuple[float, float, float, float]:
     positive = global_units.loc[global_units[feature] > 0, feature]
@@ -396,12 +396,14 @@ def aggregate_triplet(
         eligible = units.loc[units["multiplayer_cost"] <= cap, feature]
         frontier.append(float(eligible.max()) if not eligible.empty else 0.0)
     access = float(np.mean(frontier))
-    campaign_frontier = []
+    unit_tier_frontier = []
     for tier_cap in range(1, 6):
         eligible = units.loc[units["tier"] <= tier_cap, feature]
-        campaign_frontier.append(float(eligible.max()) if not eligible.empty else 0.0)
-    campaign_access = float(np.mean(campaign_frontier))
-    return breadth, ceiling, access, campaign_access
+        unit_tier_frontier.append(
+            float(eligible.max()) if not eligible.empty else 0.0
+        )
+    unit_tier_sensitivity = float(np.mean(unit_tier_frontier))
+    return breadth, ceiling, access, unit_tier_sensitivity
 
 
 def generic_command_metadata() -> dict[str, dict[str, object]]:
@@ -500,16 +502,18 @@ def aggregate_features(u: pd.DataFrame) -> tuple[pd.DataFrame, dict[str, object]
         row: dict[str, float | str] = {"race": race}
         race_detail: dict[str, object] = {"n_units": len(r)}
         for feature in UNIT_FEATURES:
-            b, c, a, campaign_a = aggregate_triplet(r, feature, u)
+            b, c, a, unit_tier_sensitivity = aggregate_unit_views(
+                r, feature, u
+            )
             row[f"{feature}__breadth"] = b
             row[f"{feature}__ceiling"] = c
             row[f"{feature}__access"] = a
-            row[f"{feature}__campaign_access"] = campaign_a
+            row[f"{feature}__unit_tier_sensitivity"] = unit_tier_sensitivity
             race_detail[feature] = {
                 "breadth": b,
                 "ceiling": c,
                 "access": a,
-                "campaign_access": campaign_a,
+                "unit_tier_sensitivity": unit_tier_sensitivity,
             }
 
         role_presence = {role: float((r["role"] == role).any()) for role in all_roles}
@@ -553,14 +557,15 @@ def aggregate_features(u: pd.DataFrame) -> tuple[pd.DataFrame, dict[str, object]
             "cost_quality_corr": corr,
         }
         race_detail["command_magic"] = cmd
-        race_detail["campaign_access"] = {
-            "proxy": "cumulative best capability across unit tiers 1 through 5",
+        race_detail["unit_tier_sensitivity"] = {
+            "definition": "cumulative best capability across main_units.tier values 1 through 5",
             "tier_counts": {
                 str(int(tier)): int(count)
                 for tier, count in r["tier"].value_counts().sort_index().items()
             },
             "scope": "race_core and race_core_and_variant units only",
-            "known_missing": "exact building, technology, resource, landmark, and scripted recruitment gates",
+            "warning": "main_units.tier classifies units; it is not a campaign recruitment unlock and is excluded from the primary model",
+            "known_missing": "exact building, technology, resource, landmark, scripted-pool, and starting-state recruitment gates",
         }
         details[race] = race_detail
         rows.append(row)
@@ -569,7 +574,7 @@ def aggregate_features(u: pd.DataFrame) -> tuple[pd.DataFrame, dict[str, object]
 
 def block_weighted_matrix(
     features: pd.DataFrame,
-    include_campaign_access: bool = True,
+    include_unit_tier_sensitivity: bool = False,
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
     scaled = pd.DataFrame(index=features.index)
     weighted = pd.DataFrame(index=features.index)
@@ -577,7 +582,10 @@ def block_weighted_matrix(
         cols = [
             c for c in features.columns
             if c.split("__", 1)[0] in members
-            and (include_campaign_access or not c.endswith("__campaign_access"))
+            and (
+                include_unit_tier_sensitivity
+                or not c.endswith("__unit_tier_sensitivity")
+            )
         ]
         block_scaled = pd.DataFrame(
             StandardScaler().fit_transform(features[cols]),
@@ -588,15 +596,17 @@ def block_weighted_matrix(
         for feature in members:
             feature_cols = [c for c in cols if c.startswith(feature + "__")]
             # Preserve the original block scale while giving each feature equal
-            # total weight. Where campaign access exists, split the original
-            # access allocation between cost and campaign progression.
+            # total weight. In the optional unit-tier sensitivity, split the
+            # original access allocation between cost and unit classification.
             feature_weight = 1 / math.sqrt(3 * len(members))
-            has_campaign = any(c.endswith("__campaign_access") for c in feature_cols)
+            has_unit_tier = any(
+                c.endswith("__unit_tier_sensitivity") for c in feature_cols
+            )
             view_weights = {
                 "breadth": 0.50,
                 "ceiling": 0.25,
-                "access": 0.125 if has_campaign else 0.25,
-                "campaign_access": 0.125,
+                "access": 0.125 if has_unit_tier else 0.25,
+                "unit_tier_sensitivity": 0.125,
             }
             for col in feature_cols:
                 view = col.split("__", 1)[1]
@@ -658,21 +668,22 @@ def clustering_report(weighted: pd.DataFrame) -> dict[str, object]:
 
 def composite_scores(
     features: pd.DataFrame,
-    include_campaign_access: bool = True,
+    include_unit_tier_sensitivity: bool = False,
 ) -> pd.DataFrame:
     out = pd.DataFrame(index=features.index)
     for block, members in BLOCKS.items():
         for feature in members:
-            cols = [c for c in features.columns if c.startswith(feature + "__")]
-            has_campaign = (
-                include_campaign_access
-                and f"{feature}__campaign_access" in features.columns
+            has_unit_tier = (
+                include_unit_tier_sensitivity
+                and f"{feature}__unit_tier_sensitivity" in features.columns
             )
             vals = 0.50 * features[f"{feature}__breadth"]
             vals += 0.25 * features[f"{feature}__ceiling"]
-            if has_campaign:
+            if has_unit_tier:
                 vals += 0.125 * features[f"{feature}__access"]
-                vals += 0.125 * features[f"{feature}__campaign_access"]
+                vals += 0.125 * features[
+                    f"{feature}__unit_tier_sensitivity"
+                ]
             else:
                 vals += 0.25 * features[f"{feature}__access"]
             lo, hi = vals.min(), vals.max()
@@ -725,41 +736,52 @@ def main(ctw_root: Path = CTW_ROOT, out_dir: Path = OUT_DIR) -> None:
     units = attach_lookup_flags(load_units())
     unit_scores, _ = build_unit_scores(units)
     features, details = aggregate_features(unit_scores)
-    scaled, weighted = block_weighted_matrix(features, include_campaign_access=True)
-    _, weighted_cost_only = block_weighted_matrix(
-        features, include_campaign_access=False
+    scaled, weighted = block_weighted_matrix(
+        features, include_unit_tier_sensitivity=False
+    )
+    scaled_unit_tier, weighted_unit_tier = block_weighted_matrix(
+        features, include_unit_tier_sensitivity=True
     )
     report = clustering_report(weighted)
-    report_cost_only = clustering_report(weighted_cost_only)
-    composites = composite_scores(features, include_campaign_access=True)
-    composites_cost_only = composite_scores(
-        features, include_campaign_access=False
+    report_unit_tier = clustering_report(weighted_unit_tier)
+    composites = composite_scores(
+        features, include_unit_tier_sensitivity=False
     )
-    features.to_csv(OUT_DIR / "race_feature_triplets.csv")
+    composites_unit_tier = composite_scores(
+        features, include_unit_tier_sensitivity=True
+    )
+    primary_features = features[scaled.columns]
+    primary_features.to_csv(OUT_DIR / "race_feature_triplets.csv")
     scaled.to_csv(OUT_DIR / "race_feature_triplets_scaled.csv")
     weighted.to_csv(OUT_DIR / "race_feature_matrix_weighted.csv")
-    weighted_cost_only.to_csv(OUT_DIR / "race_feature_matrix_weighted_cost_only.csv")
     composites.to_csv(OUT_DIR / "race_feature_composites_0_100.csv")
-    composites_cost_only.to_csv(
-        OUT_DIR / "race_feature_composites_cost_only_0_100.csv"
+    features.to_csv(OUT_DIR / "race_feature_views_unit_tier_sensitivity.csv")
+    scaled_unit_tier.to_csv(
+        OUT_DIR / "race_feature_views_unit_tier_sensitivity_scaled.csv"
+    )
+    weighted_unit_tier.to_csv(
+        OUT_DIR / "race_feature_matrix_weighted_unit_tier_sensitivity.csv"
+    )
+    composites_unit_tier.to_csv(
+        OUT_DIR / "race_feature_composites_unit_tier_sensitivity_0_100.csv"
     )
     unit_scores.to_csv(OUT_DIR / "eligible_unit_scores.csv", index=False)
     (OUT_DIR / "race_details.json").write_text(json.dumps(details, indent=2), encoding="utf-8")
     (OUT_DIR / "clustering_report.json").write_text(json.dumps(report, indent=2), encoding="utf-8")
-    (OUT_DIR / "clustering_report_cost_only.json").write_text(
-        json.dumps(report_cost_only, indent=2), encoding="utf-8"
+    (OUT_DIR / "clustering_report_unit_tier_sensitivity.json").write_text(
+        json.dumps(report_unit_tier, indent=2), encoding="utf-8"
     )
     print(json.dumps({
         "eligible_units": len(unit_scores),
-        "feature_dimensions": len(features.columns),
+        "feature_dimensions": len(primary_features.columns),
         "best_k": report["best_k"],
         "silhouette": report["silhouette"],
         "consensus_labels": report["consensus_labels"],
-        "cost_only_sensitivity": {
-            "feature_dimensions": len(weighted_cost_only.columns),
-            "best_k": report_cost_only["best_k"],
-            "silhouette": report_cost_only["silhouette"],
-            "consensus_labels": report_cost_only["consensus_labels"],
+        "unit_tier_sensitivity": {
+            "feature_dimensions": len(weighted_unit_tier.columns),
+            "best_k": report_unit_tier["best_k"],
+            "silhouette": report_unit_tier["silhouette"],
+            "consensus_labels": report_unit_tier["consensus_labels"],
         },
     }, indent=2))
 
