@@ -1,0 +1,43 @@
+{
+  "distance_quantiles": {
+    "0.01": 48.731318,
+    "0.025": 71.155229,
+    "0.05": 95.753512,
+    "0.1": 136.951722,
+    "0.2": 204.173578,
+    "0.25": 233.159295,
+    "0.5": 354.450706,
+    "0.75": 488.778295,
+    "0.9": 619.935432
+  },
+  "factions": 104,
+  "freeze": "v3: primary army world-point distance; retain 100/150/75 boundaries and land rules. Maritime anchors require gap <=25, use anchor topology/theaters, cannot be Immediate, never assert a sea route. Extended shared theater AND (anchor hops <=6 OR distance <=75). Frozen before diplomacy.",
+  "maritime_primary_points": 4,
+  "method": "Nearest-rank empirical quantiles, 104 primary human army world points with pair-specific overrides; no diplomatic input",
+  "region_graph_edges": 1293,
+  "region_graph_nodes": 569,
+  "resolved_army_points": 104,
+  "strategic_link_count": 119,
+  "strategic_networks": [
+    "wh3_dlc23_endgame_chd_cathay",
+    "wh3_dlc23_endgame_chd_empire",
+    "wh3_dlc23_endgame_chd_lustria",
+    "wh3_dlc23_endgame_chd_naggaroth",
+    "wh3_dlc23_endgame_chd_southlands",
+    "wh3_dlc23_sea_lane_chaos_dwarf_canal",
+    "wh3_dlc24_the_changeling_rifts_combi",
+    "wh3_dlc27_aislinn_sea_lane_east",
+    "wh3_dlc27_aislinn_sea_lane_north",
+    "wh3_dlc27_aislinn_sea_lane_south",
+    "wh3_dlc27_aislinn_sea_lane_west",
+    "wh3_dlc27_lokhir_sea_lane_north",
+    "wh3_dlc27_lokhir_sea_lane_south",
+    "wh3_dlc27_lokhir_sea_lane_west",
+    "wh3_main_sea_lane_jade_to_dread",
+    "wh3_main_sea_lane_jade_to_far_sea",
+    "wh3_main_sea_lane_jade_to_lustria_gulf",
+    "wh3_main_sea_lane_underworld_sea",
+    "wh3_main_teleportation_network_belakor"
+  ],
+  "strategic_node_count": 372
+}

@@ -1,0 +1,115 @@
+faction_a_key,faction_b_key,faction_a_name,faction_b_name,proximity_class,diplomatic_class,centroid_distance
+wh2_dlc09_skv_clan_rictus,wh3_dlc23_chd_legion_of_azgorh,Clan Rictus,The Legion of Azgorh,Regional,Workable,74.681577
+wh2_dlc09_skv_clan_rictus,wh3_dlc26_grn_gorbad_ironclaw,Clan Rictus,Ironclaw Orcs,Immediate,Workable,44.863
+wh2_dlc09_skv_clan_rictus,wh_main_grn_crooked_moon,Clan Rictus,Crooked Moon,Regional,Workable,64.236634
+wh2_dlc09_tmb_exiles_of_nehek,wh2_dlc16_wef_sisters_of_twilight,Exiles of Nehek,Heralds of Ariel,Regional,Workable,40.193375
+wh2_dlc09_tmb_exiles_of_nehek,wh2_main_def_cult_of_pleasure,Exiles of Nehek,Cult of Pleasure,Regional,Workable,53.902634
+wh2_dlc09_tmb_exiles_of_nehek,wh2_main_def_hag_graef,Exiles of Nehek,Hag Graef,Extended,Workable,122.877281
+wh2_dlc09_tmb_exiles_of_nehek,wh2_main_def_naggarond,Exiles of Nehek,Naggarond,Extended,Workable,135.153696
+wh2_dlc09_tmb_exiles_of_nehek,wh2_main_hef_nagarythe,Exiles of Nehek,Nagarythe,Extended,Workable,139.890092
+wh2_dlc09_tmb_exiles_of_nehek,wh3_dlc24_ksl_daughters_of_the_forest,Exiles of Nehek,Daughters of the Forest,Regional,Workable,57.022318
+wh2_dlc09_tmb_exiles_of_nehek,wh3_main_dwf_the_ancestral_throng,Exiles of Nehek,The Ancestral Throng,Regional,Workable,96.24078
+wh2_dlc09_tmb_followers_of_nagash,wh_main_vmp_vampire_counts,Followers of Nagash,The Drakenhof Conclave,Extended,Clean,145.037143
+wh2_dlc09_tmb_khemri,wh2_dlc09_tmb_lybaras,Khemri,Court of Lybaras,Extended,Workable,137.160847
+wh2_dlc09_tmb_khemri,wh2_dlc17_dwf_thorek_ironbrow,Khemri,Ironbrow's Expedition,Regional,Workable,81.027618
+wh2_dlc09_tmb_khemri,wh2_main_lzd_last_defenders,Khemri,Last Defenders,Regional,Workable,95.466061
+wh2_dlc09_tmb_khemri,wh2_main_lzd_tlaqua,Khemri,Tlaqua,Regional,Workable,81.866933
+wh2_dlc09_tmb_khemri,wh3_main_emp_cult_of_sigmar,Khemri,Cult of Sigmar,Regional,Workable,47.295665
+wh2_dlc09_tmb_lybaras,wh2_dlc17_dwf_thorek_ironbrow,Court of Lybaras,Ironbrow's Expedition,Extended,Workable,114.529167
+wh2_dlc09_tmb_lybaras,wh2_main_lzd_last_defenders,Court of Lybaras,Last Defenders,Extended,Workable,133.569351
+wh2_dlc11_cst_pirates_of_sartosa,wh2_main_skv_clan_skryre,Pirates of Sartosa,Clan Skryre,Extended,Workable,66.473748
+wh2_dlc11_cst_the_drowned,wh2_main_def_cult_of_pleasure,The Drowned,Cult of Pleasure,Extended,Workable,120.115652
+wh2_dlc11_cst_the_drowned,wh2_main_def_hag_graef,The Drowned,Hag Graef,Regional,Workable,78.730132
+wh2_dlc11_cst_the_drowned,wh2_main_def_naggarond,The Drowned,Naggarond,Extended,Workable,106.452872
+wh2_dlc11_cst_vampire_coast,wh2_main_skv_clan_pestilens,The Awakened,Clan Pestilens,Regional,Workable,81.369424
+wh2_dlc11_cst_vampire_coast,wh3_dlc26_kho_skulltaker,The Awakened,Blooded Wanderers,Extended,Workable,117.458583
+wh2_dlc11_def_the_blessed_dread,wh2_main_skv_clan_eshin,The Blessed Dread,Clan Eshin,Regional,Workable,93.8931
+wh2_dlc11_def_the_blessed_dread,wh3_dlc27_nor_sayl,The Blessed Dread,Dolgan,Regional,Workable,78.812324
+wh2_dlc11_vmp_the_barrow_legion,wh2_dlc15_grn_broken_axe,The Barrow Legion,Broken Axe,Regional,Workable,46.966404
+wh2_dlc12_lzd_cult_of_sotek,wh2_main_lzd_itza,Cult of Sotek,Itza,Extended,Clean,120.201939
+wh2_dlc13_emp_the_huntmarshals_expedition,wh2_main_lzd_itza,The Huntsmarshal's Expedition,Itza,Regional,Special,91.236538
+wh2_dlc13_emp_the_huntmarshals_expedition,wh_main_brt_bordeleaux,The Huntsmarshal's Expedition,Bordeleaux Errant,Regional,Clean,49.302197
+wh2_dlc14_brt_chevaliers_de_lyonesse,wh2_main_lzd_tlaqua,Chevaliers de Lyonesse,Tlaqua,Extended,Workable,106.525065
+wh2_dlc14_brt_chevaliers_de_lyonesse,wh3_main_emp_cult_of_sigmar,Chevaliers de Lyonesse,Cult of Sigmar,Regional,Clean,81.352117
+wh2_dlc15_grn_bonerattlaz,wh3_dlc23_chd_astragoth,Bonerattlaz,Disciples of Hashut,Immediate,Workable,54.762847
+wh2_dlc15_grn_bonerattlaz,wh3_dlc26_grn_gorbad_ironclaw,Bonerattlaz,Ironclaw Orcs,Extended,Clean,136.415432
+wh2_dlc15_grn_bonerattlaz,wh_main_grn_crooked_moon,Bonerattlaz,Crooked Moon,Regional,Clean,66.850384
+wh2_dlc15_grn_bonerattlaz,wh_main_vmp_schwartzhafen,Bonerattlaz,Sylvania,Regional,Workable,72.86453
+wh2_dlc15_grn_broken_axe,wh2_main_skv_clan_skryre,Broken Axe,Clan Skryre,Regional,Workable,78.250944
+wh2_dlc16_wef_drycha,wh3_main_ksl_the_great_orthodoxy,Wargrove of Woe,The Great Orthodoxy,Regional,Workable,72.252816
+wh2_dlc16_wef_drycha,wh3_main_ksl_the_ice_court,Wargrove of Woe,The Ice Court,Regional,Workable,55.121193
+wh2_dlc16_wef_drycha,wh_main_dwf_karak_kadrin,Wargrove of Woe,Karak Kadrin,Regional,Workable,61.825911
+wh2_dlc16_wef_drycha,wh_main_emp_empire,Wargrove of Woe,Reikland,Extended,Workable,106.507683
+wh2_dlc16_wef_drycha,wh_main_emp_wissenland,Wargrove of Woe,Wissenland & Nuln,Extended,Workable,100.529833
+wh2_dlc16_wef_sisters_of_twilight,wh2_main_hef_nagarythe,Heralds of Ariel,Nagarythe,Extended,Workable,103.2664
+wh2_dlc16_wef_sisters_of_twilight,wh3_dlc24_ksl_daughters_of_the_forest,Heralds of Ariel,Daughters of the Forest,Regional,Workable,34.830145
+wh2_dlc16_wef_sisters_of_twilight,wh3_main_dwf_the_ancestral_throng,Heralds of Ariel,The Ancestral Throng,Regional,Workable,95.280355
+wh2_dlc17_dwf_thorek_ironbrow,wh2_main_lzd_last_defenders,Ironbrow's Expedition,Last Defenders,Immediate,Workable,21.99742
+wh2_dlc17_dwf_thorek_ironbrow,wh2_main_lzd_tlaqua,Ironbrow's Expedition,Tlaqua,Regional,Workable,96.884834
+wh2_dlc17_dwf_thorek_ironbrow,wh3_main_emp_cult_of_sigmar,Ironbrow's Expedition,Cult of Sigmar,Regional,Clean,91.32526
+wh2_main_def_hag_graef,wh2_main_def_har_ganeth,Hag Graef,Har Ganeth,Regional,Clean,66.127894
+wh2_main_def_hag_graef,wh2_main_def_naggarond,Hag Graef,Naggarond,Immediate,Clean,27.73918
+wh2_main_def_har_ganeth,wh2_main_def_naggarond,Har Ganeth,Naggarond,Regional,Clean,73.082301
+wh2_main_hef_avelorn,wh2_main_hef_eataine,Avelorn,Eataine,Extended,Clean,51.490932
+wh2_main_hef_avelorn,wh2_main_hef_yvresse,Avelorn,Yvresse,Extended,Clean,46.639239
+wh2_main_hef_eataine,wh2_main_hef_yvresse,Eataine,Yvresse,Extended,Clean,71.360864
+wh2_main_hef_nagarythe,wh3_dlc24_ksl_daughters_of_the_forest,Nagarythe,Daughters of the Forest,Extended,Clean,119.685868
+wh2_main_hef_nagarythe,wh3_main_dwf_the_ancestral_throng,Nagarythe,The Ancestral Throng,Extended,Workable,117.15084
+wh2_main_lzd_itza,wh_main_brt_bordeleaux,Itza,Bordeleaux Errant,Regional,Workable,68.839773
+wh2_main_lzd_last_defenders,wh2_main_lzd_tlaqua,Last Defenders,Tlaqua,Regional,Clean,92.287312
+wh2_main_lzd_last_defenders,wh3_main_emp_cult_of_sigmar,Last Defenders,Cult of Sigmar,Regional,Workable,95.512807
+wh2_main_lzd_tlaqua,wh3_main_emp_cult_of_sigmar,Tlaqua,Cult of Sigmar,Regional,Workable,37.560953
+wh2_main_skv_clan_eshin,wh3_dlc23_chd_zhatan,Clan Eshin,The Warhost of Zharr,Extended,Workable,119.299688
+wh2_main_skv_clan_eshin,wh3_dlc27_nor_sayl,Clan Eshin,Dolgan,Extended,Workable,130.909568
+wh2_main_skv_clan_mors,wh3_dlc26_grn_gorbad_ironclaw,Clan Mors,Ironclaw Orcs,Regional,Workable,98.906414
+wh2_main_skv_clan_mors,wh3_main_kho_exiles_of_khorne,Clan Mors,Exiles of Khorne,Immediate,Workable,39.33435
+wh2_main_skv_clan_moulder,wh3_dlc20_chs_festus,Clan Moulder,The Fecundites,Regional,Workable,87.920643
+wh2_main_skv_clan_moulder,wh_dlc08_nor_wintertooth,Clan Moulder,Wintertooth,Regional,Workable,90.474328
+wh2_main_skv_clan_pestilens,wh3_dlc26_kho_skulltaker,Clan Pestilens,Blooded Wanderers,Extended,Workable,113.495304
+wh2_main_skv_clan_skryre,wh3_main_ogr_disciples_of_the_maw,Clan Skryre,Disciples of the Maw,Extended,Workable,111.694291
+wh2_twa03_def_rakarth,wh3_dlc26_kho_skulltaker,The Thousand Maws,Blooded Wanderers,Regional,Workable,61.617377
+wh3_cp1_cth_tiger_warriors,wh3_dlc24_cth_the_celestial_court,Claws of the White Tiger,The Jade Court,Regional,Clean,70.861391
+wh3_cp1_cth_tiger_warriors,wh3_main_cth_the_northern_provinces,Claws of the White Tiger,The Northern Provinces,Regional,Clean,86.357296
+wh3_cp1_cth_tiger_warriors,wh3_main_cth_the_western_provinces,Claws of the White Tiger,The Western Provinces,Immediate,Clean,59.431893
+wh3_cp1_cth_tiger_warriors,wh3_main_ogr_goldtooth,Claws of the White Tiger,Goldtooth,Regional,Workable,44.774139
+wh3_dlc20_chs_festus,wh_main_vmp_schwartzhafen,The Fecundites,Sylvania,Extended,Workable,122.443018
+wh3_dlc23_chd_astragoth,wh3_dlc26_kho_arbaal,Disciples of Hashut,Challengers of Khorne,Regional,Workable,78.784524
+wh3_dlc23_chd_astragoth,wh_main_grn_greenskins,Disciples of Hashut,Grimgor's 'Ardboyz,Regional,Workable,72.314548
+wh3_dlc23_chd_zhatan,wh3_dlc27_nor_sayl,The Warhost of Zharr,Dolgan,Extended,Workable,136.446533
+wh3_dlc24_cth_the_celestial_court,wh3_main_cth_the_northern_provinces,The Jade Court,The Northern Provinces,Extended,Clean,130.735764
+wh3_dlc24_cth_the_celestial_court,wh3_main_cth_the_western_provinces,The Jade Court,The Western Provinces,Regional,Clean,28.432658
+wh3_dlc24_cth_the_celestial_court,wh3_main_ogr_goldtooth,The Jade Court,Goldtooth,Regional,Workable,92.557869
+wh3_dlc24_ksl_daughters_of_the_forest,wh3_main_dwf_the_ancestral_throng,Daughters of the Forest,The Ancestral Throng,Extended,Clean,130.093613
+wh3_dlc25_dwf_malakai,wh3_main_ksl_the_great_orthodoxy,Masters of Innovation,The Great Orthodoxy,Regional,Clean,70.80303
+wh3_dlc25_dwf_malakai,wh3_main_ksl_the_ice_court,Masters of Innovation,The Ice Court,Regional,Clean,77.349528
+wh3_dlc25_nur_tamurkhan,wh3_dlc26_kho_arbaal,The Maggot Host,Challengers of Khorne,Extended,Workable,119.00447
+wh3_dlc26_grn_gorbad_ironclaw,wh_main_grn_crooked_moon,Ironclaw Orcs,Crooked Moon,Regional,Clean,74.3572
+wh3_main_cth_the_northern_provinces,wh3_main_cth_the_western_provinces,The Northern Provinces,The Western Provinces,Extended,Clean,135.218362
+wh3_main_cth_the_western_provinces,wh3_main_ogr_goldtooth,The Western Provinces,Goldtooth,Regional,Workable,68.528768
+wh3_main_kho_exiles_of_khorne,wh_main_vmp_vampire_counts,Exiles of Khorne,The Drakenhof Conclave,Regional,Workable,94.205177
+wh3_main_ksl_the_great_orthodoxy,wh3_main_ksl_the_ice_court,The Great Orthodoxy,The Ice Court,Regional,Clean,55.987191
+wh3_main_ksl_the_ice_court,wh_main_dwf_karak_kadrin,The Ice Court,Karak Kadrin,Regional,Clean,77.418865
+wh3_main_ogr_disciples_of_the_maw,wh_dlc05_wef_argwylon,Disciples of the Maw,Argwylon,Regional,Workable,70.761121
+wh3_main_ogr_disciples_of_the_maw,wh_dlc05_wef_wood_elves,Disciples of the Maw,Talsyn,Regional,Workable,62.715529
+wh3_main_ogr_disciples_of_the_maw,wh_main_brt_carcassonne,Disciples of the Maw,Carcassonne,Regional,Workable,97.168359
+wh3_main_ogr_disciples_of_the_maw,wh_main_dwf_dwarfs,Disciples of the Maw,Karaz-a-Karak,Regional,Workable,91.514148
+wh3_main_ogr_disciples_of_the_maw,wh_main_dwf_karak_izor,Disciples of the Maw,Clan Angrund,Regional,Workable,71.798081
+wh3_main_ogr_disciples_of_the_maw,wh_main_emp_wissenland,Disciples of the Maw,Wissenland & Nuln,Regional,Workable,73.857031
+wh3_main_ogr_goldtooth,wh3_main_vmp_caravan_of_blue_roses,Goldtooth,Caravan of Blue Roses,Regional,Workable,82.115279
+wh3_main_ogr_goldtooth,wh_main_grn_greenskins,Goldtooth,Grimgor's 'Ardboyz,Extended,Workable,134.412337
+wh_dlc05_wef_argwylon,wh_dlc05_wef_wood_elves,Argwylon,Talsyn,Regional,Workable,35.675465
+wh_dlc05_wef_argwylon,wh_main_brt_carcassonne,Argwylon,Carcassonne,Regional,Workable,55.120954
+wh_dlc05_wef_argwylon,wh_main_dwf_karak_izor,Argwylon,Clan Angrund,Regional,Workable,90.990631
+wh_dlc05_wef_argwylon,wh_main_emp_empire,Argwylon,Reikland,Regional,Workable,54.69392
+wh_dlc05_wef_argwylon,wh_main_emp_wissenland,Argwylon,Wissenland & Nuln,Regional,Workable,39.717996
+wh_dlc05_wef_wood_elves,wh_main_brt_carcassonne,Talsyn,Carcassonne,Immediate,Workable,34.816073
+wh_dlc05_wef_wood_elves,wh_main_dwf_karak_izor,Talsyn,Clan Angrund,Regional,Workable,56.473362
+wh_dlc05_wef_wood_elves,wh_main_emp_wissenland,Talsyn,Wissenland & Nuln,Regional,Workable,71.017764
+wh_dlc08_nor_norsca,wh_dlc08_nor_wintertooth,World Walkers,Wintertooth,Extended,Clean,143.56422
+wh_main_brt_bretonnia,wh_main_brt_carcassonne,Couronne,Carcassonne,Extended,Clean,141.184898
+wh_main_brt_bretonnia,wh_main_emp_empire,Couronne,Reikland,Regional,Clean,84.077461
+wh_main_brt_carcassonne,wh_main_dwf_karak_izor,Carcassonne,Clan Angrund,Regional,Clean,69.273763
+wh_main_dwf_dwarfs,wh_main_dwf_karak_kadrin,Karaz-a-Karak,Karak Kadrin,Regional,Clean,71.042959
+wh_main_emp_empire,wh_main_emp_wissenland,Reikland,Wissenland & Nuln,Regional,Clean,31.216733
+wh_main_grn_crooked_moon,wh_main_vmp_schwartzhafen,Crooked Moon,Sylvania,Regional,Workable,69.627662
+wh_main_grn_orcs_of_the_bloody_hand,wh_main_vmp_vampire_counts,The Bloody Handz,The Drakenhof Conclave,Regional,Workable,59.984115

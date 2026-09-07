@@ -1,0 +1,261 @@
+{
+  "acceptance_complete": false,
+  "audit_date": "2026-09-06",
+  "checks": [
+    "104 canonical playable factions resolve in atlas and normalized index",
+    "5356 unique sorted unordered pairs; every faction occurs 103 times",
+    "Every pair has geography, diplomacy, source evidence, inference and uncertainty fields",
+    "All included pairs pass independent geography/diplomacy gates; Extended gate verified",
+    "All rejections explained; no null treated as numeric zero",
+    "Source commit, snapshot and consumed Git blobs verified; SQLite read-only integrity passed",
+    "24 guide profiles and every evidence anchor resolved",
+    "Partner-count sum equals twice qualifying pairs"
+  ],
+  "diplomatic_counts_all_pairs": {
+    "Clean": 526,
+    "Conflict": 2550,
+    "Special": 332,
+    "Workable": 1948
+  },
+  "faction_count": 104,
+  "issue_closure_recommended": false,
+  "maritime_start_factions": [
+    {
+      "key": "wh2_dlc11_cst_noctilus",
+      "name": "The Dreadfleet"
+    },
+    {
+      "key": "wh2_main_hef_yvresse",
+      "name": "Yvresse"
+    },
+    {
+      "key": "wh3_dlc27_hef_aislinn",
+      "name": "High Elf Sea Patrol"
+    },
+    {
+      "key": "wh_dlc08_nor_norsca",
+      "name": "World Walkers"
+    }
+  ],
+  "missing_start_factions": [],
+  "nearby_rejected_count": 354,
+  "pair_count": 5356,
+  "patch": "8.1.1",
+  "prior_implementation_comparison": {
+    "commit": "c169e19f154784759041677d1def85dd5844c946",
+    "counts": {
+      "added": 48,
+      "removed": 16,
+      "retained": 98
+    },
+    "current_qualifiers": 146,
+    "previous_qualifiers": 114,
+    "retained_changed_proximity": 20,
+    "scope": "Complete qualifying-set comparison with the prior implementation, NOT the incomplete historical Notion enumeration"
+  },
+  "proximity_counts": {
+    "Distant": 4856,
+    "Extended": 270,
+    "Immediate": 24,
+    "Regional": 206
+  },
+  "qualifying_by_diplomacy": {
+    "Clean": 30,
+    "Special": 1,
+    "Workable": 115
+  },
+  "qualifying_by_proximity": {
+    "Extended": 51,
+    "Immediate": 10,
+    "Regional": 85
+  },
+  "qualifying_pair_count": 146,
+  "remaining_gaps": [
+    "All 104 primary army world points resolve from ESF plus static human startup rules. Runtime callback/teleport behavior is not playtested; later player choices excluded.",
+    "Four human starts are maritime points without unique sea masks. Nearby land anchors support an explicit geographic inference, not a landing entitlement or movement route.",
+    "70 maritime/special regions lack individual geometry; 72 lack a province. Province-less unknown terrain is excluded from graph traversal.",
+    "Raster border paths are topological indicators, not passable movement routes or campaign turns. Islands may lack paths even when physically close.",
+    "All 119 strategic links are trade-route segments. 261 teleportation nodes do not supply validated player access or traversal edges; no portal/sea-lane shortcut qualifies a pair.",
+    "Generic numeric aversion, opening wars/treaties and all faction/lord/technology modifiers are absent from the consumed normalized coverage; analytical priors are explicit and are not exhaustive runtime diplomacy validation.",
+    "Beastmen permitted-faction set and Golgfag alliance/team override remain unresolved and are withheld from qualification.",
+    "Single-player faction objectives are pressures only, never automatic multiplayer war locks. Teammates are independent human factions, not a proposed confederation or vassal arrangement.",
+    "Source guide validation is structural; this study does not replay Lua or launch a multiplayer game.",
+    "Notion contains counts and audit plan, one named stale pair, no full rows or regional headings; complete baseline diff and underrepresentation claims are impossible."
+  ],
+  "source_validation_warnings": [
+    "Battle rules without an exposed group map: got 3; Some engine-resolved catchment groups do not expose a direct group-map row"
+  ],
+  "status": "passed_with_documented_coverage_gaps",
+  "steam_build_id": 24237342,
+  "zero_partner_factions": [
+    {
+      "baseline_underrepresentation": "not assessable: 123 of 124 baseline rows missing",
+      "capital_region": "wh3_main_combi_region_the_fortress_of_vorag",
+      "faction_key": "wh2_dlc15_hef_imrik",
+      "faction_name": "Knights of Caledor",
+      "qualifying_partners": 0,
+      "race": "high_elves",
+      "recovered_baseline_partners": 0,
+      "start_position_kind": "land_raster_point",
+      "start_region": "wh3_main_combi_region_the_bone_gulch",
+      "unresolved_pair_count": 5,
+      "zero_partner_reason": "no partner passes frozen geography and diplomatic policy; unresolved treaty eligibility remains explicit"
+    },
+    {
+      "baseline_underrepresentation": "not assessable: 123 of 124 baseline rows missing",
+      "capital_region": null,
+      "faction_key": "wh2_dlc17_bst_malagor",
+      "faction_name": "Harbinger of Disaster",
+      "qualifying_partners": 0,
+      "race": "beastmen",
+      "recovered_baseline_partners": 0,
+      "start_position_kind": "land_raster_point",
+      "start_region": "wh3_main_combi_region_sunken_khernarch",
+      "unresolved_pair_count": 103,
+      "zero_partner_reason": "no partner passes frozen geography and diplomatic policy; unresolved treaty eligibility remains explicit"
+    },
+    {
+      "baseline_underrepresentation": "not assessable: 123 of 124 baseline rows missing",
+      "capital_region": null,
+      "faction_key": "wh2_dlc17_bst_taurox",
+      "faction_name": "Slaughterhorn Tribe",
+      "qualifying_partners": 0,
+      "race": "beastmen",
+      "recovered_baseline_partners": 0,
+      "start_position_kind": "land_raster_point",
+      "start_region": "wh3_main_combi_region_clar_karond",
+      "unresolved_pair_count": 103,
+      "zero_partner_reason": "no partner passes frozen geography and diplomatic policy; unresolved treaty eligibility remains explicit"
+    },
+    {
+      "baseline_underrepresentation": "not assessable: 123 of 124 baseline rows missing",
+      "capital_region": "wh3_main_combi_region_the_godless_crater",
+      "faction_key": "wh2_dlc17_lzd_oxyotl",
+      "faction_name": "Ghosts of Pahuax",
+      "qualifying_partners": 0,
+      "race": "lizardmen",
+      "recovered_baseline_partners": 0,
+      "start_position_kind": "land_raster_point",
+      "start_region": "wh3_main_combi_region_the_godless_crater",
+      "unresolved_pair_count": 5,
+      "zero_partner_reason": "no partner passes frozen geography and diplomatic policy; unresolved treaty eligibility remains explicit"
+    },
+    {
+      "baseline_underrepresentation": "not assessable: 123 of 124 baseline rows missing",
+      "capital_region": null,
+      "faction_key": "wh3_dlc26_ogr_golgfag",
+      "faction_name": "The Maneaters",
+      "qualifying_partners": 0,
+      "race": "ogre_kingdoms",
+      "recovered_baseline_partners": 0,
+      "start_position_kind": "land_raster_point",
+      "start_region": "wh3_main_combi_region_norden",
+      "unresolved_pair_count": 103,
+      "zero_partner_reason": "no partner passes frozen geography and diplomatic policy; unresolved treaty eligibility remains explicit"
+    },
+    {
+      "baseline_underrepresentation": "not assessable: 123 of 124 baseline rows missing",
+      "capital_region": null,
+      "faction_key": "wh3_dlc27_hef_aislinn",
+      "faction_name": "High Elf Sea Patrol",
+      "qualifying_partners": 0,
+      "race": "high_elves",
+      "recovered_baseline_partners": 0,
+      "start_position_kind": "maritime_point_no_distinct_region",
+      "start_region": null,
+      "unresolved_pair_count": 5,
+      "zero_partner_reason": "no partner passes frozen geography and diplomatic policy; unresolved treaty eligibility remains explicit"
+    },
+    {
+      "baseline_underrepresentation": "not assessable: 123 of 124 baseline rows missing",
+      "capital_region": "wh3_main_combi_region_hidden_landing",
+      "faction_key": "wh3_dlc27_sla_the_tormentors",
+      "faction_name": "The Tormentors",
+      "qualifying_partners": 0,
+      "race": "slaanesh",
+      "recovered_baseline_partners": 0,
+      "start_position_kind": "land_raster_point",
+      "start_region": "wh3_main_combi_region_hidden_landing",
+      "unresolved_pair_count": 5,
+      "zero_partner_reason": "no partner passes frozen geography and diplomatic policy; unresolved treaty eligibility remains explicit"
+    },
+    {
+      "baseline_underrepresentation": "not assessable: 123 of 124 baseline rows missing",
+      "capital_region": null,
+      "faction_key": "wh3_main_chs_shadow_legion",
+      "faction_name": "Shadow Legion",
+      "qualifying_partners": 0,
+      "race": "warriors_of_chaos",
+      "recovered_baseline_partners": 0,
+      "start_position_kind": "land_raster_point",
+      "start_region": "wh3_main_combi_region_isle_of_wights",
+      "unresolved_pair_count": 5,
+      "zero_partner_reason": "no partner passes frozen geography and diplomatic policy; unresolved treaty eligibility remains explicit"
+    },
+    {
+      "baseline_underrepresentation": "not assessable: 123 of 124 baseline rows missing",
+      "capital_region": null,
+      "faction_key": "wh3_main_ksl_ursun_revivalists",
+      "faction_name": "Ursun Revivalists",
+      "qualifying_partners": 0,
+      "race": "kislev",
+      "recovered_baseline_partners": 0,
+      "start_position_kind": "land_raster_point",
+      "start_region": "wh3_main_combi_region_the_tower_of_torment",
+      "unresolved_pair_count": 5,
+      "zero_partner_reason": "no partner passes frozen geography and diplomatic policy; unresolved treaty eligibility remains explicit"
+    },
+    {
+      "baseline_underrepresentation": "not assessable: 123 of 124 baseline rows missing",
+      "capital_region": "wh3_main_combi_region_fateweavers_crevasse",
+      "faction_key": "wh3_main_tze_oracles_of_tzeentch",
+      "faction_name": "Oracles of Tzeentch",
+      "qualifying_partners": 0,
+      "race": "tzeentch",
+      "recovered_baseline_partners": 0,
+      "start_position_kind": "land_raster_point",
+      "start_region": "wh3_main_combi_region_the_lost_palace",
+      "unresolved_pair_count": 5,
+      "zero_partner_reason": "no partner passes frozen geography and diplomatic policy; unresolved treaty eligibility remains explicit"
+    },
+    {
+      "baseline_underrepresentation": "not assessable: 123 of 124 baseline rows missing",
+      "capital_region": null,
+      "faction_key": "wh_dlc03_bst_beastmen",
+      "faction_name": "Warherd of the One-Eye",
+      "qualifying_partners": 0,
+      "race": "beastmen",
+      "recovered_baseline_partners": 0,
+      "start_position_kind": "land_raster_point",
+      "start_region": "wh3_main_combi_region_the_black_pit",
+      "unresolved_pair_count": 103,
+      "zero_partner_reason": "no partner passes frozen geography and diplomatic policy; unresolved treaty eligibility remains explicit"
+    },
+    {
+      "baseline_underrepresentation": "not assessable: 123 of 124 baseline rows missing",
+      "capital_region": null,
+      "faction_key": "wh_dlc05_bst_morghur_herd",
+      "faction_name": "Warherd of the Shadowgave",
+      "qualifying_partners": 0,
+      "race": "beastmen",
+      "recovered_baseline_partners": 0,
+      "start_position_kind": "land_raster_point",
+      "start_region": "wh3_main_combi_region_montenas",
+      "unresolved_pair_count": 103,
+      "zero_partner_reason": "no partner passes frozen geography and diplomatic policy; unresolved treaty eligibility remains explicit"
+    },
+    {
+      "baseline_underrepresentation": "not assessable: 123 of 124 baseline rows missing",
+      "capital_region": "wh3_main_combi_region_troll_fjord",
+      "faction_key": "wh_dlc08_nor_norsca",
+      "faction_name": "World Walkers",
+      "qualifying_partners": 0,
+      "race": "norsca",
+      "recovered_baseline_partners": 0,
+      "start_position_kind": "maritime_point_no_distinct_region",
+      "start_region": null,
+      "unresolved_pair_count": 5,
+      "zero_partner_reason": "no partner passes frozen geography and diplomatic policy; unresolved treaty eligibility remains explicit"
+    }
+  ]
+}

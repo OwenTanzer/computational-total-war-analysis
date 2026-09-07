@@ -1,0 +1,1802 @@
+[
+  {
+    "class": "Clean",
+    "inference": "Same-race ecosystem prior",
+    "race_a": "beastmen",
+    "race_b": "beastmen"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "beastmen",
+    "race_b": "bretonnia"
+  },
+  {
+    "class": "Workable",
+    "inference": "Chaos ecosystem prior with patron/vassal competition",
+    "race_a": "beastmen",
+    "race_b": "chaos_dwarfs"
+  },
+  {
+    "class": "Workable",
+    "inference": "Chaos ecosystem prior with patron/vassal competition",
+    "race_a": "beastmen",
+    "race_b": "daemons_of_chaos"
+  },
+  {
+    "class": "Workable",
+    "inference": "Non-Order pragmatic-alliance prior; not a numeric diplomatic guarantee",
+    "race_a": "beastmen",
+    "race_b": "dark_elves"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "beastmen",
+    "race_b": "dwarfs"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "beastmen",
+    "race_b": "empire"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "beastmen",
+    "race_b": "grand_cathay"
+  },
+  {
+    "class": "Workable",
+    "inference": "Non-Order pragmatic-alliance prior; not a numeric diplomatic guarantee",
+    "race_a": "beastmen",
+    "race_b": "greenskins"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "beastmen",
+    "race_b": "high_elves"
+  },
+  {
+    "class": "Workable",
+    "inference": "Chaos ecosystem prior with patron/vassal competition",
+    "race_a": "beastmen",
+    "race_b": "khorne"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "beastmen",
+    "race_b": "kislev"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "beastmen",
+    "race_b": "lizardmen"
+  },
+  {
+    "class": "Workable",
+    "inference": "Chaos ecosystem prior with patron/vassal competition",
+    "race_a": "beastmen",
+    "race_b": "norsca"
+  },
+  {
+    "class": "Workable",
+    "inference": "Chaos ecosystem prior with patron/vassal competition",
+    "race_a": "beastmen",
+    "race_b": "nurgle"
+  },
+  {
+    "class": "Workable",
+    "inference": "Ogre mercenary-neutral ecosystem prior; faction restrictions take precedence",
+    "race_a": "beastmen",
+    "race_b": "ogre_kingdoms"
+  },
+  {
+    "class": "Workable",
+    "inference": "Non-Order pragmatic-alliance prior; not a numeric diplomatic guarantee",
+    "race_a": "beastmen",
+    "race_b": "skaven"
+  },
+  {
+    "class": "Workable",
+    "inference": "Chaos ecosystem prior with patron/vassal competition",
+    "race_a": "beastmen",
+    "race_b": "slaanesh"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed Tomb King ecosystem prior",
+    "race_a": "beastmen",
+    "race_b": "tomb_kings"
+  },
+  {
+    "class": "Workable",
+    "inference": "Chaos ecosystem prior with patron/vassal competition",
+    "race_a": "beastmen",
+    "race_b": "tzeentch"
+  },
+  {
+    "class": "Workable",
+    "inference": "Non-Order pragmatic-alliance prior; not a numeric diplomatic guarantee",
+    "race_a": "beastmen",
+    "race_b": "vampire_coast"
+  },
+  {
+    "class": "Workable",
+    "inference": "Non-Order pragmatic-alliance prior; not a numeric diplomatic guarantee",
+    "race_a": "beastmen",
+    "race_b": "vampire_counts"
+  },
+  {
+    "class": "Workable",
+    "inference": "Chaos ecosystem prior with patron/vassal competition",
+    "race_a": "beastmen",
+    "race_b": "warriors_of_chaos"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "beastmen",
+    "race_b": "wood_elves"
+  },
+  {
+    "class": "Clean",
+    "inference": "Same-race ecosystem prior",
+    "race_a": "bretonnia",
+    "race_b": "bretonnia"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "bretonnia",
+    "race_b": "chaos_dwarfs"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "bretonnia",
+    "race_b": "daemons_of_chaos"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "bretonnia",
+    "race_b": "dark_elves"
+  },
+  {
+    "class": "Clean",
+    "inference": "Compatible Order ecosystem prior",
+    "race_a": "bretonnia",
+    "race_b": "dwarfs"
+  },
+  {
+    "class": "Clean",
+    "inference": "Compatible Order ecosystem prior",
+    "race_a": "bretonnia",
+    "race_b": "empire"
+  },
+  {
+    "class": "Clean",
+    "inference": "Compatible Order ecosystem prior",
+    "race_a": "bretonnia",
+    "race_b": "grand_cathay"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "bretonnia",
+    "race_b": "greenskins"
+  },
+  {
+    "class": "Clean",
+    "inference": "Compatible Order ecosystem prior",
+    "race_a": "bretonnia",
+    "race_b": "high_elves"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "bretonnia",
+    "race_b": "khorne"
+  },
+  {
+    "class": "Clean",
+    "inference": "Compatible Order ecosystem prior",
+    "race_a": "bretonnia",
+    "race_b": "kislev"
+  },
+  {
+    "class": "Workable",
+    "inference": "Order-adjacent but distinct territorial/diplomatic ecosystem prior",
+    "race_a": "bretonnia",
+    "race_b": "lizardmen"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "bretonnia",
+    "race_b": "norsca"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "bretonnia",
+    "race_b": "nurgle"
+  },
+  {
+    "class": "Workable",
+    "inference": "Ogre mercenary-neutral ecosystem prior; faction restrictions take precedence",
+    "race_a": "bretonnia",
+    "race_b": "ogre_kingdoms"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "bretonnia",
+    "race_b": "skaven"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "bretonnia",
+    "race_b": "slaanesh"
+  },
+  {
+    "class": "Workable",
+    "inference": "Independent Tomb King coexistence prior",
+    "race_a": "bretonnia",
+    "race_b": "tomb_kings"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "bretonnia",
+    "race_b": "tzeentch"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "bretonnia",
+    "race_b": "vampire_coast"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "bretonnia",
+    "race_b": "vampire_counts"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "bretonnia",
+    "race_b": "warriors_of_chaos"
+  },
+  {
+    "class": "Workable",
+    "inference": "Order-adjacent but distinct territorial/diplomatic ecosystem prior",
+    "race_a": "bretonnia",
+    "race_b": "wood_elves"
+  },
+  {
+    "class": "Clean",
+    "inference": "Same-race ecosystem prior",
+    "race_a": "chaos_dwarfs",
+    "race_b": "chaos_dwarfs"
+  },
+  {
+    "class": "Workable",
+    "inference": "Chaos ecosystem prior with patron/vassal competition",
+    "race_a": "chaos_dwarfs",
+    "race_b": "daemons_of_chaos"
+  },
+  {
+    "class": "Workable",
+    "inference": "Non-Order pragmatic-alliance prior; not a numeric diplomatic guarantee",
+    "race_a": "chaos_dwarfs",
+    "race_b": "dark_elves"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "chaos_dwarfs",
+    "race_b": "dwarfs"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "chaos_dwarfs",
+    "race_b": "empire"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "chaos_dwarfs",
+    "race_b": "grand_cathay"
+  },
+  {
+    "class": "Workable",
+    "inference": "Non-Order pragmatic-alliance prior; not a numeric diplomatic guarantee",
+    "race_a": "chaos_dwarfs",
+    "race_b": "greenskins"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "chaos_dwarfs",
+    "race_b": "high_elves"
+  },
+  {
+    "class": "Workable",
+    "inference": "Chaos ecosystem prior with patron/vassal competition",
+    "race_a": "chaos_dwarfs",
+    "race_b": "khorne"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "chaos_dwarfs",
+    "race_b": "kislev"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "chaos_dwarfs",
+    "race_b": "lizardmen"
+  },
+  {
+    "class": "Workable",
+    "inference": "Chaos ecosystem prior with patron/vassal competition",
+    "race_a": "chaos_dwarfs",
+    "race_b": "norsca"
+  },
+  {
+    "class": "Workable",
+    "inference": "Chaos ecosystem prior with patron/vassal competition",
+    "race_a": "chaos_dwarfs",
+    "race_b": "nurgle"
+  },
+  {
+    "class": "Workable",
+    "inference": "Ogre mercenary-neutral ecosystem prior; faction restrictions take precedence",
+    "race_a": "chaos_dwarfs",
+    "race_b": "ogre_kingdoms"
+  },
+  {
+    "class": "Workable",
+    "inference": "Non-Order pragmatic-alliance prior; not a numeric diplomatic guarantee",
+    "race_a": "chaos_dwarfs",
+    "race_b": "skaven"
+  },
+  {
+    "class": "Workable",
+    "inference": "Chaos ecosystem prior with patron/vassal competition",
+    "race_a": "chaos_dwarfs",
+    "race_b": "slaanesh"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed Tomb King ecosystem prior",
+    "race_a": "chaos_dwarfs",
+    "race_b": "tomb_kings"
+  },
+  {
+    "class": "Workable",
+    "inference": "Chaos ecosystem prior with patron/vassal competition",
+    "race_a": "chaos_dwarfs",
+    "race_b": "tzeentch"
+  },
+  {
+    "class": "Workable",
+    "inference": "Non-Order pragmatic-alliance prior; not a numeric diplomatic guarantee",
+    "race_a": "chaos_dwarfs",
+    "race_b": "vampire_coast"
+  },
+  {
+    "class": "Workable",
+    "inference": "Non-Order pragmatic-alliance prior; not a numeric diplomatic guarantee",
+    "race_a": "chaos_dwarfs",
+    "race_b": "vampire_counts"
+  },
+  {
+    "class": "Workable",
+    "inference": "Chaos ecosystem prior with patron/vassal competition",
+    "race_a": "chaos_dwarfs",
+    "race_b": "warriors_of_chaos"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "chaos_dwarfs",
+    "race_b": "wood_elves"
+  },
+  {
+    "class": "Clean",
+    "inference": "Same-race ecosystem prior",
+    "race_a": "daemons_of_chaos",
+    "race_b": "daemons_of_chaos"
+  },
+  {
+    "class": "Workable",
+    "inference": "Non-Order pragmatic-alliance prior; not a numeric diplomatic guarantee",
+    "race_a": "daemons_of_chaos",
+    "race_b": "dark_elves"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "daemons_of_chaos",
+    "race_b": "dwarfs"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "daemons_of_chaos",
+    "race_b": "empire"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "daemons_of_chaos",
+    "race_b": "grand_cathay"
+  },
+  {
+    "class": "Workable",
+    "inference": "Non-Order pragmatic-alliance prior; not a numeric diplomatic guarantee",
+    "race_a": "daemons_of_chaos",
+    "race_b": "greenskins"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "daemons_of_chaos",
+    "race_b": "high_elves"
+  },
+  {
+    "class": "Workable",
+    "inference": "Chaos ecosystem prior with patron/vassal competition",
+    "race_a": "daemons_of_chaos",
+    "race_b": "khorne"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "daemons_of_chaos",
+    "race_b": "kislev"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "daemons_of_chaos",
+    "race_b": "lizardmen"
+  },
+  {
+    "class": "Workable",
+    "inference": "Chaos ecosystem prior with patron/vassal competition",
+    "race_a": "daemons_of_chaos",
+    "race_b": "norsca"
+  },
+  {
+    "class": "Workable",
+    "inference": "Chaos ecosystem prior with patron/vassal competition",
+    "race_a": "daemons_of_chaos",
+    "race_b": "nurgle"
+  },
+  {
+    "class": "Workable",
+    "inference": "Ogre mercenary-neutral ecosystem prior; faction restrictions take precedence",
+    "race_a": "daemons_of_chaos",
+    "race_b": "ogre_kingdoms"
+  },
+  {
+    "class": "Workable",
+    "inference": "Non-Order pragmatic-alliance prior; not a numeric diplomatic guarantee",
+    "race_a": "daemons_of_chaos",
+    "race_b": "skaven"
+  },
+  {
+    "class": "Workable",
+    "inference": "Chaos ecosystem prior with patron/vassal competition",
+    "race_a": "daemons_of_chaos",
+    "race_b": "slaanesh"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed Tomb King ecosystem prior",
+    "race_a": "daemons_of_chaos",
+    "race_b": "tomb_kings"
+  },
+  {
+    "class": "Workable",
+    "inference": "Chaos ecosystem prior with patron/vassal competition",
+    "race_a": "daemons_of_chaos",
+    "race_b": "tzeentch"
+  },
+  {
+    "class": "Workable",
+    "inference": "Non-Order pragmatic-alliance prior; not a numeric diplomatic guarantee",
+    "race_a": "daemons_of_chaos",
+    "race_b": "vampire_coast"
+  },
+  {
+    "class": "Workable",
+    "inference": "Non-Order pragmatic-alliance prior; not a numeric diplomatic guarantee",
+    "race_a": "daemons_of_chaos",
+    "race_b": "vampire_counts"
+  },
+  {
+    "class": "Workable",
+    "inference": "Chaos ecosystem prior with patron/vassal competition",
+    "race_a": "daemons_of_chaos",
+    "race_b": "warriors_of_chaos"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "daemons_of_chaos",
+    "race_b": "wood_elves"
+  },
+  {
+    "class": "Clean",
+    "inference": "Same-race ecosystem prior",
+    "race_a": "dark_elves",
+    "race_b": "dark_elves"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "dark_elves",
+    "race_b": "dwarfs"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "dark_elves",
+    "race_b": "empire"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "dark_elves",
+    "race_b": "grand_cathay"
+  },
+  {
+    "class": "Workable",
+    "inference": "Non-Order pragmatic-alliance prior; not a numeric diplomatic guarantee",
+    "race_a": "dark_elves",
+    "race_b": "greenskins"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "dark_elves",
+    "race_b": "high_elves"
+  },
+  {
+    "class": "Workable",
+    "inference": "Non-Order pragmatic-alliance prior; not a numeric diplomatic guarantee",
+    "race_a": "dark_elves",
+    "race_b": "khorne"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "dark_elves",
+    "race_b": "kislev"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "dark_elves",
+    "race_b": "lizardmen"
+  },
+  {
+    "class": "Workable",
+    "inference": "Non-Order pragmatic-alliance prior; not a numeric diplomatic guarantee",
+    "race_a": "dark_elves",
+    "race_b": "norsca"
+  },
+  {
+    "class": "Workable",
+    "inference": "Non-Order pragmatic-alliance prior; not a numeric diplomatic guarantee",
+    "race_a": "dark_elves",
+    "race_b": "nurgle"
+  },
+  {
+    "class": "Workable",
+    "inference": "Ogre mercenary-neutral ecosystem prior; faction restrictions take precedence",
+    "race_a": "dark_elves",
+    "race_b": "ogre_kingdoms"
+  },
+  {
+    "class": "Workable",
+    "inference": "Non-Order pragmatic-alliance prior; not a numeric diplomatic guarantee",
+    "race_a": "dark_elves",
+    "race_b": "skaven"
+  },
+  {
+    "class": "Workable",
+    "inference": "Non-Order pragmatic-alliance prior; not a numeric diplomatic guarantee",
+    "race_a": "dark_elves",
+    "race_b": "slaanesh"
+  },
+  {
+    "class": "Workable",
+    "inference": "Independent Tomb King coexistence prior",
+    "race_a": "dark_elves",
+    "race_b": "tomb_kings"
+  },
+  {
+    "class": "Workable",
+    "inference": "Non-Order pragmatic-alliance prior; not a numeric diplomatic guarantee",
+    "race_a": "dark_elves",
+    "race_b": "tzeentch"
+  },
+  {
+    "class": "Workable",
+    "inference": "Non-Order pragmatic-alliance prior; not a numeric diplomatic guarantee",
+    "race_a": "dark_elves",
+    "race_b": "vampire_coast"
+  },
+  {
+    "class": "Workable",
+    "inference": "Non-Order pragmatic-alliance prior; not a numeric diplomatic guarantee",
+    "race_a": "dark_elves",
+    "race_b": "vampire_counts"
+  },
+  {
+    "class": "Workable",
+    "inference": "Non-Order pragmatic-alliance prior; not a numeric diplomatic guarantee",
+    "race_a": "dark_elves",
+    "race_b": "warriors_of_chaos"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "dark_elves",
+    "race_b": "wood_elves"
+  },
+  {
+    "class": "Clean",
+    "inference": "Same-race ecosystem prior",
+    "race_a": "dwarfs",
+    "race_b": "dwarfs"
+  },
+  {
+    "class": "Clean",
+    "inference": "Compatible Order ecosystem prior",
+    "race_a": "dwarfs",
+    "race_b": "empire"
+  },
+  {
+    "class": "Clean",
+    "inference": "Compatible Order ecosystem prior",
+    "race_a": "dwarfs",
+    "race_b": "grand_cathay"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "dwarfs",
+    "race_b": "greenskins"
+  },
+  {
+    "class": "Workable",
+    "inference": "Order-adjacent but distinct territorial/diplomatic ecosystem prior",
+    "race_a": "dwarfs",
+    "race_b": "high_elves"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "dwarfs",
+    "race_b": "khorne"
+  },
+  {
+    "class": "Clean",
+    "inference": "Compatible Order ecosystem prior",
+    "race_a": "dwarfs",
+    "race_b": "kislev"
+  },
+  {
+    "class": "Workable",
+    "inference": "Order-adjacent but distinct territorial/diplomatic ecosystem prior",
+    "race_a": "dwarfs",
+    "race_b": "lizardmen"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "dwarfs",
+    "race_b": "norsca"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "dwarfs",
+    "race_b": "nurgle"
+  },
+  {
+    "class": "Workable",
+    "inference": "Ogre mercenary-neutral ecosystem prior; faction restrictions take precedence",
+    "race_a": "dwarfs",
+    "race_b": "ogre_kingdoms"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "dwarfs",
+    "race_b": "skaven"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "dwarfs",
+    "race_b": "slaanesh"
+  },
+  {
+    "class": "Workable",
+    "inference": "Independent Tomb King coexistence prior",
+    "race_a": "dwarfs",
+    "race_b": "tomb_kings"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "dwarfs",
+    "race_b": "tzeentch"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "dwarfs",
+    "race_b": "vampire_coast"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "dwarfs",
+    "race_b": "vampire_counts"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "dwarfs",
+    "race_b": "warriors_of_chaos"
+  },
+  {
+    "class": "Workable",
+    "inference": "Order-adjacent but distinct territorial/diplomatic ecosystem prior",
+    "race_a": "dwarfs",
+    "race_b": "wood_elves"
+  },
+  {
+    "class": "Clean",
+    "inference": "Same-race ecosystem prior",
+    "race_a": "empire",
+    "race_b": "empire"
+  },
+  {
+    "class": "Clean",
+    "inference": "Compatible Order ecosystem prior",
+    "race_a": "empire",
+    "race_b": "grand_cathay"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "empire",
+    "race_b": "greenskins"
+  },
+  {
+    "class": "Clean",
+    "inference": "Compatible Order ecosystem prior",
+    "race_a": "empire",
+    "race_b": "high_elves"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "empire",
+    "race_b": "khorne"
+  },
+  {
+    "class": "Clean",
+    "inference": "Compatible Order ecosystem prior",
+    "race_a": "empire",
+    "race_b": "kislev"
+  },
+  {
+    "class": "Workable",
+    "inference": "Order-adjacent but distinct territorial/diplomatic ecosystem prior",
+    "race_a": "empire",
+    "race_b": "lizardmen"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "empire",
+    "race_b": "norsca"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "empire",
+    "race_b": "nurgle"
+  },
+  {
+    "class": "Workable",
+    "inference": "Ogre mercenary-neutral ecosystem prior; faction restrictions take precedence",
+    "race_a": "empire",
+    "race_b": "ogre_kingdoms"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "empire",
+    "race_b": "skaven"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "empire",
+    "race_b": "slaanesh"
+  },
+  {
+    "class": "Workable",
+    "inference": "Independent Tomb King coexistence prior",
+    "race_a": "empire",
+    "race_b": "tomb_kings"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "empire",
+    "race_b": "tzeentch"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "empire",
+    "race_b": "vampire_coast"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "empire",
+    "race_b": "vampire_counts"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "empire",
+    "race_b": "warriors_of_chaos"
+  },
+  {
+    "class": "Workable",
+    "inference": "Order-adjacent but distinct territorial/diplomatic ecosystem prior",
+    "race_a": "empire",
+    "race_b": "wood_elves"
+  },
+  {
+    "class": "Clean",
+    "inference": "Same-race ecosystem prior",
+    "race_a": "grand_cathay",
+    "race_b": "grand_cathay"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "grand_cathay",
+    "race_b": "greenskins"
+  },
+  {
+    "class": "Clean",
+    "inference": "Compatible Order ecosystem prior",
+    "race_a": "grand_cathay",
+    "race_b": "high_elves"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "grand_cathay",
+    "race_b": "khorne"
+  },
+  {
+    "class": "Clean",
+    "inference": "Compatible Order ecosystem prior",
+    "race_a": "grand_cathay",
+    "race_b": "kislev"
+  },
+  {
+    "class": "Workable",
+    "inference": "Order-adjacent but distinct territorial/diplomatic ecosystem prior",
+    "race_a": "grand_cathay",
+    "race_b": "lizardmen"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "grand_cathay",
+    "race_b": "norsca"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "grand_cathay",
+    "race_b": "nurgle"
+  },
+  {
+    "class": "Workable",
+    "inference": "Ogre mercenary-neutral ecosystem prior; faction restrictions take precedence",
+    "race_a": "grand_cathay",
+    "race_b": "ogre_kingdoms"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "grand_cathay",
+    "race_b": "skaven"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "grand_cathay",
+    "race_b": "slaanesh"
+  },
+  {
+    "class": "Workable",
+    "inference": "Independent Tomb King coexistence prior",
+    "race_a": "grand_cathay",
+    "race_b": "tomb_kings"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "grand_cathay",
+    "race_b": "tzeentch"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "grand_cathay",
+    "race_b": "vampire_coast"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "grand_cathay",
+    "race_b": "vampire_counts"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "grand_cathay",
+    "race_b": "warriors_of_chaos"
+  },
+  {
+    "class": "Workable",
+    "inference": "Order-adjacent but distinct territorial/diplomatic ecosystem prior",
+    "race_a": "grand_cathay",
+    "race_b": "wood_elves"
+  },
+  {
+    "class": "Clean",
+    "inference": "Same-race ecosystem prior",
+    "race_a": "greenskins",
+    "race_b": "greenskins"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "greenskins",
+    "race_b": "high_elves"
+  },
+  {
+    "class": "Workable",
+    "inference": "Non-Order pragmatic-alliance prior; not a numeric diplomatic guarantee",
+    "race_a": "greenskins",
+    "race_b": "khorne"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "greenskins",
+    "race_b": "kislev"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "greenskins",
+    "race_b": "lizardmen"
+  },
+  {
+    "class": "Workable",
+    "inference": "Non-Order pragmatic-alliance prior; not a numeric diplomatic guarantee",
+    "race_a": "greenskins",
+    "race_b": "norsca"
+  },
+  {
+    "class": "Workable",
+    "inference": "Non-Order pragmatic-alliance prior; not a numeric diplomatic guarantee",
+    "race_a": "greenskins",
+    "race_b": "nurgle"
+  },
+  {
+    "class": "Workable",
+    "inference": "Ogre mercenary-neutral ecosystem prior; faction restrictions take precedence",
+    "race_a": "greenskins",
+    "race_b": "ogre_kingdoms"
+  },
+  {
+    "class": "Workable",
+    "inference": "Non-Order pragmatic-alliance prior; not a numeric diplomatic guarantee",
+    "race_a": "greenskins",
+    "race_b": "skaven"
+  },
+  {
+    "class": "Workable",
+    "inference": "Non-Order pragmatic-alliance prior; not a numeric diplomatic guarantee",
+    "race_a": "greenskins",
+    "race_b": "slaanesh"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed Tomb King ecosystem prior",
+    "race_a": "greenskins",
+    "race_b": "tomb_kings"
+  },
+  {
+    "class": "Workable",
+    "inference": "Non-Order pragmatic-alliance prior; not a numeric diplomatic guarantee",
+    "race_a": "greenskins",
+    "race_b": "tzeentch"
+  },
+  {
+    "class": "Workable",
+    "inference": "Non-Order pragmatic-alliance prior; not a numeric diplomatic guarantee",
+    "race_a": "greenskins",
+    "race_b": "vampire_coast"
+  },
+  {
+    "class": "Workable",
+    "inference": "Non-Order pragmatic-alliance prior; not a numeric diplomatic guarantee",
+    "race_a": "greenskins",
+    "race_b": "vampire_counts"
+  },
+  {
+    "class": "Workable",
+    "inference": "Non-Order pragmatic-alliance prior; not a numeric diplomatic guarantee",
+    "race_a": "greenskins",
+    "race_b": "warriors_of_chaos"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "greenskins",
+    "race_b": "wood_elves"
+  },
+  {
+    "class": "Clean",
+    "inference": "Same-race ecosystem prior",
+    "race_a": "high_elves",
+    "race_b": "high_elves"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "high_elves",
+    "race_b": "khorne"
+  },
+  {
+    "class": "Clean",
+    "inference": "Compatible Order ecosystem prior",
+    "race_a": "high_elves",
+    "race_b": "kislev"
+  },
+  {
+    "class": "Workable",
+    "inference": "Order-adjacent but distinct territorial/diplomatic ecosystem prior",
+    "race_a": "high_elves",
+    "race_b": "lizardmen"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "high_elves",
+    "race_b": "norsca"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "high_elves",
+    "race_b": "nurgle"
+  },
+  {
+    "class": "Workable",
+    "inference": "Ogre mercenary-neutral ecosystem prior; faction restrictions take precedence",
+    "race_a": "high_elves",
+    "race_b": "ogre_kingdoms"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "high_elves",
+    "race_b": "skaven"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "high_elves",
+    "race_b": "slaanesh"
+  },
+  {
+    "class": "Workable",
+    "inference": "Independent Tomb King coexistence prior",
+    "race_a": "high_elves",
+    "race_b": "tomb_kings"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "high_elves",
+    "race_b": "tzeentch"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "high_elves",
+    "race_b": "vampire_coast"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "high_elves",
+    "race_b": "vampire_counts"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "high_elves",
+    "race_b": "warriors_of_chaos"
+  },
+  {
+    "class": "Workable",
+    "inference": "Order-adjacent but distinct territorial/diplomatic ecosystem prior",
+    "race_a": "high_elves",
+    "race_b": "wood_elves"
+  },
+  {
+    "class": "Clean",
+    "inference": "Same-race ecosystem prior",
+    "race_a": "khorne",
+    "race_b": "khorne"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "khorne",
+    "race_b": "kislev"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "khorne",
+    "race_b": "lizardmen"
+  },
+  {
+    "class": "Workable",
+    "inference": "Chaos ecosystem prior with patron/vassal competition",
+    "race_a": "khorne",
+    "race_b": "norsca"
+  },
+  {
+    "class": "Workable",
+    "inference": "Chaos ecosystem prior with patron/vassal competition",
+    "race_a": "khorne",
+    "race_b": "nurgle"
+  },
+  {
+    "class": "Workable",
+    "inference": "Ogre mercenary-neutral ecosystem prior; faction restrictions take precedence",
+    "race_a": "khorne",
+    "race_b": "ogre_kingdoms"
+  },
+  {
+    "class": "Workable",
+    "inference": "Non-Order pragmatic-alliance prior; not a numeric diplomatic guarantee",
+    "race_a": "khorne",
+    "race_b": "skaven"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Rival-god ecosystem prior; no numeric aversion claimed",
+    "race_a": "khorne",
+    "race_b": "slaanesh"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed Tomb King ecosystem prior",
+    "race_a": "khorne",
+    "race_b": "tomb_kings"
+  },
+  {
+    "class": "Workable",
+    "inference": "Chaos ecosystem prior with patron/vassal competition",
+    "race_a": "khorne",
+    "race_b": "tzeentch"
+  },
+  {
+    "class": "Workable",
+    "inference": "Non-Order pragmatic-alliance prior; not a numeric diplomatic guarantee",
+    "race_a": "khorne",
+    "race_b": "vampire_coast"
+  },
+  {
+    "class": "Workable",
+    "inference": "Non-Order pragmatic-alliance prior; not a numeric diplomatic guarantee",
+    "race_a": "khorne",
+    "race_b": "vampire_counts"
+  },
+  {
+    "class": "Workable",
+    "inference": "Chaos ecosystem prior with patron/vassal competition",
+    "race_a": "khorne",
+    "race_b": "warriors_of_chaos"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "khorne",
+    "race_b": "wood_elves"
+  },
+  {
+    "class": "Clean",
+    "inference": "Same-race ecosystem prior",
+    "race_a": "kislev",
+    "race_b": "kislev"
+  },
+  {
+    "class": "Workable",
+    "inference": "Order-adjacent but distinct territorial/diplomatic ecosystem prior",
+    "race_a": "kislev",
+    "race_b": "lizardmen"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "kislev",
+    "race_b": "norsca"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "kislev",
+    "race_b": "nurgle"
+  },
+  {
+    "class": "Workable",
+    "inference": "Ogre mercenary-neutral ecosystem prior; faction restrictions take precedence",
+    "race_a": "kislev",
+    "race_b": "ogre_kingdoms"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "kislev",
+    "race_b": "skaven"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "kislev",
+    "race_b": "slaanesh"
+  },
+  {
+    "class": "Workable",
+    "inference": "Independent Tomb King coexistence prior",
+    "race_a": "kislev",
+    "race_b": "tomb_kings"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "kislev",
+    "race_b": "tzeentch"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "kislev",
+    "race_b": "vampire_coast"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "kislev",
+    "race_b": "vampire_counts"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "kislev",
+    "race_b": "warriors_of_chaos"
+  },
+  {
+    "class": "Workable",
+    "inference": "Order-adjacent but distinct territorial/diplomatic ecosystem prior",
+    "race_a": "kislev",
+    "race_b": "wood_elves"
+  },
+  {
+    "class": "Clean",
+    "inference": "Same-race ecosystem prior",
+    "race_a": "lizardmen",
+    "race_b": "lizardmen"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "lizardmen",
+    "race_b": "norsca"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "lizardmen",
+    "race_b": "nurgle"
+  },
+  {
+    "class": "Workable",
+    "inference": "Ogre mercenary-neutral ecosystem prior; faction restrictions take precedence",
+    "race_a": "lizardmen",
+    "race_b": "ogre_kingdoms"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "lizardmen",
+    "race_b": "skaven"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "lizardmen",
+    "race_b": "slaanesh"
+  },
+  {
+    "class": "Workable",
+    "inference": "Independent Tomb King coexistence prior",
+    "race_a": "lizardmen",
+    "race_b": "tomb_kings"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "lizardmen",
+    "race_b": "tzeentch"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "lizardmen",
+    "race_b": "vampire_coast"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "lizardmen",
+    "race_b": "vampire_counts"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "lizardmen",
+    "race_b": "warriors_of_chaos"
+  },
+  {
+    "class": "Workable",
+    "inference": "Order-adjacent but distinct territorial/diplomatic ecosystem prior",
+    "race_a": "lizardmen",
+    "race_b": "wood_elves"
+  },
+  {
+    "class": "Clean",
+    "inference": "Same-race ecosystem prior",
+    "race_a": "norsca",
+    "race_b": "norsca"
+  },
+  {
+    "class": "Workable",
+    "inference": "Chaos ecosystem prior with patron/vassal competition",
+    "race_a": "norsca",
+    "race_b": "nurgle"
+  },
+  {
+    "class": "Workable",
+    "inference": "Ogre mercenary-neutral ecosystem prior; faction restrictions take precedence",
+    "race_a": "norsca",
+    "race_b": "ogre_kingdoms"
+  },
+  {
+    "class": "Workable",
+    "inference": "Non-Order pragmatic-alliance prior; not a numeric diplomatic guarantee",
+    "race_a": "norsca",
+    "race_b": "skaven"
+  },
+  {
+    "class": "Workable",
+    "inference": "Chaos ecosystem prior with patron/vassal competition",
+    "race_a": "norsca",
+    "race_b": "slaanesh"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed Tomb King ecosystem prior",
+    "race_a": "norsca",
+    "race_b": "tomb_kings"
+  },
+  {
+    "class": "Workable",
+    "inference": "Chaos ecosystem prior with patron/vassal competition",
+    "race_a": "norsca",
+    "race_b": "tzeentch"
+  },
+  {
+    "class": "Workable",
+    "inference": "Non-Order pragmatic-alliance prior; not a numeric diplomatic guarantee",
+    "race_a": "norsca",
+    "race_b": "vampire_coast"
+  },
+  {
+    "class": "Workable",
+    "inference": "Non-Order pragmatic-alliance prior; not a numeric diplomatic guarantee",
+    "race_a": "norsca",
+    "race_b": "vampire_counts"
+  },
+  {
+    "class": "Workable",
+    "inference": "Chaos ecosystem prior with patron/vassal competition",
+    "race_a": "norsca",
+    "race_b": "warriors_of_chaos"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "norsca",
+    "race_b": "wood_elves"
+  },
+  {
+    "class": "Clean",
+    "inference": "Same-race ecosystem prior",
+    "race_a": "nurgle",
+    "race_b": "nurgle"
+  },
+  {
+    "class": "Workable",
+    "inference": "Ogre mercenary-neutral ecosystem prior; faction restrictions take precedence",
+    "race_a": "nurgle",
+    "race_b": "ogre_kingdoms"
+  },
+  {
+    "class": "Workable",
+    "inference": "Non-Order pragmatic-alliance prior; not a numeric diplomatic guarantee",
+    "race_a": "nurgle",
+    "race_b": "skaven"
+  },
+  {
+    "class": "Workable",
+    "inference": "Chaos ecosystem prior with patron/vassal competition",
+    "race_a": "nurgle",
+    "race_b": "slaanesh"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed Tomb King ecosystem prior",
+    "race_a": "nurgle",
+    "race_b": "tomb_kings"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Rival-god ecosystem prior; no numeric aversion claimed",
+    "race_a": "nurgle",
+    "race_b": "tzeentch"
+  },
+  {
+    "class": "Workable",
+    "inference": "Non-Order pragmatic-alliance prior; not a numeric diplomatic guarantee",
+    "race_a": "nurgle",
+    "race_b": "vampire_coast"
+  },
+  {
+    "class": "Workable",
+    "inference": "Non-Order pragmatic-alliance prior; not a numeric diplomatic guarantee",
+    "race_a": "nurgle",
+    "race_b": "vampire_counts"
+  },
+  {
+    "class": "Workable",
+    "inference": "Chaos ecosystem prior with patron/vassal competition",
+    "race_a": "nurgle",
+    "race_b": "warriors_of_chaos"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "nurgle",
+    "race_b": "wood_elves"
+  },
+  {
+    "class": "Clean",
+    "inference": "Same-race ecosystem prior",
+    "race_a": "ogre_kingdoms",
+    "race_b": "ogre_kingdoms"
+  },
+  {
+    "class": "Workable",
+    "inference": "Ogre mercenary-neutral ecosystem prior; faction restrictions take precedence",
+    "race_a": "ogre_kingdoms",
+    "race_b": "skaven"
+  },
+  {
+    "class": "Workable",
+    "inference": "Ogre mercenary-neutral ecosystem prior; faction restrictions take precedence",
+    "race_a": "ogre_kingdoms",
+    "race_b": "slaanesh"
+  },
+  {
+    "class": "Workable",
+    "inference": "Ogre mercenary-neutral ecosystem prior; faction restrictions take precedence",
+    "race_a": "ogre_kingdoms",
+    "race_b": "tomb_kings"
+  },
+  {
+    "class": "Workable",
+    "inference": "Ogre mercenary-neutral ecosystem prior; faction restrictions take precedence",
+    "race_a": "ogre_kingdoms",
+    "race_b": "tzeentch"
+  },
+  {
+    "class": "Workable",
+    "inference": "Ogre mercenary-neutral ecosystem prior; faction restrictions take precedence",
+    "race_a": "ogre_kingdoms",
+    "race_b": "vampire_coast"
+  },
+  {
+    "class": "Workable",
+    "inference": "Ogre mercenary-neutral ecosystem prior; faction restrictions take precedence",
+    "race_a": "ogre_kingdoms",
+    "race_b": "vampire_counts"
+  },
+  {
+    "class": "Workable",
+    "inference": "Ogre mercenary-neutral ecosystem prior; faction restrictions take precedence",
+    "race_a": "ogre_kingdoms",
+    "race_b": "warriors_of_chaos"
+  },
+  {
+    "class": "Workable",
+    "inference": "Ogre mercenary-neutral ecosystem prior; faction restrictions take precedence",
+    "race_a": "ogre_kingdoms",
+    "race_b": "wood_elves"
+  },
+  {
+    "class": "Clean",
+    "inference": "Same-race ecosystem prior",
+    "race_a": "skaven",
+    "race_b": "skaven"
+  },
+  {
+    "class": "Workable",
+    "inference": "Non-Order pragmatic-alliance prior; not a numeric diplomatic guarantee",
+    "race_a": "skaven",
+    "race_b": "slaanesh"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed Tomb King ecosystem prior",
+    "race_a": "skaven",
+    "race_b": "tomb_kings"
+  },
+  {
+    "class": "Workable",
+    "inference": "Non-Order pragmatic-alliance prior; not a numeric diplomatic guarantee",
+    "race_a": "skaven",
+    "race_b": "tzeentch"
+  },
+  {
+    "class": "Workable",
+    "inference": "Non-Order pragmatic-alliance prior; not a numeric diplomatic guarantee",
+    "race_a": "skaven",
+    "race_b": "vampire_coast"
+  },
+  {
+    "class": "Workable",
+    "inference": "Non-Order pragmatic-alliance prior; not a numeric diplomatic guarantee",
+    "race_a": "skaven",
+    "race_b": "vampire_counts"
+  },
+  {
+    "class": "Workable",
+    "inference": "Non-Order pragmatic-alliance prior; not a numeric diplomatic guarantee",
+    "race_a": "skaven",
+    "race_b": "warriors_of_chaos"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "skaven",
+    "race_b": "wood_elves"
+  },
+  {
+    "class": "Clean",
+    "inference": "Same-race ecosystem prior",
+    "race_a": "slaanesh",
+    "race_b": "slaanesh"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed Tomb King ecosystem prior",
+    "race_a": "slaanesh",
+    "race_b": "tomb_kings"
+  },
+  {
+    "class": "Workable",
+    "inference": "Chaos ecosystem prior with patron/vassal competition",
+    "race_a": "slaanesh",
+    "race_b": "tzeentch"
+  },
+  {
+    "class": "Workable",
+    "inference": "Non-Order pragmatic-alliance prior; not a numeric diplomatic guarantee",
+    "race_a": "slaanesh",
+    "race_b": "vampire_coast"
+  },
+  {
+    "class": "Workable",
+    "inference": "Non-Order pragmatic-alliance prior; not a numeric diplomatic guarantee",
+    "race_a": "slaanesh",
+    "race_b": "vampire_counts"
+  },
+  {
+    "class": "Workable",
+    "inference": "Chaos ecosystem prior with patron/vassal competition",
+    "race_a": "slaanesh",
+    "race_b": "warriors_of_chaos"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "slaanesh",
+    "race_b": "wood_elves"
+  },
+  {
+    "class": "Clean",
+    "inference": "Same-race ecosystem prior",
+    "race_a": "tomb_kings",
+    "race_b": "tomb_kings"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed Tomb King ecosystem prior",
+    "race_a": "tomb_kings",
+    "race_b": "tzeentch"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed Tomb King ecosystem prior",
+    "race_a": "tomb_kings",
+    "race_b": "vampire_coast"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed Tomb King ecosystem prior",
+    "race_a": "tomb_kings",
+    "race_b": "vampire_counts"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed Tomb King ecosystem prior",
+    "race_a": "tomb_kings",
+    "race_b": "warriors_of_chaos"
+  },
+  {
+    "class": "Workable",
+    "inference": "Independent Tomb King coexistence prior",
+    "race_a": "tomb_kings",
+    "race_b": "wood_elves"
+  },
+  {
+    "class": "Clean",
+    "inference": "Same-race ecosystem prior",
+    "race_a": "tzeentch",
+    "race_b": "tzeentch"
+  },
+  {
+    "class": "Workable",
+    "inference": "Non-Order pragmatic-alliance prior; not a numeric diplomatic guarantee",
+    "race_a": "tzeentch",
+    "race_b": "vampire_coast"
+  },
+  {
+    "class": "Workable",
+    "inference": "Non-Order pragmatic-alliance prior; not a numeric diplomatic guarantee",
+    "race_a": "tzeentch",
+    "race_b": "vampire_counts"
+  },
+  {
+    "class": "Workable",
+    "inference": "Chaos ecosystem prior with patron/vassal competition",
+    "race_a": "tzeentch",
+    "race_b": "warriors_of_chaos"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "tzeentch",
+    "race_b": "wood_elves"
+  },
+  {
+    "class": "Clean",
+    "inference": "Same-race ecosystem prior",
+    "race_a": "vampire_coast",
+    "race_b": "vampire_coast"
+  },
+  {
+    "class": "Clean",
+    "inference": "Shared vampiric ecosystem prior",
+    "race_a": "vampire_coast",
+    "race_b": "vampire_counts"
+  },
+  {
+    "class": "Workable",
+    "inference": "Non-Order pragmatic-alliance prior; not a numeric diplomatic guarantee",
+    "race_a": "vampire_coast",
+    "race_b": "warriors_of_chaos"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "vampire_coast",
+    "race_b": "wood_elves"
+  },
+  {
+    "class": "Clean",
+    "inference": "Same-race ecosystem prior",
+    "race_a": "vampire_counts",
+    "race_b": "vampire_counts"
+  },
+  {
+    "class": "Workable",
+    "inference": "Non-Order pragmatic-alliance prior; not a numeric diplomatic guarantee",
+    "race_a": "vampire_counts",
+    "race_b": "warriors_of_chaos"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "vampire_counts",
+    "race_b": "wood_elves"
+  },
+  {
+    "class": "Clean",
+    "inference": "Same-race ecosystem prior",
+    "race_a": "warriors_of_chaos",
+    "race_b": "warriors_of_chaos"
+  },
+  {
+    "class": "Conflict",
+    "inference": "Opposed surrounding diplomatic ecosystems prior",
+    "race_a": "warriors_of_chaos",
+    "race_b": "wood_elves"
+  },
+  {
+    "class": "Clean",
+    "inference": "Same-race ecosystem prior",
+    "race_a": "wood_elves",
+    "race_b": "wood_elves"
+  }
+]

@@ -1,0 +1,17 @@
+{
+  "baseline_comparison.json": "1b811ec4ae9b0b3197f5a46c4f0bc276a151dea0edc9ca57077f6ef429dfa774",
+  "baseline_pair_comparison.csv": "dc8b489133cb5c6113db87a0dd64936987c63132d02fb65821c2c6848c2dc850",
+  "coverage_report.json": "03432c136d94cc9edea4059757c9661c5fa9c555b81017563232fafbc4c7e4f1",
+  "evidence_registry.json": "12b64eda2c9a12e4c121d1c64c6e2f4d123e611fc2b7bf3a62cfaea9be7b9cc2",
+  "faction_coverage.csv": "25f464c67300767deae9a337e8f7f7b4e648f4de8a106bd93db3a30145560772",
+  "faction_evidence.csv": "c3227ab9ece5f81b2ccfb24bbea5fdfc67b5c97bc32122869e9cc612e8b17f9d",
+  "nearby_rejected.csv": "4914197b6c36df714f02d462a7873f0de88e8c0da70f68a536268afef4f0904d",
+  "preliminary_vs_generated.md": "7f6f64e4cca941b61fa3af65ef8946aad2687798f4d5ccc098777786cd31175b",
+  "qualifying_pairs__8.1.1.csv": "69743eaedb8f98d2c40d67fb5a1e8239d3a5f2fb28e4c0b0941620e7f8fd16cd",
+  "race_policy.json": "4a8148763c5df12ef06178ee679a364de80b9a3ccfa194fe92d601f20cb83089",
+  "regional_pairings.md": "6eb658d2d060e5c1baf6143f7c7130c0ee94c96f870d2f37f2e2d279afe3fc75",
+  "regional_summary.csv": "0d9ecbbca3befc50624561b4a5e5c45a2d32d7a183355dc52b64b6f8dd4410ee",
+  "source_provenance.json": "5d3dada171445172be1fef4329032ff930cca1f62650aaed9a4b6a0c365001f3",
+  "start_region_corrections.csv": "21aa2ddf1b8b1f246f17ecdc072888c20d3580c93f8a76968db82396e1ea1213",
+  "start_repair_comparison.csv": "8033e3226ab5d7b496d42eab19fc4654f0aad4a2674f2ee85aef33000e2c71ac"
+}

@@ -1,0 +1,34 @@
+theater,qualifying_pairs,Clean,Workable,Special
+badlands <-> dwarf_empire,1,0,1,0
+badlands <-> southlands,2,0,2,0
+border_princes,3,0,3,0
+border_princes <-> bretonnia,1,0,1,0
+border_princes <-> dwarf_empire,4,0,4,0
+border_princes <-> empire,2,0,2,0
+bretonnia,4,1,3,0
+bretonnia <-> dwarf_empire,4,1,3,0
+bretonnia <-> empire,1,1,0,0
+cathay,13,3,10,0
+cathay <-> chaos_wastes,1,0,1,0
+cathay <-> mountains_of_mourn,5,3,2,0
+chaos_wastes,9,1,8,0
+chaos_wastes <-> darklands,1,0,1,0
+chaos_wastes <-> dwarf_empire,1,0,1,0
+chaos_wastes <-> mountains_of_mourn,1,0,1,0
+darklands,2,0,2,0
+darklands <-> dwarf_empire,3,0,3,0
+darklands <-> mountains_of_mourn,2,0,2,0
+dwarf_empire,7,3,4,0
+dwarf_empire <-> empire,6,1,5,0
+dwarf_empire <-> kislev,1,1,0,0
+empire,5,1,4,0
+empire <-> kislev,3,0,3,0
+kislev,1,1,0,0
+kislev <-> norsca,6,2,4,0
+lustria,13,3,9,1
+lustria <-> naggarond,1,0,1,0
+mountains_of_mourn,3,0,3,0
+naggarond,18,3,15,0
+norsca,1,0,1,0
+southlands,19,4,15,0
+ulthuan,2,1,1,0

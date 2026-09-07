@@ -1,0 +1,2 @@
+historical_pair,historical_status,faction_a_key,faction_b_key,start_region_a,start_region_b,geographic_distance,centroid_distance,raster_hops,proximity_class,diplomatic_class,included,exclusion_reason
+Gorbad + Wurrzag,"pre-audit candidate, already flagged geographically stale",wh3_dlc26_grn_gorbad_ironclaw,wh_main_grn_orcs_of_the_bloody_hand,wh3_main_combi_region_iron_rock,wh3_main_combi_region_sun_tree_glades,233.832041,237.371859,9,Distant,Clean,False,Outside frozen geographic envelope
