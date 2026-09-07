@@ -29,6 +29,7 @@ AUDIT_DATE = '2026-09-06'
 BASELINE_PAIR = tuple(sorted(('wh3_dlc26_grn_gorbad_ironclaw','wh_main_grn_orcs_of_the_bloody_hand')))
 INPUTS = ['AGENTS.md','context_catalog.json',ATLAS,INDEX,
           'data/campaign_map/README.md','data/campaign_map/VALIDATION.md','data/campaign_map/validation_report.json',
+          *['data/campaign_map/starting_positions/'+p for p in ('README.md','dataset_manifest.json','schema_inventory.csv','script_audit.md','starting_positions_validation.json','army_starts.csv','partner_overrides.csv','source_exports/source_manifest.json','source_exports/custom_start_rules.json','source_exports/characters.csv')],
           'data/economy/README.md','data/economy/dataset_manifest.json','data/economy/schema_inventory__v1.csv',
           'data/economy/audit_report.json','data/faction_guides/README.md','data/faction_guides/queue.json',
           *[f'data/faction_guides/races/{r}.md' for r in sorted(GUIDE_RULES)]]
@@ -108,9 +109,12 @@ def validate(pairs, factions):
         require(p['evidence_ids'] and p['analytical_inference'] and p['diplomatic_caveat'],'Missing scoped evidence or uncertainty')
         require(p['included'] == (p['geographic_envelope'] and p['diplomatic_class']!='Conflict' and not p['treaty_eligibility_unresolved']),'Intersection inconsistent')
         if p['included']:
-            require(p['centroid_distance'] is not None and p['start_region_a'] and p['start_region_b'],'Included pair lacks starts')
+            require(p['geographic_distance'] is not None and all(p[k] is not None for k in ('world_x_a','world_y_a','world_x_b','world_y_b')),'Included pair lacks army points')
+            if p['maritime_anchor_inference']:
+                require(p['raster_hops'] is None and p['proximity_class']!='Immediate','Maritime adjacency asserted')
+                require(max(p['land_anchor_gap_a'],p['land_anchor_gap_b'])<=25,'Maritime anchor gap violated')
             if p['proximity_class']=='Extended':
-                require(p['shared_theater_keys'] and ((p['raster_hops'] is not None and p['raster_hops']<=6) or p['centroid_distance']<=75),'Extended gate violated')
+                require(p['shared_theater_keys'] and ((p['land_anchor_hops'] is not None and p['land_anchor_hops']<=6) or p['geographic_distance']<=75),'Extended gate violated')
         else:
             require(p['exclusion_reason'],'Rejected pair has no reason')
     require(set(appearances)==keys and set(appearances.values())=={103},'Every faction must occur in 103 pair rows')
@@ -143,7 +147,7 @@ def generate(root, output, work):
         starts, pairs, calibration = build_geography(db)
         pressure = objective_pressure(db)
         source_coverage = [dict(r) for r in db.execute('SELECT * FROM coverage ORDER BY subject')]
-        schema = [dict(r) for r in db.execute("SELECT name,type,sql FROM sqlite_master WHERE name IN ('faction_start_reference','regions','provinces','region_points','region_adjacency','region_groups','strategic_nodes','strategic_links','objectives','objective_conditions') ORDER BY name")]
+        schema = [dict(r) for r in db.execute("SELECT name,type,sql FROM sqlite_master WHERE name IN ('faction_start_reference','faction_army_start_reference','campaign_army_starts','campaign_start_rules','campaign_start_partner_overrides','regions','provinces','region_points','region_adjacency','region_groups','strategic_nodes','strategic_links','objectives','objective_conditions') ORDER BY name")]
     with (root/INDEX).open(encoding='utf-8-sig',newline='') as f:
         index = list(csv.DictReader(f))
     factions = {f['faction_key']:f for f in index}
@@ -174,15 +178,38 @@ def generate(root, output, work):
         p['exclusion_reason'] = '; '.join(reasons)
     checks = validate(pairs,factions)
     included = [p for p in pairs if p['included']]
+    pair_key=lambda p:(p['faction_a_key'],p['faction_b_key'])
+    with (STUDY/'prior_capital_proxy_qualifiers.csv').open(encoding='utf8',newline='') as f:
+        previous={pair_key(r):r for r in csv.DictReader(f)}
+    current={pair_key(r):r for r in pairs}
+    new_keys={pair_key(p) for p in included}
+    repair=[]
+    for key in sorted(set(previous)|new_keys):
+        before,after=previous.get(key),current[key]
+        repair.append({'faction_a_key':key[0],'faction_b_key':key[1],
+            'faction_a_name':after['faction_a_name'],'faction_b_name':after['faction_b_name'],
+            'previous_included':bool(before),'current_included':after['included'],
+            'change':('retained' if before else 'added') if after['included'] else 'removed',
+            'previous_proximity':before['proximity_class'] if before else None,
+            'current_proximity':after['proximity_class'],
+            'previous_diplomacy':before['diplomatic_class'] if before else None,
+            'current_diplomacy':after['diplomatic_class'],
+            'geographic_distance':after['geographic_distance'],'reason':after['exclusion_reason'] or after['geographic_reason']})
+    write_csv(output/'start_repair_comparison.csv',repair)
+    write_csv(output/'start_region_corrections.csv',[{'faction_key':f['faction_key'],'faction_name':f['faction_name'],
+        'previous_capital_proxy':f['capital_region_key'],'human_start_region':f['start_region_key'],
+        'primary_world_x':f['world_x'],'primary_world_y':f['world_y'],'position_kind':f['position_kind'],
+        'nearest_land_anchor':f['nearest_land_region_key'],'script_rule_indexes':f['script_rule_indexes']} for f in starts])
     nearby = [p for p in pairs if not p['included'] and p['proximity_class'] in {'Immediate','Regional','Extended'}]
     counts = Counter(k for p in included for k in (p['faction_a_key'],p['faction_b_key']))
     unknown_counts = Counter(k for p in pairs if p['proximity_class']=='Unresolved' or p['treaty_eligibility_unresolved'] for k in (p['faction_a_key'],p['faction_b_key']))
     coverage = []
     for key,f in sorted(factions.items()):
         coverage.append({'faction_key':key,'faction_name':f['faction_name'],'race':f['race_slug'],
-                         'start_region':f['capital_region_key'],'qualifying_partners':counts[key],
+                         'start_region':f['start_region_key'],'capital_region':f['capital_region_key'],
+                         'start_position_kind':f['position_kind'],'qualifying_partners':counts[key],
                          'unresolved_pair_count':unknown_counts[key],
-                         'zero_partner_reason': ('missing capital; zero observed, local viability unknown' if f['centroid_x'] is None else 'no partner passes frozen rules among resolved starts; missing-start partners remain unknown') if not counts[key] else '',
+                         'zero_partner_reason': ('no partner passes frozen geography and diplomatic policy; unresolved treaty eligibility remains explicit') if not counts[key] else '',
                          'recovered_baseline_partners':int(key in BASELINE_PAIR),
                          'baseline_underrepresentation':'not assessable: 123 of 124 baseline rows missing'})
     require(sum(c['qualifying_partners'] for c in coverage)==2*len(included),'Partner-count sum mismatch')
@@ -196,10 +223,10 @@ def generate(root, output, work):
                   'newly_discovered_pairs':'Not identifiable from the incomplete baseline; do not call generated-only rows new omissions.',
                   'underrepresented_factions':'Not identifiable: recovered row frequency is not the original enumeration frequency.',
                   'recovered_row_result':{'historical_pair':'Gorbad + Wurrzag','historical_status':'pre-audit candidate, already flagged geographically stale',
-                                          **{k:baseline[k] for k in ('faction_a_key','faction_b_key','start_region_a','start_region_b','centroid_distance','raster_hops','proximity_class','diplomatic_class','included','exclusion_reason')}}}
+                                          **{k:baseline[k] for k in ('faction_a_key','faction_b_key','start_region_a','start_region_b','geographic_distance','centroid_distance','raster_hops','proximity_class','diplomatic_class','included','exclusion_reason')}}}
     caveats = [
-        '18 playable factions lack capital/start regions; 1701 pair geographies unresolved. No army starts inferred from memory, guide flavor, objective targets, or ownership of a vassal.',
-        'Atlas centroid is a region-mask centroid, not an army or settlement point; scenario-script relocations and human start branches are not comprehensively represented.',
+        'All 104 primary army world points resolve from ESF plus static human startup rules. Runtime callback/teleport behavior is not playtested; later player choices excluded.',
+        'Four human starts are maritime points without unique sea masks. Nearby land anchors support an explicit geographic inference, not a landing entitlement or movement route.',
         '70 maritime/special regions lack individual geometry; 72 lack a province. Province-less unknown terrain is excluded from graph traversal.',
         'Raster border paths are topological indicators, not passable movement routes or campaign turns. Islands may lack paths even when physically close.',
         'All 119 strategic links are trade-route segments. 261 teleportation nodes do not supply validated player access or traversal edges; no portal/sea-lane shortcut qualifies a pair.',
@@ -212,12 +239,18 @@ def generate(root, output, work):
     report = {'status':'passed_with_documented_coverage_gaps','audit_date':AUDIT_DATE,'patch':'8.1.1','steam_build_id':24237342,
               'acceptance_complete':False,'issue_closure_recommended':False,'faction_count':len(factions),'pair_count':len(pairs),
               'qualifying_pair_count':len(included),'nearby_rejected_count':len(nearby),
+              'prior_implementation_comparison':{'commit':'c169e19f154784759041677d1def85dd5844c946',
+                  'previous_qualifiers':len(previous),'current_qualifiers':len(included),
+                  'counts':dict(Counter(r['change'] for r in repair)),
+                  'retained_changed_proximity':sum(r['change']=='retained' and r['previous_proximity']!=r['current_proximity'] for r in repair),
+                  'scope':'Complete qualifying-set comparison with the prior implementation, NOT the incomplete historical Notion enumeration'},
               'proximity_counts':dict(sorted(Counter(p['proximity_class'] for p in pairs).items())),
               'diplomatic_counts_all_pairs':dict(sorted(Counter(p['diplomatic_class'] for p in pairs).items())),
               'qualifying_by_diplomacy':dict(sorted(Counter(p['diplomatic_class'] for p in included).items())),
               'qualifying_by_proximity':dict(sorted(Counter(p['proximity_class'] for p in included).items())),
               'zero_partner_factions':[c for c in coverage if not c['qualifying_partners']],
-              'missing_start_factions':[{'key':k,'name':f['faction_name']} for k,f in sorted(factions.items()) if f['centroid_x'] is None],
+              'missing_start_factions':[{'key':k,'name':f['faction_name']} for k,f in sorted(factions.items()) if f['world_x'] is None],
+              'maritime_start_factions':[{'key':k,'name':f['faction_name']} for k,f in sorted(factions.items()) if f['start_region_key'] is None],
               'checks':checks+['Source commit, snapshot and consumed Git blobs verified; SQLite read-only integrity passed',
                                '24 guide profiles and every evidence anchor resolved','Partner-count sum equals twice qualifying pairs'],
               'remaining_gaps':caveats,'source_validation_warnings':read_json(root/'data/campaign_map/validation_report.json')['warnings']}
@@ -233,7 +266,9 @@ def generate(root, output, work):
     write_json(output/'source_provenance.json',{**provenance,'atlas_metadata':metadata,'atlas_coverage':source_coverage,
                                               'atlas_schema_inventory':schema,'notion_baseline_url':NOTION_URL,
                                               'baseline_sha256':sha(STUDY/'baseline_september_6.md'),
-                                              'geography_freeze_commit':'ce3e05a'})
+                                              'geography_freeze_commit':'400dfbd',
+                                              'starting_positions_validation':read_json(root/'data/campaign_map/starting_positions/starting_positions_validation.json'),
+                                              'source_repair_pr':'https://github.com/OwenTanzer/computational-total-war/pull/6'})
     # Full faction-by-faction audit inventory, including subjects with missing starts.
     profiles = []
     for key,f in sorted(factions.items()):
@@ -245,7 +280,7 @@ def generate(root, output, work):
     theater_groups = defaultdict(list)
     for p in included: theater_groups[p['theater']].append(p)
     lines = ['# Regional enumeration','',f'{len(included)} pairs qualify under the frozen analytical policy. Implemented on the PR branch; awaiting review and merge.',
-             '', 'This is exhaustive over the stated rules and available capital geometry, **not a complete validated 104-faction campaign atlas**. See [coverage report](coverage_report.json) and [methodology](methodology.md).',
+             '', 'All 104 primary army points resolve. This is exhaustive over the stated analytical rules; diplomatic and runtime uncertainties remain. See [coverage report](coverage_report.json) and [methodology](methodology.md).',
              '', 'Names are source faction labels. Every row links through stable keys in [the machine-readable table](qualifying_pairs__8.1.1.csv); evidence and caveats are retained there.','']
     summary = []
     for theater, group in sorted(theater_groups.items()):
@@ -258,7 +293,7 @@ def generate(root, output, work):
     write_csv(output/'regional_summary.csv',summary,['theater','qualifying_pairs','Clean','Workable','Special'])
     diff_lines = ['# Historical versus generated','',f'Historical page: {NOTION_URL}', '',
                   'The untruncated September 6 page contains the 124 / 123 / 62 counts and audit plan, but only one named pair and no regional groupings. The other 123 candidate identities, original proximity/diplomacy classes, regional assignments, 62-row shortlist, 53 pruned rows and nine later additions are missing.', '',
-                  f"Gorbad + Wurrzag: {baseline['start_region_a']} to {baseline['start_region_b']}; {baseline['centroid_distance']} logical units, {baseline['raster_hops']} raster borders; {baseline['proximity_class']} / {baseline['diplomatic_class']}; excluded. The stale flag is corroborated.",'',
+                  f"Gorbad + Wurrzag: {baseline['start_region_a']} to {baseline['start_region_b']}; primary armies {baseline['geographic_distance']} world units apart (region centroids {baseline['centroid_distance']}), {baseline['raster_hops']} raster borders; {baseline['proximity_class']} / {baseline['diplomatic_class']}; excluded. The stale flag is corroborated.",'',
                   f'{len(included)} generated qualifiers cannot be called newly discovered relative to the unrecovered 123 rows. Changed old class labels and systematic faction underrepresentation cannot be reconstructed. The counts never set a target for generation.', '',
                   'See [the recovered historical page](baseline_september_6.md), [one-row comparison](baseline_pair_comparison.csv), and [all-faction counts](faction_coverage.csv).']
     (output/'preliminary_vs_generated.md').write_text('\n'.join(diff_lines)+'\n',encoding='utf8',newline='\n')
@@ -270,7 +305,7 @@ def generate(root, output, work):
 GENERATED_FILES = {'qualifying_pairs__8.1.1.csv','nearby_rejected.csv','faction_coverage.csv','baseline_pair_comparison.csv',
                    'baseline_comparison.json','evidence_registry.json','race_policy.json','coverage_report.json',
                    'source_provenance.json','faction_evidence.csv','regional_pairings.md','regional_summary.csv',
-                   'preliminary_vs_generated.md','output_hashes.json'}
+                   'preliminary_vs_generated.md','start_repair_comparison.csv','start_region_corrections.csv','output_hashes.json'}
 
 
 def main():

@@ -8,18 +8,19 @@
   "newly_discovered_pairs": "Not identifiable from the incomplete baseline; do not call generated-only rows new omissions.",
   "recovered_pair_rows": 1,
   "recovered_row_result": {
-    "centroid_distance": 267.842831,
+    "centroid_distance": 237.371859,
     "diplomatic_class": "Clean",
     "exclusion_reason": "Outside frozen geographic envelope",
     "faction_a_key": "wh3_dlc26_grn_gorbad_ironclaw",
     "faction_b_key": "wh_main_grn_orcs_of_the_bloody_hand",
+    "geographic_distance": 233.832041,
     "historical_pair": "Gorbad + Wurrzag",
     "historical_status": "pre-audit candidate, already flagged geographically stale",
     "included": false,
     "proximity_class": "Distant",
-    "raster_hops": 8,
-    "start_region_a": "wh3_main_combi_region_black_crag",
-    "start_region_b": "wh3_main_combi_region_cuexotl"
+    "raster_hops": 9,
+    "start_region_a": "wh3_main_combi_region_iron_rock",
+    "start_region_b": "wh3_main_combi_region_sun_tree_glades"
   },
   "regional_groupings_recovered": 0,
   "reported_post_flag_count": 123,

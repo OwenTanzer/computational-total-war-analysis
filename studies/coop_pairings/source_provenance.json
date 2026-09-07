@@ -25,9 +25,9 @@
       "subject": "region raster geometry"
     },
     {
-      "notes": "Not exposed by the decoded DB start-position relations in this source pass",
-      "record_count": 0,
-      "status": "unavailable",
+      "notes": "104 primary generals; 109 generals including secondary forces. Raw 308-character evidence; hero replacements not a post-init census.",
+      "record_count": 109,
+      "status": "primary_armies_complete_static_scripts",
       "subject": "starting forces and agents"
     },
     {
@@ -50,11 +50,32 @@
     "generated_at_utc": "2026-08-30T00:24:34.945Z",
     "geometry_model": "Exact colour-coded region raster plus derived centroids and raster-border adjacency; sea-region vectors unavailable",
     "patch": "8.1.1",
-    "schema_version": "1.0.0",
+    "schema_version": "1.1.0",
+    "starting_positions_audit_date": "2026-09-06",
     "steam_build_id": "24237342",
     "title": "Total War: Warhammer III Immortal Empires Campaign Atlas"
   },
   "atlas_schema_inventory": [
+    {
+      "name": "campaign_army_starts",
+      "sql": "CREATE TABLE campaign_army_starts (faction_key TEXT,character_id INTEGER,subtype_key TEXT,force_id INTEGER,is_primary INTEGER,world_x REAL,world_y REAL,logical_x INTEGER,logical_y INTEGER,start_region_key TEXT,nearest_land_region_key TEXT,nearest_land_distance REAL,position_kind TEXT,binary_world_x REAL,binary_world_y REAL,binary_logical_x INTEGER,binary_logical_y INTEGER,binary_region_key TEXT,esf_offset INTEGER,script_rule_indexes TEXT,stage TEXT,PRIMARY KEY(faction_key,character_id),FOREIGN KEY(faction_key) REFERENCES factions(faction_key))",
+      "type": "table"
+    },
+    {
+      "name": "campaign_start_partner_overrides",
+      "sql": "CREATE TABLE campaign_start_partner_overrides (faction_key TEXT,partner_key TEXT,world_x REAL,world_y REAL,logical_x INTEGER,logical_y INTEGER,start_region_key TEXT,PRIMARY KEY(faction_key,partner_key))",
+      "type": "table"
+    },
+    {
+      "name": "campaign_start_rules",
+      "sql": "CREATE TABLE campaign_start_rules (rule_index INTEGER PRIMARY KEY, rule_json TEXT NOT NULL)",
+      "type": "table"
+    },
+    {
+      "name": "faction_army_start_reference",
+      "sql": "CREATE VIEW faction_army_start_reference AS SELECT a.*,f.name faction_name,f.capital_region_key,f.culture_key,f.subculture_key,\n        r.province_key,r.centroid_x,r.centroid_y,r.name start_region_name\n        FROM campaign_army_starts a JOIN factions f USING(faction_key)\n        LEFT JOIN regions r ON a.start_region_key=r.region_key WHERE a.is_primary=1",
+      "type": "view"
+    },
     {
       "name": "faction_start_reference",
       "sql": "CREATE VIEW faction_start_reference AS\n  SELECT f.faction_key, f.name AS faction_name, f.subculture_key, f.culture_key,\n         f.is_major, f.starting_order, f.starting_treasury, f.capital_region_key,\n         r.name AS capital_region_name, r.province_key, r.centroid_x, r.centroid_y\n  FROM factions f LEFT JOIN regions r ON r.region_key = f.capital_region_key\n  WHERE f.playable = 1",
@@ -106,37 +127,67 @@
       "type": "table"
     }
   ],
-  "atlas_sha256": "99e7e858db93f15c864aa3f090d490f89ad969402095fb7f98bd2b7542cef407",
+  "atlas_sha256": "6cb1268cfc898a5114855b7679cbbbaa9aba776a150977c786935ed6855e3d02",
   "baseline_sha256": "fa2168095310d103a0f001eb462b9a8a7d889b4e88d7b858cb94ca1f44cf70c7",
-  "geography_freeze_commit": "ce3e05a",
-  "git_commit": "8c2169b837288d03ba0188b468f06a2f3bcb4b28",
+  "geography_freeze_commit": "400dfbd",
+  "git_commit": "91b019866c7fd3afe72063cd0c4d7a9fd3830124",
   "inputs": {
     "AGENTS.md": {
-      "git_blob": "a754ed52daaffe5f8fd2b65339d443c5ccd00d23"
+      "git_blob": "96535905df5470d9a5d5e7911cd4ae02ab26aee5"
     },
     "context_catalog.json": {
-      "git_blob": "69aa6f97283c9b7408e9ca849b5fb84209da9f9f"
+      "git_blob": "e6f76c570622f7f6acc6f74d1420bd35aa4c2e80"
     },
     "data/campaign_map/README.md": {
-      "git_blob": "168fafd08d41e2263111d5e1fc05590bc420d737"
+      "git_blob": "664d9de263fae47a46bf8c77a08bc2bc5b1196de"
     },
     "data/campaign_map/VALIDATION.md": {
-      "git_blob": "a77e85223fd349289410e400df3a8900b10fbf27"
+      "git_blob": "18554accbcdcd8015316e088089a3a7ba2399ce8"
     },
     "data/campaign_map/campaign_atlas__wh3__8.1.1.gpkg": {
-      "git_blob": "786539124576e3cb04b2a8ea42f542d0876e1c48"
+      "git_blob": "e83819f78e95bc4a37a8a708ea64a3d60e2ef536"
+    },
+    "data/campaign_map/starting_positions/README.md": {
+      "git_blob": "ae73d4a3e0b12a1b012ee804710c81e0c48e47a2"
+    },
+    "data/campaign_map/starting_positions/army_starts.csv": {
+      "git_blob": "7a18aeb8d3d57d0e3d47aba21b1d4b7fd2af4edb"
+    },
+    "data/campaign_map/starting_positions/dataset_manifest.json": {
+      "git_blob": "10ce530e1a245e398f0df3cc9f6260cf5afffeef"
+    },
+    "data/campaign_map/starting_positions/partner_overrides.csv": {
+      "git_blob": "24c0cb7bedf84e33cc3942dabfe12daf16a1a848"
+    },
+    "data/campaign_map/starting_positions/schema_inventory.csv": {
+      "git_blob": "874b72e7d879166118d00d82b0f9e9e754c6a9f6"
+    },
+    "data/campaign_map/starting_positions/script_audit.md": {
+      "git_blob": "6be1c07305510725efe8874e1fb641bb95d160cb"
+    },
+    "data/campaign_map/starting_positions/source_exports/characters.csv": {
+      "git_blob": "a1b0e64b1f50356429ae36ce960eb86307013ed1"
+    },
+    "data/campaign_map/starting_positions/source_exports/custom_start_rules.json": {
+      "git_blob": "fe35897d0525f5a75815ddf71b313f3b50448f4f"
+    },
+    "data/campaign_map/starting_positions/source_exports/source_manifest.json": {
+      "git_blob": "811293b72e422f6be9a3fe867c55ce0c03a50e8f"
+    },
+    "data/campaign_map/starting_positions/starting_positions_validation.json": {
+      "git_blob": "615fe0b30a8ee7d57a5ae5a6167bf92491d87e52"
     },
     "data/campaign_map/validation_report.json": {
-      "git_blob": "c6a8c7fbb223cdc75a07bae3289a4da7acf4fa17"
+      "git_blob": "7864505b2612386f628a599a08282d4c237329ff"
     },
     "data/economy/README.md": {
       "git_blob": "63a28875bec0fdb7bc5aeea8f6284556d065d38b"
     },
     "data/economy/audit_report.json": {
-      "git_blob": "fbe3461a4b33da346ba99d48923e31134ee0aa94"
+      "git_blob": "8e55059a7ddbbae2943638239d715270f9f89072"
     },
     "data/economy/dataset_manifest.json": {
-      "git_blob": "af02aada4ce7e9ee8dfda86f14f9bd7cb840069c"
+      "git_blob": "710252ff8365c6f645462272e26368146978d1c2"
     },
     "data/economy/faction_index__wh3__8.1.1.csv": {
       "git_blob": "984b4d4985b5e5df20c335b1d98af9b1b290cfb8"
@@ -145,82 +196,82 @@
       "git_blob": "61f40f1e4820317846dcd3d0ec333dd702993352"
     },
     "data/faction_guides/README.md": {
-      "git_blob": "71a91d653bb49357ffa965600cd404b781df5b88"
+      "git_blob": "a6964dda85c764228e5db0056f333f04d505e008"
     },
     "data/faction_guides/queue.json": {
       "git_blob": "e0671831827beca96f0b80ffebddc0aa9818e1cf"
     },
     "data/faction_guides/races/beastmen.md": {
-      "git_blob": "345e7e6283ac614866749aef1396ce944e58e22b"
+      "git_blob": "8c858b2f51180ace905b1110949f7f9e603d55f4"
     },
     "data/faction_guides/races/bretonnia.md": {
-      "git_blob": "134387153660d3f0f4dfdee6b93945e6d9128d03"
+      "git_blob": "53262be6225230c965da980b4b38f60a3003477d"
     },
     "data/faction_guides/races/chaos_dwarfs.md": {
-      "git_blob": "5b781afd09c0770c5868beb2cfa7943fb38f8f25"
+      "git_blob": "75fa76e740b5ea442cc41792277b1a0f322c8678"
     },
     "data/faction_guides/races/daemons_of_chaos.md": {
-      "git_blob": "f929908f7e9151876e58188a18695213d1e49dda"
+      "git_blob": "7c6ab72be681df65d575f65f9afb6a8010f660a0"
     },
     "data/faction_guides/races/dark_elves.md": {
-      "git_blob": "30b3a95202a2b57e52bf59909300dfc063407c1e"
+      "git_blob": "6a213465ee1378112c99129db2e3180de4c26d26"
     },
     "data/faction_guides/races/dwarfs.md": {
-      "git_blob": "4392fadac415ca32a56ed1be41ff14b785b85261"
+      "git_blob": "a018291284baa9c3455ba614e1f2ada111af5e1f"
     },
     "data/faction_guides/races/empire.md": {
-      "git_blob": "f7771913a8624117257dd809a01a3e0633d3ccbe"
+      "git_blob": "b2fe40590cce9d74cff38948fc3c3e0b7fea6fb8"
     },
     "data/faction_guides/races/grand_cathay.md": {
-      "git_blob": "10a0f301596c2800fdf100b0e642378381da5f27"
+      "git_blob": "a953f185e5087dc96d3166a0d9cddbbc5c75bed4"
     },
     "data/faction_guides/races/greenskins.md": {
-      "git_blob": "62f94d5d6c232793c492287b9b6149d993aa528f"
+      "git_blob": "154f1016faf7626232676c26cbb3edf8d0d2e30e"
     },
     "data/faction_guides/races/high_elves.md": {
-      "git_blob": "657b4cfb09f2b929ed6623b2c41a53d29e7fb8f2"
+      "git_blob": "da201e522cff57e4fcba719ac6ae5918bc63e50a"
     },
     "data/faction_guides/races/khorne.md": {
-      "git_blob": "4fd2c97be6d7b344abdaf5a1354b935c6a822a3e"
+      "git_blob": "559ee64984243a132aea7a2ad6e33960b5694fca"
     },
     "data/faction_guides/races/kislev.md": {
-      "git_blob": "a171f528c525a2bca03c5ddb74789f68fbc4fce6"
+      "git_blob": "4d411da2096d29659f1b8e71fb555c90f0bc39a9"
     },
     "data/faction_guides/races/lizardmen.md": {
-      "git_blob": "3497334932de29c91bcd2bd2ee21889d3195dd73"
+      "git_blob": "8708574ac9e179ada854561114e1d60358984e71"
     },
     "data/faction_guides/races/norsca.md": {
-      "git_blob": "8b4cfb7ef5ca4217b8e91b807f0312af49a61d0d"
+      "git_blob": "051b7b3bd89a0fdeb7c29c24778b5f21374584d8"
     },
     "data/faction_guides/races/nurgle.md": {
-      "git_blob": "60c8433ea4baf858a24de0889ea8e07e90a33beb"
+      "git_blob": "f13887739745635e91a2439a824a90a451265c04"
     },
     "data/faction_guides/races/ogre_kingdoms.md": {
-      "git_blob": "3bd67a1caefd14a06296155c07a27d8ae2b6368e"
+      "git_blob": "57b31602090a9f64c9bfb6451bc10764e7649dfd"
     },
     "data/faction_guides/races/skaven.md": {
-      "git_blob": "76518210ce8edd82927988bf2f2fef48434e3104"
+      "git_blob": "b12a8b180af3fa72135b65dacc3432a842d37432"
     },
     "data/faction_guides/races/slaanesh.md": {
-      "git_blob": "fff8b377c0eed5520b4183989182dde4fcf41c3c"
+      "git_blob": "076eef0cdb2107f5dab12f0e2c7497abd4234723"
     },
     "data/faction_guides/races/tomb_kings.md": {
-      "git_blob": "529a1f412dba7500daa16e003d9a23da608ff1a1"
+      "git_blob": "32d2bc853d8050276ca65e81d0df3cb733a49ff4"
     },
     "data/faction_guides/races/tzeentch.md": {
-      "git_blob": "0e1755ffb1d4e05a46f19c2428d0db1b3c4b0a15"
+      "git_blob": "15057401901d31bd768dd422469109ec0fbe0004"
     },
     "data/faction_guides/races/vampire_coast.md": {
-      "git_blob": "76ab68408cd895e537d3c23a71de0d06757eb1f1"
+      "git_blob": "0b8b971aeb033eca4623e75ca510f42622f4dce0"
     },
     "data/faction_guides/races/vampire_counts.md": {
-      "git_blob": "7556b9ff4e676d7b0259395589b623d027237b4c"
+      "git_blob": "2a077bec025a34b9c8e5a18aae9719afe5a96224"
     },
     "data/faction_guides/races/warriors_of_chaos.md": {
-      "git_blob": "733bb6b3c796579445110d332fff95201aacd28f"
+      "git_blob": "04b3b21c4ca541824ad3f58d89f519049744ee0f"
     },
     "data/faction_guides/races/wood_elves.md": {
-      "git_blob": "8cd91b3ad10d627a5f94f4252b125df30b66973d"
+      "git_blob": "63f633e3b21fe3a9ade53ce5034fe87cbb0e5219"
     }
   },
   "notion_baseline_url": "https://www.notion.so/3d33c519147b81d2b920e93cc2d8792b",
@@ -231,5 +282,42 @@
     "steam_build_id": 24237342,
     "unit_scale": "ultra"
   },
-  "source_lock_changed": false
+  "source_lock_changed": false,
+  "source_repair_pr": "https://github.com/OwenTanzer/computational-total-war/pull/6",
+  "starting_positions_validation": {
+    "army_starts": 109,
+    "binary_characters": 308,
+    "caveats": [
+      "Static source audit, not 5,356 runtime multiplayer campaign launches.",
+      "Khazrak human relocation depends on partner identity; consume campaign_start_rules when evaluating a pair.",
+      "Maritime points have no uniquely colored sea-region mask; nearest land is a descriptive anchor, not an owned start or travel route.",
+      "Secondary forces retained separately; pair distance uses the primary general.",
+      "Heroes are binary evidence only; scripted hero spawning and replacement are not a complete post-initialization agent census."
+    ],
+    "changed_primary_start_regions": [
+      "wh2_main_hef_yvresse",
+      "wh_dlc05_wef_wood_elves"
+    ],
+    "factions": 104,
+    "maritime_primary_factions": [
+      "wh2_dlc11_cst_noctilus",
+      "wh2_main_hef_yvresse",
+      "wh3_dlc27_hef_aislinn",
+      "wh_dlc08_nor_norsca"
+    ],
+    "missing_army_positions": 0,
+    "partner_overrides": 5,
+    "primary_generals": 104,
+    "schema_version": "1.1.0",
+    "settlement_controls": 569,
+    "status": "passed",
+    "transform": {
+      "control_count": 1017,
+      "evidence_status": "analytical fit to all stored logical/world pairs; not movement costs",
+      "logical_x_scale": 0.6680333612656588,
+      "logical_y_scale": 0.7713784510084412,
+      "max_residual": 3.635854250205739e-05,
+      "odd_x_half_y_offset": true
+    }
+  }
 }

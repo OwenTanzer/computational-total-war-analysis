@@ -37,10 +37,10 @@ for the committed outputs.
 
 [The pairing study](studies/coop_pairings/methodology.md) enumerates all 5,356
 playable-faction pairs from the locked patch 8.1.1 atlas and applies independent
-geographic and diplomatic policies. It produces 114 qualifying pairs, with
+geographic and diplomatic policies. It produces 146 qualifying pairs, with
 nearby rejections, all-faction coverage and explicit source/baseline gaps.
-Eighteen starts remain unresolved; this is not a claim of complete campaign
-or multiplayer validation.
+All 104 primary army starts resolve, including explicit maritime and scripted
+starts. Diplomatic, runtime and historical-baseline uncertainties remain.
 
 ```bash
 python -m ctw_analysis.coop_pairings --ctw-root ../computational-total-war --verify-regeneration

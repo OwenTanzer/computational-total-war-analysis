@@ -1,277 +1,277 @@
 {
   "aislinn_gifts": {
     "anchor": "Aislinn cannot use ordinary region trading",
-    "line": 96,
+    "line": 98,
     "path": "data/faction_guides/races/high_elves.md",
     "source_fact": "Aislinn gifts settlements to six playable High Elf factions and cannot trade regions normally."
   },
   "arkhan_living": {
     "anchor": "-60 relations with Tomb Kings and +40",
-    "line": 152,
+    "line": 154,
     "path": "data/faction_guides/races/tomb_kings.md",
     "source_fact": "Arkhan has a distinct Vampiric Undead affinity rather than the ordinary Tomb King relationship pattern."
   },
   "arkhan_tombs": {
     "anchor": "-60 relations with Tomb Kings and +40",
-    "line": 152,
+    "line": 154,
     "path": "data/faction_guides/races/tomb_kings.md",
     "source_fact": "Arkhan starts at -60 Tomb King and +40 Vampiric Undead relations."
   },
   "arkhan_vampires": {
     "anchor": "-60 relations with Tomb Kings and +40",
-    "line": 152,
+    "line": 154,
     "path": "data/faction_guides/races/tomb_kings.md",
     "source_fact": "Arkhan starts with +40 Vampiric Undead relations."
   },
   "azazel_humans": {
     "anchor": "**+80 diplomatic relations with Empire",
-    "line": 112,
+    "line": 114,
     "path": "data/faction_guides/races/warriors_of_chaos.md",
     "source_fact": "Azazel has +80 relations with Empire/Kislev/Cathay/Bretonnia; seduction excludes human targets."
   },
   "beastmen_0": {
     "anchor": "Beastmen diplomacy is force-restricted",
-    "line": 88,
+    "line": 90,
     "path": "data/faction_guides/races/beastmen.md",
     "source_fact": "Restricted treaty set; permitted-faction membership and teammate bypass are not enumerated by the guide; positive deals reduce Bestial Rage for five turns."
   },
   "bretonnia_0": {
     "anchor": "Human Bretonnian factions are exempt",
-    "line": 91,
+    "line": 93,
     "path": "data/faction_guides/races/bretonnia.md",
     "source_fact": "Human confederation cooldown exemption is not permission to absorb a human teammate."
   },
   "changeling_schemes": {
     "anchor": "Grand Scheme completion applies a theatre-specific",
-    "line": 130,
+    "line": 132,
     "path": "data/faction_guides/races/tzeentch.md",
     "source_fact": "Schemes make theater-specific world changes and rifts have scripted progression."
   },
   "chaos_dwarfs_0": {
     "anchor": "Each successful usurpation increments",
-    "line": 88,
+    "line": 90,
     "path": "data/faction_guides/races/chaos_dwarfs.md",
     "source_fact": "Tower-seat usurpation causes a five-turn diplomatic penalty; coordinate seat claims."
   },
   "daemons_of_chaos_0": {
     "anchor": "No separate faction-specific cult",
-    "line": 115,
+    "line": 117,
     "path": "data/faction_guides/races/daemons_of_chaos.md",
     "source_fact": "Guide establishes no bespoke diplomacy override; generic aversion and dedication-state modifiers remain unmeasured."
   },
   "dark_elves_0": {
     "anchor": "Activating Death Night creates",
-    "line": 73,
+    "line": 75,
     "path": "data/faction_guides/races/dark_elves.md",
     "source_fact": "Har Ganeth Blood Voyage is a forced vassal targeting occupied Ulthuan settlements; not a general alliance ban."
   },
   "dark_elves_1": {
     "anchor": "The 6–9 and 10 bands add",
-    "line": 83,
+    "line": 85,
     "path": "data/faction_guides/races/dark_elves.md",
     "source_fact": "Hag Graef gains conditional +25/+50 daemon relations at high possession; not a permanent faction-wide alliance guarantee."
   },
   "dwarfs_0": {
     "anchor": "peace and positive diplomacy reduce",
-    "line": 22,
+    "line": 24,
     "path": "data/faction_guides/races/dwarfs.md",
     "source_fact": "Grudge accumulation responds to hostile conduct; positive diplomacy reduces it."
   },
   "dwarfs_1": {
     "anchor": "A region adjacent to territory owned",
-    "line": 93,
+    "line": 95,
     "path": "data/faction_guides/races/dwarfs.md",
     "source_fact": "Different allied Dwarf owners can enable conditional Deeps trade/diplomacy benefits."
   },
   "empire_0": {
     "anchor": "While this system operates",
-    "line": 42,
+    "line": 44,
     "path": "data/faction_guides/races/empire.md",
     "source_fact": "Reikland Elector politics replaces ordinary confederation/NAP paths; does not establish a general military-alliance ban."
   },
   "epidemius_plagues": {
     "anchor": "The installed script applies no diplomacy test",
-    "line": 85,
+    "line": 87,
     "path": "data/faction_guides/races/nurgle.md",
     "source_fact": "Non-Nurgle allies can count in the negative-plague Tally."
   },
   "eshin_contracts": {
     "anchor": "It also unlocks diplomacy with a positively regarded issuing clan",
-    "line": 121,
+    "line": 123,
     "path": "data/faction_guides/races/skaven.md",
     "source_fact": "Greater Clan Contracts change issuer/target standing and unlock positive-clan diplomacy; Anarchy excludes humans."
   },
   "golgfag_contracts": {
     "anchor": "The Maneaters cannot conclude military alliances",
-    "line": 90,
+    "line": 92,
     "path": "data/faction_guides/races/ogre_kingdoms.md",
     "source_fact": "Maneaters cannot make military/defensive alliances or vassal agreements; client offers exclude enemies of his team."
   },
   "grand_cathay_0": {
     "anchor": "no distinct Grand Cathay campaign rule was found",
-    "line": 155,
+    "line": 157,
     "path": "data/faction_guides/races/grand_cathay.md",
     "source_fact": "Guide found no distinct diplomatic replacement; generic faction modifiers remain outside coverage."
   },
   "greenskins_0": {
     "anchor": "the loser is AI-controlled",
-    "line": 41,
+    "line": 43,
     "path": "data/faction_guides/races/greenskins.md",
     "source_fact": "Leader-defeat confederation requires an AI loser; it cannot consume the human teammate."
   },
   "high_elves_0": {
     "anchor": "The alliance actions unlock",
-    "line": 36,
+    "line": 38,
     "path": "data/faction_guides/races/high_elves.md",
     "source_fact": "Eataine can unlock Champion actions through alliances with other legendary High Elf factions."
   },
   "huntsmarshal_lizards": {
     "anchor": "with a multiplayer-teammate exception",
-    "line": 68,
+    "line": 70,
     "path": "data/faction_guides/races/empire.md",
     "source_fact": "Lizardmen diplomacy disabled except payments/war/peace, with explicit teammate exception."
   },
   "kemmler_chaos": {
     "anchor": "diplomacy is +30 with Warriors of Chaos",
-    "line": 83,
+    "line": 85,
     "path": "data/faction_guides/races/vampire_counts.md",
     "source_fact": "Kemmler has +30 WoC/Beastmen/Norsca diplomacy and Chaos attrition immunity."
   },
   "khalida_lahmia": {
     "anchor": "permanently unable to make peace with the Lahmian Sisterhood",
-    "line": 152,
+    "line": 154,
     "path": "data/faction_guides/races/tomb_kings.md",
     "source_fact": "Khalida has permanent no-peace with the nonplayable Lahmian Sisterhood."
   },
   "khorne_0": {
     "anchor": "no Khorne-specific confederation",
-    "line": 146,
+    "line": 148,
     "path": "data/faction_guides/races/khorne.md",
     "source_fact": "No bespoke diplomacy override established; absence does not imply zero generic aversion."
   },
   "kislev_0": {
     "anchor": "The former supporter race",
-    "line": 28,
+    "line": 30,
     "path": "data/faction_guides/races/kislev.md",
     "source_fact": "Old supporter-race forced confederation and intra-Kislev war ban are obsolete; ordinary diplomacy applies."
   },
   "lizardmen_0": {
     "anchor": "Allied province capitals can supply",
-    "line": 16,
+    "line": 18,
     "path": "data/faction_guides/races/lizardmen.md",
     "source_fact": "Allied province capitals support the Geomantic Web; Nakai and Oxyotl use documented variants."
   },
   "malus_daemons": {
     "anchor": "The 6–9 and 10 bands add",
-    "line": 83,
+    "line": 85,
     "path": "data/faction_guides/races/dark_elves.md",
     "source_fact": "High possession supplies +25/+50 daemon diplomacy."
   },
   "nakai_vassal": {
     "anchor": "outside factions cannot independently declare war or peace",
-    "line": 81,
+    "line": 83,
     "path": "data/faction_guides/races/lizardmen.md",
     "source_fact": "Defenders forced vassal has locked war/peace and cannot break from Nakai."
   },
   "norsca_0": {
     "anchor": "Tribal Confederation as defeating",
-    "line": 65,
+    "line": 67,
     "path": "data/faction_guides/races/norsca.md",
     "source_fact": "Leader-defeat tribal confederation is not an ordinary alliance restriction; human-target applicability is not proven here."
   },
   "nurgle_0": {
     "anchor": "The installed script applies no diplomacy test",
-    "line": 85,
+    "line": 87,
     "path": "data/faction_guides/races/nurgle.md",
     "source_fact": "Epidemius can count negatively plagued non-Nurgle allies; alliance status provides no documented protection."
   },
   "ogre_kingdoms_0": {
     "anchor": "all Ogre Kingdoms factions are immune",
-    "line": 133,
+    "line": 135,
     "path": "data/faction_guides/races/ogre_kingdoms.md",
     "source_fact": "Ogre trespass diplomacy immunity is official-source-only in the guide; battle confederation requires an AI loser."
   },
   "repanse_undead": {
     "anchor": "-80 diplomatic relations with Vampire Counts",
-    "line": 102,
+    "line": 104,
     "path": "data/faction_guides/races/bretonnia.md",
     "source_fact": "Repanse has -80 relations with all three undead races."
   },
   "sayl_treaties": {
     "anchor": "the automatic below-zero war listener is inert",
-    "line": 133,
+    "line": 135,
     "path": "data/faction_guides/races/norsca.md",
     "source_fact": "Sayl Manipulations alter treaties; automatic below-zero Confidence war listener is inert in 8.1.1."
   },
   "settra_vassal": {
     "anchor": "Khemri cannot be made anyone's vassal",
-    "line": 152,
+    "line": 154,
     "path": "data/faction_guides/races/tomb_kings.md",
     "source_fact": "All vassal actions against Khemri are disabled."
   },
   "skaven_0": {
     "anchor": "when the factions are not teammates",
-    "line": 51,
+    "line": 53,
     "path": "data/faction_guides/races/skaven.md",
     "source_fact": "Vermintide war declaration explicitly excludes teammates; this is not blanket protection against all Under-City damage."
   },
   "slaanesh_0": {
     "anchor": "The ritual target explicitly excludes human factions",
-    "line": 48,
+    "line": 50,
     "path": "data/faction_guides/races/slaanesh.md",
     "source_fact": "N'Kari forced seduction cannot target humans; this does not make third-party vassal diplomacy harmless."
   },
   "tomb_kings_0": {
     "anchor": "When another relevant Tomb Kings faction is human",
-    "line": 150,
+    "line": 152,
     "path": "data/faction_guides/races/tomb_kings.md",
     "source_fact": "Human participants lock Cult confederation rituals."
   },
   "tomb_kings_1": {
     "anchor": "the same mission key fails for every other eligible human",
-    "line": 117,
+    "line": 119,
     "path": "data/faction_guides/races/tomb_kings.md",
     "source_fact": "Books of Nagash are competitive shared multiplayer rewards; team ownership does not duplicate them."
   },
   "tzeentch_0": {
     "anchor": "Grand Scheme completion applies a theatre-specific",
-    "line": 130,
+    "line": 132,
     "path": "data/faction_guides/races/tzeentch.md",
     "source_fact": "Changeling Schemes change the world by theater; effects on a partner require coordination, not a universal immunity assumption."
   },
   "vampire_coast_0": {
     "anchor": "Alliances remain ordinary diplomacy",
-    "line": 172,
+    "line": 174,
     "path": "data/faction_guides/races/vampire_coast.md",
     "source_fact": "Coast cannot confederate; alliances can transfer Shanty verses."
   },
   "vampire_counts_0": {
     "anchor": "diplomacy is +30 with Warriors of Chaos",
-    "line": 83,
+    "line": 85,
     "path": "data/faction_guides/races/vampire_counts.md",
     "source_fact": "Barrow Legion has +30 WoC/Beastmen/Norsca relations and faction Chaos-attrition immunity."
   },
   "warriors_of_chaos_0": {
     "anchor": "It does not prove that every destroyed",
-    "line": 38,
+    "line": 40,
     "path": "data/faction_guides/races/warriors_of_chaos.md",
     "source_fact": "Homeland vassalization is faction/settlement-specific and does not guarantee revival."
   },
   "warriors_of_chaos_1": {
     "anchor": "Only **Warhost of the Apocalypse and Shadow Legion**",
-    "line": 150,
+    "line": 152,
     "path": "data/faction_guides/races/warriors_of_chaos.md",
     "source_fact": "Only Archaon/Be'lakor have the final-settlement forced WoC confederation route; other WoC do not."
   },
   "wood_elves_0": {
     "anchor": "locks that specific rite for every human Wood Elf faction",
-    "line": 47,
+    "line": 49,
     "path": "data/faction_guides/races/wood_elves.md",
     "source_fact": "Rebirth completion is global and one-time in co-op; Ariel is globally unique."
   },
   "wood_elves_1": {
     "anchor": "she is barred from confederating Wood Elves generally",
-    "line": 77,
+    "line": 79,
     "path": "data/faction_guides/races/wood_elves.md",
     "source_fact": "Drycha can confederate only Argwylon; not a general ban on Wood Elf alliances."
   }

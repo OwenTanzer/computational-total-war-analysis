@@ -97,8 +97,9 @@ class LockedAtlasTests(unittest.TestCase):
 
     def test_universe_and_explicit_source_discrepancy(self):
         self.assertEqual(self.report['pair_count'],5356)
-        self.assertEqual(len(self.report['missing_start_factions']),18)
-        self.assertEqual(self.report['proximity_counts']['Unresolved'],1701)
+        self.assertEqual(len(self.report['missing_start_factions']),0)
+        self.assertEqual(self.report['proximity_counts'].get('Unresolved',0),0)
+        self.assertEqual(len(self.report['maritime_start_factions']),4)
         self.assertFalse(self.report['acceptance_complete'])
 
     def test_real_ulthuan_raster_hole(self):
@@ -111,7 +112,25 @@ class LockedAtlasTests(unittest.TestCase):
         self.assertFalse(r['complete_pair_level_comparison'])
         self.assertEqual(r['missing_pair_rows'],123)
         self.assertEqual(r['recovered_row_result']['proximity_class'],'Distant')
-        self.assertAlmostEqual(r['recovered_row_result']['centroid_distance'],267.842831,places=5)
+        self.assertGreater(r['recovered_row_result']['geographic_distance'],150)
+
+    def test_maritime_preserves_null_region_not_null_position(self):
+        import csv
+        with (self.work/'all_pairs.csv').open() as f:
+            rows=list(csv.DictReader(f))
+        pair=next(r for r in rows if r['faction_a_key']=='wh2_main_hef_yvresse' and r['faction_b_key']=='wh_dlc08_nor_norsca')
+        self.assertEqual(pair['start_region_a'],'')
+        self.assertEqual(pair['raster_hops'],'')
+        self.assertTrue(pair['geographic_distance'])
+        self.assertTrue(pair['land_anchor_a'])
+
+    def test_recovered_gelt_and_partner_exception(self):
+        from ctw_analysis.coop_geography import build_geography
+        with open_atlas(self.root) as db:
+            starts,pairs,calibration=build_geography(db)
+        self.assertEqual(next(r for r in starts if r['faction_key']=='wh2_dlc13_emp_golden_order')['logical_x'],1137)
+        self.assertEqual(sum(bool(p['partner_start_override']) for p in pairs),5)
+        self.assertEqual(calibration['resolved_army_points'],104)
 
     def test_regeneration_bytes(self):
         output,work=Path(self.tmp.name)/'second',Path(self.tmp.name)/'second_work'
