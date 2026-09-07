@@ -26,9 +26,9 @@ def classify(distance, hops, same_province, neighboring_province, shared_theater
     if distance <= 100 and (neighboring_province or (hops is not None and hops <= 4)):
         return 'Regional', True, 'Within 100 units with neighboring provinces or at most four raster borders'
     if distance <= 150 and (shared_theater or neighboring_province or (hops is not None and hops <= 6)):
-        retained = bool(shared_theater and hops is not None and hops <= 6)
-        return 'Extended', retained, ('Shared atlas theater and at most six raster borders' if retained
-                                    else 'Extended requires shared atlas theater AND at most six raster borders')
+        retained = bool(shared_theater and ((hops is not None and hops <= 6) or distance <= 75))
+        return 'Extended', retained, ('Shared atlas theater and either at most six raster borders or at most 75 logical units' if retained
+                                    else 'Extended requires shared atlas theater AND (at most six raster borders OR at most 75 logical units)')
     return 'Distant', False, 'Outside frozen geographic envelope'
 
 
@@ -92,5 +92,5 @@ def build_geography(db):
                    'region_graph_nodes': len(graph), 'region_graph_edges': sum(map(len,graph.values()))//2,
                    'strategic_node_count': len(nodes), 'strategic_link_count': len(links),
                    'strategic_networks': sorted({n['network_key'] for n in nodes if n['network_key']}),
-                   'freeze': 'v1: 100-unit Regional, 150-unit Extended; topology and theater gates; no diplomacy-dependent tuning'}
+                   'freeze': 'v2: 100-unit Regional, 150-unit Extended; Extended shared theater AND (hops <= 6 OR distance <= 75); topology correction for isolated raster regions, not diplomacy-dependent tuning'}
     return starts, pairs, calibration

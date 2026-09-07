@@ -38,5 +38,5 @@
     "wh3_main_sea_lane_underworld_sea",
     "wh3_main_teleportation_network_belakor"
   ],
-  "freeze": "v1: 100-unit Regional, 150-unit Extended; topology and theater gates; no diplomacy-dependent tuning"
+  "freeze": "v2: 100-unit Regional, 150-unit Extended; Extended shared theater AND (hops <= 6 OR distance <= 75); topology correction for isolated raster regions, not diplomacy-dependent tuning"
 }
