@@ -289,4 +289,3 @@ Names are source faction labels. Every row links through stable keys in [the mac
 | Avelorn | Eataine | Extended | Clean | high_elves_0 |
 | Avelorn | Yvresse | Extended | Clean | high_elves_0 |
 | Eataine | Yvresse | Extended | Clean | high_elves_0 |
-

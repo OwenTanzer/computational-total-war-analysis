@@ -254,7 +254,7 @@ def generate(root, output, work):
         for p in group:
             lines.append(f"| {p['faction_a_name']} | {p['faction_b_name']} | {p['proximity_class']} | {p['diplomatic_class']} | {p['evidence_ids']} |")
         lines.append('')
-    (output/'regional_pairings.md').write_text('\n'.join(lines)+'\n',encoding='utf8',newline='\n')
+    (output/'regional_pairings.md').write_text('\n'.join(lines).rstrip()+'\n',encoding='utf8',newline='\n')
     write_csv(output/'regional_summary.csv',summary,['theater','qualifying_pairs','Clean','Workable','Special'])
     diff_lines = ['# Historical versus generated','',f'Historical page: {NOTION_URL}', '',
                   'The untruncated September 6 page contains the 124 / 123 / 62 counts and audit plan, but only one named pair and no regional groupings. The other 123 candidate identities, original proximity/diplomacy classes, regional assignments, 62-row shortlist, 53 pruned rows and nine later additions are missing.', '',
