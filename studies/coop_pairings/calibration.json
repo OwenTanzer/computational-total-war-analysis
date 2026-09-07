@@ -1,21 +1,22 @@
 {
-  "method": "Nearest-rank empirical quantiles, 86 observed capital centroids; no diplomatic input",
   "distance_quantiles": {
-    "0.01": 47.295665,
-    "0.025": 68.821324,
-    "0.05": 95.856341,
-    "0.1": 135.218362,
-    "0.2": 199.291155,
-    "0.25": 228.290539,
-    "0.5": 345.911758,
-    "0.75": 477.825794,
-    "0.9": 609.181667
+    "0.01": 48.731318,
+    "0.025": 71.155229,
+    "0.05": 95.753512,
+    "0.1": 136.951722,
+    "0.2": 204.173578,
+    "0.25": 233.159295,
+    "0.5": 354.450706,
+    "0.75": 488.778295,
+    "0.9": 619.935432
   },
   "factions": 104,
-  "resolved_capitals": 86,
-  "region_graph_nodes": 569,
+  "freeze": "v3: primary army world-point distance; retain 100/150/75 boundaries and land rules. Maritime anchors require gap <=25, use anchor topology/theaters, cannot be Immediate, never assert a sea route. Extended shared theater AND (anchor hops <=6 OR distance <=75). Frozen before diplomacy.",
+  "maritime_primary_points": 4,
+  "method": "Nearest-rank empirical quantiles, 104 primary human army world points with pair-specific overrides; no diplomatic input",
   "region_graph_edges": 1293,
-  "strategic_node_count": 372,
+  "region_graph_nodes": 569,
+  "resolved_army_points": 104,
   "strategic_link_count": 119,
   "strategic_networks": [
     "wh3_dlc23_endgame_chd_cathay",
@@ -38,5 +39,5 @@
     "wh3_main_sea_lane_underworld_sea",
     "wh3_main_teleportation_network_belakor"
   ],
-  "freeze": "v2: 100-unit Regional, 150-unit Extended; Extended shared theater AND (hops <= 6 OR distance <= 75); topology correction for isolated raster regions, not diplomacy-dependent tuning"
+  "strategic_node_count": 372
 }

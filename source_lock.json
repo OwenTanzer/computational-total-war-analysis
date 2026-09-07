@@ -1,11 +1,11 @@
 {
   "repository": "https://github.com/OwenTanzer/computational-total-war",
-  "git_commit": "8c2169b837288d03ba0188b468f06a2f3bcb4b28",
+  "git_commit": "91b019866c7fd3afe72063cd0c4d7a9fd3830124",
   "snapshot": {
     "game": "warhammer_3",
     "patch": "8.1.1",
     "steam_build_id": 24237342,
     "unit_scale": "ultra"
-  }
+  },
+  "update_reason": "Explicitly authorized army-start source repair, upstream PR #6; prior lock 8c2169b837288d03ba0188b468f06a2f3bcb4b28; source branch based on main 5d25716de3d18d0006f95d7aa623a7c062d72834"
 }
-
