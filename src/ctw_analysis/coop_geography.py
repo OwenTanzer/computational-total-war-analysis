@@ -71,7 +71,7 @@ def build_geography(db):
         shared = sorted(theaters[ra] & theaters[rb])
         cls, envelope, reason = classify(d, hops, same, adjacent, shared)
         ta, tb = sorted(theaters[ra]), sorted(theaters[rb])
-        label = ' / '.join(shared) if shared else ' <-> '.join([' / '.join(t) or 'unmapped' for t in (ta,tb)])
+        label = ' / '.join(shared) if shared else ' <-> '.join(sorted(' / '.join(t) or 'unmapped' for t in (ta,tb)))
         record = {'faction_a_key': a['faction_key'], 'faction_b_key': b['faction_key'],
                   'start_region_a': ra, 'start_region_b': rb, 'province_a': pa, 'province_b': pb,
                   'centroid_distance': round(d,6) if d is not None else None,

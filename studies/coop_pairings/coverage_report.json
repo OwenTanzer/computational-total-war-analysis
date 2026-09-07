@@ -1,0 +1,455 @@
+{
+  "acceptance_complete": false,
+  "audit_date": "2026-09-06",
+  "checks": [
+    "104 canonical playable factions resolve in atlas and normalized index",
+    "5356 unique sorted unordered pairs; every faction occurs 103 times",
+    "Every pair has geography, diplomacy, source evidence, inference and uncertainty fields",
+    "All included pairs pass independent geography/diplomacy gates; Extended gate verified",
+    "All rejections explained; no null treated as numeric zero",
+    "Source commit, snapshot and consumed Git blobs verified; SQLite read-only integrity passed",
+    "24 guide profiles and every evidence anchor resolved",
+    "Partner-count sum equals twice qualifying pairs"
+  ],
+  "diplomatic_counts_all_pairs": {
+    "Clean": 526,
+    "Conflict": 2550,
+    "Special": 332,
+    "Workable": 1948
+  },
+  "faction_count": 104,
+  "issue_closure_recommended": false,
+  "missing_start_factions": [
+    {
+      "key": "wh2_dlc13_emp_golden_order",
+      "name": "The Golden Order"
+    },
+    {
+      "key": "wh2_dlc13_lzd_spirits_of_the_jungle",
+      "name": "Spirit of the Jungle"
+    },
+    {
+      "key": "wh2_dlc17_bst_malagor",
+      "name": "Harbinger of Disaster"
+    },
+    {
+      "key": "wh2_dlc17_bst_taurox",
+      "name": "Slaughterhorn Tribe"
+    },
+    {
+      "key": "wh3_dlc20_chs_azazel",
+      "name": "The Ecstatic Legions"
+    },
+    {
+      "key": "wh3_dlc20_chs_kholek",
+      "name": "Heralds of the Tempest"
+    },
+    {
+      "key": "wh3_dlc20_chs_sigvald",
+      "name": "The Decadent Host"
+    },
+    {
+      "key": "wh3_dlc20_chs_valkia",
+      "name": "Legion of the Gorequeen"
+    },
+    {
+      "key": "wh3_dlc20_chs_vilitch",
+      "name": "Puppets of Misrule"
+    },
+    {
+      "key": "wh3_dlc24_tze_the_deceivers",
+      "name": "The Deceivers"
+    },
+    {
+      "key": "wh3_dlc26_ogr_golgfag",
+      "name": "The Maneaters"
+    },
+    {
+      "key": "wh3_dlc27_hef_aislinn",
+      "name": "High Elf Sea Patrol"
+    },
+    {
+      "key": "wh3_main_chs_shadow_legion",
+      "name": "Shadow Legion"
+    },
+    {
+      "key": "wh3_main_dae_daemon_prince",
+      "name": "Legion of Chaos"
+    },
+    {
+      "key": "wh3_main_ksl_ursun_revivalists",
+      "name": "Ursun Revivalists"
+    },
+    {
+      "key": "wh_dlc03_bst_beastmen",
+      "name": "Warherd of the One-Eye"
+    },
+    {
+      "key": "wh_dlc05_bst_morghur_herd",
+      "name": "Warherd of the Shadowgave"
+    },
+    {
+      "key": "wh_main_chs_chaos",
+      "name": "Warhost of the Apocalypse"
+    }
+  ],
+  "nearby_rejected_count": 237,
+  "pair_count": 5356,
+  "patch": "8.1.1",
+  "proximity_counts": {
+    "Distant": 3304,
+    "Extended": 185,
+    "Immediate": 15,
+    "Regional": 151,
+    "Unresolved": 1701
+  },
+  "qualifying_by_diplomacy": {
+    "Clean": 33,
+    "Special": 1,
+    "Workable": 80
+  },
+  "qualifying_by_proximity": {
+    "Extended": 35,
+    "Immediate": 7,
+    "Regional": 72
+  },
+  "qualifying_pair_count": 114,
+  "remaining_gaps": [
+    "18 playable factions lack capital/start regions; 1701 pair geographies unresolved. No army starts inferred from memory, guide flavor, objective targets, or ownership of a vassal.",
+    "Atlas centroid is a region-mask centroid, not an army or settlement point; scenario-script relocations and human start branches are not comprehensively represented.",
+    "70 maritime/special regions lack individual geometry; 72 lack a province. Province-less unknown terrain is excluded from graph traversal.",
+    "Raster border paths are topological indicators, not passable movement routes or campaign turns. Islands may lack paths even when physically close.",
+    "All 119 strategic links are trade-route segments. 261 teleportation nodes do not supply validated player access or traversal edges; no portal/sea-lane shortcut qualifies a pair.",
+    "Generic numeric aversion, opening wars/treaties and all faction/lord/technology modifiers are absent from the consumed normalized coverage; analytical priors are explicit and are not exhaustive runtime diplomacy validation.",
+    "Beastmen permitted-faction set and Golgfag alliance/team override remain unresolved and are withheld from qualification.",
+    "Single-player faction objectives are pressures only, never automatic multiplayer war locks. Teammates are independent human factions, not a proposed confederation or vassal arrangement.",
+    "Source guide validation is structural; this study does not replay Lua or launch a multiplayer game.",
+    "Notion contains counts and audit plan, one named stale pair, no full rows or regional headings; complete baseline diff and underrepresentation claims are impossible."
+  ],
+  "source_validation_warnings": [
+    "Battle rules without an exposed group map: got 3; Some engine-resolved catchment groups do not expose a direct group-map row"
+  ],
+  "status": "passed_with_documented_coverage_gaps",
+  "steam_build_id": 24237342,
+  "zero_partner_factions": [
+    {
+      "baseline_underrepresentation": "not assessable: 123 of 124 baseline rows missing",
+      "faction_key": "wh2_dlc11_cst_noctilus",
+      "faction_name": "The Dreadfleet",
+      "qualifying_partners": 0,
+      "race": "vampire_coast",
+      "recovered_baseline_partners": 0,
+      "start_region": "wh3_main_combi_region_the_galleons_graveyard",
+      "unresolved_pair_count": 18,
+      "zero_partner_reason": "no partner passes frozen rules among resolved starts; missing-start partners remain unknown"
+    },
+    {
+      "baseline_underrepresentation": "not assessable: 123 of 124 baseline rows missing",
+      "faction_key": "wh2_dlc13_emp_golden_order",
+      "faction_name": "The Golden Order",
+      "qualifying_partners": 0,
+      "race": "empire",
+      "recovered_baseline_partners": 0,
+      "start_region": null,
+      "unresolved_pair_count": 103,
+      "zero_partner_reason": "missing capital; zero observed, local viability unknown"
+    },
+    {
+      "baseline_underrepresentation": "not assessable: 123 of 124 baseline rows missing",
+      "faction_key": "wh2_dlc13_lzd_spirits_of_the_jungle",
+      "faction_name": "Spirit of the Jungle",
+      "qualifying_partners": 0,
+      "race": "lizardmen",
+      "recovered_baseline_partners": 0,
+      "start_region": null,
+      "unresolved_pair_count": 103,
+      "zero_partner_reason": "missing capital; zero observed, local viability unknown"
+    },
+    {
+      "baseline_underrepresentation": "not assessable: 123 of 124 baseline rows missing",
+      "faction_key": "wh2_dlc15_hef_imrik",
+      "faction_name": "Knights of Caledor",
+      "qualifying_partners": 0,
+      "race": "high_elves",
+      "recovered_baseline_partners": 0,
+      "start_region": "wh3_main_combi_region_the_fortress_of_vorag",
+      "unresolved_pair_count": 18,
+      "zero_partner_reason": "no partner passes frozen rules among resolved starts; missing-start partners remain unknown"
+    },
+    {
+      "baseline_underrepresentation": "not assessable: 123 of 124 baseline rows missing",
+      "faction_key": "wh2_dlc17_bst_malagor",
+      "faction_name": "Harbinger of Disaster",
+      "qualifying_partners": 0,
+      "race": "beastmen",
+      "recovered_baseline_partners": 0,
+      "start_region": null,
+      "unresolved_pair_count": 103,
+      "zero_partner_reason": "missing capital; zero observed, local viability unknown"
+    },
+    {
+      "baseline_underrepresentation": "not assessable: 123 of 124 baseline rows missing",
+      "faction_key": "wh2_dlc17_bst_taurox",
+      "faction_name": "Slaughterhorn Tribe",
+      "qualifying_partners": 0,
+      "race": "beastmen",
+      "recovered_baseline_partners": 0,
+      "start_region": null,
+      "unresolved_pair_count": 103,
+      "zero_partner_reason": "missing capital; zero observed, local viability unknown"
+    },
+    {
+      "baseline_underrepresentation": "not assessable: 123 of 124 baseline rows missing",
+      "faction_key": "wh2_dlc17_lzd_oxyotl",
+      "faction_name": "Ghosts of Pahuax",
+      "qualifying_partners": 0,
+      "race": "lizardmen",
+      "recovered_baseline_partners": 0,
+      "start_region": "wh3_main_combi_region_the_godless_crater",
+      "unresolved_pair_count": 18,
+      "zero_partner_reason": "no partner passes frozen rules among resolved starts; missing-start partners remain unknown"
+    },
+    {
+      "baseline_underrepresentation": "not assessable: 123 of 124 baseline rows missing",
+      "faction_key": "wh2_main_hef_order_of_loremasters",
+      "faction_name": "Order of Loremasters",
+      "qualifying_partners": 0,
+      "race": "high_elves",
+      "recovered_baseline_partners": 0,
+      "start_region": "wh3_main_combi_region_fortress_of_dawn",
+      "unresolved_pair_count": 18,
+      "zero_partner_reason": "no partner passes frozen rules among resolved starts; missing-start partners remain unknown"
+    },
+    {
+      "baseline_underrepresentation": "not assessable: 123 of 124 baseline rows missing",
+      "faction_key": "wh2_main_lzd_hexoatl",
+      "faction_name": "Hexoatl",
+      "qualifying_partners": 0,
+      "race": "lizardmen",
+      "recovered_baseline_partners": 0,
+      "start_region": "wh3_main_combi_region_hexoatl",
+      "unresolved_pair_count": 18,
+      "zero_partner_reason": "no partner passes frozen rules among resolved starts; missing-start partners remain unknown"
+    },
+    {
+      "baseline_underrepresentation": "not assessable: 123 of 124 baseline rows missing",
+      "faction_key": "wh3_dlc20_chs_azazel",
+      "faction_name": "The Ecstatic Legions",
+      "qualifying_partners": 0,
+      "race": "warriors_of_chaos",
+      "recovered_baseline_partners": 0,
+      "start_region": null,
+      "unresolved_pair_count": 103,
+      "zero_partner_reason": "missing capital; zero observed, local viability unknown"
+    },
+    {
+      "baseline_underrepresentation": "not assessable: 123 of 124 baseline rows missing",
+      "faction_key": "wh3_dlc20_chs_kholek",
+      "faction_name": "Heralds of the Tempest",
+      "qualifying_partners": 0,
+      "race": "warriors_of_chaos",
+      "recovered_baseline_partners": 0,
+      "start_region": null,
+      "unresolved_pair_count": 103,
+      "zero_partner_reason": "missing capital; zero observed, local viability unknown"
+    },
+    {
+      "baseline_underrepresentation": "not assessable: 123 of 124 baseline rows missing",
+      "faction_key": "wh3_dlc20_chs_sigvald",
+      "faction_name": "The Decadent Host",
+      "qualifying_partners": 0,
+      "race": "warriors_of_chaos",
+      "recovered_baseline_partners": 0,
+      "start_region": null,
+      "unresolved_pair_count": 103,
+      "zero_partner_reason": "missing capital; zero observed, local viability unknown"
+    },
+    {
+      "baseline_underrepresentation": "not assessable: 123 of 124 baseline rows missing",
+      "faction_key": "wh3_dlc20_chs_valkia",
+      "faction_name": "Legion of the Gorequeen",
+      "qualifying_partners": 0,
+      "race": "warriors_of_chaos",
+      "recovered_baseline_partners": 0,
+      "start_region": null,
+      "unresolved_pair_count": 103,
+      "zero_partner_reason": "missing capital; zero observed, local viability unknown"
+    },
+    {
+      "baseline_underrepresentation": "not assessable: 123 of 124 baseline rows missing",
+      "faction_key": "wh3_dlc20_chs_vilitch",
+      "faction_name": "Puppets of Misrule",
+      "qualifying_partners": 0,
+      "race": "warriors_of_chaos",
+      "recovered_baseline_partners": 0,
+      "start_region": null,
+      "unresolved_pair_count": 103,
+      "zero_partner_reason": "missing capital; zero observed, local viability unknown"
+    },
+    {
+      "baseline_underrepresentation": "not assessable: 123 of 124 baseline rows missing",
+      "faction_key": "wh3_dlc24_tze_the_deceivers",
+      "faction_name": "The Deceivers",
+      "qualifying_partners": 0,
+      "race": "tzeentch",
+      "recovered_baseline_partners": 0,
+      "start_region": null,
+      "unresolved_pair_count": 103,
+      "zero_partner_reason": "missing capital; zero observed, local viability unknown"
+    },
+    {
+      "baseline_underrepresentation": "not assessable: 123 of 124 baseline rows missing",
+      "faction_key": "wh3_dlc25_nur_epidemius",
+      "faction_name": "Tallymen of Pestilence",
+      "qualifying_partners": 0,
+      "race": "nurgle",
+      "recovered_baseline_partners": 0,
+      "start_region": "wh3_main_combi_region_the_forest_of_decay",
+      "unresolved_pair_count": 18,
+      "zero_partner_reason": "no partner passes frozen rules among resolved starts; missing-start partners remain unknown"
+    },
+    {
+      "baseline_underrepresentation": "not assessable: 123 of 124 baseline rows missing",
+      "faction_key": "wh3_dlc26_ogr_golgfag",
+      "faction_name": "The Maneaters",
+      "qualifying_partners": 0,
+      "race": "ogre_kingdoms",
+      "recovered_baseline_partners": 0,
+      "start_region": null,
+      "unresolved_pair_count": 103,
+      "zero_partner_reason": "missing capital; zero observed, local viability unknown"
+    },
+    {
+      "baseline_underrepresentation": "not assessable: 123 of 124 baseline rows missing",
+      "faction_key": "wh3_dlc27_hef_aislinn",
+      "faction_name": "High Elf Sea Patrol",
+      "qualifying_partners": 0,
+      "race": "high_elves",
+      "recovered_baseline_partners": 0,
+      "start_region": null,
+      "unresolved_pair_count": 103,
+      "zero_partner_reason": "missing capital; zero observed, local viability unknown"
+    },
+    {
+      "baseline_underrepresentation": "not assessable: 123 of 124 baseline rows missing",
+      "faction_key": "wh3_dlc27_sla_masque_of_slaanesh",
+      "faction_name": "The Accursed Troupe",
+      "qualifying_partners": 0,
+      "race": "slaanesh",
+      "recovered_baseline_partners": 0,
+      "start_region": "wh3_main_combi_region_the_blood_hall",
+      "unresolved_pair_count": 18,
+      "zero_partner_reason": "no partner passes frozen rules among resolved starts; missing-start partners remain unknown"
+    },
+    {
+      "baseline_underrepresentation": "not assessable: 123 of 124 baseline rows missing",
+      "faction_key": "wh3_dlc27_sla_the_tormentors",
+      "faction_name": "The Tormentors",
+      "qualifying_partners": 0,
+      "race": "slaanesh",
+      "recovered_baseline_partners": 0,
+      "start_region": "wh3_main_combi_region_hidden_landing",
+      "unresolved_pair_count": 18,
+      "zero_partner_reason": "no partner passes frozen rules among resolved starts; missing-start partners remain unknown"
+    },
+    {
+      "baseline_underrepresentation": "not assessable: 123 of 124 baseline rows missing",
+      "faction_key": "wh3_main_chs_shadow_legion",
+      "faction_name": "Shadow Legion",
+      "qualifying_partners": 0,
+      "race": "warriors_of_chaos",
+      "recovered_baseline_partners": 0,
+      "start_region": null,
+      "unresolved_pair_count": 103,
+      "zero_partner_reason": "missing capital; zero observed, local viability unknown"
+    },
+    {
+      "baseline_underrepresentation": "not assessable: 123 of 124 baseline rows missing",
+      "faction_key": "wh3_main_dae_daemon_prince",
+      "faction_name": "Legion of Chaos",
+      "qualifying_partners": 0,
+      "race": "daemons_of_chaos",
+      "recovered_baseline_partners": 0,
+      "start_region": null,
+      "unresolved_pair_count": 103,
+      "zero_partner_reason": "missing capital; zero observed, local viability unknown"
+    },
+    {
+      "baseline_underrepresentation": "not assessable: 123 of 124 baseline rows missing",
+      "faction_key": "wh3_main_ksl_ursun_revivalists",
+      "faction_name": "Ursun Revivalists",
+      "qualifying_partners": 0,
+      "race": "kislev",
+      "recovered_baseline_partners": 0,
+      "start_region": null,
+      "unresolved_pair_count": 103,
+      "zero_partner_reason": "missing capital; zero observed, local viability unknown"
+    },
+    {
+      "baseline_underrepresentation": "not assessable: 123 of 124 baseline rows missing",
+      "faction_key": "wh3_main_nur_poxmakers_of_nurgle",
+      "faction_name": "Poxmakers of Nurgle",
+      "qualifying_partners": 0,
+      "race": "nurgle",
+      "recovered_baseline_partners": 0,
+      "start_region": "wh3_main_combi_region_dragon_fang_mount",
+      "unresolved_pair_count": 18,
+      "zero_partner_reason": "no partner passes frozen rules among resolved starts; missing-start partners remain unknown"
+    },
+    {
+      "baseline_underrepresentation": "not assessable: 123 of 124 baseline rows missing",
+      "faction_key": "wh3_main_sla_seducers_of_slaanesh",
+      "faction_name": "Seducers of Slaanesh",
+      "qualifying_partners": 0,
+      "race": "slaanesh",
+      "recovered_baseline_partners": 0,
+      "start_region": "wh3_main_combi_region_shrine_of_kurnous",
+      "unresolved_pair_count": 18,
+      "zero_partner_reason": "no partner passes frozen rules among resolved starts; missing-start partners remain unknown"
+    },
+    {
+      "baseline_underrepresentation": "not assessable: 123 of 124 baseline rows missing",
+      "faction_key": "wh3_main_tze_oracles_of_tzeentch",
+      "faction_name": "Oracles of Tzeentch",
+      "qualifying_partners": 0,
+      "race": "tzeentch",
+      "recovered_baseline_partners": 0,
+      "start_region": "wh3_main_combi_region_fateweavers_crevasse",
+      "unresolved_pair_count": 18,
+      "zero_partner_reason": "no partner passes frozen rules among resolved starts; missing-start partners remain unknown"
+    },
+    {
+      "baseline_underrepresentation": "not assessable: 123 of 124 baseline rows missing",
+      "faction_key": "wh_dlc03_bst_beastmen",
+      "faction_name": "Warherd of the One-Eye",
+      "qualifying_partners": 0,
+      "race": "beastmen",
+      "recovered_baseline_partners": 0,
+      "start_region": null,
+      "unresolved_pair_count": 103,
+      "zero_partner_reason": "missing capital; zero observed, local viability unknown"
+    },
+    {
+      "baseline_underrepresentation": "not assessable: 123 of 124 baseline rows missing",
+      "faction_key": "wh_dlc05_bst_morghur_herd",
+      "faction_name": "Warherd of the Shadowgave",
+      "qualifying_partners": 0,
+      "race": "beastmen",
+      "recovered_baseline_partners": 0,
+      "start_region": null,
+      "unresolved_pair_count": 103,
+      "zero_partner_reason": "missing capital; zero observed, local viability unknown"
+    },
+    {
+      "baseline_underrepresentation": "not assessable: 123 of 124 baseline rows missing",
+      "faction_key": "wh_main_chs_chaos",
+      "faction_name": "Warhost of the Apocalypse",
+      "qualifying_partners": 0,
+      "race": "warriors_of_chaos",
+      "recovered_baseline_partners": 0,
+      "start_region": null,
+      "unresolved_pair_count": 103,
+      "zero_partner_reason": "missing capital; zero observed, local viability unknown"
+    }
+  ]
+}

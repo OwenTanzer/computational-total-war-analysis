@@ -1,0 +1,105 @@
+faction_key,faction_name,race,evidence_ids,audit_status
+wh2_dlc09_skv_clan_rictus,Clan Rictus,skaven,skaven_0,guide reviewed; generic modifier coverage incomplete
+wh2_dlc09_tmb_exiles_of_nehek,Exiles of Nehek,tomb_kings,tomb_kings_0;tomb_kings_1,guide reviewed; generic modifier coverage incomplete
+wh2_dlc09_tmb_followers_of_nagash,Followers of Nagash,tomb_kings,tomb_kings_0;tomb_kings_1;arkhan_tombs;arkhan_vampires;arkhan_living,guide reviewed; generic modifier coverage incomplete
+wh2_dlc09_tmb_khemri,Khemri,tomb_kings,tomb_kings_0;tomb_kings_1;settra_vassal,guide reviewed; generic modifier coverage incomplete
+wh2_dlc09_tmb_lybaras,Court of Lybaras,tomb_kings,tomb_kings_0;tomb_kings_1;khalida_lahmia,guide reviewed; generic modifier coverage incomplete
+wh2_dlc11_cst_noctilus,The Dreadfleet,vampire_coast,vampire_coast_0,guide reviewed; generic modifier coverage incomplete
+wh2_dlc11_cst_pirates_of_sartosa,Pirates of Sartosa,vampire_coast,vampire_coast_0,guide reviewed; generic modifier coverage incomplete
+wh2_dlc11_cst_the_drowned,The Drowned,vampire_coast,vampire_coast_0,guide reviewed; generic modifier coverage incomplete
+wh2_dlc11_cst_vampire_coast,The Awakened,vampire_coast,vampire_coast_0,guide reviewed; generic modifier coverage incomplete
+wh2_dlc11_def_the_blessed_dread,The Blessed Dread,dark_elves,dark_elves_0;dark_elves_1,guide reviewed; generic modifier coverage incomplete
+wh2_dlc11_vmp_the_barrow_legion,The Barrow Legion,vampire_counts,vampire_counts_0;kemmler_chaos,guide reviewed; generic modifier coverage incomplete
+wh2_dlc12_lzd_cult_of_sotek,Cult of Sotek,lizardmen,lizardmen_0,guide reviewed; generic modifier coverage incomplete
+wh2_dlc13_emp_golden_order,The Golden Order,empire,empire_0,guide reviewed; generic modifier coverage incomplete
+wh2_dlc13_emp_the_huntmarshals_expedition,The Huntsmarshal's Expedition,empire,empire_0;huntsmarshal_lizards,guide reviewed; generic modifier coverage incomplete
+wh2_dlc13_lzd_spirits_of_the_jungle,Spirit of the Jungle,lizardmen,lizardmen_0;nakai_vassal,guide reviewed; generic modifier coverage incomplete
+wh2_dlc14_brt_chevaliers_de_lyonesse,Chevaliers de Lyonesse,bretonnia,bretonnia_0;repanse_undead,guide reviewed; generic modifier coverage incomplete
+wh2_dlc15_grn_bonerattlaz,Bonerattlaz,greenskins,greenskins_0,guide reviewed; generic modifier coverage incomplete
+wh2_dlc15_grn_broken_axe,Broken Axe,greenskins,greenskins_0,guide reviewed; generic modifier coverage incomplete
+wh2_dlc15_hef_imrik,Knights of Caledor,high_elves,high_elves_0,guide reviewed; generic modifier coverage incomplete
+wh2_dlc16_wef_drycha,Wargrove of Woe,wood_elves,wood_elves_0;wood_elves_1,guide reviewed; generic modifier coverage incomplete
+wh2_dlc16_wef_sisters_of_twilight,Heralds of Ariel,wood_elves,wood_elves_0;wood_elves_1,guide reviewed; generic modifier coverage incomplete
+wh2_dlc17_bst_malagor,Harbinger of Disaster,beastmen,beastmen_0,guide reviewed; generic modifier coverage incomplete
+wh2_dlc17_bst_taurox,Slaughterhorn Tribe,beastmen,beastmen_0,guide reviewed; generic modifier coverage incomplete
+wh2_dlc17_dwf_thorek_ironbrow,Ironbrow's Expedition,dwarfs,dwarfs_0;dwarfs_1,guide reviewed; generic modifier coverage incomplete
+wh2_dlc17_lzd_oxyotl,Ghosts of Pahuax,lizardmen,lizardmen_0,guide reviewed; generic modifier coverage incomplete
+wh2_main_def_cult_of_pleasure,Cult of Pleasure,dark_elves,dark_elves_0;dark_elves_1,guide reviewed; generic modifier coverage incomplete
+wh2_main_def_hag_graef,Hag Graef,dark_elves,dark_elves_0;dark_elves_1;malus_daemons,guide reviewed; generic modifier coverage incomplete
+wh2_main_def_har_ganeth,Har Ganeth,dark_elves,dark_elves_0;dark_elves_1,guide reviewed; generic modifier coverage incomplete
+wh2_main_def_naggarond,Naggarond,dark_elves,dark_elves_0;dark_elves_1,guide reviewed; generic modifier coverage incomplete
+wh2_main_hef_avelorn,Avelorn,high_elves,high_elves_0,guide reviewed; generic modifier coverage incomplete
+wh2_main_hef_eataine,Eataine,high_elves,high_elves_0,guide reviewed; generic modifier coverage incomplete
+wh2_main_hef_nagarythe,Nagarythe,high_elves,high_elves_0,guide reviewed; generic modifier coverage incomplete
+wh2_main_hef_order_of_loremasters,Order of Loremasters,high_elves,high_elves_0,guide reviewed; generic modifier coverage incomplete
+wh2_main_hef_yvresse,Yvresse,high_elves,high_elves_0,guide reviewed; generic modifier coverage incomplete
+wh2_main_lzd_hexoatl,Hexoatl,lizardmen,lizardmen_0,guide reviewed; generic modifier coverage incomplete
+wh2_main_lzd_itza,Itza,lizardmen,lizardmen_0,guide reviewed; generic modifier coverage incomplete
+wh2_main_lzd_last_defenders,Last Defenders,lizardmen,lizardmen_0,guide reviewed; generic modifier coverage incomplete
+wh2_main_lzd_tlaqua,Tlaqua,lizardmen,lizardmen_0,guide reviewed; generic modifier coverage incomplete
+wh2_main_skv_clan_eshin,Clan Eshin,skaven,skaven_0;eshin_contracts,guide reviewed; generic modifier coverage incomplete
+wh2_main_skv_clan_mors,Clan Mors,skaven,skaven_0,guide reviewed; generic modifier coverage incomplete
+wh2_main_skv_clan_moulder,Clan Moulder,skaven,skaven_0,guide reviewed; generic modifier coverage incomplete
+wh2_main_skv_clan_pestilens,Clan Pestilens,skaven,skaven_0,guide reviewed; generic modifier coverage incomplete
+wh2_main_skv_clan_skryre,Clan Skryre,skaven,skaven_0,guide reviewed; generic modifier coverage incomplete
+wh2_twa03_def_rakarth,The Thousand Maws,dark_elves,dark_elves_0;dark_elves_1,guide reviewed; generic modifier coverage incomplete
+wh3_cp1_cth_tiger_warriors,Claws of the White Tiger,grand_cathay,grand_cathay_0,guide reviewed; generic modifier coverage incomplete
+wh3_dlc20_chs_azazel,The Ecstatic Legions,warriors_of_chaos,warriors_of_chaos_0;warriors_of_chaos_1;azazel_humans,guide reviewed; generic modifier coverage incomplete
+wh3_dlc20_chs_festus,The Fecundites,warriors_of_chaos,warriors_of_chaos_0;warriors_of_chaos_1,guide reviewed; generic modifier coverage incomplete
+wh3_dlc20_chs_kholek,Heralds of the Tempest,warriors_of_chaos,warriors_of_chaos_0;warriors_of_chaos_1,guide reviewed; generic modifier coverage incomplete
+wh3_dlc20_chs_sigvald,The Decadent Host,warriors_of_chaos,warriors_of_chaos_0;warriors_of_chaos_1,guide reviewed; generic modifier coverage incomplete
+wh3_dlc20_chs_valkia,Legion of the Gorequeen,warriors_of_chaos,warriors_of_chaos_0;warriors_of_chaos_1,guide reviewed; generic modifier coverage incomplete
+wh3_dlc20_chs_vilitch,Puppets of Misrule,warriors_of_chaos,warriors_of_chaos_0;warriors_of_chaos_1,guide reviewed; generic modifier coverage incomplete
+wh3_dlc23_chd_astragoth,Disciples of Hashut,chaos_dwarfs,chaos_dwarfs_0,guide reviewed; generic modifier coverage incomplete
+wh3_dlc23_chd_legion_of_azgorh,The Legion of Azgorh,chaos_dwarfs,chaos_dwarfs_0,guide reviewed; generic modifier coverage incomplete
+wh3_dlc23_chd_zhatan,The Warhost of Zharr,chaos_dwarfs,chaos_dwarfs_0,guide reviewed; generic modifier coverage incomplete
+wh3_dlc24_cth_the_celestial_court,The Jade Court,grand_cathay,grand_cathay_0,guide reviewed; generic modifier coverage incomplete
+wh3_dlc24_ksl_daughters_of_the_forest,Daughters of the Forest,kislev,kislev_0,guide reviewed; generic modifier coverage incomplete
+wh3_dlc24_tze_the_deceivers,The Deceivers,tzeentch,tzeentch_0;changeling_schemes,guide reviewed; generic modifier coverage incomplete
+wh3_dlc25_dwf_malakai,Masters of Innovation,dwarfs,dwarfs_0;dwarfs_1,guide reviewed; generic modifier coverage incomplete
+wh3_dlc25_nur_epidemius,Tallymen of Pestilence,nurgle,nurgle_0;epidemius_plagues,guide reviewed; generic modifier coverage incomplete
+wh3_dlc25_nur_tamurkhan,The Maggot Host,nurgle,nurgle_0,guide reviewed; generic modifier coverage incomplete
+wh3_dlc26_grn_gorbad_ironclaw,Ironclaw Orcs,greenskins,greenskins_0,guide reviewed; generic modifier coverage incomplete
+wh3_dlc26_kho_arbaal,Challengers of Khorne,khorne,khorne_0,guide reviewed; generic modifier coverage incomplete
+wh3_dlc26_kho_skulltaker,Blooded Wanderers,khorne,khorne_0,guide reviewed; generic modifier coverage incomplete
+wh3_dlc26_ogr_golgfag,The Maneaters,ogre_kingdoms,ogre_kingdoms_0;golgfag_contracts,guide reviewed; generic modifier coverage incomplete
+wh3_dlc27_hef_aislinn,High Elf Sea Patrol,high_elves,high_elves_0;aislinn_gifts,guide reviewed; generic modifier coverage incomplete
+wh3_dlc27_nor_sayl,Dolgan,norsca,norsca_0;sayl_treaties,guide reviewed; generic modifier coverage incomplete
+wh3_dlc27_sla_masque_of_slaanesh,The Accursed Troupe,slaanesh,slaanesh_0,guide reviewed; generic modifier coverage incomplete
+wh3_dlc27_sla_the_tormentors,The Tormentors,slaanesh,slaanesh_0,guide reviewed; generic modifier coverage incomplete
+wh3_main_chs_shadow_legion,Shadow Legion,warriors_of_chaos,warriors_of_chaos_0;warriors_of_chaos_1,guide reviewed; generic modifier coverage incomplete
+wh3_main_cth_the_northern_provinces,The Northern Provinces,grand_cathay,grand_cathay_0,guide reviewed; generic modifier coverage incomplete
+wh3_main_cth_the_western_provinces,The Western Provinces,grand_cathay,grand_cathay_0,guide reviewed; generic modifier coverage incomplete
+wh3_main_dae_daemon_prince,Legion of Chaos,daemons_of_chaos,daemons_of_chaos_0,guide reviewed; generic modifier coverage incomplete
+wh3_main_dwf_the_ancestral_throng,The Ancestral Throng,dwarfs,dwarfs_0;dwarfs_1,guide reviewed; generic modifier coverage incomplete
+wh3_main_emp_cult_of_sigmar,Cult of Sigmar,empire,empire_0,guide reviewed; generic modifier coverage incomplete
+wh3_main_kho_exiles_of_khorne,Exiles of Khorne,khorne,khorne_0,guide reviewed; generic modifier coverage incomplete
+wh3_main_ksl_the_great_orthodoxy,The Great Orthodoxy,kislev,kislev_0,guide reviewed; generic modifier coverage incomplete
+wh3_main_ksl_the_ice_court,The Ice Court,kislev,kislev_0,guide reviewed; generic modifier coverage incomplete
+wh3_main_ksl_ursun_revivalists,Ursun Revivalists,kislev,kislev_0,guide reviewed; generic modifier coverage incomplete
+wh3_main_nur_poxmakers_of_nurgle,Poxmakers of Nurgle,nurgle,nurgle_0,guide reviewed; generic modifier coverage incomplete
+wh3_main_ogr_disciples_of_the_maw,Disciples of the Maw,ogre_kingdoms,ogre_kingdoms_0,guide reviewed; generic modifier coverage incomplete
+wh3_main_ogr_goldtooth,Goldtooth,ogre_kingdoms,ogre_kingdoms_0,guide reviewed; generic modifier coverage incomplete
+wh3_main_sla_seducers_of_slaanesh,Seducers of Slaanesh,slaanesh,slaanesh_0,guide reviewed; generic modifier coverage incomplete
+wh3_main_tze_oracles_of_tzeentch,Oracles of Tzeentch,tzeentch,tzeentch_0,guide reviewed; generic modifier coverage incomplete
+wh3_main_vmp_caravan_of_blue_roses,Caravan of Blue Roses,vampire_counts,vampire_counts_0,guide reviewed; generic modifier coverage incomplete
+wh_dlc03_bst_beastmen,Warherd of the One-Eye,beastmen,beastmen_0,guide reviewed; generic modifier coverage incomplete
+wh_dlc05_bst_morghur_herd,Warherd of the Shadowgave,beastmen,beastmen_0,guide reviewed; generic modifier coverage incomplete
+wh_dlc05_wef_argwylon,Argwylon,wood_elves,wood_elves_0;wood_elves_1,guide reviewed; generic modifier coverage incomplete
+wh_dlc05_wef_wood_elves,Talsyn,wood_elves,wood_elves_0;wood_elves_1,guide reviewed; generic modifier coverage incomplete
+wh_dlc08_nor_norsca,World Walkers,norsca,norsca_0,guide reviewed; generic modifier coverage incomplete
+wh_dlc08_nor_wintertooth,Wintertooth,norsca,norsca_0,guide reviewed; generic modifier coverage incomplete
+wh_main_brt_bordeleaux,Bordeleaux Errant,bretonnia,bretonnia_0,guide reviewed; generic modifier coverage incomplete
+wh_main_brt_bretonnia,Couronne,bretonnia,bretonnia_0,guide reviewed; generic modifier coverage incomplete
+wh_main_brt_carcassonne,Carcassonne,bretonnia,bretonnia_0,guide reviewed; generic modifier coverage incomplete
+wh_main_chs_chaos,Warhost of the Apocalypse,warriors_of_chaos,warriors_of_chaos_0;warriors_of_chaos_1,guide reviewed; generic modifier coverage incomplete
+wh_main_dwf_dwarfs,Karaz-a-Karak,dwarfs,dwarfs_0;dwarfs_1,guide reviewed; generic modifier coverage incomplete
+wh_main_dwf_karak_izor,Clan Angrund,dwarfs,dwarfs_0;dwarfs_1,guide reviewed; generic modifier coverage incomplete
+wh_main_dwf_karak_kadrin,Karak Kadrin,dwarfs,dwarfs_0;dwarfs_1,guide reviewed; generic modifier coverage incomplete
+wh_main_emp_empire,Reikland,empire,empire_0,guide reviewed; generic modifier coverage incomplete
+wh_main_emp_wissenland,Wissenland & Nuln,empire,empire_0,guide reviewed; generic modifier coverage incomplete
+wh_main_grn_crooked_moon,Crooked Moon,greenskins,greenskins_0,guide reviewed; generic modifier coverage incomplete
+wh_main_grn_greenskins,Grimgor's 'Ardboyz,greenskins,greenskins_0,guide reviewed; generic modifier coverage incomplete
+wh_main_grn_orcs_of_the_bloody_hand,The Bloody Handz,greenskins,greenskins_0,guide reviewed; generic modifier coverage incomplete
+wh_main_vmp_schwartzhafen,Sylvania,vampire_counts,vampire_counts_0,guide reviewed; generic modifier coverage incomplete
+wh_main_vmp_vampire_counts,The Drakenhof Conclave,vampire_counts,vampire_counts_0,guide reviewed; generic modifier coverage incomplete

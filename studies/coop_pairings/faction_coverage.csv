@@ -1,0 +1,105 @@
+faction_key,faction_name,race,start_region,qualifying_partners,unresolved_pair_count,zero_partner_reason,recovered_baseline_partners,baseline_underrepresentation
+wh2_dlc09_skv_clan_rictus,Clan Rictus,skaven,wh3_main_combi_region_crookback_mountain,3,18,,0,not assessable: 123 of 124 baseline rows missing
+wh2_dlc09_tmb_exiles_of_nehek,Exiles of Nehek,tomb_kings,wh3_main_combi_region_clarak_spire,7,18,,0,not assessable: 123 of 124 baseline rows missing
+wh2_dlc09_tmb_followers_of_nagash,Followers of Nagash,tomb_kings,wh3_main_combi_region_wizard_caliphs_palace,1,18,,0,not assessable: 123 of 124 baseline rows missing
+wh2_dlc09_tmb_khemri,Khemri,tomb_kings,wh3_main_combi_region_khemri,5,18,,0,not assessable: 123 of 124 baseline rows missing
+wh2_dlc09_tmb_lybaras,Court of Lybaras,tomb_kings,wh3_main_combi_region_lybaras,3,18,,0,not assessable: 123 of 124 baseline rows missing
+wh2_dlc11_cst_noctilus,The Dreadfleet,vampire_coast,wh3_main_combi_region_the_galleons_graveyard,0,18,no partner passes frozen rules among resolved starts; missing-start partners remain unknown,0,not assessable: 123 of 124 baseline rows missing
+wh2_dlc11_cst_pirates_of_sartosa,Pirates of Sartosa,vampire_coast,wh3_main_combi_region_sartosa,1,18,,0,not assessable: 123 of 124 baseline rows missing
+wh2_dlc11_cst_the_drowned,The Drowned,vampire_coast,wh3_main_combi_region_the_twisted_glade,3,18,,0,not assessable: 123 of 124 baseline rows missing
+wh2_dlc11_cst_vampire_coast,The Awakened,vampire_coast,wh3_main_combi_region_the_awakening,2,18,,0,not assessable: 123 of 124 baseline rows missing
+wh2_dlc11_def_the_blessed_dread,The Blessed Dread,dark_elves,wh3_main_combi_region_haichai,2,18,,0,not assessable: 123 of 124 baseline rows missing
+wh2_dlc11_vmp_the_barrow_legion,The Barrow Legion,vampire_counts,wh3_main_combi_region_blackstone_post,1,18,,0,not assessable: 123 of 124 baseline rows missing
+wh2_dlc12_lzd_cult_of_sotek,Cult of Sotek,lizardmen,wh3_main_combi_region_xlanzec,1,18,,0,not assessable: 123 of 124 baseline rows missing
+wh2_dlc13_emp_golden_order,The Golden Order,empire,,0,103,"missing capital; zero observed, local viability unknown",0,not assessable: 123 of 124 baseline rows missing
+wh2_dlc13_emp_the_huntmarshals_expedition,The Huntsmarshal's Expedition,empire,wh3_main_combi_region_temple_of_kara,2,18,,0,not assessable: 123 of 124 baseline rows missing
+wh2_dlc13_lzd_spirits_of_the_jungle,Spirit of the Jungle,lizardmen,,0,103,"missing capital; zero observed, local viability unknown",0,not assessable: 123 of 124 baseline rows missing
+wh2_dlc14_brt_chevaliers_de_lyonesse,Chevaliers de Lyonesse,bretonnia,wh3_main_combi_region_copher,2,18,,0,not assessable: 123 of 124 baseline rows missing
+wh2_dlc15_grn_bonerattlaz,Bonerattlaz,greenskins,wh3_main_combi_region_khazid_irkulaz,4,18,,0,not assessable: 123 of 124 baseline rows missing
+wh2_dlc15_grn_broken_axe,Broken Axe,greenskins,wh3_main_combi_region_massif_orcal,2,18,,0,not assessable: 123 of 124 baseline rows missing
+wh2_dlc15_hef_imrik,Knights of Caledor,high_elves,wh3_main_combi_region_the_fortress_of_vorag,0,18,no partner passes frozen rules among resolved starts; missing-start partners remain unknown,0,not assessable: 123 of 124 baseline rows missing
+wh2_dlc16_wef_drycha,Wargrove of Woe,wood_elves,wh3_main_combi_region_gryphon_wood,5,18,,0,not assessable: 123 of 124 baseline rows missing
+wh2_dlc16_wef_sisters_of_twilight,Heralds of Ariel,wood_elves,wh3_main_combi_region_the_witchwood,4,18,,0,not assessable: 123 of 124 baseline rows missing
+wh2_dlc17_bst_malagor,Harbinger of Disaster,beastmen,,0,103,"missing capital; zero observed, local viability unknown",0,not assessable: 123 of 124 baseline rows missing
+wh2_dlc17_bst_taurox,Slaughterhorn Tribe,beastmen,,0,103,"missing capital; zero observed, local viability unknown",0,not assessable: 123 of 124 baseline rows missing
+wh2_dlc17_dwf_thorek_ironbrow,Ironbrow's Expedition,dwarfs,wh3_main_combi_region_karak_zorn,5,18,,0,not assessable: 123 of 124 baseline rows missing
+wh2_dlc17_lzd_oxyotl,Ghosts of Pahuax,lizardmen,wh3_main_combi_region_the_godless_crater,0,18,no partner passes frozen rules among resolved starts; missing-start partners remain unknown,0,not assessable: 123 of 124 baseline rows missing
+wh2_main_def_cult_of_pleasure,Cult of Pleasure,dark_elves,wh3_main_combi_region_ancient_city_of_quintex,2,18,,0,not assessable: 123 of 124 baseline rows missing
+wh2_main_def_hag_graef,Hag Graef,dark_elves,wh3_main_combi_region_hag_graef,4,18,,0,not assessable: 123 of 124 baseline rows missing
+wh2_main_def_har_ganeth,Har Ganeth,dark_elves,wh3_main_combi_region_har_ganeth,2,18,,0,not assessable: 123 of 124 baseline rows missing
+wh2_main_def_naggarond,Naggarond,dark_elves,wh3_main_combi_region_naggarond,4,18,,0,not assessable: 123 of 124 baseline rows missing
+wh2_main_hef_avelorn,Avelorn,high_elves,wh3_main_combi_region_gaean_vale,2,18,,0,not assessable: 123 of 124 baseline rows missing
+wh2_main_hef_eataine,Eataine,high_elves,wh3_main_combi_region_lothern,2,18,,0,not assessable: 123 of 124 baseline rows missing
+wh2_main_hef_nagarythe,Nagarythe,high_elves,wh3_main_combi_region_the_monoliths,4,18,,0,not assessable: 123 of 124 baseline rows missing
+wh2_main_hef_order_of_loremasters,Order of Loremasters,high_elves,wh3_main_combi_region_fortress_of_dawn,0,18,no partner passes frozen rules among resolved starts; missing-start partners remain unknown,0,not assessable: 123 of 124 baseline rows missing
+wh2_main_hef_yvresse,Yvresse,high_elves,wh3_main_combi_region_tor_yvresse,2,18,,0,not assessable: 123 of 124 baseline rows missing
+wh2_main_lzd_hexoatl,Hexoatl,lizardmen,wh3_main_combi_region_hexoatl,0,18,no partner passes frozen rules among resolved starts; missing-start partners remain unknown,0,not assessable: 123 of 124 baseline rows missing
+wh2_main_lzd_itza,Itza,lizardmen,wh3_main_combi_region_itza,3,18,,0,not assessable: 123 of 124 baseline rows missing
+wh2_main_lzd_last_defenders,Last Defenders,lizardmen,wh3_main_combi_region_the_golden_tower,5,18,,0,not assessable: 123 of 124 baseline rows missing
+wh2_main_lzd_tlaqua,Tlaqua,lizardmen,wh3_main_combi_region_tlaqua,5,18,,0,not assessable: 123 of 124 baseline rows missing
+wh2_main_skv_clan_eshin,Clan Eshin,skaven,wh3_main_combi_region_xing_po,3,18,,0,not assessable: 123 of 124 baseline rows missing
+wh2_main_skv_clan_mors,Clan Mors,skaven,wh3_main_combi_region_misty_mountain,2,18,,0,not assessable: 123 of 124 baseline rows missing
+wh2_main_skv_clan_moulder,Clan Moulder,skaven,wh3_main_combi_region_hell_pit,2,18,,0,not assessable: 123 of 124 baseline rows missing
+wh2_main_skv_clan_pestilens,Clan Pestilens,skaven,wh3_main_combi_region_oyxl,2,18,,0,not assessable: 123 of 124 baseline rows missing
+wh2_main_skv_clan_skryre,Clan Skryre,skaven,wh3_main_combi_region_skavenblight,3,18,,0,not assessable: 123 of 124 baseline rows missing
+wh2_twa03_def_rakarth,The Thousand Maws,dark_elves,wh3_main_combi_region_great_turtle_isle,1,18,,0,not assessable: 123 of 124 baseline rows missing
+wh3_cp1_cth_tiger_warriors,Claws of the White Tiger,grand_cathay,wh3_main_combi_region_vale_of_titans,4,18,,0,not assessable: 123 of 124 baseline rows missing
+wh3_dlc20_chs_azazel,The Ecstatic Legions,warriors_of_chaos,,0,103,"missing capital; zero observed, local viability unknown",0,not assessable: 123 of 124 baseline rows missing
+wh3_dlc20_chs_festus,The Fecundites,warriors_of_chaos,wh3_main_combi_region_brass_keep,2,18,,0,not assessable: 123 of 124 baseline rows missing
+wh3_dlc20_chs_kholek,Heralds of the Tempest,warriors_of_chaos,,0,103,"missing capital; zero observed, local viability unknown",0,not assessable: 123 of 124 baseline rows missing
+wh3_dlc20_chs_sigvald,The Decadent Host,warriors_of_chaos,,0,103,"missing capital; zero observed, local viability unknown",0,not assessable: 123 of 124 baseline rows missing
+wh3_dlc20_chs_valkia,Legion of the Gorequeen,warriors_of_chaos,,0,103,"missing capital; zero observed, local viability unknown",0,not assessable: 123 of 124 baseline rows missing
+wh3_dlc20_chs_vilitch,Puppets of Misrule,warriors_of_chaos,,0,103,"missing capital; zero observed, local viability unknown",0,not assessable: 123 of 124 baseline rows missing
+wh3_dlc23_chd_astragoth,Disciples of Hashut,chaos_dwarfs,wh3_main_combi_region_uzkulak,3,18,,0,not assessable: 123 of 124 baseline rows missing
+wh3_dlc23_chd_legion_of_azgorh,The Legion of Azgorh,chaos_dwarfs,wh3_main_combi_region_black_fortress,1,18,,0,not assessable: 123 of 124 baseline rows missing
+wh3_dlc23_chd_zhatan,The Warhost of Zharr,chaos_dwarfs,wh3_main_combi_region_the_volary,2,18,,0,not assessable: 123 of 124 baseline rows missing
+wh3_dlc24_cth_the_celestial_court,The Jade Court,grand_cathay,wh3_main_combi_region_shang_wu,4,18,,0,not assessable: 123 of 124 baseline rows missing
+wh3_dlc24_ksl_daughters_of_the_forest,Daughters of the Forest,kislev,wh3_main_combi_region_bleak_hold_fortress,4,18,,0,not assessable: 123 of 124 baseline rows missing
+wh3_dlc24_tze_the_deceivers,The Deceivers,tzeentch,,0,103,"missing capital; zero observed, local viability unknown",0,not assessable: 123 of 124 baseline rows missing
+wh3_dlc25_dwf_malakai,Masters of Innovation,dwarfs,wh3_main_combi_region_kraka_drak,2,18,,0,not assessable: 123 of 124 baseline rows missing
+wh3_dlc25_nur_epidemius,Tallymen of Pestilence,nurgle,wh3_main_combi_region_the_forest_of_decay,0,18,no partner passes frozen rules among resolved starts; missing-start partners remain unknown,0,not assessable: 123 of 124 baseline rows missing
+wh3_dlc25_nur_tamurkhan,The Maggot Host,nurgle,wh3_main_combi_region_zanbaijin,1,18,,0,not assessable: 123 of 124 baseline rows missing
+wh3_dlc26_grn_gorbad_ironclaw,Ironclaw Orcs,greenskins,wh3_main_combi_region_black_crag,4,18,,1,not assessable: 123 of 124 baseline rows missing
+wh3_dlc26_kho_arbaal,Challengers of Khorne,khorne,wh3_main_combi_region_stormvrack_mount,2,18,,0,not assessable: 123 of 124 baseline rows missing
+wh3_dlc26_kho_skulltaker,Blooded Wanderers,khorne,wh3_main_combi_region_hualotal,3,18,,0,not assessable: 123 of 124 baseline rows missing
+wh3_dlc26_ogr_golgfag,The Maneaters,ogre_kingdoms,,0,103,"missing capital; zero observed, local viability unknown",0,not assessable: 123 of 124 baseline rows missing
+wh3_dlc27_hef_aislinn,High Elf Sea Patrol,high_elves,,0,103,"missing capital; zero observed, local viability unknown",0,not assessable: 123 of 124 baseline rows missing
+wh3_dlc27_nor_sayl,Dolgan,norsca,wh3_main_combi_region_dark_tower,3,18,,0,not assessable: 123 of 124 baseline rows missing
+wh3_dlc27_sla_masque_of_slaanesh,The Accursed Troupe,slaanesh,wh3_main_combi_region_the_blood_hall,0,18,no partner passes frozen rules among resolved starts; missing-start partners remain unknown,0,not assessable: 123 of 124 baseline rows missing
+wh3_dlc27_sla_the_tormentors,The Tormentors,slaanesh,wh3_main_combi_region_hidden_landing,0,18,no partner passes frozen rules among resolved starts; missing-start partners remain unknown,0,not assessable: 123 of 124 baseline rows missing
+wh3_main_chs_shadow_legion,Shadow Legion,warriors_of_chaos,,0,103,"missing capital; zero observed, local viability unknown",0,not assessable: 123 of 124 baseline rows missing
+wh3_main_cth_the_northern_provinces,The Northern Provinces,grand_cathay,wh3_main_combi_region_nan_gau,3,18,,0,not assessable: 123 of 124 baseline rows missing
+wh3_main_cth_the_western_provinces,The Western Provinces,grand_cathay,wh3_main_combi_region_qiang,4,18,,0,not assessable: 123 of 124 baseline rows missing
+wh3_main_dae_daemon_prince,Legion of Chaos,daemons_of_chaos,,0,103,"missing capital; zero observed, local viability unknown",0,not assessable: 123 of 124 baseline rows missing
+wh3_main_dwf_the_ancestral_throng,The Ancestral Throng,dwarfs,wh3_main_combi_region_drackla_spire,4,18,,0,not assessable: 123 of 124 baseline rows missing
+wh3_main_emp_cult_of_sigmar,Cult of Sigmar,empire,wh3_main_combi_region_sudenburg,5,18,,0,not assessable: 123 of 124 baseline rows missing
+wh3_main_kho_exiles_of_khorne,Exiles of Khorne,khorne,wh3_main_combi_region_deff_gorge,2,18,,0,not assessable: 123 of 124 baseline rows missing
+wh3_main_ksl_the_great_orthodoxy,The Great Orthodoxy,kislev,wh3_main_combi_region_erengrad,3,18,,0,not assessable: 123 of 124 baseline rows missing
+wh3_main_ksl_the_ice_court,The Ice Court,kislev,wh3_main_combi_region_kislev,4,18,,0,not assessable: 123 of 124 baseline rows missing
+wh3_main_ksl_ursun_revivalists,Ursun Revivalists,kislev,,0,103,"missing capital; zero observed, local viability unknown",0,not assessable: 123 of 124 baseline rows missing
+wh3_main_nur_poxmakers_of_nurgle,Poxmakers of Nurgle,nurgle,wh3_main_combi_region_dragon_fang_mount,0,18,no partner passes frozen rules among resolved starts; missing-start partners remain unknown,0,not assessable: 123 of 124 baseline rows missing
+wh3_main_ogr_disciples_of_the_maw,Disciples of the Maw,ogre_kingdoms,wh3_main_combi_region_karak_angazhar,7,18,,0,not assessable: 123 of 124 baseline rows missing
+wh3_main_ogr_goldtooth,Goldtooth,ogre_kingdoms,wh3_main_combi_region_great_hall_of_greasus,5,18,,0,not assessable: 123 of 124 baseline rows missing
+wh3_main_sla_seducers_of_slaanesh,Seducers of Slaanesh,slaanesh,wh3_main_combi_region_shrine_of_kurnous,0,18,no partner passes frozen rules among resolved starts; missing-start partners remain unknown,0,not assessable: 123 of 124 baseline rows missing
+wh3_main_tze_oracles_of_tzeentch,Oracles of Tzeentch,tzeentch,wh3_main_combi_region_fateweavers_crevasse,0,18,no partner passes frozen rules among resolved starts; missing-start partners remain unknown,0,not assessable: 123 of 124 baseline rows missing
+wh3_main_vmp_caravan_of_blue_roses,Caravan of Blue Roses,vampire_counts,wh3_main_combi_region_the_haunted_forest,1,18,,0,not assessable: 123 of 124 baseline rows missing
+wh_dlc03_bst_beastmen,Warherd of the One-Eye,beastmen,,0,103,"missing capital; zero observed, local viability unknown",0,not assessable: 123 of 124 baseline rows missing
+wh_dlc05_bst_morghur_herd,Warherd of the Shadowgave,beastmen,,0,103,"missing capital; zero observed, local viability unknown",0,not assessable: 123 of 124 baseline rows missing
+wh_dlc05_wef_argwylon,Argwylon,wood_elves,wh3_main_combi_region_waterfall_palace,6,18,,0,not assessable: 123 of 124 baseline rows missing
+wh_dlc05_wef_wood_elves,Talsyn,wood_elves,wh3_main_combi_region_kings_glade,5,18,,0,not assessable: 123 of 124 baseline rows missing
+wh_dlc08_nor_norsca,World Walkers,norsca,wh3_main_combi_region_troll_fjord,1,18,,0,not assessable: 123 of 124 baseline rows missing
+wh_dlc08_nor_wintertooth,Wintertooth,norsca,wh3_main_combi_region_monolith_of_flesh,2,18,,0,not assessable: 123 of 124 baseline rows missing
+wh_main_brt_bordeleaux,Bordeleaux Errant,bretonnia,wh3_main_combi_region_temple_of_tlencan,2,18,,0,not assessable: 123 of 124 baseline rows missing
+wh_main_brt_bretonnia,Couronne,bretonnia,wh3_main_combi_region_couronne,2,18,,0,not assessable: 123 of 124 baseline rows missing
+wh_main_brt_carcassonne,Carcassonne,bretonnia,wh3_main_combi_region_castle_carcassonne,5,18,,0,not assessable: 123 of 124 baseline rows missing
+wh_main_chs_chaos,Warhost of the Apocalypse,warriors_of_chaos,,0,103,"missing capital; zero observed, local viability unknown",0,not assessable: 123 of 124 baseline rows missing
+wh_main_dwf_dwarfs,Karaz-a-Karak,dwarfs,wh3_main_combi_region_karaz_a_karak,2,18,,0,not assessable: 123 of 124 baseline rows missing
+wh_main_dwf_karak_izor,Clan Angrund,dwarfs,wh3_main_combi_region_zarakzil,4,18,,0,not assessable: 123 of 124 baseline rows missing
+wh_main_dwf_karak_kadrin,Karak Kadrin,dwarfs,wh3_main_combi_region_karak_kadrin,3,18,,0,not assessable: 123 of 124 baseline rows missing
+wh_main_emp_empire,Reikland,empire,wh3_main_combi_region_altdorf,4,18,,0,not assessable: 123 of 124 baseline rows missing
+wh_main_emp_wissenland,Wissenland & Nuln,empire,wh3_main_combi_region_nuln,5,18,,0,not assessable: 123 of 124 baseline rows missing
+wh_main_grn_crooked_moon,Crooked Moon,greenskins,wh3_main_combi_region_mount_gunbad,4,18,,0,not assessable: 123 of 124 baseline rows missing
+wh_main_grn_greenskins,Grimgor's 'Ardboyz,greenskins,wh3_main_combi_region_eagle_eyries,2,18,,0,not assessable: 123 of 124 baseline rows missing
+wh_main_grn_orcs_of_the_bloody_hand,The Bloody Handz,greenskins,wh3_main_combi_region_cuexotl,1,18,,1,not assessable: 123 of 124 baseline rows missing
+wh_main_vmp_schwartzhafen,Sylvania,vampire_counts,wh3_main_combi_region_castle_drakenhof,3,18,,0,not assessable: 123 of 124 baseline rows missing
+wh_main_vmp_vampire_counts,The Drakenhof Conclave,vampire_counts,wh3_main_combi_region_ka_sabar,3,18,,0,not assessable: 123 of 124 baseline rows missing

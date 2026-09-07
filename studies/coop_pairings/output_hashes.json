@@ -1,0 +1,15 @@
+{
+  "baseline_comparison.json": "6205dd69cf2c1268e77921856ce95edd893c378b067bbbff0776002d3eb2cdaf",
+  "baseline_pair_comparison.csv": "d0c4c66b6986b24aad6428ab8f1ba7cc375ea29de250ba2e8e0034a4d72760ba",
+  "coverage_report.json": "ead4cba3f35954382139f2579da173f8ea4673cd4b6a4e90e9046b968b79d656",
+  "evidence_registry.json": "13b18af04cce67f2a84eef2ed7450a11e548059eb8bd51e548861e0a81175d95",
+  "faction_coverage.csv": "f6ede04b9629b03118af694b4314e81cd72b1b5503e5ac1ec90f1bf67153715b",
+  "faction_evidence.csv": "c3227ab9ece5f81b2ccfb24bbea5fdfc67b5c97bc32122869e9cc612e8b17f9d",
+  "nearby_rejected.csv": "86e32012b240e51134aa6489848394b38c105efbc51263184b4040ac3713b54b",
+  "preliminary_vs_generated.md": "638c363ee237bcefdeada017a99def717e20b6179990dfdc937413f45a82c9ed",
+  "qualifying_pairs__8.1.1.csv": "f6ebc6c50f567b2d03c6cf48f2f3ad7ea32b22a6c6acd43f0f75ba7105743274",
+  "race_policy.json": "4a8148763c5df12ef06178ee679a364de80b9a3ccfa194fe92d601f20cb83089",
+  "regional_pairings.md": "86e55c0f71423daad73298bea8d9cd39a2ab40c334a910586533dae71300c8f2",
+  "regional_summary.csv": "48d4e52b0dc35c99c38c00acc61c53767d71ca0adecc25cf3662432d0bac9b62",
+  "source_provenance.json": "4d4e81302139e2d92d466c75f6ccf17d79c13cecfd83d0069ae11381e50c16c2"
+}

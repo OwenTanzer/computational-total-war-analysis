@@ -1,0 +1,235 @@
+{
+  "atlas_coverage": [
+    {
+      "notes": "All current campaign_map_regions rows for wh3_main_combi_map_5",
+      "record_count": 641,
+      "status": "complete",
+      "subject": "IE regions"
+    },
+    {
+      "notes": "Rules and map groups present; exact campaign-coordinate catchment overlay remains binary",
+      "record_count": 1348,
+      "status": "partial",
+      "subject": "battle-map selection"
+    },
+    {
+      "notes": "All start_pos_factions rows marked playable for wh3_main_combi",
+      "record_count": 104,
+      "status": "complete",
+      "subject": "playable factions"
+    },
+    {
+      "notes": "Exact masks/centroids/adjacency for 571 uniquely coloured regions; 70 black sea/special-region rows share one mask and lack individual shapes",
+      "record_count": 571,
+      "status": "partial",
+      "subject": "region raster geometry"
+    },
+    {
+      "notes": "Not exposed by the decoded DB start-position relations in this source pass",
+      "record_count": 0,
+      "status": "unavailable",
+      "subject": "starting forces and agents"
+    },
+    {
+      "notes": "Owner, province capital, and faction capital relations",
+      "record_count": 569,
+      "status": "review",
+      "subject": "turn-one region ownership"
+    },
+    {
+      "notes": "Effective single-player short, long, and shared domination objectives from victory_objectives_ie",
+      "record_count": 749,
+      "status": "complete_for_scripted_short_long_domination",
+      "subject": "victory objectives"
+    }
+  ],
+  "atlas_metadata": {
+    "campaign_key": "wh3_main_combi",
+    "campaign_map_key": "wh3_main_combi_map_5",
+    "game": "warhammer_3",
+    "generated_at_utc": "2026-08-30T00:24:34.945Z",
+    "geometry_model": "Exact colour-coded region raster plus derived centroids and raster-border adjacency; sea-region vectors unavailable",
+    "patch": "8.1.1",
+    "schema_version": "1.0.0",
+    "steam_build_id": "24237342",
+    "title": "Total War: Warhammer III Immortal Empires Campaign Atlas"
+  },
+  "atlas_schema_inventory": [
+    {
+      "name": "faction_start_reference",
+      "sql": "CREATE VIEW faction_start_reference AS\n  SELECT f.faction_key, f.name AS faction_name, f.subculture_key, f.culture_key,\n         f.is_major, f.starting_order, f.starting_treasury, f.capital_region_key,\n         r.name AS capital_region_name, r.province_key, r.centroid_x, r.centroid_y\n  FROM factions f LEFT JOIN regions r ON r.region_key = f.capital_region_key\n  WHERE f.playable = 1",
+      "type": "view"
+    },
+    {
+      "name": "objective_conditions",
+      "sql": "CREATE TABLE objective_conditions (\n    objective_key TEXT NOT NULL, condition_order INTEGER NOT NULL, condition_type TEXT NOT NULL,\n    target_key TEXT, numeric_value REAL, raw_condition TEXT NOT NULL,\n    PRIMARY KEY (objective_key, condition_order), FOREIGN KEY (objective_key) REFERENCES objectives(objective_key)\n  )",
+      "type": "table"
+    },
+    {
+      "name": "objectives",
+      "sql": "CREATE TABLE objectives (\n    objective_key TEXT PRIMARY KEY, faction_key TEXT NOT NULL, victory_tier TEXT NOT NULL,\n    objective_order INTEGER NOT NULL, objective_type TEXT NOT NULL, source_scope TEXT NOT NULL,\n    source_scope_key TEXT NOT NULL, FOREIGN KEY (faction_key) REFERENCES factions(faction_key)\n  )",
+      "type": "table"
+    },
+    {
+      "name": "provinces",
+      "sql": "CREATE TABLE provinces (\n    province_key TEXT PRIMARY KEY, name TEXT NOT NULL, capital_region_key TEXT\n  )",
+      "type": "table"
+    },
+    {
+      "name": "region_adjacency",
+      "sql": "CREATE TABLE region_adjacency (\n    region_a TEXT NOT NULL, region_b TEXT NOT NULL, shared_raster_edges INTEGER NOT NULL,\n    relation_type TEXT NOT NULL, PRIMARY KEY (region_a, region_b),\n    FOREIGN KEY (region_a) REFERENCES regions(region_key), FOREIGN KEY (region_b) REFERENCES regions(region_key)\n  )",
+      "type": "table"
+    },
+    {
+      "name": "region_groups",
+      "sql": "CREATE TABLE region_groups (\n    region_group_key TEXT NOT NULL, region_key TEXT NOT NULL,\n    PRIMARY KEY (region_group_key, region_key), FOREIGN KEY (region_key) REFERENCES regions(region_key)\n  )",
+      "type": "table"
+    },
+    {
+      "name": "region_points",
+      "sql": "CREATE TABLE region_points (\n    fid INTEGER PRIMARY KEY AUTOINCREMENT, region_key TEXT NOT NULL UNIQUE, geom BLOB NOT NULL,\n    FOREIGN KEY (region_key) REFERENCES regions(region_key)\n  )",
+      "type": "table"
+    },
+    {
+      "name": "regions",
+      "sql": "CREATE TABLE regions (\n    region_key TEXT PRIMARY KEY, name TEXT NOT NULL, province_key TEXT,\n    is_province_capital INTEGER NOT NULL, start_owner_faction_key TEXT, is_faction_capital INTEGER,\n    settlement_climate_key TEXT, lookup_colour_hex TEXT NOT NULL, terrain_patch_area TEXT,\n    pixel_count INTEGER, centroid_pixel_x REAL, centroid_pixel_y_top REAL,\n    centroid_x REAL, centroid_y REAL, min_pixel_x INTEGER, min_pixel_y_top INTEGER,\n    max_pixel_x INTEGER, max_pixel_y_top INTEGER, geometry_status TEXT NOT NULL,\n    FOREIGN KEY (province_key) REFERENCES provinces(province_key),\n    FOREIGN KEY (start_owner_faction_key) REFERENCES factions(faction_key)\n  )",
+      "type": "table"
+    },
+    {
+      "name": "strategic_links",
+      "sql": "CREATE TABLE strategic_links (\n    link_id INTEGER PRIMARY KEY AUTOINCREMENT, network_key TEXT NOT NULL, link_type TEXT NOT NULL,\n    from_node_key TEXT NOT NULL, to_node_key TEXT NOT NULL, source_region_or_segment_key TEXT\n  )",
+      "type": "table"
+    },
+    {
+      "name": "strategic_nodes",
+      "sql": "CREATE TABLE strategic_nodes (\n    node_key TEXT PRIMARY KEY, node_type TEXT NOT NULL, network_key TEXT, region_key TEXT,\n    name TEXT, x REAL, y REAL, coordinate_source TEXT NOT NULL\n  )",
+      "type": "table"
+    }
+  ],
+  "atlas_sha256": "99e7e858db93f15c864aa3f090d490f89ad969402095fb7f98bd2b7542cef407",
+  "baseline_sha256": "fa2168095310d103a0f001eb462b9a8a7d889b4e88d7b858cb94ca1f44cf70c7",
+  "geography_freeze_commit": "ce3e05a",
+  "git_commit": "8c2169b837288d03ba0188b468f06a2f3bcb4b28",
+  "inputs": {
+    "AGENTS.md": {
+      "git_blob": "a754ed52daaffe5f8fd2b65339d443c5ccd00d23"
+    },
+    "context_catalog.json": {
+      "git_blob": "69aa6f97283c9b7408e9ca849b5fb84209da9f9f"
+    },
+    "data/campaign_map/README.md": {
+      "git_blob": "168fafd08d41e2263111d5e1fc05590bc420d737"
+    },
+    "data/campaign_map/VALIDATION.md": {
+      "git_blob": "a77e85223fd349289410e400df3a8900b10fbf27"
+    },
+    "data/campaign_map/campaign_atlas__wh3__8.1.1.gpkg": {
+      "git_blob": "786539124576e3cb04b2a8ea42f542d0876e1c48"
+    },
+    "data/campaign_map/validation_report.json": {
+      "git_blob": "c6a8c7fbb223cdc75a07bae3289a4da7acf4fa17"
+    },
+    "data/economy/README.md": {
+      "git_blob": "63a28875bec0fdb7bc5aeea8f6284556d065d38b"
+    },
+    "data/economy/audit_report.json": {
+      "git_blob": "fbe3461a4b33da346ba99d48923e31134ee0aa94"
+    },
+    "data/economy/dataset_manifest.json": {
+      "git_blob": "af02aada4ce7e9ee8dfda86f14f9bd7cb840069c"
+    },
+    "data/economy/faction_index__wh3__8.1.1.csv": {
+      "git_blob": "984b4d4985b5e5df20c335b1d98af9b1b290cfb8"
+    },
+    "data/economy/schema_inventory__v1.csv": {
+      "git_blob": "61f40f1e4820317846dcd3d0ec333dd702993352"
+    },
+    "data/faction_guides/README.md": {
+      "git_blob": "71a91d653bb49357ffa965600cd404b781df5b88"
+    },
+    "data/faction_guides/queue.json": {
+      "git_blob": "e0671831827beca96f0b80ffebddc0aa9818e1cf"
+    },
+    "data/faction_guides/races/beastmen.md": {
+      "git_blob": "345e7e6283ac614866749aef1396ce944e58e22b"
+    },
+    "data/faction_guides/races/bretonnia.md": {
+      "git_blob": "134387153660d3f0f4dfdee6b93945e6d9128d03"
+    },
+    "data/faction_guides/races/chaos_dwarfs.md": {
+      "git_blob": "5b781afd09c0770c5868beb2cfa7943fb38f8f25"
+    },
+    "data/faction_guides/races/daemons_of_chaos.md": {
+      "git_blob": "f929908f7e9151876e58188a18695213d1e49dda"
+    },
+    "data/faction_guides/races/dark_elves.md": {
+      "git_blob": "30b3a95202a2b57e52bf59909300dfc063407c1e"
+    },
+    "data/faction_guides/races/dwarfs.md": {
+      "git_blob": "4392fadac415ca32a56ed1be41ff14b785b85261"
+    },
+    "data/faction_guides/races/empire.md": {
+      "git_blob": "f7771913a8624117257dd809a01a3e0633d3ccbe"
+    },
+    "data/faction_guides/races/grand_cathay.md": {
+      "git_blob": "10a0f301596c2800fdf100b0e642378381da5f27"
+    },
+    "data/faction_guides/races/greenskins.md": {
+      "git_blob": "62f94d5d6c232793c492287b9b6149d993aa528f"
+    },
+    "data/faction_guides/races/high_elves.md": {
+      "git_blob": "657b4cfb09f2b929ed6623b2c41a53d29e7fb8f2"
+    },
+    "data/faction_guides/races/khorne.md": {
+      "git_blob": "4fd2c97be6d7b344abdaf5a1354b935c6a822a3e"
+    },
+    "data/faction_guides/races/kislev.md": {
+      "git_blob": "a171f528c525a2bca03c5ddb74789f68fbc4fce6"
+    },
+    "data/faction_guides/races/lizardmen.md": {
+      "git_blob": "3497334932de29c91bcd2bd2ee21889d3195dd73"
+    },
+    "data/faction_guides/races/norsca.md": {
+      "git_blob": "8b4cfb7ef5ca4217b8e91b807f0312af49a61d0d"
+    },
+    "data/faction_guides/races/nurgle.md": {
+      "git_blob": "60c8433ea4baf858a24de0889ea8e07e90a33beb"
+    },
+    "data/faction_guides/races/ogre_kingdoms.md": {
+      "git_blob": "3bd67a1caefd14a06296155c07a27d8ae2b6368e"
+    },
+    "data/faction_guides/races/skaven.md": {
+      "git_blob": "76518210ce8edd82927988bf2f2fef48434e3104"
+    },
+    "data/faction_guides/races/slaanesh.md": {
+      "git_blob": "fff8b377c0eed5520b4183989182dde4fcf41c3c"
+    },
+    "data/faction_guides/races/tomb_kings.md": {
+      "git_blob": "529a1f412dba7500daa16e003d9a23da608ff1a1"
+    },
+    "data/faction_guides/races/tzeentch.md": {
+      "git_blob": "0e1755ffb1d4e05a46f19c2428d0db1b3c4b0a15"
+    },
+    "data/faction_guides/races/vampire_coast.md": {
+      "git_blob": "76ab68408cd895e537d3c23a71de0d06757eb1f1"
+    },
+    "data/faction_guides/races/vampire_counts.md": {
+      "git_blob": "7556b9ff4e676d7b0259395589b623d027237b4c"
+    },
+    "data/faction_guides/races/warriors_of_chaos.md": {
+      "git_blob": "733bb6b3c796579445110d332fff95201aacd28f"
+    },
+    "data/faction_guides/races/wood_elves.md": {
+      "git_blob": "8cd91b3ad10d627a5f94f4252b125df30b66973d"
+    }
+  },
+  "notion_baseline_url": "https://www.notion.so/3d33c519147b81d2b920e93cc2d8792b",
+  "repository": "https://github.com/OwenTanzer/computational-total-war",
+  "snapshot": {
+    "game": "warhammer_3",
+    "patch": "8.1.1",
+    "steam_build_id": 24237342,
+    "unit_scale": "ultra"
+  },
+  "source_lock_changed": false
+}

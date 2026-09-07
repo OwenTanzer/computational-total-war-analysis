@@ -1,0 +1,32 @@
+{
+  "baseline_parent_page_id": "3773c519-147b-81a9-9fe6-cc080b7475a9",
+  "baseline_url": "https://www.notion.so/3d33c519147b81d2b920e93cc2d8792b",
+  "changed_classifications": "Only the named stale geography flag is comparable; no old class columns exist.",
+  "complete_pair_level_comparison": false,
+  "historical_erroneous_shortlist_label": 61,
+  "missing_pair_rows": 123,
+  "newly_discovered_pairs": "Not identifiable from the incomplete baseline; do not call generated-only rows new omissions.",
+  "recovered_pair_rows": 1,
+  "recovered_row_result": {
+    "centroid_distance": 267.842831,
+    "diplomatic_class": "Clean",
+    "exclusion_reason": "Outside frozen geographic envelope",
+    "faction_a_key": "wh3_dlc26_grn_gorbad_ironclaw",
+    "faction_b_key": "wh_main_grn_orcs_of_the_bloody_hand",
+    "historical_pair": "Gorbad + Wurrzag",
+    "historical_status": "pre-audit candidate, already flagged geographically stale",
+    "included": false,
+    "proximity_class": "Distant",
+    "raster_hops": 8,
+    "start_region_a": "wh3_main_combi_region_black_crag",
+    "start_region_b": "wh3_main_combi_region_cuexotl"
+  },
+  "regional_groupings_recovered": 0,
+  "reported_post_flag_count": 123,
+  "reported_pre_audit_count": 124,
+  "reported_shortlist_count": 62,
+  "retrieval_date": "2026-09-06",
+  "retrieval_truncated": false,
+  "underrepresented_factions": "Not identifiable: recovered row frequency is not the original enumeration frequency.",
+  "unknown_blocks": []
+}
