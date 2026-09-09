@@ -33,7 +33,16 @@ See [`studies/race_strategy_space/methodology.md`](studies/race_strategy_space/m
 for the specification and [`studies/race_strategy_space/results/8.1.1/`](studies/race_strategy_space/results/8.1.1/)
 for the committed outputs.
 
-## Reproduce
+## Additional study: infantry campaign stats
+
+The [infantry campaign comparison](studies/infantry_campaign_comparison/methodology.md)
+screens small melee infantry and builds five explicit partial campaign modifier
+ledgers, including Bhashiva's Iron Claws. Its
+[results](studies/infantry_campaign_comparison/results/8.1.1/README.md)
+distinguish base-stat evidence from unresolved campaign ceilings. This study uses
+its own source lock so the older race-study dependency remains unchanged.
+
+## Reproduce the race study
 
 Place this repository beside a CTW checkout locked to the commit in
 `source_lock.json`, then run:

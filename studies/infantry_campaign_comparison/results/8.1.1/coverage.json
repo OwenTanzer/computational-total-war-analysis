@@ -1,0 +1,25 @@
+{
+  "complete_campaign_ceiling": false,
+  "available": [
+    "normalized base cards",
+    "skill effects and graph",
+    "active technology effects and graph",
+    "static main_units campaign caps",
+    "selected faction guides",
+    "partial ability phase exports"
+  ],
+  "blocking_gaps": [
+    "Effect-to-bonus operation and unit-set membership junctions absent; reviewed localizations used only for explicit exemplars.",
+    "Experience-to-stat tables absent; rank-conditioned bonuses modeled separately from missing native experience bonuses.",
+    "Complete trait/item/ancillary effect acquisition and compatibility model absent.",
+    "Ability phase membership, activation, cooldown and targeting relations incomplete; no sustainable or peak burst ceiling produced.",
+    "Faction rituals, unit upgrades, recruitment-pool rules and repeatable bonus caps not reconstructed.",
+    "Modifier order and UI rounding not verified; arithmetic sensitivities are not certified engine bounds.",
+    "No exhaustive lord/faction/hero optimization or guaranteed campaign reachability of 19-unit blocks."
+  ],
+  "excluded_from_claim": [
+    "battle winner prediction",
+    "global doomstack ranking",
+    "theoretical subtotal as attainable unit card"
+  ]
+}

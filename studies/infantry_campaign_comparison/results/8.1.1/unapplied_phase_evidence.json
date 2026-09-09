@@ -1,0 +1,104 @@
+{
+  "status": "unapplied: ability activation/phase junction missing",
+  "warning": "Same identifier is an evidence lead, not a recovered activation relation",
+  "special_ability_phases_tables": [
+    {
+      "id": "wh3_cp1_lord_passive_white_tiger",
+      "duration": "-1.0000",
+      "effect_type": "positive",
+      "requested_stance": "",
+      "cant_move": "false",
+      "freeze_fatigue": "false",
+      "fatigue_change_ratio": "0.0000",
+      "inspiration_aura_range_mod": "0.0000",
+      "ability_recharge_change": "0.0000",
+      "hp_change_frequency": "0.0000",
+      "damage_amount": "0",
+      "max_damaged_entities": "-1",
+      "resurrect": "false",
+      "mana_regen_mod": "0.0000",
+      "mana_max_depletion_mod": "0.0000",
+      "imbue_magical": "false",
+      "imbue_ignition": "0",
+      "imbue_contact": "",
+      "phase_display": "",
+      "phase_audio": "",
+      "is_hidden_in_ui": "false",
+      "affects_allies": "true",
+      "affects_enemies": "true",
+      "replenish_ammo": "0.0000",
+      "composite_scene_group": "",
+      "spreading": "",
+      "freeze_recharge": "false",
+      "heal_amount": "0.0000",
+      "barrier_heal_amount": "0.0000",
+      "remove_magical": "false",
+      "execute_ratio": "0.0000"
+    },
+    {
+      "id": "wh3_cp1_unit_passive_ferocious_ambush",
+      "duration": "20.0000",
+      "effect_type": "positive",
+      "requested_stance": "",
+      "cant_move": "false",
+      "freeze_fatigue": "false",
+      "fatigue_change_ratio": "0.0000",
+      "inspiration_aura_range_mod": "0.0000",
+      "ability_recharge_change": "0.0000",
+      "hp_change_frequency": "0.0000",
+      "damage_amount": "0",
+      "max_damaged_entities": "0",
+      "resurrect": "false",
+      "mana_regen_mod": "0.0000",
+      "mana_max_depletion_mod": "0.0000",
+      "imbue_magical": "false",
+      "imbue_ignition": "0",
+      "imbue_contact": "",
+      "phase_display": "wh_main_generic_buff_attack",
+      "phase_audio": "",
+      "is_hidden_in_ui": "false",
+      "affects_allies": "true",
+      "affects_enemies": "true",
+      "replenish_ammo": "0.0000",
+      "composite_scene_group": "",
+      "spreading": "",
+      "freeze_recharge": "false",
+      "heal_amount": "0.0000",
+      "barrier_heal_amount": "0.0000",
+      "remove_magical": "false",
+      "execute_ratio": "0.0000"
+    }
+  ],
+  "special_ability_phase_stat_effects_tables": [
+    {
+      "phase": "wh3_cp1_lord_passive_white_tiger",
+      "stat": "stat_melee_attack",
+      "value": "5.0000",
+      "how": "add"
+    },
+    {
+      "phase": "wh3_cp1_lord_passive_white_tiger",
+      "stat": "stat_morale",
+      "value": "8.0000",
+      "how": "add"
+    },
+    {
+      "phase": "wh3_cp1_unit_passive_ferocious_ambush",
+      "stat": "scalar_charge_speed",
+      "value": "1.2500",
+      "how": "mult"
+    },
+    {
+      "phase": "wh3_cp1_unit_passive_ferocious_ambush",
+      "stat": "scalar_speed",
+      "value": "1.1500",
+      "how": "mult"
+    },
+    {
+      "phase": "wh3_cp1_unit_passive_ferocious_ambush",
+      "stat": "stat_charge_bonus",
+      "value": "1.1500",
+      "how": "mult"
+    }
+  ]
+}
