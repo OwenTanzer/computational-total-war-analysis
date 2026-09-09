@@ -1,0 +1,11 @@
+{
+  "repository": "https://github.com/OwenTanzer/computational-total-war",
+  "git_commit": "5d25716de3d18d0006f95d7aa623a7c062d72834",
+  "snapshot": {
+    "game": "warhammer_3",
+    "patch": "8.1.1",
+    "steam_build_id": 24237342,
+    "unit_scale": "ultra"
+  },
+  "reason": "Study-local lock includes normalized schema v3 and completed technology extraction; repository-wide legacy study lock remains unchanged."
+}

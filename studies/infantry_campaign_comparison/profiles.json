@@ -1,0 +1,924 @@
+{
+  "schema_version": 1,
+  "interpretation": "Reviewed target and operation mappings from explicit effect descriptions. Not engine-verified unit-set joins. Rank-native experience bonuses are excluded. Percent modifiers add within a stat; flat/percent order is a sensitivity.",
+  "states": [
+    {
+      "id": "rank0_neutral",
+      "unit_rank": 0,
+      "conditions": []
+    },
+    {
+      "id": "rank9_neutral",
+      "unit_rank": 9,
+      "conditions": []
+    },
+    {
+      "id": "rank9_attack_chaos_ambush",
+      "unit_rank": 9,
+      "conditions": [
+        "ambush",
+        "attacking",
+        "vs_warriors_of_chaos"
+      ]
+    },
+    {
+      "id": "rank9_siege_defence_chaos",
+      "unit_rank": 9,
+      "conditions": [
+        "defending",
+        "siege",
+        "vs_warriors_of_chaos"
+      ]
+    }
+  ],
+  "profiles": [
+    {
+      "id": "bhashiva_iron_claws",
+      "unit_key": "wh3_cp1_cth_inf_iron_claw_guandao",
+      "skill_path": "data/skill_trees/characters/grand_cathay/Bhashiva.csv",
+      "technology_path": "data/technology_trees/factions/grand_cathay/wh3_cp1_cth_tiger_warriors.csv",
+      "rules": [
+        {
+          "kind": "skill",
+          "source_key": "wh3_cp1_skill_innate_cth_bhashiva|wh_main_effect_character_stat_speed|1|general_to_force_own",
+          "expected_description": "Speed: %+n%",
+          "value": 10.0,
+          "stats": [
+            "speed"
+          ],
+          "operation": "percent",
+          "conditions": [],
+          "minimum_unit_rank": 0,
+          "per_rank": false
+        },
+        {
+          "kind": "skill",
+          "source_key": "wh3_cp1_skill_innate_cth_bhashiva|wh3_cp1_effect_force_stat_melee_attack_defence_during_ambushes|1|general_to_force_own",
+          "expected_description": "Melee attack and Melee defence: %+n during ambushes",
+          "value": 8.0,
+          "stats": [
+            "melee_attack",
+            "melee_defence"
+          ],
+          "operation": "add",
+          "conditions": [
+            "ambush"
+          ],
+          "minimum_unit_rank": 0,
+          "per_rank": false
+        },
+        {
+          "kind": "skill",
+          "source_key": "wh3_main_skill_cth_lord_army_buff_1_1|wh3_main_effect_force_stat_melee_attack_cth_infantry|3|general_to_force_own",
+          "expected_description": "Melee attack: %+n for Peasant Long Spearmen, Celestial Dragon Guard, Jade Warriors, Jade Warriors (Halberds), Tiger Warriors (Dual Axes), Tiger Warrior Stalkers and Iron Claw Tiger Warriors units",
+          "value": 6.0,
+          "stats": [
+            "melee_attack"
+          ],
+          "operation": "add",
+          "conditions": [],
+          "minimum_unit_rank": 0,
+          "per_rank": false
+        },
+        {
+          "kind": "skill",
+          "source_key": "wh3_main_skill_cth_lord_army_buff_1_1|wh3_main_effect_force_stat_melee_defence_cth_infantry|3|general_to_force_own",
+          "expected_description": "Melee defence: %+n for Peasant Long Spearmen, Celestial Dragon Guard, Jade Warriors, Jade Warriors (Halberds), Tiger Warriors (Dual Axes), Tiger Warrior Stalkers and Iron Claw Tiger Warriors units",
+          "value": 6.0,
+          "stats": [
+            "melee_defence"
+          ],
+          "operation": "add",
+          "conditions": [],
+          "minimum_unit_rank": 0,
+          "per_rank": false
+        },
+        {
+          "kind": "skill",
+          "source_key": "wh3_cp1_skill_cth_bhashiva_unique_3|wh3_cp1_effect_force_stat_physical_resistance_tiger_warriors|1|general_to_force_own",
+          "expected_description": "Physical resistance: %n% for all Tiger Warrior units",
+          "value": 10.0,
+          "stats": [
+            "physical_resistance"
+          ],
+          "operation": "add",
+          "conditions": [],
+          "minimum_unit_rank": 0,
+          "per_rank": false
+        },
+        {
+          "kind": "skill",
+          "source_key": "wh3_main_skill_cth_lord_army_buff_3_1|wh3_main_effect_force_stat_leadership_cth_infantry_rank7|1|general_to_force_own",
+          "expected_description": "Leadership: %+n for Peasant Long Spearmen, Celestial Dragon Guard, Jade Warriors, Jade Warriors (Halberds), Tiger Warriors (Dual Axes), Tiger Warrior Stalkers and Iron Claw Tiger Warriors units {{tr:rank7}}",
+          "value": 6.0,
+          "stats": [
+            "leadership"
+          ],
+          "operation": "add",
+          "conditions": [],
+          "minimum_unit_rank": 7,
+          "per_rank": false
+        },
+        {
+          "kind": "skill",
+          "source_key": "wh3_main_skill_cth_lord_army_buff_3_1|wh3_main_effect_force_stat_magic_resistance_cth_infantry_rank7|1|general_to_force_own",
+          "expected_description": "Spell resistance: %n% for Peasant Long Spearmen, Celestial Dragon Guard, Jade Warriors, Jade Warriors (Halberds), Tiger Warriors (Dual Axes), Tiger Warrior Stalkers and Iron Claw Tiger Warriors units {{tr:rank7}}",
+          "value": 10.0,
+          "stats": [
+            "spell_resistance"
+          ],
+          "operation": "add",
+          "conditions": [],
+          "minimum_unit_rank": 7,
+          "per_rank": false
+        },
+        {
+          "kind": "skill",
+          "source_key": "wh3_main_skill_cth_lord_army_buff_3_1|wh3_main_effect_force_stat_melee_defence_cth_infantry_rank7|1|general_to_force_own",
+          "expected_description": "Melee defence: %+n for Peasant Long Spearmen, Celestial Dragon Guard, Jade Warriors, Jade Warriors (Halberds), Tiger Warriors (Dual Axes), Tiger Warrior Stalkers and Iron Claw Tiger Warriors units {{tr:rank7}}",
+          "value": 5.0,
+          "stats": [
+            "melee_defence"
+          ],
+          "operation": "add",
+          "conditions": [],
+          "minimum_unit_rank": 7,
+          "per_rank": false
+        },
+        {
+          "kind": "skill",
+          "source_key": "wh3_cp1_skill_cth_bhashiva_unique_2|wh3_cp1_effect_force_stat_leadership_vs_ogre_chaos|1|general_to_force_own",
+          "expected_description": "Leadership: %+n when fighting against Ogre Kingdoms, Warriors of Chaos, Daemons of Chaos, Khorne, Tzeentch, Nurgle and Slaanesh",
+          "value": 8.0,
+          "stats": [
+            "leadership"
+          ],
+          "operation": "add",
+          "conditions": [
+            "vs_warriors_of_chaos"
+          ],
+          "minimum_unit_rank": 0,
+          "per_rank": false
+        },
+        {
+          "kind": "skill",
+          "source_key": "wh3_cp1_skill_cth_bhashiva_unique_2|wh3_cp1_effect_force_stat_melee_attack_vs_ogre_chaos|1|general_to_force_own",
+          "expected_description": "Melee attack: %+n when fighting against Ogre Kingdoms, Warriors of Chaos, Daemons of Chaos, Khorne, Tzeentch, Nurgle and Slaanesh",
+          "value": 6.0,
+          "stats": [
+            "melee_attack"
+          ],
+          "operation": "add",
+          "conditions": [
+            "vs_warriors_of_chaos"
+          ],
+          "minimum_unit_rank": 0,
+          "per_rank": false
+        },
+        {
+          "kind": "technology",
+          "source_key": "wh3_main_tech_cth_7|wh3_cp1_effect_force_stat_armour_melee_units",
+          "expected_description": "Armour: %+n for all Melee units",
+          "value": 10.0,
+          "stats": [
+            "armour"
+          ],
+          "operation": "add",
+          "conditions": [],
+          "minimum_unit_rank": 0,
+          "per_rank": false
+        },
+        {
+          "kind": "technology",
+          "source_key": "wh3_main_tech_cth_7|wh3_cp1_effect_force_stat_leadership_melee_units",
+          "expected_description": "Leadership: %+n for all Melee units",
+          "value": 6.0,
+          "stats": [
+            "leadership"
+          ],
+          "operation": "add",
+          "conditions": [],
+          "minimum_unit_rank": 0,
+          "per_rank": false
+        },
+        {
+          "kind": "technology",
+          "source_key": "wh3_main_tech_cth_7|wh3_cp1_effect_force_stat_melee_defence_melee_units",
+          "expected_description": "Melee defence: %+n for all Melee units",
+          "value": 4.0,
+          "stats": [
+            "melee_defence"
+          ],
+          "operation": "add",
+          "conditions": [],
+          "minimum_unit_rank": 0,
+          "per_rank": false
+        },
+        {
+          "kind": "technology",
+          "source_key": "wh3_main_tech_cth_3|wh3_cp1_effect_force_stat_armour_cth_peasants_jade_tigers",
+          "expected_description": "Armour: %+n for Jade Warrior, Peasant and Tiger Warrior units",
+          "value": 15.0,
+          "stats": [
+            "armour"
+          ],
+          "operation": "add",
+          "conditions": [],
+          "minimum_unit_rank": 0,
+          "per_rank": false
+        },
+        {
+          "kind": "technology",
+          "source_key": "wh3_main_tech_cth_3|wh3_cp1_effect_force_stat_melee_defence_cth_peasants_jade_tigers",
+          "expected_description": "Melee defence: %+n for Jade Warrior, Peasant and Tiger Warrior units",
+          "value": 4.0,
+          "stats": [
+            "melee_defence"
+          ],
+          "operation": "add",
+          "conditions": [],
+          "minimum_unit_rank": 0,
+          "per_rank": false
+        },
+        {
+          "kind": "technology",
+          "source_key": "wh3_main_tech_cth_71|wh3_cp1_effect_force_cth_speed_tiger_warrior_melee",
+          "expected_description": "Speed: %+n% for Tiger Warrior (Dual Axes) and Iron Claw Tiger Warrior units",
+          "value": 10.0,
+          "stats": [
+            "speed"
+          ],
+          "operation": "percent",
+          "conditions": [],
+          "minimum_unit_rank": 0,
+          "per_rank": false
+        },
+        {
+          "kind": "technology",
+          "source_key": "wh3_main_tech_cth_6|wh_main_effect_force_stat_speed",
+          "expected_description": "Speed: %+n%",
+          "value": 20.0,
+          "stats": [
+            "speed"
+          ],
+          "operation": "percent",
+          "conditions": [],
+          "minimum_unit_rank": 0,
+          "per_rank": false
+        },
+        {
+          "kind": "technology",
+          "source_key": "wh3_main_tech_cth_28|wh_main_effect_force_stat_melee_attack_infantry",
+          "expected_description": "Melee attack: %+n for Melee Infantry units",
+          "value": 4.0,
+          "stats": [
+            "melee_attack"
+          ],
+          "operation": "add",
+          "conditions": [],
+          "minimum_unit_rank": 0,
+          "per_rank": false
+        },
+        {
+          "kind": "technology",
+          "source_key": "wh3_main_tech_cth_55|wh_main_effect_character_stat_weapon_strength_attacking",
+          "expected_description": "Weapon strength: %+n% when attacking",
+          "value": 10.0,
+          "stats": [
+            "weapon_base_damage",
+            "weapon_ap_damage"
+          ],
+          "operation": "percent",
+          "conditions": [
+            "attacking"
+          ],
+          "minimum_unit_rank": 0,
+          "per_rank": false
+        },
+        {
+          "kind": "technology",
+          "source_key": "wh3_main_tech_cth_58|wh3_dlc23_effect_force_stat_leadership_vs_chaos_daemons_norsca_chaos_dwarfs",
+          "expected_description": "Leadership: %+n when fighting against Warriors of Chaos, Daemons of Chaos, Chaos Dwarfs and Norsca",
+          "value": 10.0,
+          "stats": [
+            "leadership"
+          ],
+          "operation": "add",
+          "conditions": [
+            "vs_warriors_of_chaos"
+          ],
+          "minimum_unit_rank": 0,
+          "per_rank": false
+        },
+        {
+          "kind": "technology",
+          "source_key": "wh3_main_tech_cth_23|wh_main_effect_force_stat_leadership_defending",
+          "expected_description": "Leadership: %+n when defending",
+          "value": 6.0,
+          "stats": [
+            "leadership"
+          ],
+          "operation": "add",
+          "conditions": [
+            "defending"
+          ],
+          "minimum_unit_rank": 0,
+          "per_rank": false
+        },
+        {
+          "kind": "technology",
+          "source_key": "wh3_main_tech_cth_38|wh3_cp1_effect_force_stat_melee_attack_siege_defence",
+          "expected_description": "Melee attack: %+n when under siege",
+          "value": 5.0,
+          "stats": [
+            "melee_attack"
+          ],
+          "operation": "add",
+          "conditions": [
+            "defending",
+            "siege"
+          ],
+          "minimum_unit_rank": 0,
+          "per_rank": false
+        },
+        {
+          "kind": "technology",
+          "source_key": "wh3_main_tech_cth_62|wh_main_effect_force_stat_melee_defence_siege_defence",
+          "expected_description": "Melee defence: %+n when under siege",
+          "value": 4.0,
+          "stats": [
+            "melee_defence"
+          ],
+          "operation": "add",
+          "conditions": [
+            "defending",
+            "siege"
+          ],
+          "minimum_unit_rank": 0,
+          "per_rank": false
+        }
+      ]
+    },
+    {
+      "id": "thorgrim_hammerers",
+      "unit_key": "wh_main_dwf_inf_hammerers",
+      "skill_path": "data/skill_trees/characters/dwarfs/Thorgrim_Grudgebearer.csv",
+      "technology_path": "data/technology_trees/factions/dwarfs/wh_main_dwf_dwarfs.csv",
+      "rules": [
+        {
+          "kind": "skill",
+          "source_key": "wh_main_skill_innate_dwf_thorgrim_grudgebearer|wh2_dlc17_effect_physical_resistance_hammerers|1|general_to_force_own",
+          "expected_description": "Physical resistance: %n% for Hammerers units",
+          "value": 15.0,
+          "stats": [
+            "physical_resistance"
+          ],
+          "operation": "add",
+          "conditions": [],
+          "minimum_unit_rank": 0,
+          "per_rank": false
+        },
+        {
+          "kind": "skill",
+          "source_key": "wh2_dlc11_skill_dwf_army_buff_grimnirs_heirs|wh2_dlc11_effect_force_stat_melee_attack_slayers_hammerers_ironbreakers|3|general_to_force_own",
+          "expected_description": "Melee attack: %+n for Slayers, Doomseekers, Giant Slayers, Slayer Pirates, Hammerers and Ironbreakers units",
+          "value": 6.0,
+          "stats": [
+            "melee_attack"
+          ],
+          "operation": "add",
+          "conditions": [],
+          "minimum_unit_rank": 0,
+          "per_rank": false
+        },
+        {
+          "kind": "skill",
+          "source_key": "wh2_dlc11_skill_dwf_army_buff_grimnirs_heirs|wh2_dlc11_effect_force_stat_weapon_strength_dwf_slayers_hammerers_ironbreakers|3|general_to_force_own",
+          "expected_description": "Weapon strength: %+n% for Slayers, Giant Slayers, Doomseekers, Slayer Pirates, Hammerers and Ironbreakers units",
+          "value": 12.0,
+          "stats": [
+            "weapon_base_damage",
+            "weapon_ap_damage"
+          ],
+          "operation": "percent",
+          "conditions": [],
+          "minimum_unit_rank": 0,
+          "per_rank": false
+        },
+        {
+          "kind": "skill",
+          "source_key": "wh2_dlc11_skill_dwf_army_buff_honoured_by_grimnir|wh2_dlc11_effect_force_stat_melee_attack_slayers_hammerers_ironbreakers_rank7|1|general_to_force_own",
+          "expected_description": "Melee attack: %+n for Slayers, Giant Slayers, Doomseekers, Slayer Pirates, Hammerers and Ironbreakers units {{tr:rank7}}",
+          "value": 5.0,
+          "stats": [
+            "melee_attack"
+          ],
+          "operation": "add",
+          "conditions": [],
+          "minimum_unit_rank": 7,
+          "per_rank": false
+        },
+        {
+          "kind": "skill",
+          "source_key": "wh2_dlc11_skill_dwf_army_buff_honoured_by_grimnir|wh2_dlc11_effect_force_stat_physical_resistance_dwf_slayers_hammerers_ironbreakers_rank7|1|general_to_force_own",
+          "expected_description": "Physical resistance: %n% for Slayers, Giant Slayers, Doomseekers, Slayer Pirates, Hammerers and Ironbreakers units {{tr:rank7}}",
+          "value": 10.0,
+          "stats": [
+            "physical_resistance"
+          ],
+          "operation": "add",
+          "conditions": [],
+          "minimum_unit_rank": 7,
+          "per_rank": false
+        },
+        {
+          "kind": "skill",
+          "source_key": "wh2_dlc11_skill_dwf_army_buff_honoured_by_grimnir|wh2_dlc11_effect_force_stat_weapon_strength_dwf_slayers_hammerers_ironbreakers_rank7|1|general_to_force_own",
+          "expected_description": "Weapon strength: %+n% for Slayers, Giant Slayers, Doomseeker, Slayer Pirates, Hammerers and Ironbreakers units {{tr:rank7}}",
+          "value": 12.0,
+          "stats": [
+            "weapon_base_damage",
+            "weapon_ap_damage"
+          ],
+          "operation": "percent",
+          "conditions": [],
+          "minimum_unit_rank": 7,
+          "per_rank": false
+        },
+        {
+          "kind": "technology",
+          "source_key": "wh_main_tech_dwf_mil_5_1|wh_main_effect_force_stat_speed_infantry",
+          "expected_description": "Speed: %+n% for Infantry units",
+          "value": 10.0,
+          "stats": [
+            "speed"
+          ],
+          "operation": "percent",
+          "conditions": [],
+          "minimum_unit_rank": 0,
+          "per_rank": false
+        },
+        {
+          "kind": "technology",
+          "source_key": "wh_main_tech_dwf_mil_5_0|wh3_dlc25_effect_force_stat_weapon_strength_dwf_hammer_infantry",
+          "expected_description": "Weapon strength: %+n% for Hammer Infantry and Ironbreaker units",
+          "value": 10.0,
+          "stats": [
+            "weapon_base_damage",
+            "weapon_ap_damage"
+          ],
+          "operation": "percent",
+          "conditions": [],
+          "minimum_unit_rank": 0,
+          "per_rank": false
+        },
+        {
+          "kind": "technology",
+          "source_key": "wh_main_tech_dwf_mil_6_2|wh3_dlc25_effect_force_stat_armour_dwf_hammer_infantry",
+          "expected_description": "Armour: %+n for Hammerer and Ironbreaker units",
+          "value": 10.0,
+          "stats": [
+            "armour"
+          ],
+          "operation": "add",
+          "conditions": [],
+          "minimum_unit_rank": 0,
+          "per_rank": false
+        },
+        {
+          "kind": "technology",
+          "source_key": "wh_main_tech_dwf_mil_6_2|wh3_dlc25_effect_force_stat_missile_resist_dwf_hammer_infantry",
+          "expected_description": "Missile resistance: %n% for Hammerer and Ironbreaker units",
+          "value": 15.0,
+          "stats": [
+            "missile_resistance"
+          ],
+          "operation": "add",
+          "conditions": [],
+          "minimum_unit_rank": 0,
+          "per_rank": false
+        },
+        {
+          "kind": "technology",
+          "source_key": "wh_main_tech_dwf_mil_8_0|wh3_dlc25_effect_force_stat_physical_resistance_dwf_hammer_ironbreakers",
+          "expected_description": "Physical resistance: %n% for Hammerer and Ironbreaker units",
+          "value": 5.0,
+          "stats": [
+            "physical_resistance"
+          ],
+          "operation": "add",
+          "conditions": [],
+          "minimum_unit_rank": 0,
+          "per_rank": false
+        },
+        {
+          "kind": "skill",
+          "source_key": "wh_dlc08_skill_dwf_lord_thorgrim_unique_4|wh2_dlc13_effect_force_stat_weapon_strength_vs_nor_chs_bst|1|general_to_force_own",
+          "expected_description": "Weapon strength: %+n% for all units when fighting against Norsca, Warriors of Chaos, Chaos Dwarfs, Daemons of Chaos and Beastmen",
+          "value": 10.0,
+          "stats": [
+            "weapon_base_damage",
+            "weapon_ap_damage"
+          ],
+          "operation": "percent",
+          "conditions": [
+            "vs_warriors_of_chaos"
+          ],
+          "minimum_unit_rank": 0,
+          "per_rank": false
+        }
+      ]
+    },
+    {
+      "id": "grimgor_black_orcs",
+      "unit_key": "wh_main_grn_inf_black_orcs",
+      "skill_path": "data/skill_trees/characters/greenskins/Grimgor_Ironhide.csv",
+      "technology_path": "data/technology_trees/factions/greenskins/wh_main_grn_greenskins.csv",
+      "rules": [
+        {
+          "kind": "skill",
+          "source_key": "wh_dlc08_skill_grn_lord_unique_grimgor_1|wh_dlc08_effect_force_stat_ap_damage_black_orcs|1|general_to_force_own",
+          "expected_description": "Armour-piercing weapon damage: %+n for Black Orc units",
+          "value": 9.0,
+          "stats": [
+            "weapon_ap_damage"
+          ],
+          "operation": "add",
+          "conditions": [],
+          "minimum_unit_rank": 0,
+          "per_rank": false
+        },
+        {
+          "kind": "skill",
+          "source_key": "wh_dlc08_skill_grn_lord_unique_grimgor_1|wh_dlc08_effect_force_stat_charge_bonus_add_black_orc|1|general_to_force_own",
+          "expected_description": "Charge bonus: %+n for Black Orc units",
+          "value": 12.0,
+          "stats": [
+            "charge_bonus"
+          ],
+          "operation": "add",
+          "conditions": [],
+          "minimum_unit_rank": 0,
+          "per_rank": false
+        },
+        {
+          "kind": "skill",
+          "source_key": "wh2_dlc11_skill_grn_army_buff_da_boyz|wh2_dlc11_effect_force_stat_melee_attack_grn_all_orc_infantry|3|general_to_force_own",
+          "expected_description": "Melee attack: %+n for Orc Infantry units",
+          "value": 6.0,
+          "stats": [
+            "melee_attack"
+          ],
+          "operation": "add",
+          "conditions": [],
+          "minimum_unit_rank": 0,
+          "per_rank": false
+        },
+        {
+          "kind": "skill",
+          "source_key": "wh2_dlc11_skill_grn_army_buff_da_boyz|wh2_dlc11_effect_force_stat_weapon_strength_grn_all_orc_infantry|3|general_to_force_own",
+          "expected_description": "Weapon strength: %+n% for Orc Infantry units",
+          "value": 12.0,
+          "stats": [
+            "weapon_base_damage",
+            "weapon_ap_damage"
+          ],
+          "operation": "percent",
+          "conditions": [],
+          "minimum_unit_rank": 0,
+          "per_rank": false
+        },
+        {
+          "kind": "skill",
+          "source_key": "wh2_dlc11_skill_grn_army_buff_ard_ladz|wh2_dlc11_effect_force_stat_armour_orc_rank7|1|general_to_force_own",
+          "expected_description": "Armour: %+n for Orc units {{tr:rank7}}",
+          "value": 12.0,
+          "stats": [
+            "armour"
+          ],
+          "operation": "add",
+          "conditions": [],
+          "minimum_unit_rank": 7,
+          "per_rank": false
+        },
+        {
+          "kind": "skill",
+          "source_key": "wh2_dlc11_skill_grn_army_buff_ard_ladz|wh2_dlc11_effect_force_stat_melee_defence_grn_all_orc_rank7|1|general_to_force_own",
+          "expected_description": "Melee defence: %+n for Orc units {{tr:rank7}}",
+          "value": 5.0,
+          "stats": [
+            "melee_defence"
+          ],
+          "operation": "add",
+          "conditions": [],
+          "minimum_unit_rank": 7,
+          "per_rank": false
+        },
+        {
+          "kind": "technology",
+          "source_key": "tech_grn_extra_3_1|wh2_dlc11_effect_force_stat_weapon_strength_grn_all_orc_infantry",
+          "expected_description": "Weapon strength: %+n% for Orc Infantry units",
+          "value": 5.0,
+          "stats": [
+            "weapon_base_damage",
+            "weapon_ap_damage"
+          ],
+          "operation": "percent",
+          "conditions": [],
+          "minimum_unit_rank": 0,
+          "per_rank": false
+        },
+        {
+          "kind": "technology",
+          "source_key": "tech_grn_extra_3_1|wh_main_effect_tech_hitpoints_increase_boyz",
+          "expected_description": "Armour: %+n for Orc Infantry units",
+          "value": 10.0,
+          "stats": [
+            "armour"
+          ],
+          "operation": "add",
+          "conditions": [],
+          "minimum_unit_rank": 0,
+          "per_rank": false
+        },
+        {
+          "kind": "technology",
+          "source_key": "tech_grn_end_3_3|wh3_dlc26_effect_force_stat_melee_attack_black_orcs",
+          "expected_description": "Melee attack: %+n for Black Orc units",
+          "value": 4.0,
+          "stats": [
+            "melee_attack"
+          ],
+          "operation": "add",
+          "conditions": [],
+          "minimum_unit_rank": 0,
+          "per_rank": false
+        }
+      ]
+    },
+    {
+      "id": "sigvald_hellscourges",
+      "unit_key": "wh3_dlc20_chs_inf_chosen_msla_hellscourges",
+      "skill_path": "data/skill_trees/characters/warriors_of_chaos/Prince_Sigvald.csv",
+      "technology_path": "data/technology_trees/factions/warriors_of_chaos/wh3_dlc20_chs_sigvald.csv",
+      "rules": [
+        {
+          "kind": "skill",
+          "source_key": "wh_main_skill_innate_chs_prince_sigvald_the_magnificent|wh3_dlc20_effect_movement_speed_slaanesh_mortal_infantry|1|general_to_force_own",
+          "expected_description": "Speed: %+n% for Marauders of Slaanesh, Chaos Warriors of Slaanesh and Chosen of Slaanesh units",
+          "value": 15.0,
+          "stats": [
+            "speed"
+          ],
+          "operation": "percent",
+          "conditions": [],
+          "minimum_unit_rank": 0,
+          "per_rank": false
+        },
+        {
+          "kind": "skill",
+          "source_key": "wh2_dlc11_skill_chs_army_buff_chaos_vanguard|wh3_dlc20_effect_force_stat_armour_chs_infantry_units|3|general_to_force_own",
+          "expected_description": "Armour: %+n for all non-Daemonic Infantry units",
+          "value": 12.0,
+          "stats": [
+            "armour"
+          ],
+          "operation": "add",
+          "conditions": [],
+          "minimum_unit_rank": 0,
+          "per_rank": false
+        },
+        {
+          "kind": "skill",
+          "source_key": "wh2_dlc11_skill_chs_army_buff_chaos_vanguard|wh3_dlc20_effect_force_stat_melee_attack_chs_infantry_units|3|general_to_force_own",
+          "expected_description": "Melee attack: %+n for all non-Daemonic Infantry units",
+          "value": 8.0,
+          "stats": [
+            "melee_attack"
+          ],
+          "operation": "add",
+          "conditions": [],
+          "minimum_unit_rank": 0,
+          "per_rank": false
+        },
+        {
+          "kind": "skill",
+          "source_key": "wh_main_skill_chs_lord_unique_sigvald_favoured_son|wh3_dlc20_effect_ap_damage_slaanesh_mortal_infantry|1|general_to_force_own",
+          "expected_description": "Armour-piercing weapon damage: %+n for Marauders of Slaanesh, Chaos Warriors of Slaanesh and Chosen of Slaanesh units",
+          "value": 4.0,
+          "stats": [
+            "weapon_ap_damage"
+          ],
+          "operation": "add",
+          "conditions": [],
+          "minimum_unit_rank": 0,
+          "per_rank": false
+        },
+        {
+          "kind": "skill",
+          "source_key": "wh_dlc08_skill_chs_lord_unique_sigvald_2|wh_main_effect_force_stat_melee_defence|1|general_to_force_own",
+          "expected_description": "Melee defence: %+n",
+          "value": 6.0,
+          "stats": [
+            "melee_defence"
+          ],
+          "operation": "add",
+          "conditions": [],
+          "minimum_unit_rank": 0,
+          "per_rank": false
+        },
+        {
+          "kind": "skill",
+          "source_key": "wh_dlc08_skill_chs_lord_unique_sigvald_2|wh_main_effect_force_stat_physical_resistance|1|general_to_force_own",
+          "expected_description": "Physical resistance: %n%",
+          "value": 5.0,
+          "stats": [
+            "physical_resistance"
+          ],
+          "operation": "add",
+          "conditions": [],
+          "minimum_unit_rank": 0,
+          "per_rank": false
+        },
+        {
+          "kind": "skill",
+          "source_key": "wh_main_skill_chs_lord_unique_sigvald_marked_by_slaanesh|wh3_dlc20_effect_melee_defence_slaanesh_mortal_infantry|1|general_to_force_own",
+          "expected_description": "Melee defence: %+n for Marauders of Slaanesh, Chaos Warriors of Slaanesh and Chosen of Slaanesh units",
+          "value": 5.0,
+          "stats": [
+            "melee_defence"
+          ],
+          "operation": "add",
+          "conditions": [],
+          "minimum_unit_rank": 0,
+          "per_rank": false
+        },
+        {
+          "kind": "skill",
+          "source_key": "wh2_dlc11_skill_chs_army_buff_legion_of_doom|wh3_dlc20_effect_force_stat_armour_chs_infantry_units_rank7|1|general_to_force_own",
+          "expected_description": "Armour: %+n for all Infantry units {{tr:rank7}}",
+          "value": 10.0,
+          "stats": [
+            "armour"
+          ],
+          "operation": "add",
+          "conditions": [],
+          "minimum_unit_rank": 7,
+          "per_rank": false
+        },
+        {
+          "kind": "skill",
+          "source_key": "wh2_dlc11_skill_chs_army_buff_legion_of_doom|wh3_dlc20_effect_force_stat_melee_defence_chs_infantry_units_rank7|1|general_to_force_own",
+          "expected_description": "Melee defence: %+n for all Infantry units {{tr:rank7}}",
+          "value": 5.0,
+          "stats": [
+            "melee_defence"
+          ],
+          "operation": "add",
+          "conditions": [],
+          "minimum_unit_rank": 7,
+          "per_rank": false
+        },
+        {
+          "kind": "skill",
+          "source_key": "wh2_dlc11_skill_chs_army_buff_legion_of_doom|wh3_dlc20_effect_force_stat_spell_resistance_chs_infantry_units_rank7|1|general_to_force_own",
+          "expected_description": "Spell resistance: %n% for all Infantry units {{tr:rank7}}",
+          "value": 20.0,
+          "stats": [
+            "spell_resistance"
+          ],
+          "operation": "add",
+          "conditions": [],
+          "minimum_unit_rank": 7,
+          "per_rank": false
+        },
+        {
+          "kind": "technology",
+          "source_key": "wh3_dlc20_chs_und_shared_upgrades|wh3_dlc20_effect_armour_mod_warrior_chosen_knights_aspiring_champions",
+          "expected_description": "Armour: %+n for Chaos Warriors, Chosen, Chaos Knights and Aspiring Champion units",
+          "value": 10.0,
+          "stats": [
+            "armour"
+          ],
+          "operation": "add",
+          "conditions": [],
+          "minimum_unit_rank": 0,
+          "per_rank": false
+        },
+        {
+          "kind": "technology",
+          "source_key": "wh3_dlc20_chs_sla_azazel_weapons|wh3_dlc20_effect_melee_attack_per_rank_hellscourge_units",
+          "expected_description": "Melee attack: %+n per experience rank for all Hellscourge units",
+          "value": 1.0,
+          "stats": [
+            "melee_attack"
+          ],
+          "operation": "add",
+          "conditions": [],
+          "minimum_unit_rank": 0,
+          "per_rank": true
+        }
+      ]
+    },
+    {
+      "id": "festus_nurgle_chosen_gw",
+      "unit_key": "wh3_dlc20_chs_inf_chosen_mnur_greatweapons",
+      "skill_path": "data/skill_trees/characters/warriors_of_chaos/Festus_the_Leechlord.csv",
+      "technology_path": "data/technology_trees/factions/warriors_of_chaos/wh3_dlc20_chs_festus.csv",
+      "rules": [
+        {
+          "kind": "skill",
+          "source_key": "wh2_dlc11_skill_chs_army_buff_chaos_vanguard|wh3_dlc20_effect_force_stat_armour_chs_infantry_units|3|general_to_force_own",
+          "expected_description": "Armour: %+n for all non-Daemonic Infantry units",
+          "value": 12.0,
+          "stats": [
+            "armour"
+          ],
+          "operation": "add",
+          "conditions": [],
+          "minimum_unit_rank": 0,
+          "per_rank": false
+        },
+        {
+          "kind": "skill",
+          "source_key": "wh2_dlc11_skill_chs_army_buff_chaos_vanguard|wh3_dlc20_effect_force_stat_melee_attack_chs_infantry_units|3|general_to_force_own",
+          "expected_description": "Melee attack: %+n for all non-Daemonic Infantry units",
+          "value": 8.0,
+          "stats": [
+            "melee_attack"
+          ],
+          "operation": "add",
+          "conditions": [],
+          "minimum_unit_rank": 0,
+          "per_rank": false
+        },
+        {
+          "kind": "skill",
+          "source_key": "wh2_dlc11_skill_chs_army_buff_legion_of_doom|wh3_dlc20_effect_force_stat_armour_chs_infantry_units_rank7|1|general_to_force_own",
+          "expected_description": "Armour: %+n for all Infantry units {{tr:rank7}}",
+          "value": 10.0,
+          "stats": [
+            "armour"
+          ],
+          "operation": "add",
+          "conditions": [],
+          "minimum_unit_rank": 7,
+          "per_rank": false
+        },
+        {
+          "kind": "skill",
+          "source_key": "wh2_dlc11_skill_chs_army_buff_legion_of_doom|wh3_dlc20_effect_force_stat_melee_defence_chs_infantry_units_rank7|1|general_to_force_own",
+          "expected_description": "Melee defence: %+n for all Infantry units {{tr:rank7}}",
+          "value": 5.0,
+          "stats": [
+            "melee_defence"
+          ],
+          "operation": "add",
+          "conditions": [],
+          "minimum_unit_rank": 7,
+          "per_rank": false
+        },
+        {
+          "kind": "skill",
+          "source_key": "wh2_dlc11_skill_chs_army_buff_legion_of_doom|wh3_dlc20_effect_force_stat_spell_resistance_chs_infantry_units_rank7|1|general_to_force_own",
+          "expected_description": "Spell resistance: %n% for all Infantry units {{tr:rank7}}",
+          "value": 20.0,
+          "stats": [
+            "spell_resistance"
+          ],
+          "operation": "add",
+          "conditions": [],
+          "minimum_unit_rank": 7,
+          "per_rank": false
+        },
+        {
+          "kind": "technology",
+          "source_key": "wh3_dlc20_chs_nur_festus_weapons|wh3_dlc20_effect_weapon_strength_per_rank_chs_great_weapons_units",
+          "expected_description": "Weapon strength: %+n% per experience rank for all Great Weapons units",
+          "value": 3.0,
+          "stats": [
+            "weapon_base_damage",
+            "weapon_ap_damage"
+          ],
+          "operation": "percent",
+          "conditions": [],
+          "minimum_unit_rank": 0,
+          "per_rank": true
+        },
+        {
+          "kind": "technology",
+          "source_key": "wh3_dlc20_chs_und_shared_upgrades|wh3_dlc20_effect_armour_mod_warrior_chosen_knights_aspiring_champions",
+          "expected_description": "Armour: %+n for Chaos Warriors, Chosen, Chaos Knights and Aspiring Champion units",
+          "value": 10.0,
+          "stats": [
+            "armour"
+          ],
+          "operation": "add",
+          "conditions": [],
+          "minimum_unit_rank": 0,
+          "per_rank": false
+        }
+      ]
+    }
+  ]
+}

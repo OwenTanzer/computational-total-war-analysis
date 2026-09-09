@@ -1,0 +1,269 @@
+{
+  "source_commit": "5d25716de3d18d0006f95d7aa623a7c062d72834",
+  "roster_rows": 2000,
+  "unique_unit_keys": 1669,
+  "small_melee_infantry_static_cap_candidates": 186,
+  "base_pareto_count": 99,
+  "tiger_on_base_frontier": true,
+  "tiger_rankings": [
+    {
+      "metric": "total_hp",
+      "tiger_value": 8800.0,
+      "competition_rank": 109,
+      "candidate_count": 186,
+      "leaders": [
+        {
+          "unit_key": "wh_main_vmp_inf_zombie",
+          "unit_name": "Zombies",
+          "value": 12320.0
+        },
+        {
+          "unit_key": "wh2_dlc11_cst_inf_zombie_deckhands_mob_0",
+          "unit_name": "Zombie Pirate Deckhand Mob",
+          "value": 12000.0
+        },
+        {
+          "unit_key": "wh2_dlc11_cst_inf_zombie_deckhands_mob_1",
+          "unit_name": "Zombie Pirate Deckhand Mob (Polearms)",
+          "value": 12000.0
+        },
+        {
+          "unit_key": "wh2_main_lzd_inf_temple_guards_blessed",
+          "unit_name": "Blessed Temple Guard",
+          "value": 12000.0
+        },
+        {
+          "unit_key": "wh3_dlc27_nor_inf_marauder_bearmen",
+          "unit_name": "Marauder Bearmen",
+          "value": 11600.0
+        }
+      ]
+    },
+    {
+      "metric": "armour",
+      "tiger_value": 60.0,
+      "competition_rank": 74,
+      "candidate_count": 186,
+      "leaders": [
+        {
+          "unit_key": "wh3_dlc20_chs_inf_chosen_mkho",
+          "unit_name": "Chosen of Khorne",
+          "value": 130.0
+        },
+        {
+          "unit_key": "wh3_dlc20_chs_inf_chosen_mkho_dualweapons",
+          "unit_name": "Chosen of Khorne (Dual Weapons)",
+          "value": 130.0
+        },
+        {
+          "unit_key": "wh3_dlc20_chs_inf_chosen_mnur",
+          "unit_name": "Chosen of Nurgle",
+          "value": 120.0
+        },
+        {
+          "unit_key": "wh3_dlc20_chs_inf_chosen_mnur_greatweapons",
+          "unit_name": "Chosen of Nurgle (Great Weapons)",
+          "value": 120.0
+        },
+        {
+          "unit_key": "wh3_dlc20_chs_inf_chosen_msla",
+          "unit_name": "Chosen of Slaanesh",
+          "value": 120.0
+        }
+      ]
+    },
+    {
+      "metric": "melee_attack",
+      "tiger_value": 40.0,
+      "competition_rank": 26,
+      "candidate_count": 186,
+      "leaders": [
+        {
+          "unit_key": "wh3_dlc26_kho_inf_wrathmongers",
+          "unit_name": "Wrathmongers",
+          "value": 60.0
+        },
+        {
+          "unit_key": "wh3_dlc25_dwf_inf_doomseekers",
+          "unit_name": "Doomseekers",
+          "value": 54.0
+        },
+        {
+          "unit_key": "wh3_dlc26_kho_inf_skullreapers",
+          "unit_name": "Skullreapers",
+          "value": 54.0
+        },
+        {
+          "unit_key": "wh2_dlc11_cst_inf_depth_guard_0",
+          "unit_name": "Depth Guard",
+          "value": 50.0
+        },
+        {
+          "unit_key": "wh2_dlc10_dwf_inf_giant_slayers",
+          "unit_name": "Giant Slayers",
+          "value": 48.0
+        }
+      ]
+    },
+    {
+      "metric": "melee_defence",
+      "tiger_value": 46.0,
+      "competition_rank": 21,
+      "candidate_count": 186,
+      "leaders": [
+        {
+          "unit_key": "wh3_dlc20_chs_inf_chosen_msla_hellscourges",
+          "unit_name": "Chosen of Slaanesh (Hellscourges)",
+          "value": 70.0
+        },
+        {
+          "unit_key": "wh3_dlc20_chs_inf_chosen_mnur",
+          "unit_name": "Chosen of Nurgle",
+          "value": 65.0
+        },
+        {
+          "unit_key": "wh3_dlc20_chs_inf_chosen_msla",
+          "unit_name": "Chosen of Slaanesh",
+          "value": 60.0
+        },
+        {
+          "unit_key": "wh3_dlc20_chs_inf_chosen_mtze",
+          "unit_name": "Chosen of Tzeentch",
+          "value": 60.0
+        },
+        {
+          "unit_key": "wh_main_chs_inf_chosen_0",
+          "unit_name": "Chosen",
+          "value": 60.0
+        }
+      ]
+    },
+    {
+      "metric": "speed",
+      "tiger_value": 4.4,
+      "competition_rank": 21,
+      "candidate_count": 186,
+      "leaders": [
+        {
+          "unit_key": "wh3_main_nur_mon_plague_toads_0",
+          "unit_name": "Plague Toads of Nurgle",
+          "value": 6.5
+        },
+        {
+          "unit_key": "wh2_dlc14_skv_inf_eshin_triads_0",
+          "unit_name": "Eshin Triads",
+          "value": 5.4
+        },
+        {
+          "unit_key": "wh2_main_skv_inf_death_runners_0",
+          "unit_name": "Death Runners",
+          "value": 5.4
+        },
+        {
+          "unit_key": "wh3_dlc27_sla_inf_daemonette_1_dechala",
+          "unit_name": "Exalted Daemonettes of Slaanesh",
+          "value": 5.4
+        },
+        {
+          "unit_key": "wh3_main_sla_inf_daemonette_0",
+          "unit_name": "Daemonettes of Slaanesh",
+          "value": 5.4
+        }
+      ]
+    },
+    {
+      "metric": "raw_rate",
+      "tiger_value": 1052.6315789473686,
+      "competition_rank": 36,
+      "candidate_count": 186,
+      "leaders": [
+        {
+          "unit_key": "wh2_main_lzd_inf_saurus_warriors_blessed_1",
+          "unit_name": "Blessed Saurus Warriors (Shields)",
+          "value": 1729.7297297297296
+        },
+        {
+          "unit_key": "wh3_dlc20_chs_inf_chosen_mkho_dualweapons",
+          "unit_name": "Chosen of Khorne (Dual Weapons)",
+          "value": 1452.6315789473686
+        },
+        {
+          "unit_key": "wh2_main_lzd_inf_saurus_warriors_0",
+          "unit_name": "Saurus Warriors",
+          "value": 1405.4054054054054
+        },
+        {
+          "unit_key": "wh2_main_lzd_inf_saurus_warriors_1",
+          "unit_name": "Saurus Warriors (Shields)",
+          "value": 1405.4054054054054
+        },
+        {
+          "unit_key": "wh_main_dwf_inf_hammerers",
+          "unit_name": "Hammerers",
+          "value": 1309.5238095238094
+        }
+      ]
+    },
+    {
+      "metric": "ap_rate",
+      "tiger_value": 800.0,
+      "competition_rank": 9,
+      "candidate_count": 186,
+      "leaders": [
+        {
+          "unit_key": "wh_main_dwf_inf_hammerers",
+          "unit_name": "Hammerers",
+          "value": 976.1904761904761
+        },
+        {
+          "unit_key": "wh_main_dwf_inf_hammerers_grudge_reward",
+          "unit_name": "Hammerers (Grudge Settlers)",
+          "value": 976.1904761904761
+        },
+        {
+          "unit_key": "wh3_dlc27_sla_inf_daemonette_1_dechala",
+          "unit_name": "Exalted Daemonettes of Slaanesh",
+          "value": 875.0
+        },
+        {
+          "unit_key": "wh3_main_sla_inf_daemonette_1",
+          "unit_name": "Exalted Daemonettes of Slaanesh",
+          "value": 875.0
+        },
+        {
+          "unit_key": "wh2_main_skv_inf_plague_monk_censer_bearer",
+          "unit_name": "Plague Monk Censer Bearers",
+          "value": 845.4545454545454
+        }
+      ]
+    }
+  ],
+  "profiles": 5,
+  "reviewed_modifier_rows": 63,
+  "source_audits": {
+    "unit_stats": {
+      "status": "passed",
+      "warnings": [],
+      "unresolved_scripted_cases": 0
+    },
+    "skill_trees": {
+      "status": "passed",
+      "warnings": [
+        "182 node occurrences have no English skill name in the authoritative localisation source.",
+        "1402 effect occurrences have no English description in the authoritative localisation source; keys, values, and scopes remain present."
+      ],
+      "unresolved_scripted_cases": 0
+    },
+    "technology_trees": {
+      "status": "passed",
+      "warnings": [
+        "5269 missing localization occurrences (1490 distinct keys); structural records retained.",
+        "35 bounded lock sites are not normalized: Beastmen challenge predicates/counters, Ostankya hex progression, and Changeling saved-state-guarded rift release (Empire minor-2 mission or at least two Rift Gems). See script_audit.json for individual locations.",
+        "Seven explicit faction DB assignments replace generic fallbacks using reviewed gameplay exceptions; the binary engine selector is not decoded. See node_set_precedence.json.",
+        "Feature forests and transitions are retained in source, but runtime feature transitions and script-controlled effect/unlock behavior are not statically executed."
+      ],
+      "unresolved_scripted_cases": 35
+    }
+  },
+  "ceiling_status": "unresolved"
+}
