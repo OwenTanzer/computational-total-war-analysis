@@ -24,7 +24,8 @@ REVIEWED = ROOT / "studies/race_strategy_space/results/8.1.1"
 ARTIFACTS = {
     "README.md", "race_capability_views.csv", "race_capability_composites.csv",
     "race_archetype_memberships.csv", "race_details.json", "jsd_report.json",
-    "unit_tier_sensitivity.json",
+    "unit_tier_sensitivity.json", "unit_evidence.json",
+    "capability_packages.json", "assumption_sensitivity.json",
 }
 
 
@@ -115,24 +116,34 @@ def result_readme(report, residuals, sensitivity, packages, assumptions):
         key, value = max(local['weighted_residual'].items(), key=lambda kv: abs(kv[1]))
         feature, view = key.split('__')
         lines.append(f"| {race} | {nearest['race']} | {nearest['distance']:.4f} | {feature} | {view} | {value:+.4f} |")
-    lines += ['', 'Breadth, ceiling and cost access remain separate. The complete signed contrasts are in `jsd_report.json`; local evidence is in `race_details.json` and contributing unit IDs in `unit_evidence.json`.', '',
+    lines += ['', 'Breadth, ceiling and cost access remain separate. Pairwise distances and leading signed contrasts are in `jsd_report.json`; local evidence is in `race_details.json` and contributing unit IDs in `unit_evidence.json`.', '',
               '## Attainable combinations', '',
               f"{len(packages['records'])} race/query families cover every pair of the 15 unit capability proxies, plus raw speed, armour and range comparisons. Each evaluates a 3×3 grid of positive-global-support quantiles (50%, 75%, 90%). Threshold values and their units are published.", '',
               'One-unit packages require both capabilities in the same purchase. Two-unit packages require distinct providers; the all-units-speed query instead requires both units to meet the speed floor. Cost is summed once per purchase. Scores are never summed into army power.', '',
               'The package file retains exact cost/capability Pareto frontiers and every minimum-cost tie on the requirement grid. Null cost means unattainable or no positive global support, with an explicit reason. Unit IDs resolve to original keys, costs, measurements and all proxy capabilities.', '',
               '### Requirement-dependent cost reversals', '',
-              '| Requirement family | Cheaper at one requirement | Cheaper at another | Requirement indices |',
+              '| Requirement family | Rosters A / B | Requirements favoring A; costs A / B | Requirements favoring B; costs A / B |',
               '|---|---|---|---|']
     comparisons = assumptions['requirement_comparisons']
-    shown = 0
-    for family in sorted(comparisons, key=lambda r: (-len(r['finite_cost_order_reversals']), r['a'], r['b'], r['two_unit_semantics'])):
-        if family['finite_cost_order_reversals'] and shown < 6:
-            event = family['finite_cost_order_reversals'][0]
-            lines.append(f"| {family['a']} + {family['b']} ({family['two_unit_semantics']}) | {event['race_a']} | {event['race_b']} | {event['a_cheaper_requirement']} / {event['b_cheaper_requirement']} |")
+    shown, used_pairs = 0, set()
+    families = sorted(comparisons, key=lambda r: (not r['a'].startswith('raw_'), -len(r['finite_cost_order_reversals']), r['a'], r['b'], r['two_unit_semantics']))
+    for family in families:
+        events = family['finite_cost_order_reversals']
+        if events and shown < 6:
+            event = next((e for e in events if (e['race_a'],e['race_b']) not in used_pairs), events[0])
+            used_pairs.add((event['race_a'],event['race_b']))
+            def describe(index):
+                la, lb = family['requirement_levels'][index]
+                ta, tb = packages['thresholds'][family['a']][la], packages['thresholds'][family['b']][lb]
+                ca = family['minimum_costs_by_race'][family['races'].index(event['race_a'])][index]
+                cb = family['minimum_costs_by_race'][family['races'].index(event['race_b'])][index]
+                return f"{family['a']} ≥ {ta:.6g}, {family['b']} ≥ {tb:.6g}; {ca:g} / {cb:g}"
+            mode = 'all-unit speed floor' if family['two_unit_semantics'] == 'all_units_a' else 'distinct providers allowed'
+            lines.append(f"| {family['a']} + {family['b']} ({mode}) | {event['race_a']} / {event['race_b']} | {describe(event['a_cheaper_requirement'])} | {describe(event['b_cheaper_requirement'])} |")
             shown += 1
     if not shown:
         lines += ['| No finite cost-order reversals on this grid | — | — | — |']
-    lines += ['', 'Examples are selected deterministically from families with the most reversals, then by identifier; they are navigation aids, not prevalence estimates. Indices resolve to the published requirement levels, cost matrices and package witnesses.', '',
+    lines += ['', 'Examples prioritize raw-measure families, then proxy families with the most reversals, using distinct race pairs when available. Costs are minimum multiplayer prices with at most two units. These are navigation examples, not prevalence estimates. Exact thresholds, complete cost matrices and all witnesses are retained in the data files.', '',
               '## Assumptions and consequences', '',
               f"{len(assumptions['block_emphasis']['stable_nearest_neighbors'])} of 24 nearest-neighbor identities persist across equal weighting and each of four block-emphasis scenarios. All scenario distances, ranks and changed neighborhoods are retained.", '',
               'Each emphasis doubles one block relative to the others while retaining the original total squared weight. These scenarios change roster relationships; archetypes are not refitted under them.', '',

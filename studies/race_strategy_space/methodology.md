@@ -110,7 +110,7 @@ all-units-speed). A package dominates another only if its cost is no greater,
 both achieved capabilities are no smaller, and at least one comparison is strict.
 A sorted cost/A/B skyline with a prefix-maximum tree computes the exact Pareto
 frontier for this bounded model. Preserve every objective-equivalent frontier
-witness and every minimum-cost tie on the requirement grid, including cheaper
+witness and every minimum-cost tie on the requirement grid, including minimum-cost
 witnesses that are dominated by stronger packages at the same price. Package
 row references identify the exact providers and achieved values. Two possible
 provider assignments of the same pair can be distinct evidence rows.

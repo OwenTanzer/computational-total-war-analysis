@@ -47,6 +47,7 @@ class SourceValidationTests(unittest.TestCase):
                 self.validate()
 
     def test_regeneration_gate_detects_changed_and_obsolete_files(self):
+        self.assertEqual(len(ARTIFACTS), 10)
         a, b = self.root / 'a', self.root / 'b'
         a.mkdir(); b.mkdir()
         for name in ARTIFACTS:
