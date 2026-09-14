@@ -1,21 +1,13 @@
 from __future__ import annotations
 
-import argparse
-import json
 import math
 import os
 import re
-import subprocess
 from collections import defaultdict
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
-from scipy.cluster.hierarchy import linkage, fcluster
-from scipy.spatial.distance import pdist, squareform
-from sklearn.cluster import AgglomerativeClustering, KMeans
-from sklearn.metrics import silhouette_score
-from sklearn.preprocessing import StandardScaler
 
 
 ANALYSIS_ROOT = Path(__file__).resolve().parents[2]
@@ -24,7 +16,6 @@ CTW_ROOT = Path(
 ).resolve()
 UNIT_DIR = CTW_ROOT / "data" / "unit_stats"
 SKILL_DIR = CTW_ROOT / "data" / "skill_trees"
-OUT_DIR = ANALYSIS_ROOT / "work" / "race_feature_output"
 
 RACES = [
     "beastmen", "bretonnia", "chaos_dwarfs", "daemons_of_chaos",
@@ -507,12 +498,12 @@ def aggregate_features(u: pd.DataFrame) -> tuple[pd.DataFrame, dict[str, object]
             )
             row[f"{feature}__breadth"] = b
             row[f"{feature}__ceiling"] = c
-            row[f"{feature}__access"] = a
+            row[f"{feature}__cost_access"] = a
             row[f"{feature}__unit_tier_sensitivity"] = unit_tier_sensitivity
             race_detail[feature] = {
                 "breadth": b,
                 "ceiling": c,
-                "access": a,
+                "cost_access": a,
                 "unit_tier_sensitivity": unit_tier_sensitivity,
             }
 
@@ -524,7 +515,7 @@ def aggregate_features(u: pd.DataFrame) -> tuple[pd.DataFrame, dict[str, object]
         entropy = float(-(probs[probs > 0] * np.log(probs[probs > 0])).sum() / np.log(len(all_roles)))
         row["role_coverage__breadth"] = role_breadth
         row["role_coverage__ceiling"] = entropy
-        row["role_coverage__access"] = role_cost_cells
+        row["role_coverage__cost_access"] = role_cost_cells
 
         median_cost = float(r["multiplayer_cost"].median())
         elite_share = float((r["multiplayer_cost"] > u["multiplayer_cost"].quantile(0.75)).mean())
@@ -539,7 +530,7 @@ def aggregate_features(u: pd.DataFrame) -> tuple[pd.DataFrame, dict[str, object]
         champion_elite = float(np.mean(np.array(champion_costs) > u["multiplayer_cost"].quantile(0.75)))
         row["elite_orientation__breadth"] = elite_share
         row["elite_orientation__ceiling"] = champion_elite
-        row["elite_orientation__access"] = corr
+        row["elite_orientation__cost_access"] = corr
 
         cmd = command[race]
         caster_access = min(1.0, float(cmd["casters"]) / 4.0)
@@ -547,7 +538,7 @@ def aggregate_features(u: pd.DataFrame) -> tuple[pd.DataFrame, dict[str, object]
         category_breadth = len(cmd["categories"]) / 5.0
         row["command_magic__breadth"] = lore_breadth
         row["command_magic__ceiling"] = category_breadth
-        row["command_magic__access"] = caster_access
+        row["command_magic__cost_access"] = caster_access
 
         race_detail["role_coverage"] = role_presence
         race_detail["elite_orientation"] = {
@@ -572,231 +563,8 @@ def aggregate_features(u: pd.DataFrame) -> tuple[pd.DataFrame, dict[str, object]
     return pd.DataFrame(rows).set_index("race"), details
 
 
-def block_weighted_matrix(
-    features: pd.DataFrame,
-    include_unit_tier_sensitivity: bool = False,
-) -> tuple[pd.DataFrame, pd.DataFrame]:
-    scaled = pd.DataFrame(index=features.index)
-    weighted = pd.DataFrame(index=features.index)
-    for block, members in BLOCKS.items():
-        cols = [
-            c for c in features.columns
-            if c.split("__", 1)[0] in members
-            and (
-                include_unit_tier_sensitivity
-                or not c.endswith("__unit_tier_sensitivity")
-            )
-        ]
-        block_scaled = pd.DataFrame(
-            StandardScaler().fit_transform(features[cols]),
-            index=features.index,
-            columns=cols,
-        )
-        scaled[cols] = block_scaled
-        for feature in members:
-            feature_cols = [c for c in cols if c.startswith(feature + "__")]
-            # Preserve the original block scale while giving each feature equal
-            # total weight. In the optional unit-tier sensitivity, split the
-            # original access allocation between cost and unit classification.
-            feature_weight = 1 / math.sqrt(3 * len(members))
-            has_unit_tier = any(
-                c.endswith("__unit_tier_sensitivity") for c in feature_cols
-            )
-            view_weights = {
-                "breadth": 0.50,
-                "ceiling": 0.25,
-                "access": 0.125 if has_unit_tier else 0.25,
-                "unit_tier_sensitivity": 0.125,
-            }
-            for col in feature_cols:
-                view = col.split("__", 1)[1]
-                weighted[col] = (
-                    block_scaled[col] * feature_weight * math.sqrt(view_weights[view])
-                )
-    return scaled, weighted
-
-
-def clustering_report(weighted: pd.DataFrame) -> dict[str, object]:
-    X = weighted.to_numpy()
-    silhouette = {}
-    solutions = {}
-    for k in range(4, 9):
-        labels = AgglomerativeClustering(n_clusters=k, linkage="ward").fit_predict(X)
-        silhouette[str(k)] = float(silhouette_score(X, labels))
-        solutions[str(k)] = {
-            race: int(label) for race, label in zip(weighted.index, labels, strict=True)
-        }
-    best_k = max(silhouette, key=silhouette.get)
-
-    rng = np.random.default_rng(811)
-    consensus = np.zeros((len(weighted), len(weighted)), float)
-    runs = 500
-    columns = np.arange(X.shape[1])
-    for _ in range(runs):
-        sampled = rng.choice(columns, size=max(2, int(0.8 * len(columns))), replace=False)
-        noise = rng.normal(1.0, 0.08, size=len(sampled))
-        Xp = X[:, sampled] * noise
-        labels = KMeans(n_clusters=int(best_k), n_init=10, random_state=int(rng.integers(1_000_000))).fit_predict(Xp)
-        consensus += labels[:, None] == labels[None, :]
-    consensus /= runs
-    consensus_distance = 1 - consensus
-    np.fill_diagonal(consensus_distance, 0)
-    final_labels = fcluster(
-        linkage(squareform(consensus_distance, checks=False), method="average"),
-        t=int(best_k), criterion="maxclust",
-    ) - 1
-    distance = squareform(pdist(X, metric="euclidean"))
-    nearest = {}
-    for i, race in enumerate(weighted.index):
-        order = np.argsort(distance[i])
-        nearest[race] = [
-            {"race": weighted.index[j], "distance": float(distance[i, j]), "consensus": float(consensus[i, j])}
-            for j in order[1:5]
-        ]
-    return {
-        "silhouette": silhouette,
-        "best_k": int(best_k),
-        "ward_solutions": solutions,
-        "consensus_labels": {
-            race: int(label) for race, label in zip(weighted.index, final_labels, strict=True)
-        },
-        "nearest": nearest,
-        "consensus": consensus.tolist(),
-        "races": weighted.index.tolist(),
-    }
-
-
-def composite_scores(
-    features: pd.DataFrame,
-    include_unit_tier_sensitivity: bool = False,
-) -> pd.DataFrame:
-    out = pd.DataFrame(index=features.index)
-    for block, members in BLOCKS.items():
-        for feature in members:
-            has_unit_tier = (
-                include_unit_tier_sensitivity
-                and f"{feature}__unit_tier_sensitivity" in features.columns
-            )
-            vals = 0.50 * features[f"{feature}__breadth"]
-            vals += 0.25 * features[f"{feature}__ceiling"]
-            if has_unit_tier:
-                vals += 0.125 * features[f"{feature}__access"]
-                vals += 0.125 * features[
-                    f"{feature}__unit_tier_sensitivity"
-                ]
-            else:
-                vals += 0.25 * features[f"{feature}__access"]
-            lo, hi = vals.min(), vals.max()
-            out[feature] = 100 * (vals - lo) / (hi - lo if hi > lo else 1)
-        out[f"block_{block}"] = out[members].mean(axis=1)
-    return out
-
-
-def configure_paths(ctw_root: Path, out_dir: Path) -> None:
-    global CTW_ROOT, UNIT_DIR, SKILL_DIR, OUT_DIR
+def configure_source(ctw_root: Path) -> None:
+    global CTW_ROOT, UNIT_DIR, SKILL_DIR
     CTW_ROOT = ctw_root.resolve()
     UNIT_DIR = CTW_ROOT / "data" / "unit_stats"
     SKILL_DIR = CTW_ROOT / "data" / "skill_trees"
-    OUT_DIR = out_dir.resolve()
-    OUT_DIR.mkdir(parents=True, exist_ok=True)
-
-
-def validate_source_lock() -> None:
-    lock = json.loads((ANALYSIS_ROOT / "source_lock.json").read_text(encoding="utf-8"))
-    catalog_path = CTW_ROOT / "context_catalog.json"
-    if not catalog_path.exists():
-        raise FileNotFoundError(
-            f"CTW context catalog not found at {catalog_path}. Pass --ctw-root."
-        )
-    catalog = json.loads(catalog_path.read_text(encoding="utf-8"))
-    snapshot = catalog["snapshot"]
-    expected = lock["snapshot"]
-    for key in ("patch", "steam_build_id", "unit_scale"):
-        if snapshot.get(key) != expected.get(key):
-            raise RuntimeError(
-                f"Source snapshot mismatch for {key}: "
-                f"expected {expected.get(key)!r}, found {snapshot.get(key)!r}"
-            )
-    try:
-        actual_sha = subprocess.run(
-            ["git", "rev-parse", "HEAD"], cwd=CTW_ROOT, check=True,
-            capture_output=True, text=True,
-        ).stdout.strip()
-    except (FileNotFoundError, subprocess.CalledProcessError):
-        actual_sha = ""
-    if actual_sha and actual_sha != lock["git_commit"]:
-        raise RuntimeError(
-            f"CTW commit mismatch: expected {lock['git_commit']}, found {actual_sha}"
-        )
-
-
-def main(ctw_root: Path = CTW_ROOT, out_dir: Path = OUT_DIR) -> None:
-    configure_paths(ctw_root, out_dir)
-    validate_source_lock()
-    units = attach_lookup_flags(load_units())
-    unit_scores, _ = build_unit_scores(units)
-    features, details = aggregate_features(unit_scores)
-    scaled, weighted = block_weighted_matrix(
-        features, include_unit_tier_sensitivity=False
-    )
-    scaled_unit_tier, weighted_unit_tier = block_weighted_matrix(
-        features, include_unit_tier_sensitivity=True
-    )
-    report = clustering_report(weighted)
-    report_unit_tier = clustering_report(weighted_unit_tier)
-    composites = composite_scores(
-        features, include_unit_tier_sensitivity=False
-    )
-    composites_unit_tier = composite_scores(
-        features, include_unit_tier_sensitivity=True
-    )
-    primary_features = features[scaled.columns]
-    primary_features.to_csv(OUT_DIR / "race_feature_triplets.csv")
-    scaled.to_csv(OUT_DIR / "race_feature_triplets_scaled.csv")
-    weighted.to_csv(OUT_DIR / "race_feature_matrix_weighted.csv")
-    composites.to_csv(OUT_DIR / "race_feature_composites_0_100.csv")
-    features.to_csv(OUT_DIR / "race_feature_views_unit_tier_sensitivity.csv")
-    scaled_unit_tier.to_csv(
-        OUT_DIR / "race_feature_views_unit_tier_sensitivity_scaled.csv"
-    )
-    weighted_unit_tier.to_csv(
-        OUT_DIR / "race_feature_matrix_weighted_unit_tier_sensitivity.csv"
-    )
-    composites_unit_tier.to_csv(
-        OUT_DIR / "race_feature_composites_unit_tier_sensitivity_0_100.csv"
-    )
-    unit_scores.to_csv(OUT_DIR / "eligible_unit_scores.csv", index=False)
-    (OUT_DIR / "race_details.json").write_text(json.dumps(details, indent=2), encoding="utf-8")
-    (OUT_DIR / "clustering_report.json").write_text(json.dumps(report, indent=2), encoding="utf-8")
-    (OUT_DIR / "clustering_report_unit_tier_sensitivity.json").write_text(
-        json.dumps(report_unit_tier, indent=2), encoding="utf-8"
-    )
-    print(json.dumps({
-        "eligible_units": len(unit_scores),
-        "feature_dimensions": len(primary_features.columns),
-        "best_k": report["best_k"],
-        "silhouette": report["silhouette"],
-        "consensus_labels": report["consensus_labels"],
-        "unit_tier_sensitivity": {
-            "feature_dimensions": len(weighted_unit_tier.columns),
-            "best_k": report_unit_tier["best_k"],
-            "silhouette": report_unit_tier["silhouette"],
-            "consensus_labels": report_unit_tier["consensus_labels"],
-        },
-    }, indent=2))
-
-
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(
-        description="Build the patch-locked CTW race strategy feature space."
-    )
-    parser.add_argument(
-        "--ctw-root", type=Path, default=CTW_ROOT,
-        help="Path to a Computational Total War checkout (default: sibling repo).",
-    )
-    parser.add_argument(
-        "--out-dir", type=Path, default=OUT_DIR,
-        help="Generated output directory (default: work/race_feature_output).",
-    )
-    args = parser.parse_args()
-    main(args.ctw_root, args.out_dir)
