@@ -1,5 +1,5 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "normalization": {
     "positive_values": "percentile rank among positive observations",
     "structural_zero": "retained as exactly zero"
@@ -239,15 +239,31 @@
       8
     ],
     "seed": 811,
-    "perturbations": 40,
-    "perturbation_definition": "54 columns resampled with replacement (multinomial counts); multiply by sqrt(count) and independent Normal(1, 0.08) noise",
-    "alignment": "Hungarian assignment of hull-defined poles in the original weighted feature space",
-    "stability_rule": {
-      "global_membership_rmse_max": 0.12,
-      "race_membership_rmse_max": 0.25
+    "control_runs": 8,
+    "perturbation_runs_per_regime": 40,
+    "starts_per_fit": 5,
+    "diagnostic_regimes": {
+      "optimization_repeatability": "unchanged data; independent starts; lowest-loss available fit is reference",
+      "local_robustness": "all columns retained; Normal(1,.08) multipliers floored to 1e-6; exact block squared-weight totals preserved",
+      "structural_stress": "columns resampled with replacement plus Normal(1,.08) multipliers; not a selection gate"
     },
-    "selection": "smallest stable resolution at or after maximum normalized error-curve chord deviation",
-    "no_stable_resolution": "selected_resolution=null; report error-knee memberships explicitly as provisional diagnostics",
+    "membership_movement": "0.5 * sum(abs(w-reference_w)); fraction of mixture mass reassigned",
+    "pole_movement": "Euclidean displacement in original weighted space, absolute and divided by nearest other reference pole distance",
+    "alignment": "Hungarian matching in original weighted space; retain aligned memberships and poles",
+    "profile_changes": "all weighted coordinates: mean, std, q05 and q95 per regime for reported basis",
+    "default_selection": "no adopted tolerance; report error-knee basis provisionally and conditional tolerance grid",
+    "conditional_selection": "smallest K at or after knee passing joint worst-race/pole q95 tolerances in optimizer repeatability and local robustness, with convergence and no degeneracy",
+    "membership_tolerance_grid": [
+      0.05,
+      0.1,
+      0.2,
+      0.3
+    ],
+    "pole_tolerance_grid": [
+      0.1,
+      0.25,
+      0.5
+    ],
     "local_neighbors": 4
   }
 }

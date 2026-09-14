@@ -172,78 +172,206 @@ def fit_archetypes(x: np.ndarray, k: int, seed: int = 811, starts: int = 5,
 
 
 def membership_entropy(w: np.ndarray) -> np.ndarray:
-    return -(w * np.log(np.maximum(w, 1e-300))).sum(axis=1) / np.log(w.shape[1])
+    return np.clip(-(w * np.log(np.maximum(w, 1e-300))).sum(axis=1) / np.log(w.shape[1]), 0, 1)
 
 
-def align_memberships(reference_poles, fitted: dict, original_x) -> np.ndarray:
-    # Compare hull positions in the same original space even when dimensions
-    # are absent from a feature bootstrap; Hungarian matching fixes label swaps.
-    rows, cols = linear_sum_assignment(cdist(reference_poles, fitted["hull_weights"] @ original_x))
+def align_archetypes(reference_poles, fitted: dict, original_x) -> tuple:
+    """Match labels in the original metric, retaining both weights and poles."""
+    poles = fitted["hull_weights"] @ original_x
+    rows, cols = linear_sum_assignment(cdist(reference_poles, poles))
     permutation = cols[np.argsort(rows)]
-    return fitted["memberships"][:, permutation]
+    return fitted["memberships"][:, permutation], poles[permutation]
+
+
+def total_variation(weights, reference):
+    """Fraction of mixture mass reassigned; invariant to unused coordinates."""
+    return np.clip(0.5 * np.abs(np.asarray(weights) - reference).sum(axis=-1), 0, 1)
+
+
+def movement_distribution(values):
+    """Rows are runs; columns are races or poles. Preserve the tails."""
+    values = np.asarray(values)
+    return {"values": values, "mean": float(values.mean()),
+            "q95": float(np.quantile(values, .95)), "max": float(values.max()),
+            "per_item_mean": values.mean(axis=0),
+            "per_item_q95": np.quantile(values, .95, axis=0),
+            "per_item_max": values.max(axis=0)}
 
 
 def membership_uncertainty(samples: np.ndarray, reference: np.ndarray) -> dict:
     return {"mean": samples.mean(axis=0), "std": samples.std(axis=0, ddof=1),
             "q05": np.quantile(samples, 0.05, axis=0),
             "q95": np.quantile(samples, 0.95, axis=0),
-            "rmse": float(np.sqrt(np.mean((samples - reference) ** 2))),
-            "race_rmse": np.sqrt(np.mean((samples - reference) ** 2, axis=(0, 2)))}
+            "total_variation": movement_distribution(total_variation(samples, reference))}
+
+
+def pole_uncertainty(samples: np.ndarray, reference: np.ndarray) -> dict:
+    separation = cdist(reference, reference)
+    np.fill_diagonal(separation, np.inf)
+    spacing = separation.min(axis=1)
+    delta = samples - reference
+    displacement = np.linalg.norm(delta, axis=-1)
+    degenerate = bool((spacing < 1e-10).any())
+    return {"nearest_reference_separation": spacing,
+            "degenerate_reference": degenerate,
+            "absolute_displacement": movement_distribution(displacement),
+            "relative_displacement": None if degenerate else movement_distribution(displacement / spacing),
+            "profile_delta_mean": delta.mean(axis=0),
+            "profile_delta_std": delta.std(axis=0, ddof=1),
+            "profile_delta_q05": np.quantile(delta, .05, axis=0),
+            "profile_delta_q95": np.quantile(delta, .95, axis=0)}
+
+
+def feature_perturbations(weighted: pd.DataFrame, runs: int, seed: int) -> dict:
+    """Local weighting retains every coordinate and each block's total q."""
+    columns = weighted.columns
+    q = np.empty(len(columns))
+    masks = []
+    for members in BLOCKS.values():
+        mask = np.array([col.split('__')[0] in members for col in columns])
+        masks.append(mask)
+        for j in np.flatnonzero(mask):
+            q[j] = {'breadth': .5, 'ceiling': .25, 'cost_access': .25}[columns[j].split('__')[1]] / (3 * len(members))
+    local_rng = np.random.default_rng(seed)
+    stress_rng = np.random.default_rng(seed)
+    local, stress = [], []
+    for _ in range(runs):
+        # Truncate the vanishingly rare negative multiplier to retain support.
+        multiplier = np.maximum(local_rng.normal(1, .08, len(columns)), 1e-6)
+        for mask in masks:
+            multiplier[mask] *= np.sqrt(q[mask].sum() / (q[mask] * multiplier[mask] ** 2).sum())
+        local.append(multiplier)
+        counts = stress_rng.multinomial(len(columns), np.ones(len(columns)) / len(columns))
+        stress.append(np.sqrt(counts) * stress_rng.normal(1, .08, len(columns)))
+    return {'local_robustness': np.array(local), 'structural_stress': np.array(stress)}
+
+
+def _checked_fit(x, k, seed, initial=None):
+    result = fit_archetypes(x, k, seed=seed, starts=5, initial=initial)
+    if not result['converged']:
+        result = fit_archetypes(x, k, seed=seed + 100000, starts=5, max_iter=600,
+                               initial=(result['memberships'], result['hull_weights']))
+    return result
+
+
+def _regime_summary(membership, poles, converged, runs):
+    tv = membership['total_variation']
+    relative = poles['relative_displacement']
+    return {'runs': runs, 'converged_runs': converged,
+            'membership_tv_mean': tv['mean'], 'membership_tv_q95': tv['q95'],
+            'membership_tv_max': tv['max'],
+            'max_race_tv_q95': float(max(tv['per_item_q95'])),
+            'pole_displacement_mean': poles['absolute_displacement']['mean'],
+            'pole_displacement_max': poles['absolute_displacement']['max'],
+            'max_pole_relative_q95': None if relative is None else float(max(relative['per_item_q95'])),
+            'max_pole_relative_max': None if relative is None else relative['max'],
+            'degenerate_reference': poles['degenerate_reference']}
+
+
+def _fit_resolution(args):
+    x, k, seed, perturbations, control_runs = args
+    # Reference and controls have identical five-start budgets. Controls are
+    # independently initialized, never warm-started at the reference.
+    reference = _checked_fit(x, k, seed + k)
+    controls = [_checked_fit(x, k, seed + 10000 * k + b) for b in range(control_runs)]
+    reference = min([reference, *controls], key=lambda f: f['loss']).copy()
+    order = sorted(range(k), key=lambda j: (int(np.argmax(reference['hull_weights'][j])), tuple(reference['poles'][j])))
+    reference['memberships'] = reference['memberships'][:, order]
+    reference['hull_weights'] = reference['hull_weights'][order]
+    reference['poles'] = reference['poles'][order]
+    diagnostics, summaries = {}, {}
+    for number, regime in enumerate(('optimization_repeatability', 'local_robustness', 'structural_stress')):
+        if regime == 'optimization_repeatability':
+            trials = controls
+        else:
+            trials = [_checked_fit(x * multiplier, k, seed + 1000000 * (number + 1) + 1000 * k + b,
+                                   initial=(reference['memberships'], reference['hull_weights']))
+                      for b, multiplier in enumerate(perturbations[regime])]
+        aligned = [align_archetypes(reference['poles'], trial, x) for trial in trials]
+        memberships = membership_uncertainty(np.array([a[0] for a in aligned]), reference['memberships'])
+        poles = pole_uncertainty(np.array([a[1] for a in aligned]), reference['poles'])
+        diagnostics[regime] = {'membership': memberships, 'poles': poles,
+                              'optimizer_losses': [trial['loss'] for trial in trials],
+                              'optimizer_converged': [trial['converged'] for trial in trials]}
+        summaries[regime] = _regime_summary(memberships, poles, sum(t['converged'] for t in trials), len(trials))
+    return k, reference, diagnostics, summaries
+
+
+def select_resolution(candidates, knee, membership_tolerance, pole_tolerance):
+    """Explicit joint tolerances; structural stress never gates selection."""
+    if not 0 <= membership_tolerance <= 1 or pole_tolerance < 0:
+        raise ValueError('Invalid movement tolerance')
+    eligible = []
+    for candidate in candidates:
+        if candidate['k'] < knee or not candidate['optimizer_converged']:
+            continue
+        passes = True
+        for regime in ('optimization_repeatability', 'local_robustness'):
+            row = candidate['diagnostics'][regime]
+            passes &= (row['converged_runs'] == row['runs'] and not row['degenerate_reference']
+                       and row['max_race_tv_q95'] <= membership_tolerance
+                       and row['max_pole_relative_q95'] is not None
+                       and row['max_pole_relative_q95'] <= pole_tolerance)
+        if passes:
+            eligible.append(candidate['k'])
+    return min(eligible) if eligible else None
 
 
 def archetypal_resolution(weighted: pd.DataFrame, runs: int = 40, seed: int = 811,
-                         progress=None) -> tuple[dict, dict | None, dict]:
-    if runs < 2:
-        raise ValueError("At least two perturbations are required for uncertainty")
+                         progress=None, workers: int = 1, control_runs: int = 8,
+                         resolutions=range(3, 9), membership_tolerance=None,
+                         pole_tolerance=None) -> tuple[dict, dict, dict]:
+    if runs < 2 or control_runs < 2 or workers < 1:
+        raise ValueError('At least two runs per regime and one worker are required')
+    if (membership_tolerance is None) != (pole_tolerance is None):
+        raise ValueError('Supply both movement tolerances or neither')
     x = weighted.to_numpy()
     total = float(np.sum((x - x.mean(axis=0)) ** 2))
-    fits, uncertainties, candidates = {}, {}, []
-    # Use the same perturbations at every resolution for a paired comparison.
-    rng = np.random.default_rng(seed)
-    multipliers = []
-    for _ in range(runs):
-        counts = rng.multinomial(x.shape[1], np.ones(x.shape[1]) / x.shape[1])
-        multipliers.append(np.sqrt(counts) * rng.normal(1, 0.08, x.shape[1]))
-    for k in range(3, 9):
-        fit = fit_archetypes(x, k, seed=seed + k)
-        # Stable identity ordering by strongest contributing source race.
-        order = sorted(range(k), key=lambda j: (int(np.argmax(fit["hull_weights"][j])), tuple(fit["poles"][j])))
-        fit["memberships"] = fit["memberships"][:, order]
-        fit["hull_weights"] = fit["hull_weights"][order]
-        fit["poles"] = fit["poles"][order]
-        samples = []
-        converged_trials = 0
-        for b, multiplier in enumerate(multipliers):
-            trial = fit_archetypes(x * multiplier, k, seed=seed + 1000 * k + b,
-                                   starts=2, initial=(fit["memberships"], fit["hull_weights"]))
-            converged_trials += int(trial["converged"])
-            samples.append(align_memberships(fit["poles"], trial, x))
-        uncertainty = membership_uncertainty(np.array(samples), fit["memberships"])
-        stable = uncertainty["rmse"] <= 0.12 and float(uncertainty["race_rmse"].max()) <= 0.25
-        candidates.append({"k": k, "relative_squared_error": fit["loss"] / total,
-                           "membership_rmse": uncertainty["rmse"],
-                           "max_race_membership_rmse": float(uncertainty["race_rmse"].max()),
-                           "stable": bool(stable), "optimizer_converged": fit["converged"],
-                           "perturbation_optimizer_converged_runs": converged_trials,
-                           "optimizer_starts": fit["starts"]})
-        fits[k], uncertainties[k] = fit, uncertainty
-        if progress:
-            progress(candidates[-1])
-    errors = np.array([row["relative_squared_error"] for row in candidates])
-    # Maximum improvement over the straight endpoint chord (normalized axes).
+    if total <= 1e-12:
+        raise ValueError('Archetypal resolution requires nonzero between-race variation')
+    ks = sorted(set(resolutions))
+    if len(ks) < 2:
+        raise ValueError('Resolution comparison requires at least two basis sizes')
+    perturbations = feature_perturbations(weighted, runs, seed)
+    tasks = [(x, k, seed, perturbations, control_runs) for k in ks]
+    fits, diagnostics, candidates = {}, {}, []
+    def collect(results):
+        for k, fit, detail, summary in results:
+            candidate = {'k': k, 'relative_squared_error': fit['loss'] / total,
+                         'optimizer_converged': fit['converged'], 'optimizer_starts': fit['starts'],
+                         'diagnostics': summary}
+            candidates.append(candidate)
+            fits[k], diagnostics[k] = fit, detail
+            if progress:
+                progress(candidate)
+    if workers == 1:
+        collect(map(_fit_resolution, tasks))
+    else:
+        from concurrent.futures import ProcessPoolExecutor
+        with ProcessPoolExecutor(max_workers=workers) as pool:
+            collect(pool.map(_fit_resolution, tasks))
+    errors = np.array([c['relative_squared_error'] for c in candidates])
     gain = (errors[0] - errors) / max(float(errors[0] - errors[-1]), 1e-12)
-    knee = int(np.argmax(gain - np.linspace(0, 1, len(errors)))) + 3
-    stable_after = [row["k"] for row in candidates if row["k"] >= knee and row["stable"]]
-    selected = min(stable_after) if stable_after else None
-    diagnostic = selected if selected is not None else knee
-    report = {"candidate_resolutions": candidates, "error_knee": knee,
-              "selected_resolution": selected, "seed": seed, "perturbation_runs": runs,
-              "reported_resolution": diagnostic,
-              "membership_status": "stable" if selected is not None else "provisional_error_knee_basis",
-              "stability_rule": {"global_membership_rmse_max": 0.12, "race_membership_rmse_max": 0.25},
-              "selection_rule": "smallest stable resolution at or after maximum normalized error-curve chord deviation",
-              "status": "selected" if selected else "no stable resolution at or after knee; reported memberships are diagnostic only"}
-    return report, fits[diagnostic], uncertainties[diagnostic]
+    knee = ks[int(np.argmax(gain - (np.array(ks) - ks[0]) / (ks[-1] - ks[0])))]
+    grid = [{'membership_tolerance': tv, 'pole_tolerance': pole,
+             'selected_resolution': select_resolution(candidates, knee, tv, pole)}
+            for tv in (.05, .10, .20, .30) for pole in (.10, .25, .50)]
+    selected = None if membership_tolerance is None else select_resolution(candidates, knee, membership_tolerance, pole_tolerance)
+    reported = selected if selected is not None else knee
+    status = ('tolerances_not_adopted' if membership_tolerance is None else
+              'selected_under_explicit_tolerances' if selected is not None else 'no_qualifying_resolution')
+    report = {'candidate_resolutions': candidates, 'error_knee': knee,
+              'selected_resolution': selected, 'reported_resolution': reported,
+              'membership_status': 'provisional_error_knee_basis' if selected is None else 'qualified_under_explicit_tolerances',
+              'status': status, 'seed': seed, 'perturbation_runs': runs, 'control_runs': control_runs,
+              'profile_dimensions': weighted.columns.tolist(),
+              'selection_rule': 'smallest K at or after knee meeting joint worst-race/pole 95th-percentile tolerances in optimization and local robustness; all those fits must converge',
+              'adopted_tolerances': None if membership_tolerance is None else {'membership': membership_tolerance, 'pole': pole_tolerance},
+              'tolerance_grid': grid,
+              'tolerance_interpretation': {'membership': 'fraction of mixture mass reassigned; .20 means 20 percentage points',
+                                         'pole': 'displacement divided by nearest other reference pole distance; .25 means one quarter of that separation'},
+              'reported_diagnostics': diagnostics[reported]}
+    return report, fits[reported], diagnostics[reported]
 
 
 def tier_sensitivity(primary: pd.DataFrame, sensitivity: pd.DataFrame) -> dict:

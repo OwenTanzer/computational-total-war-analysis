@@ -3,9 +3,10 @@ import numpy as np
 import pandas as pd
 
 from ctw_analysis.janus_distance import (
-    align_memberships, block_weighted_matrix, directional_delta, distances,
+    align_archetypes, block_weighted_matrix, directional_delta, distances,
     fit_archetypes, local_residuals, membership_entropy, membership_uncertainty,
-    pairwise_report, simplex_projection,
+    pairwise_report, simplex_projection, total_variation, pole_uncertainty,
+    feature_perturbations, select_resolution, archetypal_resolution,
 )
 from ctw_analysis.race_features import BLOCKS
 
@@ -82,15 +83,17 @@ class ArchetypeTests(unittest.TestCase):
         permutation = [2, 0, 1]
         trial = {'memberships': first['memberships'][:, permutation],
                  'hull_weights': first['hull_weights'][permutation]}
-        np.testing.assert_allclose(align_memberships(first['poles'], trial, x), first['memberships'])
+        aligned_w, aligned_poles = align_archetypes(first['poles'], trial, x)
+        np.testing.assert_allclose(aligned_w, first['memberships'])
+        np.testing.assert_allclose(aligned_poles, first['poles'])
 
     def test_stable_hybrid_has_high_entropy_and_zero_uncertainty(self):
         w = np.array([[.5, .5]])
         stable = np.repeat(w[None, :, :], 10, axis=0)
         uncertain = np.array([[[1., 0.]], [[0., 1.]]] * 5)
         self.assertAlmostEqual(membership_entropy(w)[0], 1)
-        self.assertEqual(membership_uncertainty(stable, w)['rmse'], 0)
-        self.assertEqual(membership_uncertainty(uncertain, w)['rmse'], .5)
+        self.assertEqual(membership_uncertainty(stable, w)['total_variation']['mean'], 0)
+        self.assertEqual(membership_uncertainty(uncertain, w)['total_variation']['mean'], .5)
         np.testing.assert_allclose(membership_uncertainty(stable, w)['mean'],
                                    membership_uncertainty(uncertain, w)['mean'])
 
@@ -100,6 +103,88 @@ class ArchetypeTests(unittest.TestCase):
         fit = fit_archetypes(np.zeros((5, 3)), 3, starts=2)
         self.assertEqual(fit['loss'], 0)
         self.assertTrue(np.isfinite(fit['memberships']).all())
+
+
+class StabilityRevisionTests(unittest.TestCase):
+    @staticmethod
+    def feature_frame(n=8):
+        columns = [f'{feature}__{view}' for members in BLOCKS.values() for feature in members
+                   for view in ('breadth', 'ceiling', 'cost_access')]
+        frame = pd.DataFrame(np.random.default_rng(19).normal(size=(n, 54)),
+                             columns=columns, index=[f'r{i}' for i in range(n)])
+        return block_weighted_matrix(frame)[1]
+
+    @staticmethod
+    def candidate(k=3, tv=.2, pole=.25):
+        row = {'runs': 2, 'converged_runs': 2, 'degenerate_reference': False,
+               'max_race_tv_q95': tv, 'max_pole_relative_q95': pole}
+        return {'k': k, 'optimizer_converged': True,
+                'diagnostics': {'optimization_repeatability': dict(row),
+                                'local_robustness': dict(row),
+                                'structural_stress': {**row, 'max_race_tv_q95': 1., 'max_pole_relative_q95': 100.}}}
+
+    def test_twenty_point_transfer_is_invariant_to_unused_poles(self):
+        for k in (3, 8):
+            w = np.pad([[.6, .3, .1]], ((0, 0), (0, k-3)))
+            v = np.pad([[.4, .5, .1]], ((0, 0), (0, k-3)))
+            self.assertAlmostEqual(total_variation(v, w)[0], .20)
+        self.assertEqual(select_resolution([self.candidate(3), self.candidate(8)], 3, .20, .25), 3)
+
+    def test_fixed_memberships_do_not_hide_translated_poles(self):
+        poles = np.array([[0., 0.], [4., 0.]])
+        shifted = np.repeat((poles + [1., 0.])[None], 2, axis=0)
+        movement = pole_uncertainty(shifted, poles)
+        np.testing.assert_allclose(movement['absolute_displacement']['values'], 1.)
+        np.testing.assert_allclose(movement['relative_displacement']['values'], .25)
+        np.testing.assert_allclose(movement['profile_delta_mean'], [[1., 0.], [1., 0.]])
+        w = np.array([[.5, .5]])
+        self.assertEqual(membership_uncertainty(np.repeat(w[None], 2, axis=0), w)['total_variation']['mean'], 0)
+
+    def test_degenerate_poles_are_explicitly_unidentifiable(self):
+        poles = np.zeros((2, 3))
+        movement = pole_uncertainty(np.zeros((2, 2, 3)), poles)
+        self.assertTrue(movement['degenerate_reference'])
+        self.assertIsNone(movement['relative_displacement'])
+        candidate = self.candidate()
+        candidate['diagnostics']['local_robustness']['degenerate_reference'] = True
+        candidate['diagnostics']['local_robustness']['max_pole_relative_q95'] = None
+        self.assertIsNone(select_resolution([candidate], 3, 1., 1.))
+
+    def test_local_perturbations_keep_support_and_each_block_total(self):
+        frame = self.feature_frame()
+        draws = feature_perturbations(frame, 10, 811)
+        self.assertTrue((draws['local_robustness'] > 0).all())
+        self.assertTrue((draws['structural_stress'] == 0).any())
+        for members in BLOCKS.values():
+            mask = np.array([c.split('__')[0] in members for c in frame.columns])
+            q = np.array([{'breadth':.5,'ceiling':.25,'cost_access':.25}[c.split('__')[1]]/(3*len(members)) for c in frame.columns[mask]])
+            np.testing.assert_allclose((draws['local_robustness'][:, mask] ** 2 * q).sum(axis=1), 1/3, atol=1e-12)
+        again = feature_perturbations(frame, 10, 811)
+        for key in draws:
+            np.testing.assert_array_equal(draws[key], again[key])
+
+    def test_joint_selection_ignores_stress_but_checks_both_local_movements(self):
+        self.assertEqual(select_resolution([self.candidate()], 3, .20, .25), 3)
+        self.assertIsNone(select_resolution([self.candidate(tv=.21)], 3, .20, .25))
+        self.assertIsNone(select_resolution([self.candidate(pole=.26)], 3, .20, .25))
+        candidate = self.candidate()
+        candidate['diagnostics']['optimization_repeatability']['max_race_tv_q95'] = .21
+        self.assertIsNone(select_resolution([candidate], 3, .20, .25))
+        candidate = self.candidate()
+        candidate['diagnostics']['local_robustness']['converged_runs'] = 1
+        self.assertIsNone(select_resolution([candidate], 3, .20, .25))
+
+    def test_orchestration_is_seeded_and_worker_count_does_not_change_results(self):
+        from ctw_analysis.build_race_strategy_space import json_ready
+        import json
+        frame = self.feature_frame()
+        a = archetypal_resolution(frame, runs=2, control_runs=2, resolutions=(3, 4), workers=1)
+        b = archetypal_resolution(frame, runs=2, control_runs=2, resolutions=(3, 4), workers=2)
+        self.assertEqual(json.dumps(json_ready(a[0]), sort_keys=True), json.dumps(json_ready(b[0]), sort_keys=True))
+        self.assertIsNone(a[0]['selected_resolution'])
+        self.assertEqual(a[0]['status'], 'tolerances_not_adopted')
+        self.assertEqual(len(a[0]['tolerance_grid']), 12)
+        self.assertEqual(set(a[2]), {'optimization_repeatability','local_robustness','structural_stress'})
 
 
 if __name__ == '__main__':

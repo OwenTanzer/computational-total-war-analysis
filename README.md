@@ -15,10 +15,16 @@ and local distinctive options. Archetypes are tactical poles, not race classes.
 Their number controls descriptive resolution. A mixture can be stable and broad;
 uncertainty is measured separately from mixture entropy.
 
-It evaluates three through eight poles and selects the smallest stable basis
-at or after the reconstruction-error knee. If none passes the stated stability
-thresholds, it reports that failure and retains the knee basis as **provisional**
-diagnostics. It never silently relaxes thresholds to manufacture a selection.
+It evaluates three through eight poles with separate optimization-repeatability,
+local-robustness and structural-stress diagnostics. Membership movement uses total
+variation distance; pole movement is reported in the original metric and relative
+to separation between poles. Profile changes and rare large movements stay visible.
+
+No scientific cutoff is adopted by default. The error-knee basis is provisional;
+a tolerance grid shows which resolutions qualify under each explicit policy.
+Supply both `--membership-tolerance` and `--pole-tolerance` to adopt a policy.
+Structural stress never gates that selection. `--workers N` runs independent
+resolutions concurrently with deterministic seeds.
 
 The original capability formulas and distance scale are preserved. Unit tier
 remains a separate topology sensitivity, not campaign recruitment access.

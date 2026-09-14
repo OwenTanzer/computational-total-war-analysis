@@ -33,8 +33,13 @@ Canonical view names are `breadth`, `ceiling`, `cost_access`.
 The primary model has 54 dimensions. Unit tier is topology sensitivity only.
 Interpret distances and signed contrasts first; archetypal memberships and local
 residuals explain continuous relationships. Separate entropy from uncertainty.
-If no resolution passes stability, keep `selected_resolution` null and explicitly
-mark diagnostic memberships provisional. Do not assign semantic pole names before
+Use total variation for membership movement; preserve and report pole movement.
+Keep optimization repeatability, local robustness and structural stress separate.
+Local perturbations preserve every dimension and equal block totals. Structural
+stress does not gate selection. Without explicitly adopted membership/pole
+tolerances, keep `selected_resolution` null with `tolerances_not_adopted`; this
+status does not mean stability failed. Show the conditional tolerance grid and
+mark the error-knee basis provisional. Preserve tail events and convergence flags. Do not assign semantic pole names before
 inspecting the fitted coordinates. Do not infer causal tactics or played armies
 from roster capability summaries.
 

@@ -1,29 +1,29 @@
 # Interpreting continuous tactical relationships
 
-Janus distinguishes three questions: how far apart are two race rosters, which
-capabilities account for their difference, and how well their positions can be
-described as mixtures of a small set of poles?
+Janus reports full-space distances, signed capability contrasts and local distinctive
+options independently of the success of any compressed archetypal representation.
+The original roster-capability measurements and distance scale are preserved.
 
-The first two questions use the full weighted capability space. They do not
-depend on the success of the low-dimensional archetypal approximation. Local
-residuals preserve distinctive options even when a race shares most of its
-capability profile with its neighbors.
+Read the three diagnostic regimes separately. Optimization repeatability describes
+variation in fitting unchanged data. Local robustness describes small changes in
+feature emphasis while preserving all dimensions and equal block totals. Structural
+stress asks what changes when parts of the measurement system are removed or heavily
+reweighted. Failure under that stress does not establish failure under modest changes.
 
-Read the resolution audit in `results/8.1.1/README.md` before interpreting the
-membership table. When `selected_resolution` is null, the reported error-knee
-basis is provisional: it is a reconstruction of the current feature geometry,
-not evidence that those exact poles survive feature resampling. Entropy describes
-how mixed a fitted representation is; the separate uncertainty fields describe
-how much that representation moves when feature emphasis changes.
+The reported error-knee basis is provisional unless a joint membership/pole tolerance
+policy is explicitly adopted. `tolerances_not_adopted` does not mean that candidates
+failed: inspect the conditional tolerance table. A qualifying choice depends on both
+membership reassignment and pole identity under optimization and local diagnostics.
+The report preserves maximum movements because even a passing percentile criterion
+can tolerate rare large jumps.
 
-A pole's largest weighted coordinates and source-race contributions should guide
-its interpretation. Names such as positional coercion, rupture or dislocation
-are theoretical hypotheses to investigate after examining these coordinates.
-They are not imposed as categories by the model. Similarity in capability does
-not establish the same causal route to victory, and a roster mixture does not
-specify an army composition.
+A mixture's entropy measures mixing within the fitted basis, not tactical versatility.
+A broadly capable roster may anchor a pole and therefore have low mixture entropy.
+Likewise, similar membership percentages can accompany moving poles: inspect the
+pole displacements and capability-profile intervals, not just coefficient means.
 
-The distinction matters especially for apparently contrasting neighbors: cheap
-artillery, mobile specialists or restoration may coexist with a broader roster
-identity that familiar faction labels obscure. Inspect the signed pair contrasts
-and local residuals before deciding which commonality actually matters tactically.
+Interpretive names such as positional coercion, rupture or dislocation should be
+hypotheses developed from fitted capability profiles and local residuals. They are
+not categories imposed by the fitting procedure. Shared deficiencies can be just as
+influential as shared strengths. Similar capability does not establish the same
+causal route to victory, and roster mixtures do not specify played armies.
