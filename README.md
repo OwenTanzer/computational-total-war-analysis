@@ -1,51 +1,58 @@
 # Computational Total War Analysis
 
-Experimental, reproducible analyses derived from the
-[Computational Total War](https://github.com/OwenTanzer/computational-total-war)
-datasets live here, separately from the production context source.
+Reproducible analyses derived from the [Computational Total War](https://github.com/OwenTanzer/computational-total-war)
+dataset, separated from the production reference source.
 
-This separation keeps working hypotheses, provisional metrics, generated
-tables, and exploratory clustering from becoming retrieval noise for agents
-that use CTW as an authoritative dataset.
+## Race tactical possibility space
 
-## Current study: race strategy space
+**Janus Strategic Distance (JSD)** measures continuous relationships among 24
+race rosters. Eighteen interpretable capabilities each retain breadth, ceiling,
+and multiplayer `cost_access`, producing 54 primary dimensions.
 
-The first study asks whether the 24 playable races occupy distinct strategic
-groups on the battlefield. It represents each race with 18 interpretable
-features. Every primary feature retains three views:
+The report begins with race neighborhoods, signed contrasts and local distinctive
+capabilities. Unit evidence connects these summaries to original unit keys,
+measurements, costs and capability scores.
 
-- **Breadth:** how much of the roster can express the capability.
-- **Ceiling:** how strong the best options are.
-- **Access:** how early the capability appears along the multiplayer-cost frontier.
+Exact one/two-unit package frontiers compare capabilities in a single purchase
+with capabilities supplied by distinct units. A published requirement grid spans
+all 105 pairs of unit capability proxies plus four raw-measure queries. Costs,
+all cheapest grid ties and stronger Pareto alternatives remain inspectable.
+An all-unit speed floor is distinct from merely including one fast unit.
 
-That produces a 54-dimensional race representation. Equal-weighted feature
-blocks prevent a larger block from dominating the distance metric; breadth
-receives half of each feature's weight, while ceiling and access receive one
-quarter each. A separate 69-dimensional sensitivity adds `main_units.tier`, a
-unit classification that is deliberately **not** treated as campaign access.
+All archetypal resolutions K=3–8 retain profiles, memberships and uncertainty.
+There is no winning resolution; the reconstruction knee is descriptive only.
+Original-space profile correspondences allow many-to-one links across resolutions.
+Optimization repeatability, local robustness and structural stress remain separate,
+with full attempt histories and illustrative tolerance comparisons for every K.
 
-After correcting structural-zero normalization and bombardment eligibility,
-the best tested hard partition is eight clusters, but its silhouette is only
-**0.120**. The useful object remains the continuous neighborhood structure and
-its bridge cases, not a rigid taxonomy.
+Block-emphasis scenarios expose changing roster relationships, and requirement
+sweeps expose changing package costs. The original aggregate capability formulas
+and distance scale are preserved. Unit tier remains a topology sensitivity.
+These are roster-listed possibilities, not faction recruitment guarantees,
+recommended armies, win rates or demonstrated tactical synergy.
 
-See [`studies/race_strategy_space/methodology.md`](studies/race_strategy_space/methodology.md)
-for the specification and [`studies/race_strategy_space/results/8.1.1/`](studies/race_strategy_space/results/8.1.1/)
-for the committed outputs.
+See [methodology](studies/race_strategy_space/methodology.md),
+[interpretation](studies/race_strategy_space/interpretation.md), and
+[reviewed results](studies/race_strategy_space/results/8.1.1/README.md).
 
 ## Reproduce
 
-Place this repository beside a CTW checkout locked to the commit in
-`source_lock.json`, then run:
+Use Python 3.11+ and a clean CTW checkout at the exact commit in `source_lock.json`.
 
 ```bash
 python -m venv .venv
 source .venv/bin/activate
 pip install -e .
-python src/ctw_analysis/race_feature_analysis.py \
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m ctw_analysis.build_race_strategy_space \
   --ctw-root ../computational-total-war
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m ctw_analysis.build_race_strategy_space \
+  --ctw-root ../computational-total-war --verify-regeneration
+CTW_TEST_ROOT=../computational-total-war python -m unittest discover -s tests -v
 ```
 
-Generated files go to `work/race_feature_output/`. The compact, reviewed
-snapshot under `studies/` is committed; the 1.2 MB unit-level score table and
-other regenerable intermediates remain ignored.
+The default output is `work/janus_output/`. The regeneration gate builds all
+ten artifacts in a new temporary directory and compares every byte and the
+exact file set with the reviewed snapshot. Use the same numerical-library environment
+for exact reproduction; floating-point library/platform changes can affect
+nonconvex optimization paths. No persistent server is required for this batch
+analysis.

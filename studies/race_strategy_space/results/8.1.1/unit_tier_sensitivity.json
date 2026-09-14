@@ -1,0 +1,1422 @@
+{
+  "distance_pearson_correlation": 0.998456929,
+  "meaning": "unit classification sensitivity, not campaign recruitment access",
+  "races": [
+    {
+      "race": "wood_elves",
+      "primary_neighbors": [
+        "beastmen",
+        "kislev",
+        "slaanesh",
+        "grand_cathay"
+      ],
+      "sensitivity_neighbors": [
+        "beastmen",
+        "kislev",
+        "slaanesh",
+        "high_elves"
+      ],
+      "profile_rms_change": 0.026477239,
+      "largest_changed_pair": {
+        "to": "beastmen",
+        "before": 0.89226807,
+        "after": 0.953812711,
+        "leading_directional_changes": [
+          {
+            "dimension": "sustain__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": 0.170203714,
+            "change": 0.170203714
+          },
+          {
+            "dimension": "burst__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": 0.153795264,
+            "change": 0.153795264
+          },
+          {
+            "dimension": "bombardment__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": 0.152969327,
+            "change": 0.152969327
+          },
+          {
+            "dimension": "material_durability__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.141451035,
+            "change": -0.141451035
+          },
+          {
+            "dimension": "restoration__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": 0.137616307,
+            "change": 0.137616307
+          },
+          {
+            "dimension": "battlefield_control__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": 0.135498766,
+            "change": 0.135498766
+          }
+        ]
+      }
+    },
+    {
+      "race": "beastmen",
+      "primary_neighbors": [
+        "wood_elves",
+        "kislev",
+        "slaanesh",
+        "norsca"
+      ],
+      "sensitivity_neighbors": [
+        "wood_elves",
+        "kislev",
+        "slaanesh",
+        "norsca"
+      ],
+      "profile_rms_change": 0.02544914,
+      "largest_changed_pair": {
+        "to": "wood_elves",
+        "before": 0.89226807,
+        "after": 0.953812711,
+        "leading_directional_changes": [
+          {
+            "dimension": "sustain__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.170203714,
+            "change": -0.170203714
+          },
+          {
+            "dimension": "burst__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.153795264,
+            "change": -0.153795264
+          },
+          {
+            "dimension": "bombardment__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.152969327,
+            "change": -0.152969327
+          },
+          {
+            "dimension": "material_durability__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": 0.141451035,
+            "change": 0.141451035
+          },
+          {
+            "dimension": "restoration__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.137616307,
+            "change": -0.137616307
+          },
+          {
+            "dimension": "battlefield_control__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.135498766,
+            "change": -0.135498766
+          }
+        ]
+      }
+    },
+    {
+      "race": "lizardmen",
+      "primary_neighbors": [
+        "high_elves",
+        "warriors_of_chaos",
+        "kislev",
+        "dark_elves"
+      ],
+      "sensitivity_neighbors": [
+        "kislev",
+        "warriors_of_chaos",
+        "high_elves",
+        "dark_elves"
+      ],
+      "profile_rms_change": 0.02535628,
+      "largest_changed_pair": {
+        "to": "tzeentch",
+        "before": 1.506104985,
+        "after": 1.453865565,
+        "leading_directional_changes": [
+          {
+            "dimension": "restoration__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": 0.265216237,
+            "change": 0.265216237
+          },
+          {
+            "dimension": "avoidance__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.21094346,
+            "change": -0.21094346
+          },
+          {
+            "dimension": "contact_authority__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.197867068,
+            "change": -0.197867068
+          },
+          {
+            "dimension": "battlefield_control__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.185181647,
+            "change": -0.185181647
+          },
+          {
+            "dimension": "deployment__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.155912103,
+            "change": -0.155912103
+          },
+          {
+            "dimension": "morale__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": 0.127079017,
+            "change": 0.127079017
+          }
+        ]
+      }
+    },
+    {
+      "race": "dark_elves",
+      "primary_neighbors": [
+        "grand_cathay",
+        "greenskins",
+        "chaos_dwarfs",
+        "high_elves"
+      ],
+      "sensitivity_neighbors": [
+        "greenskins",
+        "grand_cathay",
+        "chaos_dwarfs",
+        "high_elves"
+      ],
+      "profile_rms_change": 0.024611381,
+      "largest_changed_pair": {
+        "to": "bretonnia",
+        "before": 1.723883097,
+        "after": 1.776059828,
+        "leading_directional_changes": [
+          {
+            "dimension": "contact_authority__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.463553109,
+            "change": -0.463553109
+          },
+          {
+            "dimension": "melee_pressure__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.283413819,
+            "change": -0.283413819
+          },
+          {
+            "dimension": "burst__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.211795002,
+            "change": -0.211795002
+          },
+          {
+            "dimension": "sustain__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.150719379,
+            "change": -0.150719379
+          },
+          {
+            "dimension": "restoration__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.130648393,
+            "change": -0.130648393
+          },
+          {
+            "dimension": "contact_authority__cost_access",
+            "before": -0.438283018,
+            "after": -0.309912894,
+            "change": 0.128370124
+          }
+        ]
+      }
+    },
+    {
+      "race": "bretonnia",
+      "primary_neighbors": [
+        "empire",
+        "grand_cathay",
+        "skaven",
+        "greenskins"
+      ],
+      "sensitivity_neighbors": [
+        "empire",
+        "grand_cathay",
+        "skaven",
+        "greenskins"
+      ],
+      "profile_rms_change": 0.024549094,
+      "largest_changed_pair": {
+        "to": "dark_elves",
+        "before": 1.723883097,
+        "after": 1.776059828,
+        "leading_directional_changes": [
+          {
+            "dimension": "contact_authority__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": 0.463553109,
+            "change": 0.463553109
+          },
+          {
+            "dimension": "melee_pressure__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": 0.283413819,
+            "change": 0.283413819
+          },
+          {
+            "dimension": "burst__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": 0.211795002,
+            "change": 0.211795002
+          },
+          {
+            "dimension": "sustain__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": 0.150719379,
+            "change": 0.150719379
+          },
+          {
+            "dimension": "restoration__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": 0.130648393,
+            "change": 0.130648393
+          },
+          {
+            "dimension": "contact_authority__cost_access",
+            "before": 0.438283018,
+            "after": 0.309912894,
+            "change": -0.128370124
+          }
+        ]
+      }
+    },
+    {
+      "race": "nurgle",
+      "primary_neighbors": [
+        "kislev",
+        "norsca",
+        "tzeentch",
+        "warriors_of_chaos"
+      ],
+      "sensitivity_neighbors": [
+        "kislev",
+        "norsca",
+        "tzeentch",
+        "greenskins"
+      ],
+      "profile_rms_change": 0.022948175,
+      "largest_changed_pair": {
+        "to": "kislev",
+        "before": 1.140100531,
+        "after": 1.185413223,
+        "leading_directional_changes": [
+          {
+            "dimension": "target_solutions__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": 0.321927863,
+            "change": 0.321927863
+          },
+          {
+            "dimension": "restoration__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.18290775,
+            "change": -0.18290775
+          },
+          {
+            "dimension": "contact_authority__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": 0.178525235,
+            "change": 0.178525235
+          },
+          {
+            "dimension": "shock__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": 0.149528335,
+            "change": 0.149528335
+          },
+          {
+            "dimension": "missile_pressure__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": 0.144621008,
+            "change": 0.144621008
+          },
+          {
+            "dimension": "deployment__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": 0.142919428,
+            "change": 0.142919428
+          }
+        ]
+      }
+    },
+    {
+      "race": "tzeentch",
+      "primary_neighbors": [
+        "nurgle",
+        "norsca",
+        "warriors_of_chaos",
+        "dark_elves"
+      ],
+      "sensitivity_neighbors": [
+        "nurgle",
+        "norsca",
+        "dark_elves",
+        "warriors_of_chaos"
+      ],
+      "profile_rms_change": 0.022120915,
+      "largest_changed_pair": {
+        "to": "lizardmen",
+        "before": 1.506104985,
+        "after": 1.453865565,
+        "leading_directional_changes": [
+          {
+            "dimension": "restoration__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.265216237,
+            "change": -0.265216237
+          },
+          {
+            "dimension": "avoidance__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": 0.21094346,
+            "change": 0.21094346
+          },
+          {
+            "dimension": "contact_authority__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": 0.197867068,
+            "change": 0.197867068
+          },
+          {
+            "dimension": "battlefield_control__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": 0.185181647,
+            "change": 0.185181647
+          },
+          {
+            "dimension": "deployment__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": 0.155912103,
+            "change": 0.155912103
+          },
+          {
+            "dimension": "morale__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.127079017,
+            "change": -0.127079017
+          }
+        ]
+      }
+    },
+    {
+      "race": "kislev",
+      "primary_neighbors": [
+        "wood_elves",
+        "dark_elves",
+        "beastmen",
+        "nurgle"
+      ],
+      "sensitivity_neighbors": [
+        "dark_elves",
+        "wood_elves",
+        "beastmen",
+        "greenskins"
+      ],
+      "profile_rms_change": 0.022038533,
+      "largest_changed_pair": {
+        "to": "nurgle",
+        "before": 1.140100531,
+        "after": 1.185413223,
+        "leading_directional_changes": [
+          {
+            "dimension": "target_solutions__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.321927863,
+            "change": -0.321927863
+          },
+          {
+            "dimension": "restoration__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": 0.18290775,
+            "change": 0.18290775
+          },
+          {
+            "dimension": "contact_authority__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.178525235,
+            "change": -0.178525235
+          },
+          {
+            "dimension": "shock__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.149528335,
+            "change": -0.149528335
+          },
+          {
+            "dimension": "missile_pressure__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.144621008,
+            "change": -0.144621008
+          },
+          {
+            "dimension": "deployment__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.142919428,
+            "change": -0.142919428
+          }
+        ]
+      }
+    },
+    {
+      "race": "empire",
+      "primary_neighbors": [
+        "grand_cathay",
+        "bretonnia",
+        "dark_elves",
+        "chaos_dwarfs"
+      ],
+      "sensitivity_neighbors": [
+        "grand_cathay",
+        "bretonnia",
+        "dark_elves",
+        "chaos_dwarfs"
+      ],
+      "profile_rms_change": 0.021851922,
+      "largest_changed_pair": {
+        "to": "wood_elves",
+        "before": 1.75218394,
+        "after": 1.803479988,
+        "leading_directional_changes": [
+          {
+            "dimension": "burst__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.275682441,
+            "change": -0.275682441
+          },
+          {
+            "dimension": "contact_authority__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": 0.256767386,
+            "change": 0.256767386
+          },
+          {
+            "dimension": "bombardment__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.236537239,
+            "change": -0.236537239
+          },
+          {
+            "dimension": "sustain__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.230037984,
+            "change": -0.230037984
+          },
+          {
+            "dimension": "target_solutions__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": 0.203140246,
+            "change": 0.203140246
+          },
+          {
+            "dimension": "melee_pressure__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": 0.201600139,
+            "change": 0.201600139
+          }
+        ]
+      }
+    },
+    {
+      "race": "slaanesh",
+      "primary_neighbors": [
+        "beastmen",
+        "kislev",
+        "wood_elves",
+        "warriors_of_chaos"
+      ],
+      "sensitivity_neighbors": [
+        "kislev",
+        "beastmen",
+        "wood_elves",
+        "nurgle"
+      ],
+      "profile_rms_change": 0.021754986,
+      "largest_changed_pair": {
+        "to": "beastmen",
+        "before": 1.172735037,
+        "after": 1.214495708,
+        "leading_directional_changes": [
+          {
+            "dimension": "sustain__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": 0.196855111,
+            "change": 0.196855111
+          },
+          {
+            "dimension": "bombardment__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": 0.152969327,
+            "change": 0.152969327
+          },
+          {
+            "dimension": "restoration__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": 0.137616307,
+            "change": 0.137616307
+          },
+          {
+            "dimension": "deployment__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": 0.129926753,
+            "change": 0.129926753
+          },
+          {
+            "dimension": "burst__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": 0.129915366,
+            "change": 0.129915366
+          },
+          {
+            "dimension": "movement__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": 0.122438226,
+            "change": 0.122438226
+          }
+        ]
+      }
+    },
+    {
+      "race": "vampire_counts",
+      "primary_neighbors": [
+        "norsca",
+        "nurgle",
+        "skaven",
+        "beastmen"
+      ],
+      "sensitivity_neighbors": [
+        "norsca",
+        "skaven",
+        "nurgle",
+        "vampire_coast"
+      ],
+      "profile_rms_change": 0.019816176,
+      "largest_changed_pair": {
+        "to": "nurgle",
+        "before": 1.503004294,
+        "after": 1.546295323,
+        "leading_directional_changes": [
+          {
+            "dimension": "morale__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": 0.323042685,
+            "change": 0.323042685
+          },
+          {
+            "dimension": "target_solutions__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.259821125,
+            "change": -0.259821125
+          },
+          {
+            "dimension": "avoidance__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.211273811,
+            "change": -0.211273811
+          },
+          {
+            "dimension": "missile_pressure__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": 0.196645307,
+            "change": 0.196645307
+          },
+          {
+            "dimension": "contact_authority__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.159760932,
+            "change": -0.159760932
+          },
+          {
+            "dimension": "deployment__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.142919428,
+            "change": -0.142919428
+          }
+        ]
+      }
+    },
+    {
+      "race": "daemons_of_chaos",
+      "primary_neighbors": [
+        "warriors_of_chaos",
+        "tzeentch",
+        "norsca",
+        "slaanesh"
+      ],
+      "sensitivity_neighbors": [
+        "warriors_of_chaos",
+        "tzeentch",
+        "norsca",
+        "slaanesh"
+      ],
+      "profile_rms_change": 0.01940317,
+      "largest_changed_pair": {
+        "to": "dark_elves",
+        "before": 1.762074341,
+        "after": 1.723195796,
+        "leading_directional_changes": [
+          {
+            "dimension": "shock__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.218028556,
+            "change": -0.218028556
+          },
+          {
+            "dimension": "deployment__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.194890129,
+            "change": -0.194890129
+          },
+          {
+            "dimension": "movement__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.188927859,
+            "change": -0.188927859
+          },
+          {
+            "dimension": "battlefield_control__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.176148396,
+            "change": -0.176148396
+          },
+          {
+            "dimension": "avoidance__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.15717686,
+            "change": -0.15717686
+          },
+          {
+            "dimension": "material_durability__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.14833361,
+            "change": -0.14833361
+          }
+        ]
+      }
+    },
+    {
+      "race": "ogre_kingdoms",
+      "primary_neighbors": [
+        "chaos_dwarfs",
+        "dark_elves",
+        "grand_cathay",
+        "high_elves"
+      ],
+      "sensitivity_neighbors": [
+        "chaos_dwarfs",
+        "dark_elves",
+        "grand_cathay",
+        "high_elves"
+      ],
+      "profile_rms_change": 0.019390289,
+      "largest_changed_pair": {
+        "to": "chaos_dwarfs",
+        "before": 1.041533068,
+        "after": 1.001759977,
+        "leading_directional_changes": [
+          {
+            "dimension": "burst__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.105208305,
+            "change": -0.105208305
+          },
+          {
+            "dimension": "material_durability__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": 0.103430308,
+            "change": 0.103430308
+          },
+          {
+            "dimension": "sustain__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": 0.084345369,
+            "change": 0.084345369
+          },
+          {
+            "dimension": "target_solutions__cost_access",
+            "before": 0.255342589,
+            "after": 0.180554476,
+            "change": -0.074788113
+          },
+          {
+            "dimension": "burst__cost_access",
+            "before": -0.241447823,
+            "after": -0.170729393,
+            "change": 0.07071843
+          },
+          {
+            "dimension": "contact_authority__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.061227743,
+            "change": -0.061227743
+          }
+        ]
+      }
+    },
+    {
+      "race": "greenskins",
+      "primary_neighbors": [
+        "dark_elves",
+        "norsca",
+        "skaven",
+        "grand_cathay"
+      ],
+      "sensitivity_neighbors": [
+        "dark_elves",
+        "skaven",
+        "norsca",
+        "grand_cathay"
+      ],
+      "profile_rms_change": 0.018451925,
+      "largest_changed_pair": {
+        "to": "beastmen",
+        "before": 1.310238181,
+        "after": 1.274529391,
+        "leading_directional_changes": [
+          {
+            "dimension": "deployment__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": 0.194890129,
+            "change": 0.194890129
+          },
+          {
+            "dimension": "battlefield_control__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": 0.121948889,
+            "change": 0.121948889
+          },
+          {
+            "dimension": "bombardment__cost_access",
+            "before": -0.300329781,
+            "after": -0.212365225,
+            "change": 0.087964556
+          },
+          {
+            "dimension": "deployment__cost_access",
+            "before": 0.299232986,
+            "after": 0.211589674,
+            "change": -0.087643313
+          },
+          {
+            "dimension": "restoration__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.084485961,
+            "change": -0.084485961
+          },
+          {
+            "dimension": "contact_authority__cost_access",
+            "before": -0.288350381,
+            "after": -0.20389451,
+            "change": 0.084455871
+          }
+        ]
+      }
+    },
+    {
+      "race": "chaos_dwarfs",
+      "primary_neighbors": [
+        "dark_elves",
+        "ogre_kingdoms",
+        "grand_cathay",
+        "high_elves"
+      ],
+      "sensitivity_neighbors": [
+        "ogre_kingdoms",
+        "dark_elves",
+        "grand_cathay",
+        "high_elves"
+      ],
+      "profile_rms_change": 0.017821576,
+      "largest_changed_pair": {
+        "to": "ogre_kingdoms",
+        "before": 1.041533068,
+        "after": 1.001759977,
+        "leading_directional_changes": [
+          {
+            "dimension": "burst__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": 0.105208305,
+            "change": 0.105208305
+          },
+          {
+            "dimension": "material_durability__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.103430308,
+            "change": -0.103430308
+          },
+          {
+            "dimension": "sustain__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.084345369,
+            "change": -0.084345369
+          },
+          {
+            "dimension": "target_solutions__cost_access",
+            "before": -0.255342589,
+            "after": -0.180554476,
+            "change": 0.074788113
+          },
+          {
+            "dimension": "burst__cost_access",
+            "before": 0.241447823,
+            "after": 0.170729393,
+            "change": -0.07071843
+          },
+          {
+            "dimension": "contact_authority__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": 0.061227743,
+            "change": 0.061227743
+          }
+        ]
+      }
+    },
+    {
+      "race": "khorne",
+      "primary_neighbors": [
+        "nurgle",
+        "tzeentch",
+        "kislev",
+        "greenskins"
+      ],
+      "sensitivity_neighbors": [
+        "nurgle",
+        "tzeentch",
+        "kislev",
+        "greenskins"
+      ],
+      "profile_rms_change": 0.017338561,
+      "largest_changed_pair": {
+        "to": "bretonnia",
+        "before": 2.034317062,
+        "after": 2.06466081,
+        "leading_directional_changes": [
+          {
+            "dimension": "material_durability__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.334758472,
+            "change": -0.334758472
+          },
+          {
+            "dimension": "contact_authority__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.315073643,
+            "change": -0.315073643
+          },
+          {
+            "dimension": "melee_pressure__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.223703668,
+            "change": -0.223703668
+          },
+          {
+            "dimension": "restoration__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.18290775,
+            "change": -0.18290775
+          },
+          {
+            "dimension": "bombardment__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": 0.146838277,
+            "change": 0.146838277
+          },
+          {
+            "dimension": "target_solutions__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.144850389,
+            "change": -0.144850389
+          }
+        ]
+      }
+    },
+    {
+      "race": "tomb_kings",
+      "primary_neighbors": [
+        "grand_cathay",
+        "dark_elves",
+        "skaven",
+        "vampire_coast"
+      ],
+      "sensitivity_neighbors": [
+        "dark_elves",
+        "grand_cathay",
+        "skaven",
+        "vampire_coast"
+      ],
+      "profile_rms_change": 0.017092055,
+      "largest_changed_pair": {
+        "to": "lizardmen",
+        "before": 1.664249329,
+        "after": 1.630462233,
+        "leading_directional_changes": [
+          {
+            "dimension": "avoidance__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": 0.266171911,
+            "change": 0.266171911
+          },
+          {
+            "dimension": "battlefield_control__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": 0.194214898,
+            "change": 0.194214898
+          },
+          {
+            "dimension": "sustain__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": 0.190146946,
+            "change": 0.190146946
+          },
+          {
+            "dimension": "avoidance__cost_access",
+            "before": 0.456232456,
+            "after": 0.322605063,
+            "change": -0.133627393
+          },
+          {
+            "dimension": "movement__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": 0.112880034,
+            "change": 0.112880034
+          },
+          {
+            "dimension": "morale__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": 0.112499598,
+            "change": 0.112499598
+          }
+        ]
+      }
+    },
+    {
+      "race": "vampire_coast",
+      "primary_neighbors": [
+        "skaven",
+        "tomb_kings",
+        "greenskins",
+        "dark_elves"
+      ],
+      "sensitivity_neighbors": [
+        "skaven",
+        "tomb_kings",
+        "greenskins",
+        "dark_elves"
+      ],
+      "profile_rms_change": 0.017048137,
+      "largest_changed_pair": {
+        "to": "empire",
+        "before": 1.678019683,
+        "after": 1.727857596,
+        "leading_directional_changes": [
+          {
+            "dimension": "melee_pressure__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.361192578,
+            "change": -0.361192578
+          },
+          {
+            "dimension": "burst__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": 0.29635373,
+            "change": 0.29635373
+          },
+          {
+            "dimension": "avoidance__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.281347119,
+            "change": -0.281347119
+          },
+          {
+            "dimension": "battlefield_control__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.230347902,
+            "change": -0.230347902
+          },
+          {
+            "dimension": "contact_authority__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.22270241,
+            "change": -0.22270241
+          },
+          {
+            "dimension": "restoration__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.18290775,
+            "change": -0.18290775
+          }
+        ]
+      }
+    },
+    {
+      "race": "grand_cathay",
+      "primary_neighbors": [
+        "dark_elves",
+        "tomb_kings",
+        "skaven",
+        "greenskins"
+      ],
+      "sensitivity_neighbors": [
+        "dark_elves",
+        "tomb_kings",
+        "skaven",
+        "greenskins"
+      ],
+      "profile_rms_change": 0.016406094,
+      "largest_changed_pair": {
+        "to": "dark_elves",
+        "before": 0.89169109,
+        "after": 0.934105697,
+        "leading_directional_changes": [
+          {
+            "dimension": "contact_authority__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": 0.230289854,
+            "change": 0.230289854
+          },
+          {
+            "dimension": "sustain__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": 0.148064211,
+            "change": 0.148064211
+          },
+          {
+            "dimension": "burst__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": 0.145239794,
+            "change": 0.145239794
+          },
+          {
+            "dimension": "melee_pressure__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": 0.134287736,
+            "change": 0.134287736
+          },
+          {
+            "dimension": "restoration__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": 0.130648393,
+            "change": 0.130648393
+          },
+          {
+            "dimension": "missile_pressure__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.092111892,
+            "change": -0.092111892
+          }
+        ]
+      }
+    },
+    {
+      "race": "skaven",
+      "primary_neighbors": [
+        "greenskins",
+        "grand_cathay",
+        "tomb_kings",
+        "dark_elves"
+      ],
+      "sensitivity_neighbors": [
+        "greenskins",
+        "grand_cathay",
+        "tomb_kings",
+        "vampire_coast"
+      ],
+      "profile_rms_change": 0.015750693,
+      "largest_changed_pair": {
+        "to": "bretonnia",
+        "before": 1.365151423,
+        "after": 1.39489591,
+        "leading_directional_changes": [
+          {
+            "dimension": "contact_authority__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.319573005,
+            "change": -0.319573005
+          },
+          {
+            "dimension": "deployment__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.22087548,
+            "change": -0.22087548
+          },
+          {
+            "dimension": "target_solutions__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.195013006,
+            "change": -0.195013006
+          },
+          {
+            "dimension": "battlefield_control__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.167115145,
+            "change": -0.167115145
+          },
+          {
+            "dimension": "restoration__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.137180812,
+            "change": -0.137180812
+          },
+          {
+            "dimension": "melee_pressure__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.136799784,
+            "change": -0.136799784
+          }
+        ]
+      }
+    },
+    {
+      "race": "warriors_of_chaos",
+      "primary_neighbors": [
+        "norsca",
+        "high_elves",
+        "nurgle",
+        "tzeentch"
+      ],
+      "sensitivity_neighbors": [
+        "norsca",
+        "high_elves",
+        "nurgle",
+        "tzeentch"
+      ],
+      "profile_rms_change": 0.015381173,
+      "largest_changed_pair": {
+        "to": "slaanesh",
+        "before": 1.292098537,
+        "after": 1.329554756,
+        "leading_directional_changes": [
+          {
+            "dimension": "material_durability__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.245115405,
+            "change": -0.245115405
+          },
+          {
+            "dimension": "restoration__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.22515073,
+            "change": -0.22515073
+          },
+          {
+            "dimension": "bombardment__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.19037132,
+            "change": -0.19037132
+          },
+          {
+            "dimension": "movement__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.164307529,
+            "change": -0.164307529
+          },
+          {
+            "dimension": "avoidance__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.131533636,
+            "change": -0.131533636
+          },
+          {
+            "dimension": "sustain__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.125636513,
+            "change": -0.125636513
+          }
+        ]
+      }
+    },
+    {
+      "race": "high_elves",
+      "primary_neighbors": [
+        "dark_elves",
+        "warriors_of_chaos",
+        "norsca",
+        "kislev"
+      ],
+      "sensitivity_neighbors": [
+        "dark_elves",
+        "warriors_of_chaos",
+        "norsca",
+        "kislev"
+      ],
+      "profile_rms_change": 0.015265707,
+      "largest_changed_pair": {
+        "to": "tzeentch",
+        "before": 1.395940887,
+        "after": 1.364279862,
+        "leading_directional_changes": [
+          {
+            "dimension": "restoration__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": 0.2194893,
+            "change": 0.2194893
+          },
+          {
+            "dimension": "contact_authority__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.148502712,
+            "change": -0.148502712
+          },
+          {
+            "dimension": "deployment__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": 0.129926753,
+            "change": 0.129926753
+          },
+          {
+            "dimension": "restoration__cost_access",
+            "before": 0.421282514,
+            "after": 0.297891723,
+            "change": -0.123390792
+          },
+          {
+            "dimension": "target_solutions__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": 0.106375038,
+            "change": 0.106375038
+          },
+          {
+            "dimension": "contact_authority__cost_access",
+            "before": -0.342794683,
+            "after": -0.242392445,
+            "change": 0.100402238
+          }
+        ]
+      }
+    },
+    {
+      "race": "norsca",
+      "primary_neighbors": [
+        "warriors_of_chaos",
+        "greenskins",
+        "high_elves",
+        "kislev"
+      ],
+      "sensitivity_neighbors": [
+        "warriors_of_chaos",
+        "greenskins",
+        "kislev",
+        "high_elves"
+      ],
+      "profile_rms_change": 0.014311061,
+      "largest_changed_pair": {
+        "to": "bretonnia",
+        "before": 1.955270423,
+        "after": 1.988758824,
+        "leading_directional_changes": [
+          {
+            "dimension": "contact_authority__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.402937506,
+            "change": -0.402937506
+          },
+          {
+            "dimension": "avoidance__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.262401492,
+            "change": -0.262401492
+          },
+          {
+            "dimension": "battlefield_control__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.248414404,
+            "change": -0.248414404
+          },
+          {
+            "dimension": "melee_pressure__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.219637316,
+            "change": -0.219637316
+          },
+          {
+            "dimension": "restoration__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.216876332,
+            "change": -0.216876332
+          },
+          {
+            "dimension": "missile_pressure__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": 0.160258029,
+            "change": 0.160258029
+          }
+        ]
+      }
+    },
+    {
+      "race": "dwarfs",
+      "primary_neighbors": [
+        "empire",
+        "bretonnia",
+        "skaven",
+        "grand_cathay"
+      ],
+      "sensitivity_neighbors": [
+        "empire",
+        "bretonnia",
+        "skaven",
+        "chaos_dwarfs"
+      ],
+      "profile_rms_change": 0.013425382,
+      "largest_changed_pair": {
+        "to": "ogre_kingdoms",
+        "before": 2.267996952,
+        "after": 2.233240448,
+        "leading_directional_changes": [
+          {
+            "dimension": "material_durability__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": -0.312948738,
+            "change": -0.312948738
+          },
+          {
+            "dimension": "shock__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": 0.251843182,
+            "change": 0.251843182
+          },
+          {
+            "dimension": "burst__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": 0.192144138,
+            "change": 0.192144138
+          },
+          {
+            "dimension": "material_durability__cost_access",
+            "before": -0.500267663,
+            "after": -0.353742657,
+            "change": 0.146525006
+          },
+          {
+            "dimension": "movement__unit_tier_sensitivity",
+            "before": 0.0,
+            "after": 0.146026566,
+            "change": 0.146026566
+          },
+          {
+            "dimension": "shock__cost_access",
+            "before": 0.401044907,
+            "after": 0.283581573,
+            "change": -0.117463334
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -2,13 +2,15 @@ import unittest
 
 import pandas as pd
 
-from ctw_analysis.race_feature_analysis import (
+from ctw_analysis.race_features import (
     BLOCKS,
     aggregate_unit_views,
-    block_weighted_matrix,
     bombardment_score,
     rank01,
 )
+
+
+from ctw_analysis.janus_distance import block_weighted_matrix
 
 
 class Rank01Tests(unittest.TestCase):
@@ -122,7 +124,7 @@ class UnitTierSensitivityTests(unittest.TestCase):
             for feature in feature_names:
                 row[f"{feature}__breadth"] = 0.2 + offset
                 row[f"{feature}__ceiling"] = 0.4 + offset
-                row[f"{feature}__access"] = 0.6 + offset
+                row[f"{feature}__cost_access"] = 0.6 + offset
                 if feature not in {"role_coverage", "elite_orientation", "command_magic"}:
                     row[f"{feature}__unit_tier_sensitivity"] = 0.8 + offset
             rows.append(row)
