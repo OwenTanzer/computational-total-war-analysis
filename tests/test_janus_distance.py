@@ -198,6 +198,7 @@ class RepresentationTests(unittest.TestCase):
         links = profile_correspondence(left, right)
         self.assertEqual([e['to_pole'] for e in links['reverse']['edges']], [1, 2, 2])
         self.assertEqual(links['forward']['edges'][1]['equally_near_poles'], [2, 3])
+        self.assertEqual(links['forward']['edges'][1]['to_pole'], 2)
         np.testing.assert_allclose(links['reverse']['mapped_membership_tv_by_race'], 0.)
         perm = [2, 0, 1]
         permuted = {key: value[perm] if key == 'poles' else value[:, perm] for key,value in right.items()}

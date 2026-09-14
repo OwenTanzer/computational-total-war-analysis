@@ -41,6 +41,10 @@ class PackageTests(unittest.TestCase):
         self.assertEqual(minimum_packages(some,80,150)['minimum_cost'],50)
         self.assertIsNone(minimum_packages(every,80,150)['minimum_cost'])
         self.assertEqual(minimum_packages(every,10,150)['minimum_cost'],50)
+        unknown_other_range = package_candidates(c,[100,100],[np.nan,200],'all_units_a')
+        self.assertEqual(minimum_packages(unknown_other_range,80,150)['minimum_cost'],50)
+        unknown_speed = package_candidates(c,[np.nan,100],[0,200],'all_units_a')
+        self.assertIsNone(minimum_packages(unknown_speed,80,150)['minimum_cost'])
 
     def test_distinct_providers_and_missingness_are_enforced(self):
         self.assertEqual(len(package_candidates([20],[1],[1],'distinct_providers')),0)

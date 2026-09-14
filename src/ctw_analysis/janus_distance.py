@@ -335,7 +335,8 @@ def profile_correspondence(left, right):
     """
     d = cdist(left['poles'], right['poles'])
     def direction(distance, source, target):
-        nearest = distance.argmin(axis=1)
+        nearest = np.array([np.flatnonzero(np.isclose(row, row.min(), rtol=0, atol=1e-12))[0]
+                            for row in distance])
         mapped = np.zeros_like(target['memberships'])
         for i, j in enumerate(nearest):
             mapped[:, j] += source['memberships'][:, i]

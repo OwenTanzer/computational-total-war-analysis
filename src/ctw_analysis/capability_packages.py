@@ -63,7 +63,7 @@ def package_candidates(cost, a, b, mode):
         ca, aa, bb = cost[i] + cost[j], a[i], b[j]
     elif mode == 'all_units_a':
         i, j = np.triu_indices(n, 1)
-        ca, aa, bb = cost[i] + cost[j], np.minimum(a[i], a[j]), np.maximum(b[i], b[j])
+        ca, aa, bb = cost[i] + cost[j], np.minimum(a[i], a[j]), np.fmax(b[i], b[j])
     else:
         raise ValueError('Unknown package semantics')
     valid = np.isfinite(aa) & np.isfinite(bb) & (aa > 0) & (bb > 0)
