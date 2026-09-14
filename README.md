@@ -46,7 +46,7 @@ CTW_TEST_ROOT=../computational-total-war python -m unittest discover -s tests -v
 
 The default output is `work/janus_output/`. The regeneration gate builds all
 seven artifacts in a new temporary directory and compares every byte and the
-exact file set with the reviewed snapshot. Use the recorded validation runtime
+exact file set with the reviewed snapshot. Use the same numerical-library environment
 for exact reproduction; floating-point library/platform changes can affect
 nonconvex optimization paths. No persistent server is required for this batch
 analysis.
