@@ -248,9 +248,12 @@ def feature_perturbations(weighted: pd.DataFrame, runs: int, seed: int) -> dict:
 
 def _checked_fit(x, k, seed, initial=None):
     result = fit_archetypes(x, k, seed=seed, starts=5, initial=initial)
+    attempts = [{'seed': seed, 'max_iter': 150, 'starts': result['starts']}]
     if not result['converged']:
         result = fit_archetypes(x, k, seed=seed + 100000, starts=5, max_iter=600,
                                initial=(result['memberships'], result['hull_weights']))
+        attempts.append({'seed': seed + 100000, 'max_iter': 600, 'starts': result['starts']})
+    result['attempts'] = attempts
     return result
 
 
@@ -273,6 +276,7 @@ def _fit_resolution(args):
     # Reference and controls have identical five-start budgets. Controls are
     # independently initialized, never warm-started at the reference.
     reference = _checked_fit(x, k, seed + k)
+    initial_attempts = reference['attempts']
     controls = [_checked_fit(x, k, seed + 10000 * k + b) for b in range(control_runs)]
     reference = min([reference, *controls], key=lambda f: f['loss']).copy()
     order = sorted(range(k), key=lambda j: (int(np.argmax(reference['hull_weights'][j])), tuple(reference['poles'][j])))
@@ -292,39 +296,66 @@ def _fit_resolution(args):
         poles = pole_uncertainty(np.array([a[1] for a in aligned]), reference['poles'])
         diagnostics[regime] = {'membership': memberships, 'poles': poles,
                               'optimizer_losses': [trial['loss'] for trial in trials],
-                              'optimizer_converged': [trial['converged'] for trial in trials]}
+                              'optimizer_converged': [trial['converged'] for trial in trials],
+                              'optimizer_attempts': [trial['attempts'] for trial in trials]}
         summaries[regime] = _regime_summary(memberships, poles, sum(t['converged'] for t in trials), len(trials))
+    reference['initial_attempts'] = initial_attempts
     return k, reference, diagnostics, summaries
 
 
-def select_resolution(candidates, knee, membership_tolerance, pole_tolerance):
-    """Explicit joint tolerances; structural stress never gates selection."""
-    if not 0 <= membership_tolerance <= 1 or pole_tolerance < 0:
+def tolerance_comparison(candidates, membership_tolerance, pole_tolerance):
+    """Report every resolution; no knee exclusion and no winning resolution."""
+    if (not np.isfinite([membership_tolerance, pole_tolerance]).all()
+            or not 0 <= membership_tolerance <= 1 or pole_tolerance < 0):
         raise ValueError('Invalid movement tolerance')
-    eligible = []
+    rows = []
     for candidate in candidates:
-        if candidate['k'] < knee or not candidate['optimizer_converged']:
-            continue
-        passes = True
+        reasons = []
+        if not candidate['optimizer_converged']:
+            reasons.append('reference_not_converged')
         for regime in ('optimization_repeatability', 'local_robustness'):
             row = candidate['diagnostics'][regime]
-            passes &= (row['converged_runs'] == row['runs'] and not row['degenerate_reference']
-                       and row['max_race_tv_q95'] <= membership_tolerance
-                       and row['max_pole_relative_q95'] is not None
-                       and row['max_pole_relative_q95'] <= pole_tolerance)
-        if passes:
-            eligible.append(candidate['k'])
-    return min(eligible) if eligible else None
+            if row['converged_runs'] != row['runs']:
+                reasons.append(regime + ':not_all_converged')
+            if row['degenerate_reference']:
+                reasons.append(regime + ':degenerate_poles')
+            if row['max_race_tv_q95'] > membership_tolerance:
+                reasons.append(regime + ':membership_movement')
+            if row['max_pole_relative_q95'] is None or row['max_pole_relative_q95'] > pole_tolerance:
+                reasons.append(regime + ':pole_movement')
+        rows.append({'k': candidate['k'], 'within_tolerances': not reasons, 'reasons': reasons})
+    return rows
+
+
+def profile_correspondence(left, right):
+    """Nearest profiles in both directions, allowing many-to-one correspondence.
+
+    Memberships mapped by nearest profile are a descriptive comparison, not
+    proof of pole ancestry or a causal split.
+    """
+    d = cdist(left['poles'], right['poles'])
+    def direction(distance, source, target):
+        nearest = distance.argmin(axis=1)
+        mapped = np.zeros_like(target['memberships'])
+        for i, j in enumerate(nearest):
+            mapped[:, j] += source['memberships'][:, i]
+        edges = []
+        for i, j in enumerate(nearest):
+            ties = np.flatnonzero(np.isclose(distance[i], distance[i, j], rtol=0, atol=1e-12))
+            edges.append({'from_pole': int(i + 1), 'to_pole': int(j + 1),
+                          'distance': float(distance[i, j]),
+                          'equally_near_poles': (ties + 1).tolist()})
+        return {'edges': edges, 'mapped_membership_tv_by_race': total_variation(mapped, target['memberships']),
+                'tie_policy': 'first pole index; all equally near profiles also listed'}
+    return {'profile_distances': d, 'forward': direction(d, left, right),
+            'reverse': direction(d.T, right, left)}
 
 
 def archetypal_resolution(weighted: pd.DataFrame, runs: int = 40, seed: int = 811,
                          progress=None, workers: int = 1, control_runs: int = 8,
-                         resolutions=range(3, 9), membership_tolerance=None,
-                         pole_tolerance=None) -> tuple[dict, dict, dict]:
+                         resolutions=range(3, 9)) -> tuple[dict, dict, dict]:
     if runs < 2 or control_runs < 2 or workers < 1:
         raise ValueError('At least two runs per regime and one worker are required')
-    if (membership_tolerance is None) != (pole_tolerance is None):
-        raise ValueError('Supply both movement tolerances or neither')
     x = weighted.to_numpy()
     total = float(np.sum((x - x.mean(axis=0)) ** 2))
     if total <= 1e-12:
@@ -338,7 +369,9 @@ def archetypal_resolution(weighted: pd.DataFrame, runs: int = 40, seed: int = 81
     def collect(results):
         for k, fit, detail, summary in results:
             candidate = {'k': k, 'relative_squared_error': fit['loss'] / total,
-                         'optimizer_converged': fit['converged'], 'optimizer_starts': fit['starts'],
+                         'optimizer_converged': fit['converged'],
+                         'reference_attempts': fit['attempts'],
+                         'initial_attempts': fit['initial_attempts'],
                          'diagnostics': summary}
             candidates.append(candidate)
             fits[k], diagnostics[k] = fit, detail
@@ -354,24 +387,18 @@ def archetypal_resolution(weighted: pd.DataFrame, runs: int = 40, seed: int = 81
     gain = (errors[0] - errors) / max(float(errors[0] - errors[-1]), 1e-12)
     knee = ks[int(np.argmax(gain - (np.array(ks) - ks[0]) / (ks[-1] - ks[0])))]
     grid = [{'membership_tolerance': tv, 'pole_tolerance': pole,
-             'selected_resolution': select_resolution(candidates, knee, tv, pole)}
+             'resolutions': tolerance_comparison(candidates, tv, pole)}
             for tv in (.05, .10, .20, .30) for pole in (.10, .25, .50)]
-    selected = None if membership_tolerance is None else select_resolution(candidates, knee, membership_tolerance, pole_tolerance)
-    reported = selected if selected is not None else knee
-    status = ('tolerances_not_adopted' if membership_tolerance is None else
-              'selected_under_explicit_tolerances' if selected is not None else 'no_qualifying_resolution')
+    correspondences = [{'from_k': ka, 'to_k': kb, **profile_correspondence(fits[ka], fits[kb])}
+                       for ka, kb in zip(ks, ks[1:])]
     report = {'candidate_resolutions': candidates, 'error_knee': knee,
-              'selected_resolution': selected, 'reported_resolution': reported,
-              'membership_status': 'provisional_error_knee_basis' if selected is None else 'qualified_under_explicit_tolerances',
-              'status': status, 'seed': seed, 'perturbation_runs': runs, 'control_runs': control_runs,
+              'status': 'multiple_descriptive_representations',
+              'seed': seed, 'perturbation_runs': runs, 'control_runs': control_runs,
               'profile_dimensions': weighted.columns.tolist(),
-              'selection_rule': 'smallest K at or after knee meeting joint worst-race/pole 95th-percentile tolerances in optimization and local robustness; all those fits must converge',
-              'adopted_tolerances': None if membership_tolerance is None else {'membership': membership_tolerance, 'pole': pole_tolerance},
-              'tolerance_grid': grid,
-              'tolerance_interpretation': {'membership': 'fraction of mixture mass reassigned; .20 means 20 percentage points',
-                                         'pole': 'displacement divided by nearest other reference pole distance; .25 means one quarter of that separation'},
-              'reported_diagnostics': diagnostics[reported]}
-    return report, fits[reported], diagnostics[reported]
+              'tolerance_grid': grid, 'adjacent_correspondences': correspondences,
+              'representations': {str(k): {'diagnostics': diagnostics[k]} for k in ks},
+              'interpretation': 'No selected resolution. Knee is descriptive only. Tolerances are per race/pole, not simultaneous run guarantees.'}
+    return report, fits, diagnostics
 
 
 def tier_sensitivity(primary: pd.DataFrame, sensitivity: pd.DataFrame) -> dict:

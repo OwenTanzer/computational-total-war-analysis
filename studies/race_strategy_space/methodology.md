@@ -66,7 +66,84 @@ with view, raw difference and squared-distance contribution. The full vector
 is accessible through `directional_delta`; leading components alone need not
 sum to the full squared distance. Equal-distance ranks use stable race order.
 
-## Convex archetypal representation
+## Unit evidence and bounded capability combinations
+
+Every eligible unit retains a stable (race, unit_key) identity, multiplayer cost,
+all 15 unit capability scores, source measurements with missingness, and the
+attribute/ability/contact keys used by the scoring proxies. Race-level witnesses
+identify positive/high-support units, occupied role/cost cells, ceiling contributors
+with their exact equal weights, and all positive-score champions under each cost cap.
+The original schema and locked source supply the remaining ingredient definitions.
+Role coverage, elite orientation and command/magic are roster metadata and are not
+invented as scores for individual package units.
+
+The 15 scores retain the original percentile/flag formulas, including baseline
+zero imputation of numeric inputs. They are exploratory capability proxies, not
+physical damage or effectiveness estimates. The new raw speed, armour and range
+queries use original finite measurements, preserving missingness. Missing raw
+requirements cannot be satisfied. Non-missile range is excluded. Source identifiers
+allow inspection of the original complete unit record.
+
+For every unordered pair of the 15 proxy capabilities, evaluate both:
+
+- **same_unit:** one unit must supply A and B; count its price once;
+- **distinct_providers:** two different units supply A and B respectively; sum
+  their prices. No repeated unit types, extra units or additive score aggregation.
+
+There are also three raw-measure pairs (speed/range, armour/range, speed/armour)
+and a fourth speed/range query with **all_units_a** semantics: both selected units
+must satisfy the speed floor, while at least one supplies the required range.
+Its package profile uses minimum speed and maximum range. Distinct-provider
+queries require only the designated witness to satisfy each requirement.
+The one-unit comparator continues to require both properties in that same unit.
+
+This gives 109 query families per race. Each evaluates all nine combinations of
+50th/75th/90th percentiles of global positive finite support, using linear quantile
+interpolation. Repeated threshold values are retained explicitly, not treated as
+new evidence. A variable without positive support has null thresholds and an
+explicit unavailable reason. These thresholds are requirement scenarios, not
+significance tests or canonical tactical objectives. Costs and source units are
+not aggregated across races.
+
+Enumerate all one-unit and ordered distinct-provider pairs (unordered pairs for
+all-units-speed). A package dominates another only if its cost is no greater,
+both achieved capabilities are no smaller, and at least one comparison is strict.
+A sorted cost/A/B skyline with a prefix-maximum tree computes the exact Pareto
+frontier for this bounded model. Preserve every objective-equivalent frontier
+witness and every minimum-cost tie on the requirement grid, including cheaper
+witnesses that are dominated by stronger packages at the same price. Package
+row references identify the exact providers and achieved values. Two possible
+provider assignments of the same pair can be distinct evidence rows.
+
+`minimum_cost_at_most_two` is the minimum across the two modes. A supplied budget
+is sufficient exactly when it exceeds or equals that cost. Null records distinguish
+unattainability in a roster from a variable with no positive global support.
+The complete frontiers support requirements beyond the displayed nine points;
+the grid retains all cheapest ties, while off-grid queries can use the frontier
+for exact minimum cost but may omit equal-cost dominated witnesses.
+
+This is a model of roster-listed access, not faction-specific availability or legal
+army composition. Units in race variants may not be jointly recruitable by a
+particular lord. Commanders, recruitment restrictions, synergy, formations and
+battle outcomes remain outside the package model. A two-unit package is evidence
+for a capability combination, not a recommended army.
+
+## Assumption sensitivity
+
+Five distance scenarios retain the original standardized measurements: equal block
+weighting and one emphasis per block. An emphasized block receives twice each
+other block's squared-distance weight; renormalize to the original total 4/3.
+Publish all distance matrices, directional neighbor ranks, four-neighbor retention,
+and nearest-neighbor identities. These scenarios test relationship sensitivity;
+they do not refit archetypes or demonstrate their robustness to alternative blocks.
+
+For each package family, retain the complete race-by-requirement minimum-cost
+matrix, including null unattainability. Enumerate race pairs whose finite cost
+ordering reverses across requirements, providing a witness requirement in each
+direction. Missing access is visible in the matrix and is not converted to a
+numeric rank. A reversal is conditional evidence, not a population statistic.
+
+## Convex archetypal representations
 
 For weighted matrix X, minimize `||X - W H X||²` subject to nonnegative rows
 summing to one in both W and H. H builds poles within the convex hull of observed
@@ -76,15 +153,18 @@ factorization, this cannot invent poles outside the observed capability space.
 The solver alternates convex projected-gradient subproblems with acceleration,
 40 inner iterations, up to 150 outer iterations, and normalized objective-change
 tolerance 1e-8. Five seeded starts use probabilistic farthest-point initialization.
-We retain the lowest loss and expose every start's loss and convergence status.
+We retain the lowest loss and expose every attempt's seed, iteration budget,
+start losses and convergence statuses, including initial and retry histories.
 The joint problem is nonconvex; convergence does not certify a global optimum.
 
 Evaluate K=3 through K=8. The reference is the lowest-loss result among an
 initial five-start fit and eight independent five-start control fits. Reference
 identities are ordered deterministically. For a fit that has not converged, retry
 with up to 600 outer iterations, starting from that fit plus independent seeds;
-unresolved convergence failures remain explicit and block conditional selection
-when they occur in reference, optimization control or local robustness.
+unresolved convergence failures remain explicit and prevent a representation
+from satisfying a tolerance comparison when they occur in its reference, controls
+or local robustness trials. Every K retains full reference profiles, memberships
+and diagnostic distributions; no representation is privileged.
 
 Normalize the endpoint-to-endpoint gain in reconstruction error and K to [0,1];
 the knee is the maximum gain above the straight endpoint chord. The knee remains
@@ -103,7 +183,7 @@ a descriptive compression choice. It alone does not establish robustness.
 3. **Structural stress:** 40 runs resample feature-view dimensions with replacement
    and apply independent Normal(1, 0.08) multipliers. Omitted dimensions and changed
    block emphases are deliberate. This measures dependence on the measurement
-   system and never gates conditional selection.
+   system and is excluded from tolerance comparisons.
 
 Draws are seeded and paired across resolutions. Each regime is summarized
 separately; the perturbation fits can still include search effects, so these
@@ -130,42 +210,39 @@ memberships AND pole positions. For each pole, report the complete distribution
 of Euclidean displacement, its mean, 95th percentile and maximum. Also normalize
 by distance to the nearest other reference pole to express movement relative
 to the separation of their identities. Coincident reference poles make this ratio
-undefined: record a degeneracy flag and reject conditional selection explicitly.
+undefined: record a degeneracy flag and fail the pole-tolerance comparison explicitly.
 
-For the reported basis, every regime retains the full 54-coordinate mean, standard
+For every basis, every regime retains the full 54-coordinate mean, standard
 deviation and 5th/95th percentile of weighted capability-profile changes. Coordinates
 follow `profile_dimensions`. Movement-distribution columns follow the reported race
 and pole order. Label matching resolves permutations; it does not erase pole drift.
 
-### Explicit tolerance choices
+### Tolerance comparisons and correspondences
 
-The default build does not adopt a scientific cutoff. It reports the error-knee
-basis provisionally and leaves `selected_resolution` null with the distinct status
-`tolerances_not_adopted`. This must not be described as failing a stability test.
+There is no selected resolution, adopted tolerance, or privileged error-knee basis.
+The output status is `multiple_descriptive_representations`. The knee remains a
+compression descriptor; smaller resolutions remain in all comparisons. The former
+selection fields and tolerance-adoption command-line flags are removed.
 
 A 12-cell tolerance grid crosses membership limits 0.05, 0.10, 0.20, 0.30 with pole
-limits 0.10, 0.25, 0.50. Each cell selects the smallest K at or after the knee for
-which BOTH optimization repeatability and local robustness satisfy:
+limits 0.10, 0.25, 0.50. Report every K's pass/fail and reasons. BOTH optimization
+repeatability and local robustness must meet each race's 95th-percentile total
+variation and each pole's 95th-percentile relative displacement, with converged
+fits and nondegenerate poles. Structural stress is excluded. These separate
+percentiles do not guarantee that a whole run is within both limits 95% of the
+time. Maximum movements and complete run distributions remain visible.
 
-- every race's 95th-percentile total variation is within the membership limit;
-- every pole's 95th-percentile relative displacement is within the pole limit;
-- all reference/control/local fits converge and reference poles are nondegenerate.
+For adjacent tested resolutions retain the full profile-distance matrix and each
+pole's nearest counterpart in both directions. This permits many-to-one links.
+Record all distance ties (absolute tolerance 1e-12), choosing the lowest index for
+membership mapping. Sum source memberships into their nearest destination poles
+and report the resulting per-race total variation against destination memberships.
+A nearest-profile correspondence is descriptive: it does not establish descent,
+causal splitting or semantic equivalence. Tied mappings have no unique identity.
 
-Stress outcomes are excluded. Maximum observed movements remain visible because
-percentile acceptance can tolerate rare jumps. The membership limit describes
-mass reallocation; the pole limit describes a fraction of nearest-pole separation.
-These are analytical policies, not significance thresholds. Controlled tests
-establish their meaning: 20-point transfers are padding invariant, permutations
-change nothing, and shifting fixed-membership poles by one quarter of their
-separation produces zero membership change but relative pole movement of 0.25.
-
-To adopt a policy explicitly, supply BOTH `--membership-tolerance` and
-`--pole-tolerance`. The report records them, and selects a qualifying basis or
-returns the distinct status `no_qualifying_resolution`. With no adopted policy,
-conditional choices remain reviewable without manufacturing one canonical answer.
-
-The intervals concern method sensitivity, not a population of sampled battles.
-Feature views are correlated, and structural resampling is a stress intervention.
+The intervals concern method sensitivity, not sampled battles. Feature views are
+correlated and structural resampling is a stress intervention. Eight optimization
+controls cannot establish rare-failure rates; one control can be its own reference.
 
 ## Local distinctiveness
 
@@ -199,7 +276,7 @@ Run `python -m ctw_analysis.build_race_strategy_space --ctw-root PATH`.
 per-resolution seeds; worker count does not change the outputs. Use single-thread
 numerical libraries within each worker.
 Generated intermediates belong in ignored `work/`. Reviewed results contain exactly
-seven files. `--verify-regeneration` rebuilds in a clean temporary directory and
+ten files. `--verify-regeneration` rebuilds in a clean temporary directory and
 compares file sets and every byte. Seeded output is deterministic within a fixed
 runtime using single-thread numerical libraries; differing libraries/platforms
 may change optimization paths. The source-backed tests independently compare

@@ -1,29 +1,34 @@
-# Interpreting continuous tactical relationships
+# Interpreting the possibility atlas
 
-Janus reports full-space distances, signed capability contrasts and local distinctive
-options independently of the success of any compressed archetypal representation.
-The original roster-capability measurements and distance scale are preserved.
+Start with a relationship: what changes between two rosters, and which breadth,
+ceiling or cost-access measurements support the difference? Local residuals reveal
+options that a global compression may suppress. Unit evidence shows who supplies
+those measurements and what else those same units can provide.
 
-Read the three diagnostic regimes separately. Optimization repeatability describes
-variation in fitting unchanged data. Local robustness describes small changes in
-feature emphasis while preserving all dimensions and equal block totals. Structural
-stress asks what changes when parts of the measurement system are removed or heavily
-reweighted. Failure under that stress does not establish failure under modest changes.
+Then ask an attainable-combination question. Are both capabilities supplied by one
+purchase or by distinct providers? What is the minimum price at the stated
+requirements? Which stronger alternatives lie along the frontier? A package can
+be listed in a race roster without being recruitable by a particular faction.
+The model does not infer synergy, army effectiveness or battle outcomes.
 
-The reported error-knee basis is provisional unless a joint membership/pole tolerance
-policy is explicitly adopted. `tolerances_not_adopted` does not mean that candidates
-failed: inspect the conditional tolerance table. A qualifying choice depends on both
-membership reassignment and pole identity under optimization and local diagnostics.
-The report preserves maximum movements because even a passing percentile criterion
-can tolerate rare large jumps.
+Proxy thresholds are sample-relative. Raw speed, armour and range queries retain
+physical game measurements and missingness. The every-unit speed floor is stronger
+than requiring one fast provider. Changing a requirement can reverse which roster
+supplies a combination more cheaply; those reversals are informative results.
 
-A mixture's entropy measures mixing within the fitted basis, not tactical versatility.
-A broadly capable roster may anchor a pole and therefore have low mixture entropy.
-Likewise, similar membership percentages can accompany moving poles: inspect the
-pole displacements and capability-profile intervals, not just coefficient means.
+Compare all compressed representations. Recurring profile correspondences invite
+interpretation, while splits, ties and changing memberships expose its dependence
+on resolution. The error knee cannot exclude a smaller, more stable representation.
+The nearest profile need not share a tactical meaning, and shared deficiencies can
+be just as influential as shared strengths.
 
-Interpretive names such as positional coercion, rupture or dislocation should be
-hypotheses developed from fitted capability profiles and local residuals. They are
-not categories imposed by the fitting procedure. Shared deficiencies can be just as
-influential as shared strengths. Similar capability does not establish the same
-causal route to victory, and roster mixtures do not specify played armies.
+Read optimization repeatability, local robustness and structural stress separately.
+Local diagnostics include reference warm starts; optimization controls do not.
+Per-race/per-pole percentile tolerances are not simultaneous whole-run guarantees.
+Inspect tails and failed fits. Entropy describes mixing within a basis, not overall
+tactical versatility. Block-emphasis scenarios describe distance sensitivity and
+do not establish archetypal robustness under alternative block weights.
+
+Names such as dislocation or positional coercion are hypotheses. They should lead
+to inspectable claims about unit witnesses, attainable combinations and costs, with
+counterexamples and conditions under which the proposed interpretation breaks.

@@ -6,7 +6,7 @@ from ctw_analysis.janus_distance import (
     align_archetypes, block_weighted_matrix, directional_delta, distances,
     fit_archetypes, local_residuals, membership_entropy, membership_uncertainty,
     pairwise_report, simplex_projection, total_variation, pole_uncertainty,
-    feature_perturbations, select_resolution, archetypal_resolution,
+    feature_perturbations, tolerance_comparison, archetypal_resolution, profile_correspondence, _checked_fit,
 )
 from ctw_analysis.race_features import BLOCKS
 
@@ -128,7 +128,7 @@ class StabilityRevisionTests(unittest.TestCase):
             w = np.pad([[.6, .3, .1]], ((0, 0), (0, k-3)))
             v = np.pad([[.4, .5, .1]], ((0, 0), (0, k-3)))
             self.assertAlmostEqual(total_variation(v, w)[0], .20)
-        self.assertEqual(select_resolution([self.candidate(3), self.candidate(8)], 3, .20, .25), 3)
+        self.assertEqual([r['k'] for r in tolerance_comparison([self.candidate(3), self.candidate(8)], .20, .25) if r['within_tolerances']], [3, 8])
 
     def test_fixed_memberships_do_not_hide_translated_poles(self):
         poles = np.array([[0., 0.], [4., 0.]])
@@ -148,7 +148,7 @@ class StabilityRevisionTests(unittest.TestCase):
         candidate = self.candidate()
         candidate['diagnostics']['local_robustness']['degenerate_reference'] = True
         candidate['diagnostics']['local_robustness']['max_pole_relative_q95'] = None
-        self.assertIsNone(select_resolution([candidate], 3, 1., 1.))
+        self.assertFalse(tolerance_comparison([candidate], 1., 1.)[0]['within_tolerances'])
 
     def test_local_perturbations_keep_support_and_each_block_total(self):
         frame = self.feature_frame()
@@ -164,15 +164,15 @@ class StabilityRevisionTests(unittest.TestCase):
             np.testing.assert_array_equal(draws[key], again[key])
 
     def test_joint_selection_ignores_stress_but_checks_both_local_movements(self):
-        self.assertEqual(select_resolution([self.candidate()], 3, .20, .25), 3)
-        self.assertIsNone(select_resolution([self.candidate(tv=.21)], 3, .20, .25))
-        self.assertIsNone(select_resolution([self.candidate(pole=.26)], 3, .20, .25))
+        self.assertTrue(tolerance_comparison([self.candidate()], .20, .25)[0]['within_tolerances'])
+        self.assertFalse(tolerance_comparison([self.candidate(tv=.21)], .20, .25)[0]['within_tolerances'])
+        self.assertFalse(tolerance_comparison([self.candidate(pole=.26)], .20, .25)[0]['within_tolerances'])
         candidate = self.candidate()
         candidate['diagnostics']['optimization_repeatability']['max_race_tv_q95'] = .21
-        self.assertIsNone(select_resolution([candidate], 3, .20, .25))
+        self.assertFalse(tolerance_comparison([candidate], .20, .25)[0]['within_tolerances'])
         candidate = self.candidate()
         candidate['diagnostics']['local_robustness']['converged_runs'] = 1
-        self.assertIsNone(select_resolution([candidate], 3, .20, .25))
+        self.assertFalse(tolerance_comparison([candidate], .20, .25)[0]['within_tolerances'])
 
     def test_orchestration_is_seeded_and_worker_count_does_not_change_results(self):
         from ctw_analysis.build_race_strategy_space import json_ready
@@ -181,10 +181,37 @@ class StabilityRevisionTests(unittest.TestCase):
         a = archetypal_resolution(frame, runs=2, control_runs=2, resolutions=(3, 4), workers=1)
         b = archetypal_resolution(frame, runs=2, control_runs=2, resolutions=(3, 4), workers=2)
         self.assertEqual(json.dumps(json_ready(a[0]), sort_keys=True), json.dumps(json_ready(b[0]), sort_keys=True))
-        self.assertIsNone(a[0]['selected_resolution'])
-        self.assertEqual(a[0]['status'], 'tolerances_not_adopted')
+        self.assertNotIn('selected_resolution', a[0])
+        self.assertEqual(a[0]['status'], 'multiple_descriptive_representations')
+        self.assertEqual(set(a[0]['representations']), {'3', '4'})
+        self.assertEqual(len(a[0]['adjacent_correspondences']), 1)
         self.assertEqual(len(a[0]['tolerance_grid']), 12)
-        self.assertEqual(set(a[2]), {'optimization_repeatability','local_robustness','structural_stress'})
+        for k in (3, 4):
+            self.assertEqual(set(a[2][k]), {'optimization_repeatability','local_robustness','structural_stress'})
+            self.assertEqual(len(a[2][k]['local_robustness']['optimizer_attempts']), 2)
+
+
+class RepresentationTests(unittest.TestCase):
+    def test_profile_correspondence_allows_split_and_records_ties(self):
+        left = {'poles': np.array([[0., 0.], [4., 0.]]), 'memberships': np.array([[.2, .8]])}
+        right = {'poles': np.array([[0., 0.], [3.9, 0.], [4.1, 0.]]), 'memberships': np.array([[.2, .3, .5]])}
+        links = profile_correspondence(left, right)
+        self.assertEqual([e['to_pole'] for e in links['reverse']['edges']], [1, 2, 2])
+        self.assertEqual(links['forward']['edges'][1]['equally_near_poles'], [2, 3])
+        np.testing.assert_allclose(links['reverse']['mapped_membership_tv_by_race'], 0.)
+        perm = [2, 0, 1]
+        permuted = {key: value[perm] if key == 'poles' else value[:, perm] for key,value in right.items()}
+        other = profile_correspondence(left, permuted)
+        np.testing.assert_allclose(other['reverse']['mapped_membership_tv_by_race'], 0.)
+
+    def test_retry_keeps_both_attempt_histories(self):
+        from unittest.mock import patch
+        first = {'converged': False, 'starts': [{'loss': 2.}], 'memberships': np.eye(2), 'hull_weights': np.eye(2)}
+        second = {**first, 'converged': True, 'starts': [{'loss': 1.}]}
+        with patch('ctw_analysis.janus_distance.fit_archetypes', side_effect=[first, second]):
+            result = _checked_fit(np.eye(2), 2, 42)
+        self.assertEqual([a['starts'][0]['loss'] for a in result['attempts']], [2., 1.])
+        self.assertEqual([a['seed'] for a in result['attempts']], [42, 100042])
 
 
 if __name__ == '__main__':

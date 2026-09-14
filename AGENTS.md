@@ -20,7 +20,7 @@ Read `studies/race_strategy_space/methodology.md`, then its `feature_schema.json
 - `race_features.py`: source loading, unit scoring and capability aggregation.
 - `janus_distance.py`: weighting, distances, signed contrasts, convex archetypes,
   feature perturbations, label alignment and local residuals.
-- `build_race_strategy_space.py`: source validation and the seven-file output contract.
+- `build_race_strategy_space.py`: source validation and the ten-file output contract.
 
 ```bash
 python -m ctw_analysis.build_race_strategy_space --ctw-root ../computational-total-war
@@ -35,13 +35,23 @@ Interpret distances and signed contrasts first; archetypal memberships and local
 residuals explain continuous relationships. Separate entropy from uncertainty.
 Use total variation for membership movement; preserve and report pole movement.
 Keep optimization repeatability, local robustness and structural stress separate.
-Local perturbations preserve every dimension and equal block totals. Structural
-stress does not gate selection. Without explicitly adopted membership/pole
-tolerances, keep `selected_resolution` null with `tolerances_not_adopted`; this
-status does not mean stability failed. Show the conditional tolerance grid and
-mark the error-knee basis provisional. Preserve tail events and convergence flags. Do not assign semantic pole names before
-inspecting the fitted coordinates. Do not infer causal tactics or played armies
-from roster capability summaries.
+Local perturbations preserve every dimension and equal block totals. Keep all
+K=3–8 representations; the knee is descriptive only. Never select a winning K.
+Report tolerance comparisons for all K, full distributions and optimizer attempt
+histories. Nearest-profile links across K allow many-to-one correspondence and
+must not be described as proven ancestry or causal splitting.
 
-When changing the schema, regenerate all seven reviewed outputs and rewrite the
+- `capability_packages.py`: source-unit witnesses and exact one/two-unit frontiers.
+- `assumption_sensitivity.py`: block emphasis and requirement-dependent cost comparisons.
+
+Keep same-unit and distinct-provider capabilities separate. All-units speed means
+minimum selected speed; do not average it. Never sum capability proxy scores into
+army power. Preserve all minimum-cost ties on the published grid and exact-objective
+frontier ties. Raw measurement missingness remains unavailable, not zero. Baseline
+proxy formulas retain their inherited imputation and must be labeled as proxies.
+Link units using race and stable unit keys. Package attainability means roster-listed
+access, not faction recruitment legality, synergy or battle effectiveness.
+Do not assign semantic pole names without unit and capability-profile evidence.
+
+When changing the schema, regenerate all ten reviewed outputs and rewrite the
 superseded documentation. Exact artifact-set and byte regeneration are required.

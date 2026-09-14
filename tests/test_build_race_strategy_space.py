@@ -80,6 +80,24 @@ class SourceValidationTests(unittest.TestCase):
         previous = pd.read_csv(io.StringIO(baseline), index_col=0).rename(columns=lambda c: c.replace('__access', '__cost_access'))
         np.testing.assert_allclose(views[weighted.columns], previous[weighted.columns], rtol=1e-10, atol=1e-12)
 
+        # Reconstruct all unit-derived views using only the published witnesses.
+        from ctw_analysis.capability_packages import unit_evidence
+        _, evidence = unit_evidence(scores, units)
+        catalog = evidence['units']
+        for feature in rf.UNIT_FEATURES:
+            global_cells = set()
+            for feature_map in evidence['race_feature_evidence'].values():
+                global_cells.update(map(tuple, feature_map[feature]['high_cells']))
+            for race in rf.RACES:
+                witness = evidence['race_feature_evidence'][race][feature]
+                n = sum(u['race'] == race for u in catalog)
+                breadth = (.4 * len(witness['high_cells']) / max(1, len(global_cells))
+                           + .3 * len(witness['positive_units']) / n + .3 * len(witness['high_units']) / n)
+                ceiling = np.mean([catalog[i]['capabilities'][feature] for i in witness['ceiling_units']])
+                access = np.mean([p['score'] for p in witness['cost_frontier']])
+                for view, value in [('breadth',breadth),('ceiling',ceiling),('cost_access',access)]:
+                    self.assertAlmostEqual(value, views.loc[race, feature+'__'+view], places=12)
+
 
 if __name__ == '__main__':
     unittest.main()

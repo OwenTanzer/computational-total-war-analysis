@@ -12,6 +12,8 @@ import numpy as np
 import pandas as pd
 
 from . import race_features as rf
+from .capability_packages import unit_evidence, capability_packages
+from .assumption_sensitivity import block_emphasis, requirement_comparisons
 from .janus_distance import (
     archetypal_resolution, block_weighted_matrix, composite_scores,
     local_residuals, membership_entropy, pairwise_report, tier_sensitivity,
@@ -100,63 +102,73 @@ def archetype_outputs(weighted, features, fit, uncertainty):
     return memberships, poles
 
 
-def result_readme(report, memberships, residuals, sensitivity):
-    selection = report['archetypes']
-    lines = ['# Janus Strategic Distance: patch 8.1.1', '',
-             f"Source: `{report['source']['git_commit']}`; {report['eligible_units']} eligible units; 54 primary dimensions across 24 races.", '',
-             f"Error knee: K={selection['error_knee']}. Reported basis: K={selection['reported_resolution']} ({selection['membership_status']}).",
-             f"Selection status: {selection['status']}; selected resolution: {selection['selected_resolution']}.",
-             'No numerical tolerance is adopted by default. The table below shows conditional choices; it does not declare natural strategic classes.', '',
-             '## Separate diagnostics', '',
-             '| K | Relative squared error | Optimizer worst race TV95 | Local mean TV | Local worst race TV95 | Local worst pole relative95 | Stress mean TV |',
-             '|---|---:|---:|---:|---:|---:|---:|']
-    for c in selection['candidate_resolutions']:
+def result_readme(report, residuals, sensitivity, packages, assumptions):
+    atlas = report['archetypes']
+    lines = ['# Janus: roster relationships and attainable capability packages', '',
+             f"Locked patch 8.1.1; {report['eligible_units']} eligible units, 24 races, 54 preserved aggregate dimensions.", '',
+             '## Relationships first', '',
+             'Distances summarize roster profiles. Leading contrasts and local residuals explain their differences; unit evidence identifies the purchases behind the summaries.', '',
+             '| Race | Nearest roster | Distance | Largest local distinction | View | Signed residual |',
+             '|---|---|---:|---|---|---:|']
+    for race, local in residuals.items():
+        nearest = local['neighbors'][0]
+        key, value = max(local['weighted_residual'].items(), key=lambda kv: abs(kv[1]))
+        feature, view = key.split('__')
+        lines.append(f"| {race} | {nearest['race']} | {nearest['distance']:.4f} | {feature} | {view} | {value:+.4f} |")
+    lines += ['', 'Breadth, ceiling and cost access remain separate. The complete signed contrasts are in `jsd_report.json`; local evidence is in `race_details.json` and contributing unit IDs in `unit_evidence.json`.', '',
+              '## Attainable combinations', '',
+              f"{len(packages['records'])} race/query families cover every pair of the 15 unit capability proxies, plus raw speed, armour and range comparisons. Each evaluates a 3×3 grid of positive-global-support quantiles (50%, 75%, 90%). Threshold values and their units are published.", '',
+              'One-unit packages require both capabilities in the same purchase. Two-unit packages require distinct providers; the all-units-speed query instead requires both units to meet the speed floor. Cost is summed once per purchase. Scores are never summed into army power.', '',
+              'The package file retains exact cost/capability Pareto frontiers and every minimum-cost tie on the requirement grid. Null cost means unattainable or no positive global support, with an explicit reason. Unit IDs resolve to original keys, costs, measurements and all proxy capabilities.', '',
+              '### Requirement-dependent cost reversals', '',
+              '| Requirement family | Cheaper at one requirement | Cheaper at another | Requirement indices |',
+              '|---|---|---|---|']
+    comparisons = assumptions['requirement_comparisons']
+    shown = 0
+    for family in sorted(comparisons, key=lambda r: (-len(r['finite_cost_order_reversals']), r['a'], r['b'], r['two_unit_semantics'])):
+        if family['finite_cost_order_reversals'] and shown < 6:
+            event = family['finite_cost_order_reversals'][0]
+            lines.append(f"| {family['a']} + {family['b']} ({family['two_unit_semantics']}) | {event['race_a']} | {event['race_b']} | {event['a_cheaper_requirement']} / {event['b_cheaper_requirement']} |")
+            shown += 1
+    if not shown:
+        lines += ['| No finite cost-order reversals on this grid | — | — | — |']
+    lines += ['', 'Examples are selected deterministically from families with the most reversals, then by identifier; they are navigation aids, not prevalence estimates. Indices resolve to the published requirement levels, cost matrices and package witnesses.', '',
+              '## Assumptions and consequences', '',
+              f"{len(assumptions['block_emphasis']['stable_nearest_neighbors'])} of 24 nearest-neighbor identities persist across equal weighting and each of four block-emphasis scenarios. All scenario distances, ranks and changed neighborhoods are retained.", '',
+              'Each emphasis doubles one block relative to the others while retaining the original total squared weight. These scenarios change roster relationships; archetypes are not refitted under them.', '',
+              '## Alternative compressed representations', '',
+              f"The reconstruction-error knee is K={atlas['error_knee']}; it is descriptive and excludes no representation. No resolution is selected.", '',
+              '| K | Relative squared error | Optimizer worst-race TV95 | Local mean TV | Local worst-race TV95 | Local worst-pole relative95 | Stress mean TV |',
+              '|---|---:|---:|---:|---:|---:|---:|']
+    for c in atlas['candidate_resolutions']:
         d = c['diagnostics']; local = d['local_robustness']; pole = local['max_pole_relative_q95']
         pole_text = 'degenerate' if pole is None else f'{pole:.4f}'
         lines.append(f"| {c['k']} | {c['relative_squared_error']:.4f} | {d['optimization_repeatability']['max_race_tv_q95']:.4f} | {local['membership_tv_mean']:.4f} | {local['max_race_tv_q95']:.4f} | {pole_text} | {d['structural_stress']['membership_tv_mean']:.4f} |")
-    lines += ['', 'TV is total variation distance: the fraction of membership mass reassigned. TV95 is the 95th percentile across runs for each race; worst means the largest of those race-specific values. Pole displacement is divided by separation from the nearest other reference pole.', '',
-              'Optimization repeats use unchanged data and independent starts. Local robustness retains every dimension and equal block totals. Structural stress resamples dimensions and reweights blocks; it never gates selection.', '',
-              '## Conditional tolerance choices', '',
-              '| Maximum worst-race TV95 | Maximum worst-pole relative95 | Smallest qualifying K at/after knee |',
-              '|---:|---:|---:|']
-    for row in selection['tolerance_grid']:
-        lines.append(f"| {row['membership_tolerance']:.2f} | {row['pole_tolerance']:.2f} | {row['selected_resolution']} |")
-    lines += ['', 'Both optimization repeatability and local robustness must satisfy both tolerances, with all reference/control/local fits converged. Structural stress is excluded. A membership tolerance of 0.20 allows 20 percentage points to move; a pole tolerance of 0.25 allows movement of one quarter of nearest-pole separation. These are interpretable policy choices, not significance thresholds.', '',
-              '## Reported poles', '']
-    for p in selection['poles']:
-        members = ', '.join(f"{r['race']} {r['membership']:.3f}" for r in p['leading_memberships'][:3])
-        dims = ', '.join(f"{r['dimension']} {r['weighted_coordinate']:+.3f}" for r in p['leading_dimensions'][:4])
-        lines.append(f"- **{p['id']}** — leading memberships: {members}. Leading coordinates: {dims}.")
-    lines += ['', '## Pole movement in the reported basis', '',
-              '| Regime | Pole | Mean displacement | Largest displacement | Relative 95th percentile |',
-              '|---|---|---:|---:|---:|']
-    for regime, diagnostic in selection['reported_diagnostics'].items():
-        poles = diagnostic['poles']; absolute = poles['absolute_displacement']; relative = poles['relative_displacement']
-        for j in range(selection['reported_resolution']):
-            rel = 'degenerate' if relative is None else f"{relative['per_item_q95'][j]:.4f}"
-            lines.append(f"| {regime} | A{j+1} | {absolute['per_item_mean'][j]:.4f} | {absolute['per_item_max'][j]:.4f} | {rel} |")
-    lines += ['', '## Local neighborhoods', '',
-              '| Race | Nearest race | Distance | Entropy | Local mean TV | Local TV95 |',
-              '|---|---|---:|---:|---:|---:|']
-    for race, local in residuals.items():
-        nearest = local['neighbors'][0]
-        lines.append(f"| {race} | {nearest['race']} | {nearest['distance']:.4f} | {memberships.loc[race, 'normalized_entropy']:.3f} | {memberships.loc[race, 'local_robustness__tv_mean']:.3f} | {memberships.loc[race, 'local_robustness__tv_q95']:.3f} |")
-    lines += ['', '## File contract', '',
-              '- `race_capability_views.csv`: original breadth, ceiling and cost_access measurements.',
-              '- `race_capability_composites.csv`: sample-relative 0–100 summaries; zero denotes the sample minimum.',
-              '- `race_archetype_memberships.csv`: reference weights, entropy, and explicitly named statistics for each of the three diagnostic regimes.',
-              '- `race_details.json`: capability evidence and local residuals against four distance-weighted neighbors.',
-              '- `jsd_report.json`: all pair comparisons, per-resolution diagnostics, conditional tolerance choices, and full movement distributions and profile-change intervals for the reported basis. Distribution columns follow `races`, pole IDs and `profile_dimensions`.',
-              '- `unit_tier_sensitivity.json`: topology changes only; unit tier does not establish campaign recruitment access.', '',
-              f"Primary/sensitivity distance correlation: {sensitivity['distance_pearson_correlation']:.6f}.", '',
-              'Pair records show up to four components per sign. Reversing the pair negates its components and exchanges ranks. Use `directional_delta` for the exact full-vector decomposition.', '',
-              'Entropy describes mixing within the fitted basis, not overall tactical versatility. Pole movement and profile changes are measured in the original weighted space after label alignment. Tail events and failed optimization runs remain visible, even when a percentile tolerance accepts a representation.', '',
-              'The measurements concern static roster possibilities and method sensitivity, not observed armies, causal tactical combinations, win rates, or confidence intervals over battles.', '']
+    lines += ['', 'TV (total variation) measures the fraction of membership mass reassigned. Pole displacement is measured in the original weighted space and normalized by nearest reference-pole separation. These are separate per-race/per-pole percentiles, not simultaneous guarantees for entire runs.', '',
+              'Full memberships, pole profiles, movement distributions, optimizer attempts and profile-change intervals are retained for every K. Adjacent representations have nearest-profile correspondences in both directions, allowing many-to-one matches. Distances, ties and mapped membership changes accompany these correspondences; they do not establish ancestry or a causal split.', '',
+              '### Tolerance comparisons without a winner', '',
+              '| Membership limit | Pole limit | All resolutions within both limits |',
+              '|---:|---:|---|']
+    for cell in atlas['tolerance_grid']:
+        ks = ', '.join(str(r['k']) for r in cell['resolutions'] if r['within_tolerances']) or 'None'
+        lines.append(f"| {cell['membership_tolerance']:.2f} | {cell['pole_tolerance']:.2f} | {ks} |")
+    lines += ['', 'Both unchanged-data optimization and local perturbations must satisfy the illustrative limits with converged fits and distinct reference poles. Structural stress is reported separately. No cutoff is adopted and none of these comparisons chooses K.', '',
+              '## Evidence contract', '',
+              '- `race_capability_views.csv`: preserved breadth, ceiling and cost access.',
+              '- `race_capability_composites.csv`: sample-relative display summaries.',
+              '- `race_archetype_memberships.csv`: all K/race memberships and diagnostics; blank pole columns mean the pole does not exist at that K.',
+              '- `race_details.json`: capability summaries, local residuals and unit-evidence references.',
+              '- `jsd_report.json`: pair contrasts, all representations and cross-resolution correspondences.',
+              '- `unit_evidence.json`: unit keys, original measurements, scores and aggregate witnesses.',
+              '- `capability_packages.json`: exact bounded frontiers, requirement grids, costs and tied witnesses.',
+              '- `assumption_sensitivity.json`: block-emphasis relationships and requirement-dependent cost comparisons.',
+              '- `unit_tier_sensitivity.json`: unit-classification topology sensitivity.', '',
+              f"Primary/unit-tier distance correlation: {sensitivity['distance_pearson_correlation']:.6f}.", '',
+              'These are roster-listed possibilities, not guarantees of faction recruitment legality, playable armies, tactical synergy, win rates or causal strategy modes. Packages contain at most two distinct units. Capability proxies retain their earlier scoring assumptions; raw-measure queries retain missingness. Entropy describes mixing in a fitted basis, not tactical versatility.', '']
     return '\n'.join(lines)
 
 
-def build(ctw_root: Path, out_dir: Path, runs: int = 40, seed: int = 811, workers: int = 1,
-          membership_tolerance=None, pole_tolerance=None):
+def build(ctw_root: Path, out_dir: Path, runs: int = 40, seed: int = 811, workers: int = 1):
     lock = validate_source_lock(ctw_root)
     rf.configure_source(ctw_root)
     units = rf.attach_lookup_flags(rf.load_units())
@@ -168,24 +180,34 @@ def build(ctw_root: Path, out_dir: Path, runs: int = 40, seed: int = 811, worker
     if primary.shape != (24, 54) or weighted_tier.shape != (24, 69):
         raise RuntimeError("Unexpected race/feature dimensions")
     print(f"Validated {len(units)} units; fitting archetypal resolutions", flush=True)
-    selection, fit, uncertainty = archetypal_resolution(
+    atlas, fits, diagnostics = archetypal_resolution(
         weighted, runs=runs, seed=seed, workers=workers,
-        membership_tolerance=membership_tolerance, pole_tolerance=pole_tolerance,
         progress=lambda c: print(f"K={c['k']} error={c['relative_squared_error']:.4f} "
                                   f"local_tv={c['diagnostics']['local_robustness']['membership_tv_mean']:.4f} "
                                   f"stress_tv={c['diagnostics']['structural_stress']['membership_tv_mean']:.4f}", flush=True))
-    memberships, poles = archetype_outputs(weighted, primary, fit, uncertainty)
-    selection["poles"] = poles
+    frames = []
+    for k, fit in fits.items():
+        frame, poles = archetype_outputs(weighted, primary, fit, diagnostics[k])
+        frame.insert(0, 'k', k)
+        frames.append(frame)
+        atlas['representations'][str(k)].update({'poles': poles, 'memberships': fit['memberships']})
+    memberships = pd.concat(frames)
+    print('Building unit evidence and exact one/two-unit package frontiers', flush=True)
+    ordered, evidence = unit_evidence(unit_scores, units)
+    packages = capability_packages(ordered, evidence)
+    assumptions = {'block_emphasis': block_emphasis(weighted),
+                   'requirement_comparisons': requirement_comparisons(packages)}
     residuals = local_residuals(primary, weighted)
     for race in details:
         details[race]["local_distinctiveness"] = residuals[race]
+        details[race]["unit_evidence_reference"] = {"file": "unit_evidence.json", "race": race}
     sensitivity = tier_sensitivity(weighted, weighted_tier)
     report = {"name": "Janus Strategic Distance", "source": lock, "eligible_units": len(units),
               "primary_dimensions": len(primary.columns), "races": weighted.index.tolist(),
               "distance_definition": "sqrt(sum_j q_j * (z_Bj-z_Aj)^2)",
               "direction_definition": "sqrt(q_j) * (z_Bj-z_Aj)",
               "squared_weight_scale": "q_j = view_share / (3 * number_of_features_in_block); each block totals 1/3",
-              "pair_component_limit_per_sign": 4, "archetypes": selection,
+              "pair_component_limit_per_sign": 4, "archetypes": atlas,
               "pairs": pairwise_report(primary, weighted)}
     out_dir.mkdir(parents=True, exist_ok=True)
     for name, frame in [("race_capability_views.csv", primary),
@@ -193,11 +215,15 @@ def build(ctw_root: Path, out_dir: Path, runs: int = 40, seed: int = 811, worker
                         ("race_archetype_memberships.csv", memberships)]:
         frame.to_csv(out_dir / name, float_format="%.9f", lineterminator="\n")
     write_json(out_dir / "race_details.json", details)
+    write_json(out_dir / "unit_evidence.json", evidence)
+    # Compact indexed package rows keep exhaustive witnesses manageable.
+    for name, content in [('capability_packages.json', packages), ('assumption_sensitivity.json', assumptions)]:
+        (out_dir / name).write_text(json.dumps(json_ready(content), separators=(',', ':'), allow_nan=False) + '\n', encoding='utf-8', newline='\n')
     write_json(out_dir / "jsd_report.json", report)
     write_json(out_dir / "unit_tier_sensitivity.json", sensitivity)
-    (out_dir / "README.md").write_text(result_readme(report, memberships, residuals, sensitivity),
+    (out_dir / "README.md").write_text(result_readme(report, residuals, sensitivity, packages, assumptions),
                                       encoding="utf-8", newline="\n")
-    print(json.dumps({"selected_resolution": selection["selected_resolution"],
+    print(json.dumps({"representations": sorted(fits),
                       "distance_correlation": sensitivity["distance_pearson_correlation"]}), flush=True)
     return report
 
@@ -210,7 +236,7 @@ def verify_artifacts(actual: Path, expected: Path = REVIEWED):
     changed = [name for name in sorted(ARTIFACTS) if (actual / name).read_bytes() != (expected / name).read_bytes()]
     if changed:
         raise RuntimeError(f"Regeneration mismatch: {changed}")
-    print("All seven reviewed artifacts regenerate byte-identically", flush=True)
+    print("All ten reviewed artifacts regenerate byte-identically", flush=True)
 
 
 def main():
@@ -220,16 +246,14 @@ def main():
     parser.add_argument("--perturbations", type=int, default=40)
     parser.add_argument("--seed", type=int, default=811)
     parser.add_argument("--workers", type=int, default=1)
-    parser.add_argument("--membership-tolerance", type=float)
-    parser.add_argument("--pole-tolerance", type=float)
     parser.add_argument("--verify-regeneration", action="store_true")
     args = parser.parse_args()
     if args.verify_regeneration:
         with tempfile.TemporaryDirectory(prefix="ctw-janus-") as temp:
-            build(args.ctw_root, Path(temp), args.perturbations, args.seed, args.workers, args.membership_tolerance, args.pole_tolerance)
+            build(args.ctw_root, Path(temp), args.perturbations, args.seed, args.workers)
             verify_artifacts(Path(temp))
     else:
-        build(args.ctw_root, args.out_dir, args.perturbations, args.seed, args.workers, args.membership_tolerance, args.pole_tolerance)
+        build(args.ctw_root, args.out_dir, args.perturbations, args.seed, args.workers)
 
 
 if __name__ == "__main__":

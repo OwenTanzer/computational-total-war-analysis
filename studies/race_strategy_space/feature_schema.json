@@ -1,5 +1,5 @@
 {
-  "schema_version": 4,
+  "schema_version": 5,
   "normalization": {
     "positive_values": "percentile rank among positive observations",
     "structural_zero": "retained as exactly zero"
@@ -245,14 +245,12 @@
     "diagnostic_regimes": {
       "optimization_repeatability": "unchanged data; independent starts; lowest-loss available fit is reference",
       "local_robustness": "all columns retained; Normal(1,.08) multipliers floored to 1e-6; exact block squared-weight totals preserved",
-      "structural_stress": "columns resampled with replacement plus Normal(1,.08) multipliers; not a selection gate"
+      "structural_stress": "columns resampled with replacement plus Normal(1,.08) multipliers; excluded from tolerance comparisons"
     },
     "membership_movement": "0.5 * sum(abs(w-reference_w)); fraction of mixture mass reassigned",
     "pole_movement": "Euclidean displacement in original weighted space, absolute and divided by nearest other reference pole distance",
     "alignment": "Hungarian matching in original weighted space; retain aligned memberships and poles",
-    "profile_changes": "all weighted coordinates: mean, std, q05 and q95 per regime for reported basis",
-    "default_selection": "no adopted tolerance; report error-knee basis provisionally and conditional tolerance grid",
-    "conditional_selection": "smallest K at or after knee passing joint worst-race/pole q95 tolerances in optimizer repeatability and local robustness, with convergence and no degeneracy",
+    "profile_changes": "all weighted coordinates and all distributions for every resolution",
     "membership_tolerance_grid": [
       0.05,
       0.1,
@@ -264,6 +262,38 @@
       0.25,
       0.5
     ],
-    "local_neighbors": 4
+    "local_neighbors": 4,
+    "representation_policy": "all K retained; no selected resolution; knee descriptive only",
+    "tolerance_comparison": "per-K pass/fail with reasons, no knee exclusion; no winning K",
+    "optimizer_provenance": "all attempts with seeds, iteration budgets and per-start loss/convergence including retries",
+    "cross_resolution": "adjacent resolutions: complete original-space pole distances, nearest-profile links in both directions, ties and mapped membership TV"
+  },
+  "capability_packages": {
+    "unit_features": 15,
+    "proxy_pairs": 105,
+    "raw_queries": [
+      "speed/range: distinct providers",
+      "armour/range: distinct providers",
+      "speed/armour: distinct providers",
+      "speed/range: every-unit speed floor"
+    ],
+    "global_positive_quantiles": [
+      0.5,
+      0.75,
+      0.9
+    ],
+    "quantile_method": "linear",
+    "requirement_grid": "cartesian product of levels for each pair",
+    "unit_limit": 2,
+    "unit_repeats": false,
+    "aggregation": "same-unit witnesses or distinct providers; never sum scores; all-unit speed uses minimum",
+    "frontier": "exact cost-min, capability-A-max, capability-B-max Pareto frontier",
+    "ties": "all exact-objective frontier ties plus all minimum-cost ties on displayed grid",
+    "nulls": "missing original raw measurements never satisfy requirements; absent positive support and unattainability have explicit reasons",
+    "scope": "roster-listed access, not recruitment legality, army optimization or tactical synergy"
+  },
+  "assumption_sensitivity": {
+    "block_emphasis": "equal plus double one block relative to others; total squared weight preserved at 4/3; distance scenarios only",
+    "requirements": "complete costs by race and requirement; finite-cost ordering reversal witnesses"
   }
 }
