@@ -279,6 +279,10 @@
           "fraction_of_squared_distance": 0.029152373
         }
       ]
+    },
+    "unit_evidence_reference": {
+      "file": "unit_evidence.json",
+      "race": "beastmen"
     }
   },
   "bretonnia": {
@@ -563,6 +567,10 @@
           "fraction_of_squared_distance": 0.090234266
         }
       ]
+    },
+    "unit_evidence_reference": {
+      "file": "unit_evidence.json",
+      "race": "bretonnia"
     }
   },
   "chaos_dwarfs": {
@@ -846,6 +854,10 @@
           "fraction_of_squared_distance": 0.030519205
         }
       ]
+    },
+    "unit_evidence_reference": {
+      "file": "unit_evidence.json",
+      "race": "chaos_dwarfs"
     }
   },
   "daemons_of_chaos": {
@@ -1120,6 +1132,10 @@
           "fraction_of_squared_distance": 0.004324798
         }
       ]
+    },
+    "unit_evidence_reference": {
+      "file": "unit_evidence.json",
+      "race": "daemons_of_chaos"
     }
   },
   "dark_elves": {
@@ -1402,6 +1418,10 @@
           "fraction_of_squared_distance": 0.048653845
         }
       ]
+    },
+    "unit_evidence_reference": {
+      "file": "unit_evidence.json",
+      "race": "dark_elves"
     }
   },
   "dwarfs": {
@@ -1678,6 +1698,10 @@
           "fraction_of_squared_distance": 0.051209101
         }
       ]
+    },
+    "unit_evidence_reference": {
+      "file": "unit_evidence.json",
+      "race": "dwarfs"
     }
   },
   "empire": {
@@ -1967,6 +1991,10 @@
           "fraction_of_squared_distance": 0.03439666
         }
       ]
+    },
+    "unit_evidence_reference": {
+      "file": "unit_evidence.json",
+      "race": "empire"
     }
   },
   "grand_cathay": {
@@ -2254,6 +2282,10 @@
           "fraction_of_squared_distance": 0.037121128
         }
       ]
+    },
+    "unit_evidence_reference": {
+      "file": "unit_evidence.json",
+      "race": "grand_cathay"
     }
   },
   "greenskins": {
@@ -2533,6 +2565,10 @@
           "fraction_of_squared_distance": 0.016611936
         }
       ]
+    },
+    "unit_evidence_reference": {
+      "file": "unit_evidence.json",
+      "race": "greenskins"
     }
   },
   "high_elves": {
@@ -2823,6 +2859,10 @@
           "fraction_of_squared_distance": 0.033960169
         }
       ]
+    },
+    "unit_evidence_reference": {
+      "file": "unit_evidence.json",
+      "race": "high_elves"
     }
   },
   "khorne": {
@@ -3097,6 +3137,10 @@
           "fraction_of_squared_distance": 0.045221719
         }
       ]
+    },
+    "unit_evidence_reference": {
+      "file": "unit_evidence.json",
+      "race": "khorne"
     }
   },
   "kislev": {
@@ -3382,6 +3426,10 @@
           "fraction_of_squared_distance": 0.036837827
         }
       ]
+    },
+    "unit_evidence_reference": {
+      "file": "unit_evidence.json",
+      "race": "kislev"
     }
   },
   "lizardmen": {
@@ -3672,6 +3720,10 @@
           "fraction_of_squared_distance": 0.020343499
         }
       ]
+    },
+    "unit_evidence_reference": {
+      "file": "unit_evidence.json",
+      "race": "lizardmen"
     }
   },
   "norsca": {
@@ -3956,6 +4008,10 @@
           "fraction_of_squared_distance": 0.041630862
         }
       ]
+    },
+    "unit_evidence_reference": {
+      "file": "unit_evidence.json",
+      "race": "norsca"
     }
   },
   "nurgle": {
@@ -4237,6 +4293,10 @@
           "fraction_of_squared_distance": 0.045824274
         }
       ]
+    },
+    "unit_evidence_reference": {
+      "file": "unit_evidence.json",
+      "race": "nurgle"
     }
   },
   "ogre_kingdoms": {
@@ -4521,6 +4581,10 @@
           "fraction_of_squared_distance": 0.030988318
         }
       ]
+    },
+    "unit_evidence_reference": {
+      "file": "unit_evidence.json",
+      "race": "ogre_kingdoms"
     }
   },
   "skaven": {
@@ -4801,6 +4865,10 @@
           "fraction_of_squared_distance": 0.059856477
         }
       ]
+    },
+    "unit_evidence_reference": {
+      "file": "unit_evidence.json",
+      "race": "skaven"
     }
   },
   "slaanesh": {
@@ -5079,6 +5147,10 @@
           "fraction_of_squared_distance": 0.036341782
         }
       ]
+    },
+    "unit_evidence_reference": {
+      "file": "unit_evidence.json",
+      "race": "slaanesh"
     }
   },
   "tomb_kings": {
@@ -5362,6 +5434,10 @@
           "fraction_of_squared_distance": 0.03782307
         }
       ]
+    },
+    "unit_evidence_reference": {
+      "file": "unit_evidence.json",
+      "race": "tomb_kings"
     }
   },
   "tzeentch": {
@@ -5643,6 +5719,10 @@
           "fraction_of_squared_distance": 0.021320132
         }
       ]
+    },
+    "unit_evidence_reference": {
+      "file": "unit_evidence.json",
+      "race": "tzeentch"
     }
   },
   "vampire_coast": {
@@ -5925,6 +6005,10 @@
           "fraction_of_squared_distance": 0.053760703
         }
       ]
+    },
+    "unit_evidence_reference": {
+      "file": "unit_evidence.json",
+      "race": "vampire_coast"
     }
   },
   "vampire_counts": {
@@ -6208,6 +6292,10 @@
           "fraction_of_squared_distance": 0.075288786
         }
       ]
+    },
+    "unit_evidence_reference": {
+      "file": "unit_evidence.json",
+      "race": "vampire_counts"
     }
   },
   "warriors_of_chaos": {
@@ -6495,6 +6583,10 @@
           "fraction_of_squared_distance": 0.008275594
         }
       ]
+    },
+    "unit_evidence_reference": {
+      "file": "unit_evidence.json",
+      "race": "warriors_of_chaos"
     }
   },
   "wood_elves": {
@@ -6780,6 +6872,10 @@
           "fraction_of_squared_distance": 0.038227502
         }
       ]
+    },
+    "unit_evidence_reference": {
+      "file": "unit_evidence.json",
+      "race": "wood_elves"
     }
   }
 }

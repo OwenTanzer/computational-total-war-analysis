@@ -1,14 +1,72 @@
-# Janus Strategic Distance: patch 8.1.1
+# Janus: roster relationships and attainable capability packages
 
-Source: `8c2169b837288d03ba0188b468f06a2f3bcb4b28`; 972 eligible units; 54 primary dimensions across 24 races.
+Locked patch 8.1.1; 972 eligible units, 24 races, 54 preserved aggregate dimensions.
 
-Error knee: K=5. Reported basis: K=5 (provisional_error_knee_basis).
-Selection status: tolerances_not_adopted; selected resolution: None.
-No numerical tolerance is adopted by default. The table below shows conditional choices; it does not declare natural strategic classes.
+## Relationships first
 
-## Separate diagnostics
+Distances summarize roster profiles. Leading contrasts and local residuals explain their differences; unit evidence identifies the purchases behind the summaries.
 
-| K | Relative squared error | Optimizer worst race TV95 | Local mean TV | Local worst race TV95 | Local worst pole relative95 | Stress mean TV |
+| Race | Nearest roster | Distance | Largest local distinction | View | Signed residual |
+|---|---|---:|---|---|---:|
+| beastmen | wood_elves | 0.8923 | avoidance | breadth | +0.3124 |
+| bretonnia | empire | 1.2540 | contact_authority | ceiling | -0.3940 |
+| chaos_dwarfs | dark_elves | 1.0028 | bombardment | breadth | +0.4543 |
+| daemons_of_chaos | warriors_of_chaos | 1.2826 | command_magic | cost_access | -0.4427 |
+| dark_elves | grand_cathay | 0.8917 | morale | breadth | -0.2311 |
+| dwarfs | empire | 1.6958 | role_coverage | breadth | -0.5116 |
+| empire | grand_cathay | 1.1652 | role_coverage | breadth | -0.3838 |
+| grand_cathay | dark_elves | 0.8917 | command_magic | breadth | +0.3216 |
+| greenskins | dark_elves | 0.9077 | command_magic | breadth | -0.3288 |
+| high_elves | dark_elves | 1.0196 | morale | breadth | +0.3262 |
+| khorne | nurgle | 1.2867 | command_magic | cost_access | -0.5903 |
+| kislev | wood_elves | 1.0119 | movement | breadth | +0.2712 |
+| lizardmen | high_elves | 1.4042 | target_solutions | breadth | +0.3661 |
+| norsca | warriors_of_chaos | 0.9990 | role_coverage | breadth | -0.2005 |
+| nurgle | kislev | 1.1401 | battlefield_control | breadth | +0.3901 |
+| ogre_kingdoms | chaos_dwarfs | 1.0415 | burst | breadth | +0.3620 |
+| skaven | greenskins | 1.0428 | contact_authority | breadth | -0.3059 |
+| slaanesh | beastmen | 1.1727 | elite_orientation | breadth | +0.4420 |
+| tomb_kings | grand_cathay | 1.1033 | morale | breadth | -0.3044 |
+| tzeentch | nurgle | 1.2241 | restoration | breadth | +0.4263 |
+| vampire_coast | skaven | 1.1920 | morale | cost_access | +0.3863 |
+| vampire_counts | norsca | 1.4899 | restoration | breadth | +0.4990 |
+| warriors_of_chaos | norsca | 0.9990 | material_durability | ceiling | +0.2246 |
+| wood_elves | beastmen | 0.8923 | deployment | breadth | +0.3716 |
+
+Breadth, ceiling and cost access remain separate. Pairwise distances and leading signed contrasts are in `jsd_report.json`; local evidence is in `race_details.json` and contributing unit IDs in `unit_evidence.json`.
+
+## Attainable combinations
+
+2616 race/query families cover every pair of the 15 unit capability proxies, plus raw speed, armour and range comparisons. Each evaluates a 3×3 grid of positive-global-support quantiles (50%, 75%, 90%). Threshold values and their units are published.
+
+One-unit packages require both capabilities in the same purchase. Two-unit packages require distinct providers; the all-units-speed query instead requires both units to meet the speed floor. Cost is summed once per purchase. Scores are never summed into army power.
+
+The package file retains exact cost/capability Pareto frontiers and every minimum-cost tie on the requirement grid. Null cost means unattainable or no positive global support, with an explicit reason. Unit IDs resolve to original keys, costs, measurements and all proxy capabilities.
+
+### Requirement-dependent cost reversals
+
+| Requirement family | Rosters A / B | Requirements favoring A; costs A / B | Requirements favoring B; costs A / B |
+|---|---|---|---|
+| raw_speed + raw_armour (distinct providers allowed) | beastmen / bretonnia | raw_speed ≥ 9, raw_armour ≥ 50; 1050 / 1100 | raw_speed ≥ 4.8, raw_armour ≥ 50; 750 / 700 |
+| raw_armour + raw_range (distinct providers allowed) | beastmen / nurgle | raw_armour ≥ 50, raw_range ≥ 140; 1550 / 1750 | raw_armour ≥ 90, raw_range ≥ 140; 2600 / 1750 |
+| raw_speed + raw_range (distinct providers allowed) | beastmen / lizardmen | raw_speed ≥ 7, raw_range ≥ 380; 1950 / 2100 | raw_speed ≥ 4.8, raw_range ≥ 140; 1950 / 850 |
+| raw_speed + raw_range (all-unit speed floor) | chaos_dwarfs / daemons_of_chaos | raw_speed ≥ 4.8, raw_range ≥ 140; 575 / 1100 | raw_speed ≥ 4.8, raw_range ≥ 227.5; 2750 / 1100 |
+| shock + avoidance (distinct providers allowed) | beastmen / chaos_dwarfs | shock ≥ 0.4595, avoidance ≥ 0.367596; 800 / 1100 | shock ≥ 0.4595, avoidance ≥ 0.196778; 600 / 500 |
+| deployment + burst (distinct providers allowed) | beastmen / daemons_of_chaos | deployment ≥ 0.3, burst ≥ 0.424786; 750 / 1150 | deployment ≥ 0.3, burst ≥ 0.310081; 750 / 675 |
+
+Examples prioritize raw-measure families, then proxy families with the most reversals, using distinct race pairs when available. Costs are minimum multiplayer prices with at most two units. These are navigation examples, not prevalence estimates. Exact thresholds, complete cost matrices and all witnesses are retained in the data files.
+
+## Assumptions and consequences
+
+11 of 24 nearest-neighbor identities persist across equal weighting and each of four block-emphasis scenarios. All scenario distances, ranks and changed neighborhoods are retained.
+
+Each emphasis doubles one block relative to the others while retaining the original total squared weight. These scenarios change roster relationships; archetypes are not refitted under them.
+
+## Alternative compressed representations
+
+The reconstruction-error knee is K=5; it is descriptive and excludes no representation. No resolution is selected.
+
+| K | Relative squared error | Optimizer worst-race TV95 | Local mean TV | Local worst-race TV95 | Local worst-pole relative95 | Stress mean TV |
 |---|---:|---:|---:|---:|---:|---:|
 | 3 | 0.6329 | 0.6501 | 0.1197 | 1.0000 | 0.9648 | 0.2623 |
 | 4 | 0.5358 | 0.0006 | 0.0243 | 0.1248 | 0.0691 | 0.2644 |
@@ -17,99 +75,41 @@ No numerical tolerance is adopted by default. The table below shows conditional 
 | 7 | 0.3569 | 1.0000 | 0.0442 | 0.8961 | 0.5737 | 0.2604 |
 | 8 | 0.3126 | 1.0000 | 0.0268 | 0.1273 | 0.0767 | 0.2607 |
 
-TV is total variation distance: the fraction of membership mass reassigned. TV95 is the 95th percentile across runs for each race; worst means the largest of those race-specific values. Pole displacement is divided by separation from the nearest other reference pole.
+TV (total variation) measures the fraction of membership mass reassigned. Pole displacement is measured in the original weighted space and normalized by nearest reference-pole separation. These are separate per-race/per-pole percentiles, not simultaneous guarantees for entire runs.
 
-Optimization repeats use unchanged data and independent starts. Local robustness retains every dimension and equal block totals. Structural stress resamples dimensions and reweights blocks; it never gates selection.
+Full memberships, pole profiles, movement distributions, optimizer attempts and profile-change intervals are retained for every K. Adjacent representations have nearest-profile correspondences in both directions, allowing many-to-one matches. Distances, ties and mapped membership changes accompany these correspondences; they do not establish ancestry or a causal split.
 
-## Conditional tolerance choices
+### Tolerance comparisons without a winner
 
-| Maximum worst-race TV95 | Maximum worst-pole relative95 | Smallest qualifying K at/after knee |
-|---:|---:|---:|
+| Membership limit | Pole limit | All resolutions within both limits |
+|---:|---:|---|
 | 0.05 | 0.10 | None |
 | 0.05 | 0.25 | None |
 | 0.05 | 0.50 | None |
 | 0.10 | 0.10 | None |
 | 0.10 | 0.25 | None |
 | 0.10 | 0.50 | None |
-| 0.20 | 0.10 | None |
-| 0.20 | 0.25 | 5 |
-| 0.20 | 0.50 | 5 |
-| 0.30 | 0.10 | None |
-| 0.30 | 0.25 | 5 |
-| 0.30 | 0.50 | 5 |
+| 0.20 | 0.10 | 4 |
+| 0.20 | 0.25 | 4, 5 |
+| 0.20 | 0.50 | 4, 5 |
+| 0.30 | 0.10 | 4 |
+| 0.30 | 0.25 | 4, 5 |
+| 0.30 | 0.50 | 4, 5 |
 
-Both optimization repeatability and local robustness must satisfy both tolerances, with all reference/control/local fits converged. Structural stress is excluded. A membership tolerance of 0.20 allows 20 percentage points to move; a pole tolerance of 0.25 allows movement of one quarter of nearest-pole separation. These are interpretable policy choices, not significance thresholds.
+Both unchanged-data optimization and local perturbations must satisfy the illustrative limits with converged fits and distinct reference poles. Structural stress is reported separately. No cutoff is adopted and none of these comparisons chooses K.
 
-## Reported poles
+## Evidence contract
 
-- **A1** — leading memberships: ogre_kingdoms 1.000, chaos_dwarfs 0.989, dark_elves 0.754. Leading coordinates: contact_authority__breadth +0.293, burst__breadth +0.199, sustain__breadth +0.148, role_coverage__breadth +0.148.
-- **A2** — leading memberships: daemons_of_chaos 1.000, warriors_of_chaos 0.846, khorne 0.722. Leading coordinates: material_durability__breadth +0.294, movement__breadth +0.245, shock__breadth +0.241, restoration__breadth +0.219.
-- **A3** — leading memberships: dwarfs 1.000, bretonnia 0.837, empire 0.742. Leading coordinates: role_coverage__breadth -0.402, battlefield_control__breadth -0.320, role_coverage__cost_access -0.304, contact_authority__breadth -0.298.
-- **A4** — leading memberships: beastmen 0.918, wood_elves 0.855, slaanesh 0.845. Leading coordinates: deployment__breadth +0.431, avoidance__breadth +0.352, sustain__breadth -0.193, movement__breadth +0.183.
-- **A5** — leading memberships: vampire_coast 0.966, vampire_counts 0.888, skaven 0.770. Leading coordinates: morale__breadth -0.352, shock__breadth -0.257, morale__ceiling -0.253, burst__breadth -0.248.
+- `race_capability_views.csv`: preserved breadth, ceiling and cost access.
+- `race_capability_composites.csv`: sample-relative display summaries.
+- `race_archetype_memberships.csv`: all K/race memberships and diagnostics; blank pole columns mean the pole does not exist at that K.
+- `race_details.json`: capability summaries, local residuals and unit-evidence references.
+- `jsd_report.json`: pair contrasts, all representations and cross-resolution correspondences.
+- `unit_evidence.json`: unit keys, original measurements, scores and aggregate witnesses.
+- `capability_packages.json`: exact bounded frontiers, requirement grids, costs and tied witnesses.
+- `assumption_sensitivity.json`: block-emphasis relationships and requirement-dependent cost comparisons.
+- `unit_tier_sensitivity.json`: unit-classification topology sensitivity.
 
-## Pole movement in the reported basis
+Primary/unit-tier distance correlation: 0.998457.
 
-| Regime | Pole | Mean displacement | Largest displacement | Relative 95th percentile |
-|---|---|---:|---:|---:|
-| optimization_repeatability | A1 | 0.0004 | 0.0007 | 0.0005 |
-| optimization_repeatability | A2 | 0.0004 | 0.0007 | 0.0006 |
-| optimization_repeatability | A3 | 0.0001 | 0.0001 | 0.0001 |
-| optimization_repeatability | A4 | 0.0001 | 0.0002 | 0.0001 |
-| optimization_repeatability | A5 | 0.0003 | 0.0006 | 0.0004 |
-| local_robustness | A1 | 0.0523 | 0.1363 | 0.0790 |
-| local_robustness | A2 | 0.0625 | 0.3954 | 0.1035 |
-| local_robustness | A3 | 0.0657 | 0.9494 | 0.0696 |
-| local_robustness | A4 | 0.1076 | 1.6280 | 0.1208 |
-| local_robustness | A5 | 0.0538 | 0.2624 | 0.0781 |
-| structural_stress | A1 | 0.3948 | 1.1363 | 0.6198 |
-| structural_stress | A2 | 0.3275 | 0.6877 | 0.5128 |
-| structural_stress | A3 | 0.4235 | 0.9736 | 0.6613 |
-| structural_stress | A4 | 0.5869 | 1.7374 | 1.4320 |
-| structural_stress | A5 | 0.4759 | 1.4230 | 0.7995 |
-
-## Local neighborhoods
-
-| Race | Nearest race | Distance | Entropy | Local mean TV | Local TV95 |
-|---|---|---:|---:|---:|---:|
-| beastmen | wood_elves | 0.8923 | 0.176 | 0.054 | 0.077 |
-| bretonnia | empire | 1.2540 | 0.327 | 0.064 | 0.093 |
-| chaos_dwarfs | dark_elves | 1.0028 | 0.038 | 0.014 | 0.046 |
-| daemons_of_chaos | warriors_of_chaos | 1.2826 | -0.000 | 0.000 | 0.000 |
-| dark_elves | grand_cathay | 0.8917 | 0.347 | 0.029 | 0.057 |
-| dwarfs | empire | 1.6958 | -0.000 | 0.000 | 0.000 |
-| empire | grand_cathay | 1.1652 | 0.355 | 0.051 | 0.072 |
-| grand_cathay | dark_elves | 0.8917 | 0.620 | 0.057 | 0.124 |
-| greenskins | dark_elves | 0.9077 | 0.823 | 0.056 | 0.129 |
-| high_elves | dark_elves | 1.0196 | 0.510 | 0.044 | 0.093 |
-| khorne | nurgle | 1.2867 | 0.367 | 0.017 | 0.044 |
-| kislev | wood_elves | 1.0119 | 0.715 | 0.065 | 0.105 |
-| lizardmen | high_elves | 1.4042 | 0.580 | 0.077 | 0.145 |
-| norsca | warriors_of_chaos | 0.9990 | 0.712 | 0.040 | 0.072 |
-| nurgle | kislev | 1.1401 | 0.869 | 0.058 | 0.123 |
-| ogre_kingdoms | chaos_dwarfs | 1.0415 | -0.000 | 0.003 | 0.019 |
-| skaven | greenskins | 1.0428 | 0.353 | 0.054 | 0.175 |
-| slaanesh | beastmen | 1.1727 | 0.268 | 0.060 | 0.092 |
-| tomb_kings | grand_cathay | 1.1033 | 0.419 | 0.030 | 0.070 |
-| tzeentch | nurgle | 1.2241 | 0.649 | 0.037 | 0.072 |
-| vampire_coast | skaven | 1.1920 | 0.091 | 0.029 | 0.063 |
-| vampire_counts | norsca | 1.4899 | 0.218 | 0.033 | 0.112 |
-| warriors_of_chaos | norsca | 0.9990 | 0.334 | 0.039 | 0.093 |
-| wood_elves | beastmen | 0.8923 | 0.257 | 0.040 | 0.068 |
-
-## File contract
-
-- `race_capability_views.csv`: original breadth, ceiling and cost_access measurements.
-- `race_capability_composites.csv`: sample-relative 0–100 summaries; zero denotes the sample minimum.
-- `race_archetype_memberships.csv`: reference weights, entropy, and explicitly named statistics for each of the three diagnostic regimes.
-- `race_details.json`: capability evidence and local residuals against four distance-weighted neighbors.
-- `jsd_report.json`: all pair comparisons, per-resolution diagnostics, conditional tolerance choices, and full movement distributions and profile-change intervals for the reported basis. Distribution columns follow `races`, pole IDs and `profile_dimensions`.
-- `unit_tier_sensitivity.json`: topology changes only; unit tier does not establish campaign recruitment access.
-
-Primary/sensitivity distance correlation: 0.998457.
-
-Pair records show up to four components per sign. Reversing the pair negates its components and exchanges ranks. Use `directional_delta` for the exact full-vector decomposition.
-
-Entropy describes mixing within the fitted basis, not overall tactical versatility. Pole movement and profile changes are measured in the original weighted space after label alignment. Tail events and failed optimization runs remain visible, even when a percentile tolerance accepts a representation.
-
-The measurements concern static roster possibilities and method sensitivity, not observed armies, causal tactical combinations, win rates, or confidence intervals over battles.
+These are roster-listed possibilities, not guarantees of faction recruitment legality, playable armies, tactical synergy, win rates or causal strategy modes. Packages contain at most two distinct units. Capability proxies retain their earlier scoring assumptions; raw-measure queries retain missingness. Entropy describes mixing in a fitted basis, not tactical versatility.
