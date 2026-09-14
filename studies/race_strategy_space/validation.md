@@ -17,3 +17,7 @@ retain LF line endings under Windows checkout conversion.
 Scientific tolerances are not adopted automatically. Conditional selections
 in the result report depend jointly on membership reassignment and pole movement;
 no adopted tolerance is a different state from failing an adopted tolerance.
+
+## Completed verification
+
+All 30 tests passed against the locked source; none skipped. A separate full rebuild matched all seven reviewed artifacts byte-for-byte. Worker-count independence also passed the controlled test. No scientific tolerance policy was adopted automatically.
